@@ -4,12 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const applications = [
-  { name: "INTERIOR WALLS", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" },
-  { name: "INTERIOR FLOORS", image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=800&q=80" },
-  { name: "COUNTERTOPS", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" },
-  { name: "EXTERIOR WALLS", image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=80" },
-  { name: "EXTERIOR FLOORS", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" },
-  { name: "FURNITURE", image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=800&q=80" },
+  { name: "INTERIOR WALLS", image: "/nobilita/images/Calacatta Oyster Application 1.jpg" },
+  { name: "INTERIOR FLOORS", image: "/nobilita/images/BZ060139-AMB1.jpg" },
+  { name: "COUNTERTOPS", image: "/nobilita/images/Macchia Vecchia Max App.jpg" },
+  { name: "EXTERIOR WALLS", image: "/nobilita/images/15.jpg" },
+  { name: "EXTERIOR FLOORS", image: "/nobilita/images/4.jpg" },
+  { name: "FURNITURE", image: "/nobilita/images/Arabescato Fjord (2).jpg" },
 ];
 
 export default function ApplicationsSection() {

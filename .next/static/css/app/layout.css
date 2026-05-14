@@ -1499,7 +1499,7 @@ video {
   font-family: GurmukhiMN, sans-serif;
 }
 .font-michroma {
-  font-family: Michroma, sans-serif;
+  font-family: var(--font-michroma), sans-serif;
 }
 .font-montserrat {
   font-family: var(--font-montserrat), sans-serif;
