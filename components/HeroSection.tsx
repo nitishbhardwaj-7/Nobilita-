@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark">
       <img 
-        src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1920&q=80" 
+        src="/nobilita/images/cbd.png" 
         alt="Luxury Italian tile interior" 
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
