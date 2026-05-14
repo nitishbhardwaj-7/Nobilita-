@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'GurmukhiMN';
+  src: url('../public/fonts/GurmukhiMN-01.ttf') format('truetype');
+  font-weight: 100 400; /* Covers Thin, Extra Light, Light, and Normal */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GurmukhiMN';
+  src: url('../public/fonts/GurmukhiMN-Bold-02.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --teal: #1a7a96;
+  --teal-dark: #156680;
+  --teal-light: #2490b0;
+  --white: #ffffff;
+  --off-white: #f8f5f0;
+  --warm-cream: #f5f0e8;
+  --dark: #1a1a1a;
+  --charcoal: #3d3d3d;
+  --grey-mid: #8b8b8b;
+  --italian-green: #009246;
+  --italian-red: #ce2b37;
+  --italian-white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Loader stroke-dashoffset animation */
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Loading bar fill animation */
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.palazzo-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.5s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.palazzo-path.animate {
+  animation-play-state: running;
+}
+
+.loading-bar-fill {
+  animation: fillBar 2s ease-out forwards;
+  animation-delay: 0.5s;
+}
