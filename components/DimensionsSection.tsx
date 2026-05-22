@@ -11,7 +11,7 @@ export default function DimensionsSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-gurmukhi font-light text-[clamp(28px,5vw,60px)] text-brand-dark tracking-[0.1em] uppercase mb-16 text-center w-full px-4"
+        className="font-ivymode text-[clamp(28px,5vw,60px)] text-brand-dark tracking-[0.1em] uppercase mb-16 text-center w-full px-4"
       >
         FORMAT & DIMENSIONS
       </motion.h2>
@@ -20,7 +20,7 @@ export default function DimensionsSection() {
       <div className="w-full max-w-7xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
         {/* Column 1: THICKNESS */}
         <div className="flex flex-col items-center text-center space-y-6 md:space-y-8">
-          <h3 className="font-gurmukhi font-light tracking-[0.15em] text-brand-charcoal uppercase text-[clamp(20px,2.5vw,24px)]">
+          <h3 className="font-ivymode tracking-[0.15em] text-brand-charcoal uppercase text-[clamp(20px,2.5vw,24px)]">
             THICKNESS
           </h3>
           <div className="font-michroma font-light text-brand-dark space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
@@ -31,7 +31,7 @@ export default function DimensionsSection() {
 
         {/* Column 2: DIMENSIONS */}
         <div className="flex flex-col items-center text-center space-y-6 md:space-y-8">
-          <h3 className="font-gurmukhi font-light tracking-[0.15em] text-brand-charcoal uppercase text-[clamp(20px,2.5vw,24px)]">
+          <h3 className="font-ivymode tracking-[0.15em] text-brand-charcoal uppercase text-[clamp(20px,2.5vw,24px)]">
             DIMENSIONS
           </h3>
           <div className="font-michroma font-light text-brand-dark space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
@@ -42,7 +42,7 @@ export default function DimensionsSection() {
 
         {/* Column 3: FORMAT */}
         <div className="flex flex-col items-center text-center space-y-6 md:space-y-8">
-          <h3 className="font-gurmukhi font-light tracking-[0.15em] text-brand-charcoal uppercase text-[clamp(20px,2.5vw,24px)]">
+          <h3 className="font-ivymode tracking-[0.15em] text-brand-charcoal uppercase text-[clamp(20px,2.5vw,24px)]">
             FORMAT
           </h3>
           <div className="font-michroma font-light text-brand-dark space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
@@ -61,7 +61,7 @@ export default function DimensionsSection() {
         className="w-full px-4 md:px-0"
       >
         <img
-          src="/nobilita/images/Orobico.jpg"
+          src="/nobilita3/images/Orobico.jpg"
           alt="Orobico Luxury Interior"
           loading="lazy"
           className="w-full h-auto max-h-[450px] object-cover"

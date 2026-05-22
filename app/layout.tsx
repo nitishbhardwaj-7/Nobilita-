@@ -3,9 +3,19 @@ import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
+const didot = localFont({
+  src: "./fonts/Didot.ttf",
+  variable: "--font-didot",
+});
+
 const michroma = localFont({
   src: "./fonts/Michroma.ttf",
   variable: "--font-michroma",
+});
+
+const ivymode = localFont({
+  src: "./fonts/IvyMode-Regular.ttf",
+  variable: "--font-ivymode",
 });
 
 const cormorant = Cormorant_Garamond({
@@ -37,9 +47,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${montserrat.variable} ${michroma.variable}`}
+      className={`${cormorant.variable} ${montserrat.variable} ${didot.variable} ${michroma.variable} ${ivymode.variable}`}
     >
-      <body className="font-gurmukhi antialiased">{children}</body>
+      <body className="font-ivymode antialiased">{children}</body>
     </html>
   );
 }

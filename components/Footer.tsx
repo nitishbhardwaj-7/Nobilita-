@@ -16,7 +16,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="w-full max-w-4xl"
         >
-          <h2 className="font-gurmukhi font-light text-[clamp(32px,5vw,60px)] text-brand-dark tracking-[0.1em] uppercase mb-16 text-center">
+          <h2 className="font-ivymode text-[clamp(32px,5vw,60px)] text-brand-dark tracking-[0.1em] uppercase mb-16 text-center">
             Inquire for Luxury
           </h2>
           
@@ -27,7 +27,7 @@ export default function Footer() {
               <input 
                 type="text" 
                 placeholder="YOUR FULL NAME"
-                className="bg-transparent border-b border-brand-dark/20 py-3 font-gurmukhi font-light text-[16px] focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                className="bg-transparent border-b border-brand-dark/20 py-3 font-ivymode text-[16px] focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
               />
             </div>
 
@@ -37,7 +37,7 @@ export default function Footer() {
               <input 
                 type="email" 
                 placeholder="YOUR EMAIL ADDRESS"
-                className="bg-transparent border-b border-brand-dark/20 py-3 font-gurmukhi font-light text-[16px] focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                className="bg-transparent border-b border-brand-dark/20 py-3 font-ivymode text-[16px] focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
               />
             </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
               <input 
                 type="tel" 
                 placeholder="YOUR CONTACT NUMBER"
-                className="bg-transparent border-b border-brand-dark/20 py-3 font-gurmukhi font-light text-[16px] focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                className="bg-transparent border-b border-brand-dark/20 py-3 font-ivymode text-[16px] focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
               />
             </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
               <textarea 
                 rows={4}
                 placeholder="TELL US ABOUT YOUR PROJECT"
-                className="bg-transparent border-b border-brand-dark/20 py-3 font-gurmukhi font-light text-[16px] focus:outline-none focus:border-brand-dark transition-colors resize-none placeholder:text-brand-dark/30"
+                className="bg-transparent border-b border-brand-dark/20 py-3 font-ivymode text-[16px] focus:outline-none focus:border-brand-dark transition-colors resize-none placeholder:text-brand-dark/30"
               ></textarea>
             </div>
 
@@ -91,7 +91,7 @@ export default function Footer() {
           
           <div className="w-[180px]">
             <img 
-              src="/nobilita/images/NOBILITA_white.png" 
+              src="/nobilita3/images/NOBILITA_white.png" 
               alt="Porcellana Nobilita" 
               className="w-full h-auto object-contain"
             />

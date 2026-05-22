@@ -12,7 +12,9 @@ const config: Config = {
         cormorant: ["var(--font-cormorant)", "Georgia", "serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
         gurmukhi: ["GurmukhiMN", "sans-serif"],
+        didot: ["var(--font-didot)", "serif"],
         michroma: ["var(--font-michroma)", "sans-serif"],
+        ivymode: ["var(--font-ivymode)", "serif"],
       },
       colors: {
         teal: {

@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const finishes = [
-  { name: "MATTE", img: "/nobilita/images/Pure Onix 1.jpg" },
-  { name: "HONED", img: "/nobilita/images/Travertino Romano Classico Face 1.jpg" },
-  { name: "POLISHED", img: "/nobilita/images/Calacatta Sponda 1_1.jpg" },
-  { name: "STRUCTURED", img: "/nobilita/images/White Camouflage Face 1 (1).jpg" },
-  { name: "3D / 5D", img: "/nobilita/images/Gris Di Savoie Face 3.jpg" },
+  { name: "MATTE", img: "/nobilita3/images/Pure Onix 1.jpg" },
+  { name: "HONED", img: "/nobilita3/images/Travertino Romano Classico Face 1.jpg" },
+  { name: "POLISHED", img: "/nobilita3/images/Calacatta Sponda 1_1.jpg" },
+  { name: "STRUCTURED", img: "/nobilita3/images/White Camouflage Face 1 (1).jpg" },
+  { name: "3D / 5D", img: "/nobilita3/images/Gris Di Savoie Face 3.jpg" },
 ];
 
 export default function FinishesSection() {
@@ -21,7 +21,7 @@ export default function FinishesSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-gurmukhi font-light text-[clamp(32px,5vw,60px)] text-brand-dark tracking-[0.2em] text-center mb-20 uppercase"
+        className="font-ivymode text-[clamp(32px,5vw,60px)] text-brand-dark tracking-[0.2em] text-center mb-20 uppercase"
       >
         FINISHES
       </motion.h2>

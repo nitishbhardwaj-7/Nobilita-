@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark">
       <img 
-        src="/nobilita/images/cbd.png" 
+        src="/nobilita3/images/cbdd.png" 
         alt="Luxury Italian tile interior" 
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
@@ -24,15 +24,15 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center"
         >
-          <h1 className="font-gurmukhi font-light text-white text-center leading-[1.1] tracking-[0.05em] text-[clamp(32px,8vw,90px)] uppercase">
+          <h1 className="font-ivymode text-white text-center leading-[1.1] tracking-[0.05em] text-[clamp(28px,8vw,90px)] uppercase">
             DISCOVER THE<br />LEGACY
           </h1>
           
-          <p className="font-gurmukhi font-light text-white/90 text-center max-w-4xl mt-12 md:mt-32 text-[clamp(16px,2.5vw,32px)]">
+          <p className="font-ivymode text-white/90 text-center max-w-4xl mt-6 md:mt-32 text-[clamp(16px,2.5vw,36px)]">
             Timeless Italian surfaces crafted for the modern era
           </p>
           
-          <button className="mt-12 border border-white/40 text-white bg-transparent px-8 md:px-[40px] py-3 md:py-[12px] font-michroma text-[clamp(14px,2vw,22px)] tracking-[0.2em] transition-all duration-500 hover:bg-white hover:text-brand-dark uppercase">
+          <button className="mt-8 md:mt-12 border border-white/40 text-white bg-transparent px-6 md:px-[40px] py-3 md:py-[12px] font-michroma text-[clamp(12px,1.8vw,22px)] tracking-[0.2em] transition-all duration-500 hover:bg-white hover:text-brand-dark uppercase whitespace-nowrap">
             EXPLORE THE COLLECTION
           </button>
         </motion.div>

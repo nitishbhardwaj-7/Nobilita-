@@ -1,4 +1,4 @@
-// File: D:\Pixel-Perfect-Assets\Pixel-Perfect-Assets\artifacts\porcellana-nobilita\app\layout.tsx
+// File: D:\Nobilita3\porcellana-nobilita\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

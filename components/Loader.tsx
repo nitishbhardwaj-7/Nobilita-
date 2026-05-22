@@ -29,7 +29,7 @@ export default function Loader({ isLoading }: LoaderProps) {
           <div className="flex flex-col items-center justify-center">
             {/* Palazzo Icon */}
             <img 
-              src="/nobilita/images/icon_only_white.png" 
+              src="/nobilita3/images/icon_only_white.png" 
               alt="Palazzo Icon" 
               className="h-[320px] w-auto object-contain"
             />
@@ -37,7 +37,7 @@ export default function Loader({ isLoading }: LoaderProps) {
             {/* Programmatic Logo Group */}
             <div className={`mt-4 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
               <img 
-                src="/nobilita/images/NOBILITA_white.png" 
+                src="/nobilita3/images/NOBILITA_white.png" 
                 alt="Porcellana Nobilita" 
                 className="h-16 w-auto object-contain"
               />
