@@ -101,7 +101,6 @@ export default function PageTransition({ children }: { children: React.ReactNode
         style={{
           backgroundColor: "#0a0a0a",
           transformOrigin: "left center",
-          scaleX: 0,
           transform: "scaleX(0)",
         }}
       >
