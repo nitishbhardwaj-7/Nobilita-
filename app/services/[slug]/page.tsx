@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import { getPageMetadata, generateSchemaScript } from "@/lib/seo";
 import Footer from "@/components/Footer";
 
+export const revalidate = 0; // Ensure dynamic rendering and fresh content
+
 // Generate SEO Metadata for Service Detail Page
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const service = await prisma.service.findUnique({

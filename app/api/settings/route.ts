@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { SettingsSchema } from "@/lib/validation";
 
+export const dynamic = "force-dynamic";
+
 // GET global settings
 export async function GET() {
   try {
