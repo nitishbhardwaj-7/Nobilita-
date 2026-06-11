@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 // Lazy-loaded video component using IntersectionObserver to prevent loading/playing lag
-function LazyVideo({ src, className }: { src: string; className?: string }) {
+function LazyVideo({ src, className, controls = false }: { src: string; className?: string; controls?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -49,7 +49,7 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
       loop
       muted
       playsInline
-      controls
+      controls={controls}
       className={className}
     />
   );
@@ -58,6 +58,55 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
 export default function FeaturedProduct() {
   const [showVagliBookmatch, setShowVagliBookmatch] = useState(false);
   const [showOysterBookmatch, setShowOysterBookmatch] = useState(false);
+  
+  // Calacatta Oyster Slider States
+  const [currentOysterSlide, setCurrentOysterSlide] = useState(0);
+  const [prevOysterSlideIndex, setPrevOysterSlideIndex] = useState<number | null>(null);
+  const [slideDirection, setSlideDirection] = useState<"next" | "prev">("next");
+
+  // Arabescato Vagli Slider States
+  const [currentVagliSlide, setCurrentVagliSlide] = useState(0);
+  const [prevVagliSlideIndex, setPrevVagliSlideIndex] = useState<number | null>(null);
+  const [vagliSlideDirection, setVagliSlideDirection] = useState<"next" | "prev">("next");
+
+  const vagliSlides = [
+    { type: "video", src: "/nobilita3/images/Links/arbescato vagli bathroom video.mp4", alt: "Arabescato Vagli Video" },
+    { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
+    { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
+    { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" },
+    { type: "image", src: "/nobilita3/images/Arbescato Vagli/Bookmatch.jpg", alt: "Arabescato Vagli Bookmatch" },
+  ];
+
+  const nextVagliSlide = () => {
+    setVagliSlideDirection("next");
+    setPrevVagliSlideIndex(currentVagliSlide);
+    setCurrentVagliSlide((prev) => (prev + 1) % vagliSlides.length);
+  };
+
+  const prevVagliSlide = () => {
+    setVagliSlideDirection("prev");
+    setPrevVagliSlideIndex(currentVagliSlide);
+    setCurrentVagliSlide((prev) => (prev - 1 + vagliSlides.length) % vagliSlides.length);
+  };
+
+  const oysterSlides = [
+    { type: "video", src: "/nobilita3/images/Links/Calacatta Oyster Vid.mp4", alt: "Calacatta Oyster Video" },
+    { type: "image", src: "/nobilita3/images/Calacatta Oyster/Calacatta Oyster1.jpg", alt: "Calacatta Oyster Slab 1" },
+    { type: "image", src: "/nobilita3/images/Calacatta Oyster/Calacatta Oyster (2).jpg", alt: "Calacatta Oyster Slab 2" },
+    { type: "image", src: "/nobilita3/images/Calacatta Oyster/Bookmatch.jpg", alt: "Calacatta Oyster Bookmatch" },
+  ];
+
+  const nextOysterSlide = () => {
+    setSlideDirection("next");
+    setPrevOysterSlideIndex(currentOysterSlide);
+    setCurrentOysterSlide((prev) => (prev + 1) % oysterSlides.length);
+  };
+
+  const prevOysterSlide = () => {
+    setSlideDirection("prev");
+    setPrevOysterSlideIndex(currentOysterSlide);
+    setCurrentOysterSlide((prev) => (prev - 1 + oysterSlides.length) % oysterSlides.length);
+  };
 
   return (
     <div className="w-full flex flex-col bg-white">
@@ -171,18 +220,89 @@ export default function FeaturedProduct() {
           </div>
         </div>
 
-        {/* Right Column: Lazy Video Player */}
-        <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen bg-black flex items-center justify-center overflow-hidden">
-          <LazyVideo 
-            src="/nobilita3/images/Links/arbescato vagli bathroom video.mp4"
-            className="w-full h-full object-cover"
-          />
+        {/* Right Column: Slider (Video & Images) */}
+        <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen bg-black flex items-center justify-center overflow-hidden group">
+          {/* Slides Container */}
+          <div className="w-full h-full relative">
+            {vagliSlides.map((slide, idx) => {
+              const isActive = idx === currentVagliSlide;
+              const isPrev = idx === prevVagliSlideIndex;
+              
+              let zIndex = "z-0";
+              let clipPath = "inset(0 0 0 100%)";
+              let transition = "clip-path 1.2s cubic-bezier(0.25, 1, 0.5, 1)";
+              
+              if (isActive) {
+                zIndex = "z-10";
+                clipPath = "inset(0 0 0 0)";
+              } else if (isPrev) {
+                zIndex = "z-5";
+                clipPath = "inset(0 0 0 0)";
+                // Keep the outgoing slide fully visible without transition underneath
+                transition = "none";
+              } else {
+                zIndex = "z-0";
+                clipPath = vagliSlideDirection === "next" ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)";
+                transition = "none";
+              }
 
-          {/* Browse All Applications overlay text */}
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10 pointer-events-none drop-shadow-md">
-            <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-xl uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm">
+              return (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 w-full h-full ${zIndex}`}
+                  style={{
+                    clipPath,
+                    transition,
+                    WebkitClipPath: clipPath,
+                  }}
+                >
+                  {slide.type === "video" ? (
+                    // Keep video loaded only when active or previous (to keep playing during transition)
+                    (isActive || isPrev) ? (
+                      <LazyVideo 
+                        src={slide.src}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : null
+                  ) : (
+                    <img 
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Browse All Applications overlay text & slider buttons */}
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-4 md:space-x-8 drop-shadow-md">
+            {/* Left Arrow Button */}
+            <button
+              onClick={prevVagliSlide}
+              className="text-white/70 hover:text-white transition-all duration-300 focus:outline-none p-2 hover:scale-110 flex items-center justify-center"
+              aria-label="Previous Slide"
+            >
+              <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 h-auto">
+                <path d="M40 6H2M2 6L7 1M2 6L7 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-xl uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
               BROWSE ALL APPLICATIONS
             </span>
+
+            {/* Right Arrow Button */}
+            <button
+              onClick={nextVagliSlide}
+              className="text-white/70 hover:text-white transition-all duration-300 focus:outline-none p-2 hover:scale-110 flex items-center justify-center"
+              aria-label="Next Slide"
+            >
+              <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 h-auto">
+                <path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -321,18 +441,89 @@ export default function FeaturedProduct() {
           </div>
         </div>
 
-        {/* Right Column: Lazy Video Player */}
-        <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen bg-black flex items-center justify-center overflow-hidden">
-          <LazyVideo 
-            src="/nobilita3/images/Links/Calacatta Oyster Vid.mp4"
-            className="w-full h-full object-cover"
-          />
+        {/* Right Column: Slider (Video & Images) */}
+        <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen bg-black flex items-center justify-center overflow-hidden group">
+          {/* Slides Container */}
+          <div className="w-full h-full relative">
+            {oysterSlides.map((slide, idx) => {
+              const isActive = idx === currentOysterSlide;
+              const isPrev = idx === prevOysterSlideIndex;
+              
+              let zIndex = "z-0";
+              let clipPath = "inset(0 0 0 100%)";
+              let transition = "clip-path 1.2s cubic-bezier(0.25, 1, 0.5, 1)";
+              
+              if (isActive) {
+                zIndex = "z-10";
+                clipPath = "inset(0 0 0 0)";
+              } else if (isPrev) {
+                zIndex = "z-5";
+                clipPath = "inset(0 0 0 0)";
+                // Keep the outgoing slide fully visible without transition underneath
+                transition = "none";
+              } else {
+                zIndex = "z-0";
+                clipPath = slideDirection === "next" ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)";
+                transition = "none";
+              }
 
-          {/* Browse All Applications overlay text */}
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10 pointer-events-none drop-shadow-md">
-            <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-xl uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm">
+              return (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 w-full h-full ${zIndex}`}
+                  style={{
+                    clipPath,
+                    transition,
+                    WebkitClipPath: clipPath,
+                  }}
+                >
+                  {slide.type === "video" ? (
+                    // Keep video loaded only when active or previous (to keep playing during transition)
+                    (isActive || isPrev) ? (
+                      <LazyVideo 
+                        src={slide.src}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : null
+                  ) : (
+                    <img 
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Browse All Applications overlay text & slider buttons */}
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-4 md:space-x-8 drop-shadow-md">
+            {/* Left Arrow Button */}
+            <button
+              onClick={prevOysterSlide}
+              className="text-white/70 hover:text-white transition-all duration-300 focus:outline-none p-2 hover:scale-110 flex items-center justify-center"
+              aria-label="Previous Slide"
+            >
+              <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 h-auto">
+                <path d="M40 6H2M2 6L7 1M2 6L7 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-xl uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
               BROWSE ALL APPLICATIONS
             </span>
+
+            {/* Right Arrow Button */}
+            <button
+              onClick={nextOysterSlide}
+              className="text-white/70 hover:text-white transition-all duration-300 focus:outline-none p-2 hover:scale-110 flex items-center justify-center"
+              aria-label="Next Slide"
+            >
+              <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 h-auto">
+                <path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
