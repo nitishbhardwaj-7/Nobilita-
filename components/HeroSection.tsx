@@ -39,17 +39,20 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
   const defaultSubtitle = "At NOBILITA, we believe that true luxury is not about trends, it is timeless\ndesign, enduring quality, and a deep respect for architectural legacy. Our\nporcelain tiles are not just surfaces; they are foundations for homes,\nbusinesses, and landmarks that will stand for generations.";
   const defaultButtonText = "VIEW ALL SLABS";
 
+  const headline = title || defaultTitle;
+  const words = headline.split(" ");
+
   return (
     <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark">
-      {/* Slideshow Background Images with Smooth Crossfade */}
+      {/* Slideshow Background Images with Smooth Crossfade and Zoom-out (Ken Burns) */}
       <div className="absolute inset-0 w-full h-full bg-black">
         <AnimatePresence initial={false}>
           <motion.img
             key={currentImageIndex}
             src={slideshowImages[currentImageIndex]}
             alt="Luxury Italian tile interior slideshow"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.8 }}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 0.8, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full object-cover object-center"
@@ -64,30 +67,57 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
       <Navbar />
 
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center"
-        >
-          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,40px)] uppercase">
-            {title || defaultTitle}
+        <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
+          {/* Word-by-word reveal heading */}
+          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,40px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]">
+            {words.map((word, i) => (
+              <span key={i} className="inline-block overflow-hidden py-1">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 1.2 + i * 0.07 // delay starts after loader ends
+                  }}
+                  className="inline-block"
+                >
+                  {word}
+                </motion.span>
+              </span>
+            ))}
           </h1>
 
-          <p className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,36px)] font-light leading-[1.6] max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4">
+          {/* Fade in body text */}
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }}
+            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,36px)] font-light leading-[1.6] max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4"
+          >
             {subtitle || defaultSubtitle}
-          </p>
+          </motion.p>
 
-          <Link 
-            href="/explore-collection"
+          {/* Staggered entrance for CTA with hover scaleX fill */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 2.0 }}
             className="w-full max-w-[320px] md:max-w-[620px] mt-auto"
           >
-            <button className="border border-white/60 text-white bg-transparent w-full py-4 font-michroma text-[clamp(11px,1.3vw,24px)] tracking-[0.3em] transition-all duration-500 hover:bg-white hover:text-brand-dark uppercase whitespace-nowrap">
-              {buttonText || defaultButtonText}
-            </button>
-          </Link>
-        </motion.div>
+            <Link href="/explore-collection" className="block">
+              <motion.button 
+                whileTap={{ scale: 0.96 }}
+                className="relative overflow-hidden border border-white/60 text-white bg-transparent w-full py-4 font-michroma text-[clamp(11px,1.3vw,24px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group"
+              >
+                <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">
+                  {buttonText || defaultButtonText}
+                </span>
+              </motion.button>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

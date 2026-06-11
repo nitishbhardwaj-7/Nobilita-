@@ -4,6 +4,8 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import FeaturedProduct from "@/components/FeaturedProduct";
+import Footer from "@/components/Footer";
 
 // Comprehensive catalog of Nobilita luxury Italian porcelain slabs
 const slabs = [
@@ -182,22 +184,29 @@ export default function ExploreCollection() {
                 setColorDropdownOpen(!colorDropdownOpen);
                 setFinishDropdownOpen(false);
               }}
-              className="font-michroma text-[11px] md:text-lg tracking-[0.15em] text-brand-dark/70 hover:text-brand-dark transition-colors uppercase flex items-center gap-1 select-none"
+              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${
+                selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
+              }`}
             >
-              COLOR {selectedColor ? `(${selectedColor})` : ""} ∨
+              <span>COLOR {selectedColor ? `(${selectedColor})` : ""}</span>
+              <span className={`inline-block transition-transform duration-200 ${colorDropdownOpen ? "rotate-180" : "rotate-0"}`}>∨</span>
             </button>
             
             <AnimatePresence>
               {colorDropdownOpen && (
                 <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
                   className="absolute left-0 mt-3 w-48 bg-white border border-brand-dark/10 shadow-xl z-40 py-2"
                 >
-                  {colors.map((color) => (
-                    <button
+                  {colors.map((color, idx) => (
+                    <motion.button
                       key={color}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: idx * 0.04 }}
                       onClick={() => {
                         setSelectedColor(color);
                         setColorDropdownOpen(false);
@@ -207,7 +216,7 @@ export default function ExploreCollection() {
                       }`}
                     >
                       {color}
-                    </button>
+                    </motion.button>
                   ))}
                 </motion.div>
               )}
@@ -221,22 +230,29 @@ export default function ExploreCollection() {
                 setFinishDropdownOpen(!finishDropdownOpen);
                 setColorDropdownOpen(false);
               }}
-              className="font-michroma text-[11px] md:text-lg tracking-[0.15em] text-brand-dark/70 hover:text-brand-dark transition-colors uppercase flex items-center gap-1 select-none"
+              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${
+                selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
+              }`}
             >
-              FINISH {selectedFinish ? `(${selectedFinish})` : ""} ∨
+              <span>FINISH {selectedFinish ? `(${selectedFinish})` : ""}</span>
+              <span className={`inline-block transition-transform duration-200 ${finishDropdownOpen ? "rotate-180" : "rotate-0"}`}>∨</span>
             </button>
             
             <AnimatePresence>
               {finishDropdownOpen && (
                 <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
                   className="absolute left-0 mt-3 w-56 bg-white border border-brand-dark/10 shadow-xl z-40 py-2"
                 >
-                  {finishes.map((finish) => (
-                    <button
+                  {finishes.map((finish, idx) => (
+                    <motion.button
                       key={finish}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: idx * 0.04 }}
                       onClick={() => {
                         setSelectedFinish(finish);
                         setFinishDropdownOpen(false);
@@ -246,7 +262,7 @@ export default function ExploreCollection() {
                       }`}
                     >
                       {finish}
-                    </button>
+                    </motion.button>
                   ))}
                 </motion.div>
               )}
@@ -285,48 +301,48 @@ export default function ExploreCollection() {
 
       {/* Slabs Grid Section */}
       <div className="flex-1 w-full p-3 md:p-6 bg-white">
-        <motion.div 
-          layout
-          className={`grid ${gridColsClass} gap-3 md:gap-4`}
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredSlabs.map((slab) => (
+        <div className={`grid ${gridColsClass} gap-3 md:gap-4`}>
+          <AnimatePresence>
+            {filteredSlabs.map((slab, index) => (
               <motion.div
-                layout
                 key={slab.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "20px" }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.45, ease: "easeOut", delay: (index % 6) * 0.04 }}
                 onClick={() => setActiveSlab(slab)}
                 className="relative aspect-[4/3] group overflow-hidden border border-brand-dark/5 cursor-pointer bg-brand-cream/10"
               >
-                {/* Slab Image */}
-                <img
-                  src={slab.img}
-                  alt={slab.name}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{
-                    transform: "translate3d(0,0,0)",
-                    backfaceVisibility: "hidden",
-                    willChange: "transform"
-                  }}
-                />
+                {/* Slab Image Wrapper with overflow-hidden */}
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <img
+                    src={slab.img}
+                    alt={slab.name}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-555 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
+                    style={{
+                      transform: "translate3d(0,0,0)",
+                      backfaceVisibility: "hidden",
+                      willChange: "transform"
+                    }}
+                  />
+                </div>
 
                 {/* Subtitle / Name Overlay on Hover */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10">
-                  <h3 className="font-ivymode text-white text-[18px] md:text-[22px] tracking-wider uppercase mb-1">
+                <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10">
+                  <h3 className="font-ivymode text-white text-[18px] md:text-[22px] tracking-wider uppercase mb-1 transition-all duration-300 transform group-hover:-translate-y-1 group-hover:tracking-[0.08em] relative pb-1 inline-block">
                     {slab.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
                   </h3>
-                  <p className="font-michroma text-[9px] md:text-[10px] text-white/80 tracking-widest uppercase">
+                  <p className="font-michroma text-[9px] md:text-[10px] text-white/60 tracking-widest uppercase transition-opacity duration-300 group-hover:text-white/100">
                     {slab.color} • {slab.finish}
                   </p>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
         {filteredSlabs.length === 0 && (
           <div className="w-full py-24 text-center">
@@ -343,6 +359,9 @@ export default function ExploreCollection() {
         )}
       </div>
 
+      <FeaturedProduct />
+      <Footer />
+
       {/* Slabs Detail Lightbox / Modal */}
       <AnimatePresence>
         {activeSlab && (
@@ -350,7 +369,7 @@ export default function ExploreCollection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
           >
             {/* Close Trigger */}
             <div 
@@ -374,8 +393,13 @@ export default function ExploreCollection() {
                 />
               </div>
 
-              {/* Right Column: Spec / Details Info Panel */}
-              <div className="w-full md:w-[35%] p-6 md:p-10 flex flex-col justify-between bg-brand-charcoal relative">
+              {/* Right Column: Spec / Details Info Panel with Stagger Reveal */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="w-full md:w-[35%] p-6 md:p-10 flex flex-col justify-between bg-brand-charcoal relative"
+              >
                 {/* Close Button */}
                 <button 
                   onClick={() => setActiveSlab(null)}
@@ -385,17 +409,37 @@ export default function ExploreCollection() {
                 </button>
 
                 <div className="space-y-6 pt-6">
-                  <p className="font-michroma text-[10px] tracking-[0.3em] text-[#007190] uppercase">
+                  <motion.p 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="font-michroma text-[10px] tracking-[0.3em] text-[#007190] uppercase"
+                  >
                     COLLECTION ITEM
-                  </p>
+                  </motion.p>
                   
-                  <h2 className="font-ivymode text-[28px] md:text-[38px] leading-tight tracking-[0.05em] uppercase">
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.28 }}
+                    className="font-ivymode text-[28px] md:text-[38px] leading-tight tracking-[0.05em] uppercase"
+                  >
                     {activeSlab.name}
-                  </h2>
+                  </motion.h2>
 
-                  <div className="h-[2px] w-12 bg-white/20" />
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.36 }}
+                    className="h-[2px] w-12 bg-white/20" 
+                  />
 
-                  <div className="space-y-4 font-montserrat text-sm text-white/80 font-light">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.44 }}
+                    className="space-y-4 font-montserrat text-sm text-white/80 font-light"
+                  >
                     <div className="flex justify-between py-2 border-b border-white/5">
                       <span className="text-white/40 uppercase tracking-widest text-[10px]">Origin</span>
                       <span>Italy</span>
@@ -412,19 +456,32 @@ export default function ExploreCollection() {
                       <span className="text-white/40 uppercase tracking-widest text-[10px]">Finish Option</span>
                       <span>{activeSlab.finish}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div className="pt-8 space-y-4">
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.52 }}
+                  className="pt-8 space-y-4"
+                >
                   <Link 
                     href="#contact-us"
                     onClick={() => setActiveSlab(null)}
-                    className="block w-full text-center border border-white/40 bg-transparent py-4 text-[10px] tracking-[0.2em] font-michroma uppercase transition-colors hover:bg-white hover:text-brand-dark"
+                    className="block w-full"
                   >
-                    INQUIRE ABOUT SLAB
+                    <motion.button 
+                      whileTap={{ scale: 0.96 }}
+                      className="relative overflow-hidden border border-white/40 bg-transparent w-full py-4 text-[10px] tracking-[0.2em] font-michroma uppercase transition-colors duration-500 group"
+                    >
+                      <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                      <span className="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">
+                        INQUIRE ABOUT SLAB
+                      </span>
+                    </motion.button>
                   </Link>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}

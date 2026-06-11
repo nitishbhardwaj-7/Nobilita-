@@ -9,7 +9,6 @@ import CraftsmanshipSection from "@/components/CraftsmanshipSection";
 import DimensionsSection from "@/components/DimensionsSection";
 import ApplicationsSection from "@/components/ApplicationsSection";
 import FinishesSection from "@/components/FinishesSection";
-import FeaturedProduct from "@/components/FeaturedProduct";
 import Footer from "@/components/Footer";
 
 export default function HomeClient({ cmsData }: { cmsData: any }) {
@@ -27,13 +26,6 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
   return (
     <main className="w-full min-h-screen bg-white">
       <Loader isLoading={isLoading} />
-      
-      <HeroSection 
-        title={d.heroTitle}
-        subtitle={d.heroSubtitle}
-        buttonText={d.heroBtn}
-        bgImage={d.heroImg}
-      />
       <BrandIntro 
         title={d.brandTitle}
         subtitle={d.brandSubtitle}
@@ -45,7 +37,12 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
       <DimensionsSection />
       <ApplicationsSection />
       <FinishesSection />
-      <FeaturedProduct />
+      <HeroSection 
+        title={d.heroTitle}
+        subtitle={d.heroSubtitle}
+        buttonText={d.heroBtn}
+        bgImage={d.heroImg}
+      />
       <Footer />
     </main>
   );

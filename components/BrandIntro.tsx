@@ -72,9 +72,15 @@ export default function BrandIntro({ title, subtitle, buttonText, image }: Props
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <button className="border border-white text-white bg-transparent px-12 py-3.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-all duration-500 hover:bg-white hover:text-[#007190] uppercase">
-            {buttonText || "OUR STORY"}
-          </button>
+          <motion.button 
+            whileTap={{ scale: 0.96 }}
+            className="relative overflow-hidden border border-white text-white bg-transparent px-12 py-3.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
+          >
+            <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-[#007190]">
+              {buttonText || "OUR STORY"}
+            </span>
+          </motion.button>
         </motion.div>
 
       </div>
