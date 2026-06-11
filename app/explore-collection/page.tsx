@@ -166,9 +166,28 @@ export default function ExploreCollection() {
       <div className="w-full bg-[#007190] pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
         <Link 
           href="/" 
-          className="absolute top-28 left-6 md:left-12 text-white/80 hover:text-white font-michroma text-[10px] md:text-xs tracking-[0.2em] transition-colors flex items-center gap-1 uppercase"
+          className="absolute top-28 left-6 md:left-12 group flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 font-michroma text-[9px] md:text-[10px] tracking-[0.3em] uppercase"
         >
-          ← HOME
+          <svg 
+            width="18" 
+            height="10" 
+            viewBox="0 0 18 10" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            className="transform transition-transform duration-300 group-hover:-translate-x-1.5"
+          >
+            <path 
+              d="M17 5H1M1 5L5 9M1 5L5 1" 
+              stroke="currentColor" 
+              strokeWidth="1" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="relative pb-0.5">
+            HOME
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+          </span>
         </Link>
         
         <h1 className="font-ivymode text-white text-[clamp(24px,4.5vw,44px)] tracking-[0.25em] uppercase leading-tight mb-8">

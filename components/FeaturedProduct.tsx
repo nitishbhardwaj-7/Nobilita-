@@ -99,10 +99,11 @@ export default function FeaturedProduct() {
             <div className="flex flex-col">
               <div className="flex items-center space-x-5">
                 {/* Custom Dimensions SVG Icon */}
-                <div className="w-10 h-6 flex items-center justify-center text-brand-dark/40">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25 6V16M25 16L21 12M25 16L29 12" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M25 6H10M10 6L14 2M10 6L14 10" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                  <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
+                    <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
+                    <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
+                    <polyline points="26.1 19.35 23.12 22.54 20.15 19.35" />
                   </svg>
                 </div>
                 <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
@@ -121,11 +122,11 @@ export default function FeaturedProduct() {
             <div className="flex flex-col">
               <div className="flex items-center space-x-5">
                 {/* Custom Faces SVG Icon */}
-                <div className="w-10 h-6 flex items-center justify-center text-brand-dark/40">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="4" width="6" height="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <rect x="17" y="4" width="6" height="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <rect x="28" y="4" width="6" height="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                  <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
+                    <rect x="20.92" y="9.34" width="5.02" height="9.89" />
+                    <rect x="11.66" y="9.34" width="5.02" height="9.89" />
+                    <rect x="2.41" y="9.34" width="5.02" height="9.89" />
                   </svg>
                 </div>
                 <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
@@ -144,14 +145,16 @@ export default function FeaturedProduct() {
             <div className="flex flex-col">
               <div className="flex items-center space-x-5">
                 {/* Custom Finishes SVG Icon */}
-                <div className="w-10 h-6 flex items-center justify-center text-brand-dark/40">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="9" width="28" height="6" fill="url(#stripes-vagli)" />
+                <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                  <svg viewBox="2 10.8 24.5 7" fill="none" className="w-10 h-auto">
                     <defs>
-                      <pattern id="stripes-vagli" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                        <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" strokeWidth="1" />
-                      </pattern>
+                      <clipPath id="clippath-vagli-icon">
+                        <rect x="2.16" y="10.82" width="24.03" height="6.7"/>
+                      </clipPath>
                     </defs>
+                    <g clipPath="url(#clippath-vagli-icon)">
+                      <path stroke="currentColor" strokeWidth="0.4" strokeLinejoin="round" d="M10,11.93L.92,2.86M10,13.45L-.59,2.86M10,14.96L-2.1,2.86M10,16.47L-3.61,2.86M10,17.98L-5.13,2.86M10,19.5L-6.64,2.86M10,21.01L-8.15,2.86M10,22.52L-9.66,2.86M10,24.03L-11.18,2.86M28.15,11.93L19.07,2.86M28.15,13.45L17.56,2.86M28.15,14.96L16.05,2.86M28.15,16.47L14.54,2.86M28.15,17.98L13.02,2.86M28.15,19.5L11.51,2.86M28.15,21.01L10,2.86M28.15,22.52L8.49,2.86M28.15,24.03L6.97,2.86M26.64,24.03L6.97,4.37M25.12,24.03L6.97,5.88M23.61,24.03L6.97,7.4M22.1,24.03L6.97,8.91M20.59,24.03L6.97,10.42M19.07,24.03L6.97,11.93M17.56,24.03L6.97,13.45M16.05,24.03L6.97,14.96M14.54,24.03l-7.56-7.56"/>
+                    </g>
                   </svg>
                 </div>
                 <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
@@ -184,9 +187,8 @@ export default function FeaturedProduct() {
         </div>
       </section>
 
-      {/* 2. ARABESCATO VAGLI FACE 1 & BOOKMATCH PRESECTION */}
-      <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center py-12 px-6 md:px-16">
-        <div className="relative w-full max-w-[1400px] aspect-[16/9] md:aspect-[2.1/1] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5">
+      <section className="w-full bg-white flex flex-col justify-center items-center py-20 px-6 md:px-16">
+        <div className="relative w-full max-w-[1100px] aspect-[16/9] md:aspect-[2.1/1] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5">
           <img 
             src={showVagliBookmatch ? "/nobilita3/images/Arbescato Vagli/Bookmatch.jpg" : "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg"} 
             alt="Arabescato Vagli slab preview" 
@@ -247,10 +249,11 @@ export default function FeaturedProduct() {
             <div className="flex flex-col">
               <div className="flex items-center space-x-5">
                 {/* Custom Dimensions SVG Icon */}
-                <div className="w-10 h-6 flex items-center justify-center text-brand-dark/40">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25 6V16M25 16L21 12M25 16L29 12" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M25 6H10M10 6L14 2M10 6L14 10" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                  <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
+                    <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
+                    <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
+                    <polyline points="26.1 19.35 23.12 22.54 20.15 19.35" />
                   </svg>
                 </div>
                 <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
@@ -269,11 +272,11 @@ export default function FeaturedProduct() {
             <div className="flex flex-col">
               <div className="flex items-center space-x-5">
                 {/* Custom Faces SVG Icon */}
-                <div className="w-10 h-6 flex items-center justify-center text-brand-dark/40">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="4" width="6" height="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <rect x="17" y="4" width="6" height="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <rect x="28" y="4" width="6" height="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                  <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
+                    <rect x="20.92" y="9.34" width="5.02" height="9.89" />
+                    <rect x="11.66" y="9.34" width="5.02" height="9.89" />
+                    <rect x="2.41" y="9.34" width="5.02" height="9.89" />
                   </svg>
                 </div>
                 <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
@@ -292,14 +295,16 @@ export default function FeaturedProduct() {
             <div className="flex flex-col">
               <div className="flex items-center space-x-5">
                 {/* Custom Finishes SVG Icon */}
-                <div className="w-10 h-6 flex items-center justify-center text-brand-dark/40">
-                  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="9" width="28" height="6" fill="url(#stripes-oyster)" />
+                <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                  <svg viewBox="2 10.8 24.5 7" fill="none" className="w-10 h-auto">
                     <defs>
-                      <pattern id="stripes-oyster" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                        <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" strokeWidth="1" />
-                      </pattern>
+                      <clipPath id="clippath-oyster-icon">
+                        <rect x="2.16" y="10.82" width="24.03" height="6.7"/>
+                      </clipPath>
                     </defs>
+                    <g clipPath="url(#clippath-oyster-icon)">
+                      <path stroke="currentColor" strokeWidth="0.4" strokeLinejoin="round" d="M10,11.93L.92,2.86M10,13.45L-.59,2.86M10,14.96L-2.1,2.86M10,16.47L-3.61,2.86M10,17.98L-5.13,2.86M10,19.5L-6.64,2.86M10,21.01L-8.15,2.86M10,22.52L-9.66,2.86M10,24.03L-11.18,2.86M28.15,11.93L19.07,2.86M28.15,13.45L17.56,2.86M28.15,14.96L16.05,2.86M28.15,16.47L14.54,2.86M28.15,17.98L13.02,2.86M28.15,19.5L11.51,2.86M28.15,21.01L10,2.86M28.15,22.52L8.49,2.86M28.15,24.03L6.97,2.86M26.64,24.03L6.97,4.37M25.12,24.03L6.97,5.88M23.61,24.03L6.97,7.4M22.1,24.03L6.97,8.91M20.59,24.03L6.97,10.42M19.07,24.03L6.97,11.93M17.56,24.03L6.97,13.45M16.05,24.03L6.97,14.96M14.54,24.03l-7.56-7.56"/>
+                    </g>
                   </svg>
                 </div>
                 <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
@@ -332,11 +337,10 @@ export default function FeaturedProduct() {
         </div>
       </section>
 
-      {/* 4. CALACATTA OYSTER FACES & BOOKMATCH PREVIEW SECTION */}
-      <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center py-12 px-6 md:px-16">
+      <section className="w-full bg-white flex flex-col justify-center items-center py-20 px-6 md:px-16">
         {showOysterBookmatch ? (
           /* Bookmatch View */
-          <div className="relative w-full max-w-[1400px] aspect-[16/9] md:aspect-[2.1/1] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5">
+          <div className="relative w-full max-w-[1100px] aspect-[16/9] md:aspect-[2.1/1] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5">
             <img 
               src="/nobilita3/images/Calacatta Oyster/Bookmatch.jpg" 
               alt="Calacatta Oyster Bookmatch" 
@@ -359,7 +363,7 @@ export default function FeaturedProduct() {
           </div>
         ) : (
           /* Three Slabs / Faces View */
-          <div className="w-full max-w-[1400px] flex flex-col items-center">
+          <div className="w-full max-w-[1100px] flex flex-col items-center">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
               {/* Face 1 */}
               <div className="relative aspect-[9/16] md:aspect-[1/2] w-full overflow-hidden bg-brand-cream/5 border border-brand-dark/5 shadow-sm">
