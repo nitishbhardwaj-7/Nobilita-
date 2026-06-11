@@ -1,41 +1,25 @@
-"use client";
+import React from "react";
+import prisma from "@/lib/prisma";
+import HomeClient from "@/components/HomeClient";
 
-import React, { useState, useEffect } from "react";
-import Loader from "@/components/Loader";
-import HeroSection from "@/components/HeroSection";
-import BrandIntro from "@/components/BrandIntro";
-import LegacySection from "@/components/LegacySection";
-import CraftsmanshipSection from "@/components/CraftsmanshipSection";
-import DimensionsSection from "@/components/DimensionsSection";
-import ApplicationsSection from "@/components/ApplicationsSection";
-import FinishesSection from "@/components/FinishesSection";
-import FeaturedProduct from "@/components/FeaturedProduct";
-import Footer from "@/components/Footer";
+export const revalidate = 0; // Ensure fresh data on every request
 
-export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+export default async function Home() {
+  let cmsData = null;
+  try {
+    const page = await prisma.page.findFirst({
+      where: { slug: "home" }
+    });
+    
+    if (page && page.sections && Array.isArray(page.sections) && page.sections.length > 0) {
+      // We store all homepage config inside the first element of sections
+      cmsData = (page.sections as any)[0];
+    }
+  } catch (error) {
+    console.error("Error fetching homepage data:", error);
+  }
 
   return (
-    <main className="w-full min-h-screen bg-white">
-      <Loader isLoading={isLoading} />
-      
-      {/* We render content immediately, but loading covers it. When isLoading becomes false, loader animates out. */}
-      <HeroSection />
-      <BrandIntro />
-      <LegacySection />
-      <CraftsmanshipSection />
-      <DimensionsSection />
-      <ApplicationsSection />
-      <FinishesSection />
-      <FeaturedProduct />
-      <Footer />
-    </main>
+    <HomeClient cmsData={cmsData} />
   );
 }

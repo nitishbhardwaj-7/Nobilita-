@@ -1,14 +1,39 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const finishes = [
-  { name: "MATTE", img: "/nobilita3/images/Pure Onix 1.jpg" },
-  { name: "HONED", img: "/nobilita3/images/Travertino Romano Classico Face 1.jpg" },
-  { name: "POLISHED", img: "/nobilita3/images/Calacatta Sponda 1_1.jpg" },
-  { name: "STRUCTURED", img: "/nobilita3/images/White Camouflage Face 1 (1).jpg" },
-  { name: "3D / 5D", img: "/nobilita3/images/Gris Di Savoie Face 3.jpg" },
+  { 
+    name: "POLISHED", 
+    img: "/nobilita3/images/Links/Onice Bianco 1.jpg", 
+    darkText: true,
+    desc: "A glossy and reflective surface that enhances depth, adding luxurious look."
+  },
+  { 
+    name: "MATTE", 
+    img: "/nobilita3/images/Links/Basaltina face 1.jpg", 
+    darkText: false,
+    desc: "A non-reflective and refined finish, with added slip resistance."
+  },
+  { 
+    name: "HONED", 
+    img: "/nobilita3/images/Links/Statuario Ultimo 1.jpg", 
+    darkText: true,
+    desc: "A smooth, satin-like finish that balances subtle sheen with modern elegance."
+  },
+  { 
+    name: "STRUCTURED MATTE", 
+    img: "/nobilita3/images/Links/White Camouflage Face 1.jpg", 
+    darkText: true,
+    desc: "Leather-inspired texture with subtle richness and enhanced grip."
+  },
+  { 
+    name: "3D-5D MATTE", 
+    img: "/nobilita3/images/Travertino Romano Classico Face 1.jpg", 
+    darkText: true,
+    desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces."
+  },
 ];
 
 export default function FinishesSection() {
@@ -21,77 +46,90 @@ export default function FinishesSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-ivymode text-[clamp(32px,5vw,60px)] text-brand-dark tracking-[0.2em] text-center mb-20 uppercase"
+        className="font-ivymode text-[clamp(32px,5vw,60px)] text-brand-dark/80 tracking-[0.2em] text-center mb-20 uppercase"
       >
         FINISHES
       </motion.h2>
 
-      {/* Optimized Flex Accordion */}
-      <div className="w-full flex flex-col h-[500px] md:h-[800px] border-y border-brand-dark/5">
-        {finishes.map((finish, i) => (
-          <motion.div
-            key={finish.name}
-            onMouseEnter={() => setHoveredIndex(i)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            animate={{ 
-              flex: hoveredIndex === i ? 2.5 : 1
-            }}
-            transition={{ 
-              duration: 0.7, 
-              ease: [0.23, 1, 0.32, 1] 
-            }}
-            className="relative w-full overflow-hidden cursor-pointer border-b border-brand-dark/5 will-change-[flex]"
-          >
-            {/* Texture Image with GPU Acceleration */}
-            <motion.img 
-              src={finish.img} 
-              alt={finish.name} 
-              loading="lazy"
-              animate={{ 
-                scale: hoveredIndex === i ? 1.05 : 1,
+      {/* High-Performance Pure CSS Accordion */}
+      <div className="w-full flex flex-col h-[500px] md:h-[800px] border-y border-brand-dark/5 overflow-hidden">
+        {finishes.map((finish, i) => {
+          const isHovered = hoveredIndex === i;
+          return (
+            <div
+              key={finish.name}
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative w-full overflow-hidden cursor-pointer border-b border-brand-dark/5 transition-[flex-grow] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[flex-grow]"
+              style={{ 
+                flexGrow: isHovered ? 2.5 : 1,
+                flexBasis: 0,
+                transform: "translate3d(0,0,0)",
+                backfaceVisibility: "hidden"
               }}
-              transition={{ duration: 1.2 }}
-              className="absolute inset-0 w-full h-full object-cover transform-gpu"
-            />
-            
-            {/* Overlay */}
-            <div className={`absolute inset-0 transition-opacity duration-700 ${hoveredIndex === i ? 'bg-black/10' : 'bg-black/30'}`} />
-            
-            {/* Content Overlay */}
-            <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-24 z-10 pointer-events-none">
-              <div className="flex items-center space-x-4 md:space-x-6">
-                <span className="font-michroma text-[10px] text-white/40 tracking-widest">
-                  0{i + 1}
-                </span>
-                
-                <h3 className="font-montserrat font-light text-white tracking-[0.5em] uppercase text-[clamp(12px,2vw,22px)]">
-                  {finish.name}
-                </h3>
+            >
+              {/* Texture Image with GPU Acceleration */}
+              <img 
+                src={finish.img} 
+                alt={finish.name} 
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  transform: "translate3d(0,0,0)",
+                  backfaceVisibility: "hidden",
+                  willChange: "transform"
+                }}
+              />
+              
+              {/* Overlay */}
+              <div 
+                className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
+                  finish.darkText 
+                    ? (isHovered ? 'bg-black/[0.03]' : 'bg-transparent') 
+                    : (isHovered ? 'bg-black/10' : 'bg-black/25')
+                }`} 
+              />
+              
+              {/* Content Overlay */}
+              <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-24 z-10 pointer-events-none">
+                <div className="flex items-center space-x-4 md:space-x-6">
+                  <span className={`font-michroma text-[clamp(10px,1.2vw,16px)] tracking-widest ${
+                    finish.darkText ? 'text-brand-dark/50' : 'text-white/40'
+                  }`}>
+                    0{i + 1}
+                  </span>
+                  
+                  <h3 className={`font-ivymode tracking-[0.2em] uppercase text-[clamp(14px,2.2vw,28px)] ${
+                    finish.darkText ? 'text-brand-dark/80' : 'text-white'
+                  }`}>
+                    {finish.name}
+                  </h3>
+                </div>
+
+                {/* Subtitle Transition */}
+                <p
+                  className={`font-cormorant italic max-w-lg ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] transition-all duration-500 ease-out ${
+                    finish.darkText ? 'text-brand-charcoal/80' : 'text-white/80'
+                  } ${
+                    isHovered 
+                      ? "opacity-100 max-h-24 mt-4 translate-y-0" 
+                      : "opacity-0 max-h-0 mt-0 -translate-y-2 overflow-hidden"
+                  }`}
+                >
+                  {finish.desc}
+                </p>
               </div>
 
-              <AnimatePresence>
-                {hoveredIndex === i && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
-                    className="mt-4 font-cormorant italic text-white/80 max-w-md ml-8 md:ml-[45px] text-[clamp(14px,2vw,22px)]"
-                  >
-                    Architectural surface with refined tactile qualities.
-                  </motion.p>
-                )}
-              </AnimatePresence>
+              {/* Bottom Accent Line */}
+              <div 
+                className={`absolute bottom-0 left-0 h-0.5 z-20 transition-all duration-500 ease-out ${
+                  finish.darkText ? 'bg-brand-dark' : 'bg-white'
+                }`}
+                style={{ width: isHovered ? "100%" : "0%" }}
+              />
             </div>
-
-            {/* Bottom Accent Line */}
-            <motion.div 
-              className="absolute bottom-0 left-0 h-0.5 bg-white z-20"
-              animate={{ width: hoveredIndex === i ? "100%" : "0%" }}
-              transition={{ duration: 0.6 }}
-            />
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

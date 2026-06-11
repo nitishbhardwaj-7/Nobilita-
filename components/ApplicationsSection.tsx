@@ -20,7 +20,7 @@ export default function ApplicationsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="font-ivymode font-light text-brand-dark text-[clamp(32px,8vw,60px)] tracking-[0.1em] text-center mt-[70px] mb-[40px] uppercase"
+        className="font-ivymode font-light text-brand-dark/80 text-[clamp(32px,8vw,60px)] tracking-[0.1em] text-center mt-[70px] mb-[40px] uppercase"
       >
         APPLICATIONS
       </motion.h2>
@@ -38,7 +38,12 @@ export default function ApplicationsSection() {
             <img
               src={app.image}
               alt={app.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 transform-gpu"
+              style={{
+                transform: "translate3d(0,0,0)",
+                backfaceVisibility: "hidden",
+                willChange: "transform"
+              }}
             />
             <div className={`absolute inset-0 transition-colors duration-500 bg-black/20 group-hover:bg-white/10`} />
             <div className="absolute inset-0 flex items-center justify-center p-4 text-center">

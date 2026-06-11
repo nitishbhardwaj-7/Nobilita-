@@ -52,13 +52,13 @@ export default function DimensionsSection() {
         </div>
       </div>
 
-      {/* Feature Image */}
+      {/* Feature Image with Centered Button */}
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="w-full px-4 md:px-0"
+        className="relative w-full px-4 md:px-0 flex justify-center items-center"
       >
         <img
           src="/nobilita3/images/Orobico.jpg"
@@ -66,6 +66,9 @@ export default function DimensionsSection() {
           loading="lazy"
           className="w-full h-auto max-h-[450px] object-cover"
         />
+        <button className="absolute border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-all duration-300 hover:bg-white hover:text-black uppercase">
+          TECHNICAL DATA
+        </button>
       </motion.div>
     </section>
   );
