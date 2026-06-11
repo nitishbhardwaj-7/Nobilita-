@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import PageTransition from "@/components/PageTransition";
 
 const didot = localFont({
   src: "./fonts/Didot.ttf",
@@ -51,7 +50,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${montserrat.variable} ${didot.variable} ${michroma.variable} ${ivymode.variable}`}
     >
       <body className="font-ivymode antialiased">
-        <PageTransition>{children}</PageTransition>
+        {children}
       </body>
     </html>
   );
