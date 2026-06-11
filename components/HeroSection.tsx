@@ -58,21 +58,17 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
               clipPath: { duration: 1.5, ease: [0.76, 0, 0.24, 1] },
               opacity: { delay: 1.5, duration: 0.1 }
             }}
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-100"
+            className="absolute inset-0 w-full h-full object-cover object-bottom opacity-100"
           />
         </AnimatePresence>
       </div>
-
-      {/* Subtle overlays for maximum text legibility */}
-      <div className="absolute inset-0 bg-black/45 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
       <Navbar />
 
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
         <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
           {/* Word-by-word reveal heading */}
-          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,40px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]">
+          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,40px)] uppercase flex flex-wrap justify-center gap-x-[0.4em] drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]">
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-1">
                 <motion.span
@@ -96,7 +92,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }}
-            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,36px)] font-light leading-[1.6] max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4"
+            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,36px)] font-light leading-[1.6] max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]"
           >
             {subtitle || defaultSubtitle}
           </motion.p>
@@ -111,7 +107,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             <Link href="/explore-collection" className="block">
               <motion.button 
                 whileTap={{ scale: 0.96 }}
-                className="relative overflow-hidden border border-white/60 text-white bg-transparent w-full py-4 font-michroma text-[clamp(11px,1.3vw,24px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group"
+                className="relative overflow-hidden border border-white/80 text-white bg-black/10 backdrop-blur-xs w-full py-4 font-michroma text-[clamp(11px,1.3vw,24px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]"
               >
                 <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">
