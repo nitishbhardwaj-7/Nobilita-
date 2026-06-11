@@ -52,7 +52,7 @@ export default function FinishesSection() {
       </motion.h2>
 
       {/* High-Performance Pure CSS Accordion */}
-      <div className="w-full flex flex-col h-[500px] md:h-[800px] border-y border-brand-dark/5 overflow-hidden">
+      <div className="w-full flex flex-col h-[600px] md:h-[900px] gap-2 md:gap-3 overflow-hidden">
         {finishes.map((finish, i) => {
           const isHovered = hoveredIndex === i;
           return (
@@ -60,7 +60,7 @@ export default function FinishesSection() {
               key={finish.name}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative w-full overflow-hidden cursor-pointer border-b border-brand-dark/5 transition-[flex-grow] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[flex-grow]"
+              className="group relative w-full overflow-hidden cursor-pointer transition-[flex-grow] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[flex-grow]"
               style={{ 
                 flexGrow: isHovered ? 2.5 : 1,
                 flexBasis: 0,

@@ -60,7 +60,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image }: Props
           transition={{ duration: 0.8, delay: 0.4 }}
           className="w-full max-w-[850px]"
         >
-          <p className="font-ivymode font-extralight text-white leading-snug text-center text-[clamp(16px,2vw,18px)] tracking-widest">
+          <p className="font-ivymode font-extralight text-white leading-snug text-center text-[clamp(16px,2vw,18px)] tracking-widest leading-loose">
             {subtitle || defaultSubtitle}
           </p>
         </motion.div>

@@ -51,17 +51,20 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             key={currentImageIndex}
             src={slideshowImages[currentImageIndex]}
             alt="Luxury Italian tile interior slideshow"
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 0.8, scale: 1 }}
+            initial={{ clipPath: "inset(0 0 0 100%)" }}
+            animate={{ clipPath: "inset(0 0 0 0%)" }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            transition={{ 
+              clipPath: { duration: 1.5, ease: [0.76, 0, 0.24, 1] },
+              opacity: { delay: 1.5, duration: 0.1 }
+            }}
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-100"
           />
         </AnimatePresence>
       </div>
 
       {/* Subtle overlays for maximum text legibility */}
-      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/45 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
       <Navbar />

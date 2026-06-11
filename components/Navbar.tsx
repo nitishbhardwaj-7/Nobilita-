@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  
+
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMouseNearTop = useRef(false);
 
@@ -32,7 +32,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY <= 50) {
         showNavbar();
       } else if (currentScrollY < lastScrollY) {
@@ -43,12 +43,12 @@ export default function Navbar() {
         setIsVisible(false);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Initial trigger to hide after landing if no scroll/hover occurs
     resetHideTimeout();
 
@@ -81,31 +81,46 @@ export default function Navbar() {
   return (
     <>
       {/* Scrollable / Hoverable Header */}
-      <nav 
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-3 md:py-4 bg-[#007190] shadow-md transition-transform duration-500 ease-in-out transform ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[10000] flex items-center justify-between px-6 md:px-12 py-3 md:py-4 bg-[#007190] shadow-md transition-transform duration-500 ease-in-out transform ${isVisible || isNavOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
       >
-        {/* Hamburger Icon */}
-        <button 
-          onClick={() => setIsNavOpen(true)}  
-          className="flex flex-col space-y-1.5 justify-center items-start w-8 h-8 group focus:outline-none transition-opacity hover:opacity-80"
+        {/* Animated Hamburger / Close Icon */}
+        <button
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          className="relative w-8 h-8 focus:outline-none z-[10000] transition-opacity hover:opacity-80 flex items-center justify-center"
           aria-label="Toggle navigation menu"
         >
-          <span className="w-8 h-0.5 bg-white transition-all duration-300"></span>
-          <span className="w-8 h-0.5 bg-white transition-all duration-300"></span>
-          <span className="w-8 h-0.5 bg-white transition-all duration-300"></span>
+          <span 
+            className="absolute block h-[1px] w-7 bg-white transition-all duration-300 ease-in-out"
+            style={{
+              transform: isNavOpen ? "translateY(0px) rotate(45deg)" : "translateY(-6px) rotate(0deg)"
+            }}
+          />
+          <span 
+            className="absolute block h-[1px] w-7 bg-white transition-all duration-300 ease-in-out"
+            style={{
+              transform: isNavOpen ? "scaleX(0)" : "scaleX(1)",
+              opacity: isNavOpen ? 0 : 1
+            }}
+          />
+          <span 
+            className="absolute block h-[1px] w-7 bg-white transition-all duration-300 ease-in-out"
+            style={{
+              transform: isNavOpen ? "translateY(0px) rotate(-45deg)" : "translateY(6px) rotate(0deg)"
+            }}
+          />
         </button>
 
         {/* Logo */}
-        <img 
-          src="/nobilita3/images/NOBILITA_white.png" 
-          alt="Porcellana Nobilita" 
+        <img
+          src="/nobilita3/images/NOBILITA_white.png"
+          alt="Porcellana Nobilita"
           loading="lazy"
           className="h-10 md:h-12 w-auto object-contain"
         />
       </nav>
-      
+
       {/* Navigation Overlay */}
       <NavigationOverlay isOpen={isNavOpen} onClose={() => setIsNavOpen(false)} />
     </>

@@ -32,10 +32,10 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
         buttonText={d.brandBtn}
         image={d.brandImg}
       />
-      <LegacySection />
       <CraftsmanshipSection />
-      <DimensionsSection />
+      <LegacySection />
       <ApplicationsSection />
+      <DimensionsSection />
       <FinishesSection />
       <HeroSection 
         title={d.heroTitle}

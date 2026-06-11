@@ -4,8 +4,17 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
-import FeaturedProduct from "@/components/FeaturedProduct";
 import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+
+const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full py-24 bg-white flex items-center justify-center font-michroma text-[9px] md:text-xs text-brand-dark/40 tracking-[0.2em] uppercase">
+      Loading Exhibition...
+    </div>
+  )
+});
 
 // Comprehensive catalog of Nobilita luxury Italian porcelain slabs
 const slabs = [
@@ -169,7 +178,7 @@ export default function ExploreCollection() {
         <img 
           src="/nobilita3/images/NOBILITA_white.png" 
           alt="Porcellana Nobilita" 
-          className="h-10 md:h-12 w-auto object-contain"
+          className="h-10 md:h-36 w-auto object-contain"
         />
       </div>
 
@@ -281,7 +290,7 @@ export default function ExploreCollection() {
         </div>
 
         {/* Right Side: Grid Columns Stack Selector */}
-        <div className="flex flex-col border border-brand-dark/15 divide-y divide-brand-dark/15 select-none rounded bg-white shadow-sm">
+        <div className="flex flex-col  select-none rounded bg-white shadow-sm">
           <button 
             onClick={() => setColumns(c => Math.min(c + 1, 5))} 
             className="px-3 py-1.5 text-[15px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
@@ -306,11 +315,11 @@ export default function ExploreCollection() {
             {filteredSlabs.map((slab, index) => (
               <motion.div
                 key={slab.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 15 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true, margin: "20px" }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: (index % 6) * 0.04 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: (index % 4) * 0.03 }}
                 onClick={() => setActiveSlab(slab)}
                 className="relative aspect-[4/3] group overflow-hidden border border-brand-dark/5 cursor-pointer bg-brand-cream/10"
               >
@@ -327,17 +336,27 @@ export default function ExploreCollection() {
                       willChange: "transform"
                     }}
                   />
+                  
+                  {/* Wipe Reveal Mask (Right to Left) */}
+                  <motion.div 
+                    initial={{ x: "0%" }}
+                    whileInView={{ x: "-100%" }}
+                    viewport={{ once: true, margin: "20px" }}
+                    transition={{ 
+                      duration: 0.9, 
+                      ease: [0.76, 0, 0.24, 1],
+                      delay: (index % 4) * 0.05 
+                    }}
+                    className="absolute inset-0 bg-white z-20 pointer-events-none"
+                  />
                 </div>
 
-                {/* Subtitle / Name Overlay on Hover */}
-                <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10">
-                  <h3 className="font-ivymode text-white text-[18px] md:text-[22px] tracking-wider uppercase mb-1 transition-all duration-300 transform group-hover:-translate-y-1 group-hover:tracking-[0.08em] relative pb-1 inline-block">
+                {/* White Brighten Overlay on Hover */}
+                <div className="absolute inset-0 bg-white/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10">
+                  <h3 className="font-ivymode text-brand-dark text-[18px] md:text-[22px] tracking-wider uppercase mb-1 transition-all duration-300 transform group-hover:-translate-y-1 group-hover:tracking-[0.08em] relative pb-1 inline-block w-fit">
                     {slab.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-dark transition-all duration-300 group-hover:w-full" />
                   </h3>
-                  <p className="font-michroma text-[9px] md:text-[10px] text-white/60 tracking-widest uppercase transition-opacity duration-300 group-hover:text-white/100">
-                    {slab.color} • {slab.finish}
-                  </p>
                 </div>
               </motion.div>
             ))}

@@ -27,13 +27,6 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[9999] bg-teal-primary flex flex-col items-center justify-center"
         >
-          <button 
-            onClick={onClose}
-            className="absolute top-6 md:top-10 right-6 md:right-10 text-white font-montserrat tracking-[0.25em] text-[clamp(12px,1.5vw,14px)] hover:opacity-70 transition-opacity uppercase"
-          >
-            CLOSE [X]
-          </button>
-          
           <div className="flex flex-col items-center space-y-4 md:space-y-8 px-6 text-center">
             {links.map((link, i) => (
               <motion.a

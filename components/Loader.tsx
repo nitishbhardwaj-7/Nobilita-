@@ -33,10 +33,10 @@ export default function Loader({ isLoading }: LoaderProps) {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] bg-teal-primary flex flex-col items-center justify-center pointer-events-none"
+          initial={{ y: 0 }}
+          exit={{ y: "-100%" }}
+          transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[99999] bg-teal-primary flex flex-col items-center justify-center pointer-events-none"
         >
           <div className="flex flex-col items-center justify-center">
             {/* Palazzo Icon Container for Crossfade */}
