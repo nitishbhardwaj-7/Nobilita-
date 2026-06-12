@@ -7,32 +7,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CraftsmanshipSection() {
-  const sectionRef     = useRef<HTMLElement>(null);
-  const headingRef     = useRef<HTMLHeadingElement>(null);
-  const paraRef        = useRef<HTMLParagraphElement>(null);
-  const badgeWrapRef   = useRef<HTMLButtonElement>(null);
-  const badgeTextRef   = useRef<HTMLSpanElement>(null);
-  const borderTopRef   = useRef<HTMLDivElement>(null);
-  const borderBotRef   = useRef<HTMLDivElement>(null);
-  const borderLeftRef  = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const paraRef = useRef<HTMLParagraphElement>(null);
+  const badgeWrapRef = useRef<HTMLButtonElement>(null);
+  const badgeTextRef = useRef<HTMLSpanElement>(null);
+  const borderTopRef = useRef<HTMLDivElement>(null);
+  const borderBotRef = useRef<HTMLDivElement>(null);
+  const borderLeftRef = useRef<HTMLDivElement>(null);
   const borderRightRef = useRef<HTMLDivElement>(null);
-  const casaRef        = useRef<HTMLSpanElement>(null);
+  const casaRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const section     = sectionRef.current;
-    const heading     = headingRef.current;
-    const para        = paraRef.current;
-    const badgeWrap   = badgeWrapRef.current;
-    const badgeText   = badgeTextRef.current;
-    const borderTop   = borderTopRef.current;
-    const borderBot   = borderBotRef.current;
-    const borderLeft  = borderLeftRef.current;
+    const section = sectionRef.current;
+    const heading = headingRef.current;
+    const para = paraRef.current;
+    const badgeWrap = badgeWrapRef.current;
+    const badgeText = badgeTextRef.current;
+    const borderTop = borderTopRef.current;
+    const borderBot = borderBotRef.current;
+    const borderLeft = borderLeftRef.current;
     const borderRight = borderRightRef.current;
-    const casa        = casaRef.current;
+    const casa = casaRef.current;
 
     if (!section || !heading || !para || !badgeWrap || !badgeText ||
-        !borderTop || !borderBot || !borderLeft || !borderRight || !casa) return;
-
+      !borderTop || !borderBot || !borderLeft || !borderRight || !casa) return;
 
     // ── 2. HEADING — LETTER SPACING COMPRESS ON ENTER ─────────────────────────
     gsap.fromTo(heading,
@@ -91,20 +90,20 @@ export default function CraftsmanshipSection() {
       duration: 0.6,
       ease: "power2.inOut",
     })
-    // Left and right grow from center — overlaps slightly
-    .to([borderLeft, borderRight], {
-      height: "100%",
-      top: "0%",
-      yPercent: 0,
-      duration: 0.4,
-      ease: "power2.inOut",
-    }, "-=0.3")
-    // Text snaps in last
-    .to(badgeText, {
-      opacity: 1,
-      duration: 0.5,
-      ease: "power2.out",
-    }, "-=0.1");
+      // Left and right grow from center — overlaps slightly
+      .to([borderLeft, borderRight], {
+        height: "100%",
+        top: "0%",
+        yPercent: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      }, "-=0.3")
+      // Text snaps in last
+      .to(badgeText, {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }, "-=0.1");
 
     // ── 5. CASA NOBILE — DELAYED LETTER SPACING COMPRESS ──────────────────────
     gsap.fromTo(casa,
@@ -136,20 +135,20 @@ export default function CraftsmanshipSection() {
       {/* ── BACKGROUND IMAGE — static full-cover */}
       <div className="absolute inset-0">
         <img
-          src="/nobilita3/images/Links/MEDICI VILLA copy (1).png"
+          src="/nobilita3/images/Links/MEDICI VILLA copy (7).png"
           alt="Italian craftsmanship"
           loading="lazy"
           className="w-full h-full object-cover object-center"
         />
       </div>
-      {/* Very light overlay for text contrast */}
-      <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+      {/* Subtle black overlay to make the text pop */}
+      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
       {/* ── TOP HEADING */}
       <div className="relative z-10 w-full text-center max-w-[1200px] mx-auto">
         <h2
           ref={headingRef}
-          className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,6.5vw,66px)] uppercase py-1"
+          className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,6.5vw,69px)] uppercase py-14"
           style={{ opacity: 0, letterSpacing: "0.28em" }}
         >
           ITALIAN CRAFTSMANSHIP
@@ -157,11 +156,10 @@ export default function CraftsmanshipSection() {
       </div>
 
       {/* ── CENTER CONTENT (Paragraph & Badge) */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto px-4 max-w-[1000px] mx-auto w-full">
-
+      <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto px-6 max-w-[1100px] mx-auto w-full">
         <p
           ref={paraRef}
-          className="craftsmanship-para font-ivymode mt-24 font-light text-white text-[clamp(18px,2.8vw,36px)] text-center leading-[1.3] max-w-[1250px]"
+          className="craftsmanship-para font-ivymode mt-16 font-light text-white text-[clamp(18px,2.8vw,36px)] text-center leading-[1.5] tracking-wide max-w-[1200px]"
         >
           In the heart of Modena, where centuries of Italian expertise{" "}
           meet innovation, NOBILITA creates porcelain surfaces that{" "}
@@ -201,7 +199,7 @@ export default function CraftsmanshipSection() {
 
           <span
             ref={badgeTextRef}
-            className="badge-text relative z-10 font-michroma text-white group-hover:text-black transition-colors duration-500 text-[clamp(12px,1.5vw,32px)] tracking-[0.25em] uppercase"
+            className="badge-text relative z-10 font-michroma text-white group-hover:text-black transition-colors duration-500 text-[clamp(12px,1.5vw,32px)] tracking-[0.15em] uppercase"
             style={{ opacity: 0 }}
           >
             MADE IN ITALY
@@ -210,11 +208,11 @@ export default function CraftsmanshipSection() {
       </div>
 
       {/* ── BOTTOM: CASA NOBILE */}
-      <div className="relative z-10 w-full flex justify-end items-end mt-auto pr-4 pb-2">
+      <div className="absolute bottom-4 right-6 md:bottom-6 md:right-16 z-10">
         <span
           ref={casaRef}
           className="casa-nobile-label font-ivymode text-white/90 text-[clamp(12px,1.5vw,18px)] uppercase"
-          style={{ opacity: 0, letterSpacing: "0.35em" }}
+          style={{ opacity: 0, letterSpacing: "0.10em" }}
         >
           CASA NOBILE
         </span>

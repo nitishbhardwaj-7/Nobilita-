@@ -157,7 +157,7 @@ export default function LegacySection() {
         <div className="absolute bottom-8 left-0 right-0 text-center z-10">
           <p
             ref={labelTreviRef}
-            className="label-trevi font-michroma tracking-[0.20em] text-[clamp(11px,1.2vw,13px)] text-white uppercase inline-block"
+            className="label-trevi font-ivymode tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] text-white uppercase inline-block"
           >
             TREVI FOUNTAIN
           </p>
@@ -191,7 +191,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[75%] md:w-[80%] lg:w-[85%] max-w-[360px] h-auto object-contain mt-1"
+            className="tagline-text w-[75%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain mt-1"
           />
         </div>
       </div>
@@ -213,7 +213,7 @@ export default function LegacySection() {
         <div className="absolute bottom-8 left-0 right-0 text-center z-10">
           <p
             ref={labelPalazzoRef}
-            className="label-palazzo font-michroma tracking-[0.15em] text-[clamp(11px,1.2vw,13px)] text-white uppercase inline-block"
+            className="label-palazzo font-ivymode tracking-[0.15em] text-[clamp(11px,1.2vw,16px)] text-white uppercase inline-block"
           >
             PALAZZO DELLA CIVILTÀ ITALIANA
           </p>

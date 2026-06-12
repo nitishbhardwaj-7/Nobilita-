@@ -111,7 +111,7 @@ export default function FinishesSection() {
 
                 {/* Subtitle Transition */}
                 <p
-                  className={`font-cormorant italic max-w-lg ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] transition-all duration-500 ease-out ${
+        className={`font-ivymode italic max-w-full ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] transition-all duration-500 ease-out ${
                     finish.darkText ? 'text-brand-charcoal/80' : 'text-white/80'
                   } ${
                     isHovered 

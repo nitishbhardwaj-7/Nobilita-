@@ -1,12 +1,19 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import NavigationOverlay from "./NavigationOverlay";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHomeScreen = pathname === "/";
+  const isExplorePage = pathname === "/explore-collection";
+
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isInsideBrandIntro, setIsInsideBrandIntro] = useState(isHomeScreen || isExplorePage);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMouseNearTop = useRef(false);
@@ -28,9 +35,67 @@ export default function Navbar() {
     resetHideTimeout();
   };
 
-  // Scroll event handling
+  // Scroll event listener to check if we are in the initial section of the page (BrandIntro on Home, Hero on Explore)
   useEffect(() => {
+    if (!isHomeScreen && !isExplorePage) {
+      setIsInsideBrandIntro(false);
+      return;
+    }
+
+    const checkScrollPosition = () => {
+      let threshold = 0;
+      if (isHomeScreen) {
+        threshold = window.innerHeight * 0.9;
+      } else if (isExplorePage) {
+        const heroEl = document.getElementById("explore-hero");
+        threshold = heroEl ? heroEl.offsetHeight : 380;
+      }
+
+      const inside = window.scrollY < threshold;
+      setIsInsideBrandIntro(inside);
+      if (inside) {
+        setIsVisible(false);
+      }
+    };
+
+    checkScrollPosition();
+    window.addEventListener("scroll", checkScrollPosition, { passive: true });
+    window.addEventListener("resize", checkScrollPosition);
+
+    return () => {
+      window.removeEventListener("scroll", checkScrollPosition);
+      window.removeEventListener("resize", checkScrollPosition);
+    };
+  }, [isHomeScreen, isExplorePage]);
+
+  // Mutation observer to hide navbar instantly when body overflow is hidden (modal open)
+  useEffect(() => {
+    const checkBodyScroll = () => {
+      if (document.body.style.overflow === "hidden") {
+        setIsVisible(false);
+      }
+    };
+
+    checkBodyScroll();
+
+    const observer = new MutationObserver(checkBodyScroll);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll event handling for normal nav visibility
+  useEffect(() => {
+    if (isInsideBrandIntro) {
+      setIsVisible(false);
+      return;
+    }
+
     const handleScroll = () => {
+      if (document.body.style.overflow === "hidden") {
+        setIsVisible(false);
+        return;
+      }
       const currentScrollY = window.scrollY;
 
       if (currentScrollY <= 50) {
@@ -56,11 +121,17 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, isInsideBrandIntro]);
 
   // Mouse move event handling
   useEffect(() => {
+    if (isInsideBrandIntro) return;
+
     const handleMouseMove = (e: MouseEvent) => {
+      if (document.body.style.overflow === "hidden") {
+        setIsVisible(false);
+        return;
+      }
       // If mouse is within 80px of the top of the viewport
       if (e.clientY <= 80) {
         isMouseNearTop.current = true;
@@ -76,14 +147,15 @@ export default function Navbar() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [isInsideBrandIntro]);
 
   return (
     <>
       {/* Scrollable / Hoverable Header */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-[10000] flex items-center justify-between px-6 md:px-12 py-3 md:py-4 bg-[#007190] shadow-md transition-transform duration-500 ease-in-out transform ${isVisible || isNavOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
+        className={`fixed top-0 left-0 right-0 z-[10000] flex items-center justify-between px-6 md:px-12 py-3 md:py-4 bg-[#007190] shadow-md transition-transform duration-500 ease-in-out transform ${
+          (isVisible || isNavOpen) && !isInsideBrandIntro ? "translate-y-0" : "-translate-y-full"
+        }`}
       >
         {/* Animated Hamburger / Close Icon */}
         <button
@@ -113,12 +185,14 @@ export default function Navbar() {
         </button>
 
         {/* Logo */}
-        <img
-          src="/nobilita3/images/NOBILITA_white.png"
-          alt="Porcellana Nobilita"
-          loading="lazy"
-          className="h-10 md:h-12 w-auto object-contain"
-        />
+        <Link href="/" className="cursor-pointer transition-opacity hover:opacity-90">
+          <img
+            src="/nobilita3/images/NOBILITA_white.png"
+            alt="Porcellana Nobilita"
+            loading="lazy"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
+        </Link>
       </nav>
 
       {/* Navigation Overlay */}

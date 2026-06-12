@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
@@ -119,6 +120,210 @@ const slabs = [
 const colors = ["White", "Gold", "Gray", "Dark"];
 const finishes = ["Polished", "Matte", "Honed", "Structured Matte", "3D-5D Matte"];
 
+interface SlabDetailModalProps {
+  slab: typeof slabs[0];
+  onClose: () => void;
+}
+
+function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const item1Ref = useRef<HTMLParagraphElement>(null);
+  const item2Ref = useRef<HTMLHeadingElement>(null);
+  const item3Ref = useRef<HTMLDivElement>(null);
+  const item4Ref = useRef<HTMLDivElement>(null);
+  const item5Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // ── SET INITIAL STATES ──
+      gsap.set(backdropRef.current, { opacity: 0 });
+      gsap.set(containerRef.current, { 
+        clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+        opacity: 0,
+        x: -50
+      });
+      gsap.set(imageRef.current, { scale: 1.15, opacity: 0 });
+      gsap.set([item1Ref.current, item2Ref.current, item3Ref.current, item4Ref.current, item5Ref.current], {
+        opacity: 0,
+        y: 30
+      });
+
+      // ── RUN ENTRY TIMELINE ──
+      const tl = gsap.timeline();
+      tl.to(backdropRef.current, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      })
+      .to(containerRef.current, {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        opacity: 1,
+        x: 0,
+        duration: 1.1,
+        ease: "power4.inOut"
+      }, "-=0.3")
+      .to(imageRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 1.4,
+        ease: "power2.out"
+      }, "-=0.6")
+      .to([item1Ref.current, item2Ref.current, item3Ref.current, item4Ref.current, item5Ref.current], {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: "power3.out"
+      }, "-=1.1");
+    });
+
+    return () => ctx.revert();
+  }, [slab]);
+
+  const handleClose = () => {
+    const tl = gsap.timeline({
+      onComplete: onClose
+    });
+
+    tl.to([item5Ref.current, item4Ref.current, item3Ref.current, item2Ref.current, item1Ref.current], {
+      opacity: 0,
+      y: 20,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power2.in"
+    })
+    .to(imageRef.current, {
+      opacity: 0,
+      scale: 1.1,
+      duration: 0.5,
+      ease: "power2.in"
+    }, "-=0.3")
+    .to(containerRef.current, {
+      clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+      opacity: 0,
+      x: -30,
+      duration: 0.8,
+      ease: "power4.inOut"
+    }, "-=0.4")
+    .to(backdropRef.current, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.in"
+    }, "-=0.6");
+  };
+
+  return (
+    <div 
+      ref={backdropRef}
+      className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
+    >
+      {/* Close Trigger */}
+      <div 
+        className="absolute inset-0 cursor-zoom-out" 
+        onClick={handleClose} 
+      />
+
+      <div 
+        ref={containerRef}
+        className="relative bg-brand-dark text-white w-full max-w-6xl aspect-[16/9] md:aspect-auto md:min-h-[75vh] flex flex-col md:flex-row border border-white/10 z-10 shadow-2xl overflow-hidden"
+      >
+        {/* Left Column: Huge Slab Face Image */}
+        <div className="relative w-full md:w-[65%] h-[50vh] md:h-[75vh] overflow-hidden bg-black/40">
+          <img 
+            ref={imageRef}
+            src={slab.img}
+            alt={slab.name}
+            className="w-full h-full object-contain md:object-cover"
+          />
+        </div>
+
+        {/* Right Column: Spec / Details Info Panel with Stagger Reveal */}
+        <div className="w-full md:w-[35%] p-6 md:p-10 flex flex-col justify-between bg-brand-charcoal relative">
+          {/* Close Button */}
+          <button 
+            onClick={handleClose}
+            className="absolute top-4 right-4 text-white/60 hover:text-white font-michroma text-xs tracking-wider uppercase focus:outline-none"
+          >
+            ✕ CLOSE
+          </button>
+
+          <div className="space-y-6 pt-6">
+            <p 
+              ref={item1Ref}
+              className="font-michroma text-[10px] tracking-[0.3em] text-[#007190] uppercase"
+            >
+              COLLECTION ITEM
+            </p>
+            
+            <h2 
+              ref={item2Ref}
+              className="font-ivymode text-[28px] md:text-[38px] leading-tight tracking-[0.05em] uppercase"
+            >
+              {slab.name}
+            </h2>
+
+            <div 
+              ref={item3Ref}
+              className="h-[2px] w-12 bg-white/20" 
+            />
+
+            <div 
+              ref={item4Ref}
+              className="space-y-4 font-montserrat text-sm text-white/80 font-light"
+            >
+              <div className="flex justify-between py-2 border-b border-white/5">
+                <span className="text-white/40 uppercase tracking-widest text-[10px]">Origin</span>
+                <span>Italy</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-white/5">
+                <span className="text-white/40 uppercase tracking-widest text-[10px]">Type</span>
+                <span>Imperial Porcelain</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-white/5">
+                <span className="text-white/40 uppercase tracking-widest text-[10px]">Color Category</span>
+                <span>{slab.color}</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-white/5">
+                <span className="text-white/40 uppercase tracking-widest text-[10px]">Finish Option</span>
+                <span>{slab.finish}</span>
+              </div>
+            </div>
+          </div>
+
+          <div 
+            ref={item5Ref}
+            className="pt-8 space-y-4"
+          >
+            <Link 
+              href="#contact-us"
+              onClick={handleClose}
+              className="block w-full"
+            >
+              <button 
+                className="relative overflow-hidden border border-white/40 bg-transparent w-full py-4 text-[10px] tracking-[0.2em] font-michroma uppercase transition-colors duration-500 group"
+              >
+                <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">
+                  INQUIRE ABOUT SLAB
+                </span>
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ExploreCollection() {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedFinish, setSelectedFinish] = useState<string | null>(null);
@@ -163,34 +368,17 @@ export default function ExploreCollection() {
       <Navbar />
 
       {/* Explore Collection Header Banner */}
-      <div className="w-full bg-[#007190] pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
+      <div id="explore-hero" className="w-full bg-[#007190] pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
         <Link 
           href="/" 
-          className="absolute top-28 left-6 md:left-12 group flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 font-michroma text-[9px] md:text-[10px] tracking-[0.3em] uppercase"
+          className="absolute top-28 left-6 md:left-12 group flex items-center border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm px-5 py-2 text-white/80 hover:text-white transition-all duration-300 font-montserrat text-[10px] tracking-[0.25em] uppercase"
         >
-          <svg 
-            width="18" 
-            height="10" 
-            viewBox="0 0 18 10" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="transform transition-transform duration-300 group-hover:-translate-x-1.5"
-          >
-            <path 
-              d="M17 5H1M1 5L5 9M1 5L5 1" 
-              stroke="currentColor" 
-              strokeWidth="1" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className="relative pb-0.5">
+          <span className="relative pb-px">
             HOME
-            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
           </span>
         </Link>
         
-        <h1 className="font-ivymode text-white text-[clamp(24px,4.5vw,44px)] tracking-[0.25em] uppercase leading-tight mb-8">
+        <h1 className="font-ivymode text-white text-[clamp(24px,4.5vw,48px)] tracking-[0.10em] uppercase leading-tight mb-12">
           EXPLORE THE COLLECTION
         </h1>
         
@@ -397,133 +585,19 @@ export default function ExploreCollection() {
         )}
       </div>
 
-      <FeaturedProduct />
+      <FeaturedProduct 
+        activeProduct={activeSlab?.name || null} 
+        onClose={() => setActiveSlab(null)} 
+      />
       <Footer />
 
       {/* Slabs Detail Lightbox / Modal */}
-      <AnimatePresence>
-        {activeSlab && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
-          >
-            {/* Close Trigger */}
-            <div 
-              className="absolute inset-0 cursor-zoom-out" 
-              onClick={() => setActiveSlab(null)} 
-            />
-
-            <motion.div 
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="relative bg-brand-dark text-white w-full max-w-6xl aspect-[16/9] md:aspect-auto md:min-h-[75vh] flex flex-col md:flex-row border border-white/10 z-10 shadow-2xl overflow-hidden"
-            >
-              {/* Left Column: Huge Slab Face Image */}
-              <div className="relative w-full md:w-[65%] h-[50vh] md:h-[75vh] overflow-hidden bg-black/40">
-                <img 
-                  src={activeSlab.img}
-                  alt={activeSlab.name}
-                  className="w-full h-full object-contain md:object-cover"
-                />
-              </div>
-
-              {/* Right Column: Spec / Details Info Panel with Stagger Reveal */}
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1 }}
-                className="w-full md:w-[35%] p-6 md:p-10 flex flex-col justify-between bg-brand-charcoal relative"
-              >
-                {/* Close Button */}
-                <button 
-                  onClick={() => setActiveSlab(null)}
-                  className="absolute top-4 right-4 text-white/60 hover:text-white font-michroma text-xs tracking-wider uppercase focus:outline-none"
-                >
-                  ✕ CLOSE
-                </button>
-
-                <div className="space-y-6 pt-6">
-                  <motion.p 
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="font-michroma text-[10px] tracking-[0.3em] text-[#007190] uppercase"
-                  >
-                    COLLECTION ITEM
-                  </motion.p>
-                  
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.28 }}
-                    className="font-ivymode text-[28px] md:text-[38px] leading-tight tracking-[0.05em] uppercase"
-                  >
-                    {activeSlab.name}
-                  </motion.h2>
-
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4, delay: 0.36 }}
-                    className="h-[2px] w-12 bg-white/20" 
-                  />
-
-                  <motion.div 
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.44 }}
-                    className="space-y-4 font-montserrat text-sm text-white/80 font-light"
-                  >
-                    <div className="flex justify-between py-2 border-b border-white/5">
-                      <span className="text-white/40 uppercase tracking-widest text-[10px]">Origin</span>
-                      <span>Italy</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-white/5">
-                      <span className="text-white/40 uppercase tracking-widest text-[10px]">Type</span>
-                      <span>Imperial Porcelain</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-white/5">
-                      <span className="text-white/40 uppercase tracking-widest text-[10px]">Color Category</span>
-                      <span>{activeSlab.color}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-white/5">
-                      <span className="text-white/40 uppercase tracking-widest text-[10px]">Finish Option</span>
-                      <span>{activeSlab.finish}</span>
-                    </div>
-                  </motion.div>
-                </div>
-
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.52 }}
-                  className="pt-8 space-y-4"
-                >
-                  <Link 
-                    href="#contact-us"
-                    onClick={() => setActiveSlab(null)}
-                    className="block w-full"
-                  >
-                    <motion.button 
-                      whileTap={{ scale: 0.96 }}
-                      className="relative overflow-hidden border border-white/40 bg-transparent w-full py-4 text-[10px] tracking-[0.2em] font-michroma uppercase transition-colors duration-500 group"
-                    >
-                      <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                      <span className="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">
-                        INQUIRE ABOUT SLAB
-                      </span>
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {activeSlab && activeSlab.name !== "Arabescato Vagli" && activeSlab.name !== "Calacatta Oyster" && (
+        <SlabDetailModal 
+          slab={activeSlab} 
+          onClose={() => setActiveSlab(null)} 
+        />
+      )}
     </div>
   );
 }

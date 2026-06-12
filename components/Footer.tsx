@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const links = ["about", "products", "technical resources", "made in italy", "contact us"];
+const links = ["about", "products", "technical data", "made in italy", "contact us"];
 
 const navContainerVariants = {
   hidden: {},
@@ -39,12 +39,15 @@ export default function Footer() {
     <footer id="contact-us" className="w-full flex flex-col bg-white">
       {/* Catalog & Newsletter Section */}
       <div className="w-full py-16 md:py-24 bg-white relative flex justify-center items-center border-t border-b border-brand-dark/10 overflow-hidden">
-        {/* Subtle Marble Background */}
+        {/* Video Background */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg" 
-            alt="Marble texture background" 
-            className="w-full h-full object-cover opacity-[0.12] pointer-events-none select-none"
+          <video 
+            src="/nobilita3/images/Links/materials.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover pointer-events-none select-none"
           />
         </div>
         
@@ -102,7 +105,7 @@ export default function Footer() {
             <>
               {/* Title */}
               <div className="w-full text-center mb-16">
-                <h2 className="font-ivymode text-[28px] md:text-[42px] text-brand-dark tracking-[0.15em] uppercase font-light">
+                <h2 className="font-ivymode text-[28px] md:text-[42px] text-brand-dark/70 tracking-[0.15em] uppercase font-light">
                   SEND YOUR QUERY
                 </h2>
               </div>
@@ -119,7 +122,7 @@ export default function Footer() {
                   />
                   <label 
                     htmlFor="name"
-                    className="absolute left-0 top-7 font-michroma text-[10px] md:text-[12px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -139,7 +142,7 @@ export default function Footer() {
                   />
                   <label 
                     htmlFor="email"
-                    className="absolute left-0 top-7 font-michroma text-[10px] md:text-[12px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -159,7 +162,7 @@ export default function Footer() {
                   />
                   <label 
                     htmlFor="phone"
-                    className="absolute left-0 top-7 font-michroma text-[10px] md:text-[12px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -179,7 +182,7 @@ export default function Footer() {
                   />
                   <label 
                     htmlFor="query"
-                    className="absolute left-0 top-7 font-michroma text-[10px] md:text-[12px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -192,7 +195,7 @@ export default function Footer() {
                 <div className="sm:col-span-2 flex justify-center mt-8">
                   <button 
                     type="submit"
-                    className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-12 py-3 font-michroma text-[10px] md:text-[11px] tracking-[0.25em] text-brand-dark uppercase focus:outline-none"
+                    className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-12 py-4 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.25em] text-brand-dark/70 uppercase focus:outline-none"
                   >
                     {submitStatus === "sending" ? "SENDING..." : "SUBMIT"}
                   </button>
@@ -204,32 +207,24 @@ export default function Footer() {
       </div>
       
       {/* Lower Footer Area */}
-      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center py-10 md:py-12 px-6">
-        <div className="w-full max-w-6xl mx-auto flex flex-col items-center space-y-12">
-          
-          {/* Horizontal Rule draws left-to-right on scroll */}
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full h-[1px] bg-white/20 origin-left"
-          />
-
+      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center py-10 md:py-10 px-6">
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center space-y-12">
+        
+        
           {/* Links with stagger */}
           <motion.nav 
             variants={navContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-x-10 gap-y-6 md:justify-between w-full"
+            className="w-full flex flex-col items-center justify-center gap-y-4 md:grid md:grid-cols-5 md:gap-y-0 text-center"
           >
             {links.map((link) => (
               <motion.a 
                 key={link}
                 variants={navItemVariants}
                 href={`#${link.replace(/ /g, "-")}`}
-                className="font-cormorant font-light text-white tracking-[0.05em] uppercase relative group text-[clamp(18px,2.5vw,26px)]"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,26px)] mx-auto justify-self-center text-center w-fit whitespace-nowrap"
               >
                 {link}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -243,7 +238,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="w-[180px]"
+            className="w-[260px] pt-10"
           >
             <img 
               src="/nobilita3/images/NOBILITA_white.png" 

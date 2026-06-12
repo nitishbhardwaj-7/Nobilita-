@@ -143,3 +143,45 @@ body {
 .animate-shimmer {
   animation: shimmer 1.5s infinite linear;
 }
+
+/* Wipe-in transitions for sliders */
+@keyframes wipe-in-right {
+  from {
+    clip-path: inset(0 0 0 100%);
+    -webkit-clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes wipe-in-left {
+  from {
+    clip-path: inset(0 100% 0 0);
+    -webkit-clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-wipe-right {
+  animation: wipe-in-right 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-wipe-left {
+  animation: wipe-in-left 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Hide scrollbar globally across all elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+

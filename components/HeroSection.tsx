@@ -68,7 +68,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
         <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
           {/* Word-by-word reveal heading */}
-          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,40px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]">
+          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,46px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]">
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-1">
                 <motion.span
@@ -92,7 +92,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }}
-            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,36px)] font-light leading-[1.6] max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4"
+            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,42px)] font-light leading-snug max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4 pt-10"
           >
             {subtitle || defaultSubtitle}
           </motion.p>

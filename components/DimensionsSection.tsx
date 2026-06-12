@@ -48,42 +48,42 @@ export default function DimensionsSection() {
         className="w-full max-w-7xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16"
       >
         {/* Column 1: THICKNESS */}
-        <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-8">
+        <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] text-brand-charcoal font-medium uppercase text-[clamp(20px,2.5vw,28px)]"
+            className="font-didot tracking-[0.15em] font-semibold text-brand-dark/70 uppercase text-[clamp(20px,2.5vw,28px)]"
             style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
           >
             THICKNESS
           </h3>
-          <div className="font-michroma font-light text-brand-dark space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-brand-dark/70 space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p>6.5 MM</p>
             <p>12 MM</p>
           </div>
         </motion.div>
 
         {/* Column 2: DIMENSIONS */}
-        <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-8">
+        <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] text-brand-charcoal font-medium uppercase text-[clamp(20px,2.5vw,28px)]"
+            className="font-didot tracking-[0.15em] font-semibold text-brand-dark/70  uppercase text-[clamp(20px,2.5vw,28px)]"
             style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
           >
             DIMENSIONS
           </h3>
-          <div className="font-michroma font-light text-brand-dark space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-brand-dark/70 space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p>1600 X 3200 MM</p>
             <p>1620 X 3240 MM</p>
           </div>
         </motion.div>
 
         {/* Column 3: FORMAT */}
-        <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-8">
+        <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] text-brand-charcoal font-medium uppercase text-[clamp(20px,2.5vw,28px)]"
+            className="font-didot tracking-[0.15em] font-semibold text-brand-dark/70  uppercase text-[clamp(20px,2.5vw,28px)]"
             style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
           >
             FORMAT
           </h3>
-          <div className="font-michroma font-light text-brand-dark space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-brand-dark/70 space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p>RECTIFIED</p>
             <p>GROSS</p>
           </div>
@@ -106,7 +106,7 @@ export default function DimensionsSection() {
         />
         <motion.button 
           whileTap={{ scale: 0.96 }}
-          className="absolute border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-500 uppercase group overflow-hidden"
+          className="absolute border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-2000 uppercase group overflow-hidden"
         >
           <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
           <span className="relative z-10 transition-colors duration-500 group-hover:text-black">

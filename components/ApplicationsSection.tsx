@@ -130,21 +130,14 @@ export default function ApplicationsSection() {
       ref={el => { tileRefs.current[globalIdx] = el; }}
       className="app-tile group relative overflow-hidden cursor-pointer h-[250px] md:h-[300px] lg:h-[360px]"
     >
-      {/* ── Image — same as original, overflow:hidden handles parallax clipping */}
       <img
         src={app.image}
         alt={app.name}
         className="tile-img absolute inset-0 w-full h-full object-cover"
         style={{
-          filter: "brightness(0.92)",
-          transition: "filter 0.7s ease",
           willChange: "transform",
         }}
-        onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.filter = "brightness(1.0)"; }}
-        onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.filter = "brightness(0.92)"; }}
       />
-      {/* ── Overlay — same as original */}
-      <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-white/10 pointer-events-none" />
       {/* ── Label */}
       <div className="absolute inset-0 flex items-center justify-center p-4 text-center pointer-events-none">
         <span
