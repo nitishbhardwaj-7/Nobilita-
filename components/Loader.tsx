@@ -40,7 +40,7 @@ export default function Loader({ isLoading }: LoaderProps) {
         >
           <div className="flex flex-col items-center justify-center">
             {/* Palazzo Icon Container for Crossfade */}
-            <div className="relative h-[320px] w-[253px] flex items-center justify-center">
+            <div className="relative h-[320px] w-[223px] flex items-center justify-center">
               {/* Staggered Line Drawing SVG */}
               <div 
                 className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
@@ -48,7 +48,7 @@ export default function Loader({ isLoading }: LoaderProps) {
               >
                 <PalazzoSVG 
                   variant="white" 
-                  size={320} 
+                  size={223} 
                   animate={true} 
                   className="w-full h-full object-contain"
                 />
@@ -68,7 +68,7 @@ export default function Loader({ isLoading }: LoaderProps) {
             </div>
             
             {/* Programmatic Logo Group */}
-            <div className={`mt-4 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`mt-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
               <img 
                 src="/nobilita3/images/NOBILITA_white.png" 
                 alt="Porcellana Nobilita" 
@@ -77,7 +77,7 @@ export default function Loader({ isLoading }: LoaderProps) {
             </div>
 
             {/* Sharp-edged Loading Bar */}
-            <div className="mt-16 w-[300px] h-[10px] bg-white/20 overflow-hidden relative">
+            <div className="mt-16 w-[200px] h-[10px] bg-white/20 overflow-hidden relative">
               {showContent && (
                 <div className="absolute top-0 left-0 h-full bg-white loading-bar-fill" />
               )}

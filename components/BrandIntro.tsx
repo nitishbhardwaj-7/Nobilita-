@@ -60,7 +60,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image }: Props
           transition={{ duration: 0.8, delay: 0.4 }}
           className="w-full max-w-[850px]"
         >
-          <p className="font-ivymode font-extralight text-white leading-snug text-center text-[clamp(16px,2vw,18px)] tracking-widest leading-loose">
+          <p className="font-ivymode font-extralight text-white leading-loose text-center text-[clamp(16px,2vw,18px)] tracking-widest leading-loose">
             {subtitle || defaultSubtitle}
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image }: Props
         >
           <motion.button 
             whileTap={{ scale: 0.96 }}
-            className="relative overflow-hidden border border-white text-white bg-transparent px-12 py-3.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
+            className="relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
           >
             <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
             <span className="relative z-10 transition-colors duration-500 group-hover:text-[#007190]">

@@ -30,13 +30,13 @@ export default function PalazzoSVG({ variant = "white", size = 300, className = 
   return (
     <svg 
       width={size} 
-      height={(size / 300) * 380} 
-      viewBox="0 0 300 380" 
+      height={size * 1.43456} 
+      viewBox="0 0 240 344.3" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g stroke={strokeColor} strokeWidth="1.2">
+      <g stroke={strokeColor} strokeWidth="1.2" transform="translate(-30, -28.596) scale(1, 1.14385)">
         {/* Base Steps (Delay 0.1s - 0.3s) */}
         <motion.path 
           d="M30 320 L270 320" 

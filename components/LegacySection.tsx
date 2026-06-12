@@ -172,10 +172,10 @@ export default function LegacySection() {
 
           <img
             ref={sketchRef}
-            src="/nobilita3/images/Links/DP801729.png"
+            src="/nobilita3/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
-            className="sketch-img w-[105%] md:w-[200%] lg:w-[200%] max-w-none h-auto object-contain"
+            className="sketch-img w-[105%] md:w-[200%] lg:w-[200%] max-w-none h-auto object-contain mb-8"
           />
 
           <img
@@ -183,7 +183,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
-            className="nobilita-logo h-10 md:h-24 lg:h-28 w-auto object-contain mb-4"
+            className="nobilita-logo h-10 md:h-22 lg:h-24 w-auto object-contain mb-4"
           />
 
           <img
@@ -191,7 +191,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[75%] md:w-[80%] lg:w-[85%] max-w-[320px] h-auto object-contain mt-1"
+            className="tagline-text w-[75%] md:w-[80%] lg:w-[85%] max-w-[360px] h-auto object-contain mt-1"
           />
         </div>
       </div>
