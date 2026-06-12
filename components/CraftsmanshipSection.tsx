@@ -146,7 +146,7 @@ export default function CraftsmanshipSection() {
       <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
       {/* ── TOP HEADING */}
-      <div className="relative z-10 w-full text-center max-w-[1300px] mx-auto">
+      <div className="relative z-10 w-full text-center max-w-[1200px] mx-auto">
         <h2
           ref={headingRef}
           className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,6.5vw,66px)] uppercase py-1"
@@ -157,7 +157,7 @@ export default function CraftsmanshipSection() {
       </div>
 
       {/* ── CENTER CONTENT (Paragraph & Badge) */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto px-4 max-w-[1300px] mx-auto w-full">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto px-4 max-w-[1000px] mx-auto w-full">
 
         <p
           ref={paraRef}
