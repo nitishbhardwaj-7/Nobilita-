@@ -148,10 +148,10 @@ export default function ApplicationsSection() {
       {/* ── Label */}
       <div className="absolute inset-0 flex items-center justify-center p-4 text-center pointer-events-none">
         <span
-          className={`tile-label font-ivymode font-normal text-[clamp(16px,4vw,24px)] uppercase relative z-10 ${
+          className={`tile-label font-didot font-medium text-[clamp(16px,4vw,28px)] uppercase relative z-10 ${
             DARK_LABEL.includes(app.name) ? "text-brand-dark" : "text-white"
           }`}
-          style={{ letterSpacing: "0.1em", opacity: 0 }}
+          style={{ fontFamily: "var(--font-didot), Georgia, serif", letterSpacing: "0.1em", opacity: 0 }}
         >
           {app.name}
         </span>

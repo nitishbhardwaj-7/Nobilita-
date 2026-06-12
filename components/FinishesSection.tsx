@@ -99,9 +99,12 @@ export default function FinishesSection() {
                     0{i + 1}
                   </span>
                   
-                  <h3 className={`font-ivymode tracking-[0.2em] uppercase text-[clamp(14px,2.2vw,28px)] ${
-                    finish.darkText ? 'text-brand-dark/80' : 'text-white'
-                  }`}>
+                  <h3
+                    className={`font-didot font-medium tracking-[0.2em] uppercase text-[clamp(14px,2.2vw,28px)] ${
+                      finish.darkText ? 'text-brand-dark/80' : 'text-white'
+                    }`}
+                    style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
+                  >
                     {finish.name}
                   </h3>
                 </div>
