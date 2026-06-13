@@ -9,9 +9,11 @@ function LazyVideo({ src, poster, className, controls = false, isParentReady = t
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const hasStartedRef = useRef(false);
 
   useEffect(() => {
     setIsLoaded(false);
+    hasStartedRef.current = false;
   }, [src]);
 
   useEffect(() => {
@@ -35,16 +37,29 @@ function LazyVideo({ src, poster, className, controls = false, isParentReady = t
     const video = videoRef.current;
     if (!video) return;
 
-    if (isVisible && isParentReady) {
+    if (isVisible) {
+      // Start preloading/loading as soon as visible
       if (!video.src || video.src === "") {
         video.src = src;
         video.load();
       }
-      video.play().catch(() => {
-        // Handle browser autoplay policy block gracefully
-      });
+
+      if (isParentReady) {
+        video.play().then(() => {
+          if (!hasStartedRef.current) {
+            video.currentTime = 0;
+            hasStartedRef.current = true;
+          }
+        }).catch(() => {
+          // Handle browser autoplay policy block gracefully
+        });
+      } else {
+        video.pause();
+        hasStartedRef.current = false;
+      }
     } else {
       video.pause();
+      hasStartedRef.current = false;
     }
   }, [isVisible, src, isParentReady]);
 
@@ -66,7 +81,7 @@ function LazyVideo({ src, poster, className, controls = false, isParentReady = t
         controls={controls}
         onLoadedData={() => setIsLoaded(true)}
         onPlay={() => setIsLoaded(true)}
-        className={`${className} absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-out z-10`}
+        className={`${className} absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-out z-10`}
         style={{
           opacity: isLoaded ? 1 : 0,
         }}
@@ -278,7 +293,6 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
     { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
     { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
     { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" },
-    { type: "image", src: "/nobilita3/images/Arbescato Vagli/Bookmatch.jpg", alt: "Arabescato Vagli Bookmatch" },
   ];
 
   const nextVagliSlide = () => {
@@ -297,7 +311,6 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
     { type: "video", src: "/nobilita3/images/Links/Calacatta Oyster Vid.mp4", poster: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg", alt: "Calacatta Oyster Video" },
     { type: "image", src: "/nobilita3/images/Calacatta Oyster/Calacatta Oyster1.jpg", alt: "Calacatta Oyster Slab 1" },
     { type: "image", src: "/nobilita3/images/Calacatta Oyster/Calacatta Oyster (2).jpg", alt: "Calacatta Oyster Slab 2" },
-    { type: "image", src: "/nobilita3/images/Calacatta Oyster/Bookmatch.jpg", alt: "Calacatta Oyster Bookmatch" },
   ];
 
   const nextOysterSlide = () => {
@@ -628,6 +641,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                             src={slide.src}
                             poster={slide.poster}
                             className="w-full h-full object-cover"
+                            isParentReady={isOpenDone && isActive}
                           />
                         ) : null
                       ) : (
@@ -894,6 +908,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                             src={slide.src}
                             poster={slide.poster}
                             className="w-full h-full object-cover"
+                            isParentReady={isOpenDone && isActive}
                           />
                         ) : null
                       ) : (

@@ -146,7 +146,7 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
     const ctx = gsap.context(() => {
       // ── SET INITIAL STATES ──
       gsap.set(backdropRef.current, { opacity: 0 });
-      gsap.set(containerRef.current, { 
+      gsap.set(containerRef.current, {
         clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
         opacity: 0,
         x: -50
@@ -164,26 +164,26 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
         duration: 0.6,
         ease: "power2.out"
       })
-      .to(containerRef.current, {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        opacity: 1,
-        x: 0,
-        duration: 1.1,
-        ease: "power4.inOut"
-      }, "-=0.3")
-      .to(imageRef.current, {
-        scale: 1,
-        opacity: 1,
-        duration: 1.4,
-        ease: "power2.out"
-      }, "-=0.6")
-      .to([item1Ref.current, item2Ref.current, item3Ref.current, item4Ref.current, item5Ref.current], {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: "power3.out"
-      }, "-=1.1");
+        .to(containerRef.current, {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          opacity: 1,
+          x: 0,
+          duration: 1.1,
+          ease: "power4.inOut"
+        }, "-=0.3")
+        .to(imageRef.current, {
+          scale: 1,
+          opacity: 1,
+          duration: 1.4,
+          ease: "power2.out"
+        }, "-=0.6")
+        .to([item1Ref.current, item2Ref.current, item3Ref.current, item4Ref.current, item5Ref.current], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power3.out"
+        }, "-=1.1");
     });
 
     return () => ctx.revert();
@@ -201,44 +201,44 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
       stagger: 0.05,
       ease: "power2.in"
     })
-    .to(imageRef.current, {
-      opacity: 0,
-      scale: 1.1,
-      duration: 0.5,
-      ease: "power2.in"
-    }, "-=0.3")
-    .to(containerRef.current, {
-      clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
-      opacity: 0,
-      x: -30,
-      duration: 0.8,
-      ease: "power4.inOut"
-    }, "-=0.4")
-    .to(backdropRef.current, {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.in"
-    }, "-=0.6");
+      .to(imageRef.current, {
+        opacity: 0,
+        scale: 1.1,
+        duration: 0.5,
+        ease: "power2.in"
+      }, "-=0.3")
+      .to(containerRef.current, {
+        clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+        opacity: 0,
+        x: -30,
+        duration: 0.8,
+        ease: "power4.inOut"
+      }, "-=0.4")
+      .to(backdropRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.in"
+      }, "-=0.6");
   };
 
   return (
-    <div 
+    <div
       ref={backdropRef}
       className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
     >
       {/* Close Trigger */}
-      <div 
-        className="absolute inset-0 cursor-zoom-out" 
-        onClick={handleClose} 
+      <div
+        className="absolute inset-0 cursor-zoom-out"
+        onClick={handleClose}
       />
 
-      <div 
+      <div
         ref={containerRef}
         className="relative bg-brand-dark text-white w-full max-w-6xl aspect-[16/9] md:aspect-auto md:min-h-[75vh] flex flex-col md:flex-row border border-white/10 z-10 shadow-2xl overflow-hidden"
       >
         {/* Left Column: Huge Slab Face Image */}
         <div className="relative w-full md:w-[65%] h-[50vh] md:h-[75vh] overflow-hidden bg-black/40">
-          <img 
+          <img
             ref={imageRef}
             src={slab.img}
             alt={slab.name}
@@ -249,7 +249,7 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
         {/* Right Column: Spec / Details Info Panel with Stagger Reveal */}
         <div className="w-full md:w-[35%] p-6 md:p-10 flex flex-col justify-between bg-brand-charcoal relative">
           {/* Close Button */}
-          <button 
+          <button
             onClick={handleClose}
             className="absolute top-4 right-4 text-white/60 hover:text-white font-michroma text-xs tracking-wider uppercase focus:outline-none"
           >
@@ -257,26 +257,26 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
           </button>
 
           <div className="space-y-6 pt-6">
-            <p 
+            <p
               ref={item1Ref}
               className="font-michroma text-[10px] tracking-[0.3em] text-[#007190] uppercase"
             >
               COLLECTION ITEM
             </p>
-            
-            <h2 
+
+            <h2
               ref={item2Ref}
               className="font-ivymode text-[28px] md:text-[38px] leading-tight tracking-[0.05em] uppercase"
             >
               {slab.name}
             </h2>
 
-            <div 
+            <div
               ref={item3Ref}
-              className="h-[2px] w-12 bg-white/20" 
+              className="h-[2px] w-12 bg-white/20"
             />
 
-            <div 
+            <div
               ref={item4Ref}
               className="space-y-4 font-montserrat text-sm text-white/80 font-light"
             >
@@ -299,16 +299,16 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
             </div>
           </div>
 
-          <div 
+          <div
             ref={item5Ref}
             className="pt-8 space-y-4"
           >
-            <Link 
+            <Link
               href="#contact-us"
               onClick={handleClose}
               className="block w-full"
             >
-              <button 
+              <button
                 className="relative overflow-hidden border border-white/40 bg-transparent w-full py-4 text-[10px] tracking-[0.2em] font-michroma uppercase transition-colors duration-500 group"
               >
                 <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
@@ -327,13 +327,13 @@ function SlabDetailModal({ slab, onClose }: SlabDetailModalProps) {
 export default function ExploreCollection() {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedFinish, setSelectedFinish] = useState<string | null>(null);
-  
+
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
   const [finishDropdownOpen, setFinishDropdownOpen] = useState(false);
-  
+
   // Grid column count state: 2, 3, 4, or 5 columns
   const [columns, setColumns] = useState(4);
-  
+
   // Selected slab for fullscreen detail modal
   const [activeSlab, setActiveSlab] = useState<typeof slabs[0] | null>(null);
 
@@ -369,22 +369,32 @@ export default function ExploreCollection() {
 
       {/* Explore Collection Header Banner */}
       <div id="explore-hero" className="w-full bg-[#007190] pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
-        <Link 
-          href="/" 
-          className="absolute top-28 left-6 md:left-12 group flex items-center border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm px-5 py-2 text-white/80 hover:text-white transition-all duration-300 font-montserrat text-[10px] tracking-[0.25em] uppercase"
+        <Link
+          href="/"
+          className="absolute top-28 left-6 md:left-12 group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          aria-label="Back to home"
         >
-          <span className="relative pb-px">
-            HOME
-          </span>
+          <svg 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="w-4 h-4 md:w-4.5 md:h-4.5 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
         </Link>
-        
+
         <h1 className="font-ivymode text-white text-[clamp(24px,4.5vw,48px)] tracking-[0.10em] uppercase leading-tight mb-12">
           EXPLORE THE COLLECTION
         </h1>
-        
-        <img 
-          src="/nobilita3/images/NOBILITA_white.png" 
-          alt="Porcellana Nobilita" 
+
+        <img
+          src="/nobilita3/images/NOBILITA_white.png"
+          alt="Porcellana Nobilita"
           className="h-10 md:h-36 w-auto object-contain"
         />
       </div>
@@ -395,22 +405,21 @@ export default function ExploreCollection() {
         <div className="flex items-center gap-6 md:gap-10">
           {/* Color Filter */}
           <div className="relative">
-            <button 
+            <button
               onClick={() => {
                 setColorDropdownOpen(!colorDropdownOpen);
                 setFinishDropdownOpen(false);
               }}
-              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${
-                selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
-              }`}
+              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
+                }`}
             >
               <span>COLOR {selectedColor ? `(${selectedColor})` : ""}</span>
               <span className={`inline-block transition-transform duration-200 ${colorDropdownOpen ? "rotate-180" : "rotate-0"}`}>∨</span>
             </button>
-            
+
             <AnimatePresence>
               {colorDropdownOpen && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
@@ -427,9 +436,8 @@ export default function ExploreCollection() {
                         setSelectedColor(color);
                         setColorDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${
-                        selectedColor === color ? "text-[#007190] font-semibold" : "text-brand-dark/70"
-                      }`}
+                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-brand-dark/70"
+                        }`}
                     >
                       {color}
                     </motion.button>
@@ -441,22 +449,21 @@ export default function ExploreCollection() {
 
           {/* Finish Filter */}
           <div className="relative">
-            <button 
+            <button
               onClick={() => {
                 setFinishDropdownOpen(!finishDropdownOpen);
                 setColorDropdownOpen(false);
               }}
-              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${
-                selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
-              }`}
+              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
+                }`}
             >
               <span>FINISH {selectedFinish ? `(${selectedFinish})` : ""}</span>
               <span className={`inline-block transition-transform duration-200 ${finishDropdownOpen ? "rotate-180" : "rotate-0"}`}>∨</span>
             </button>
-            
+
             <AnimatePresence>
               {finishDropdownOpen && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
@@ -473,9 +480,8 @@ export default function ExploreCollection() {
                         setSelectedFinish(finish);
                         setFinishDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${
-                        selectedFinish === finish ? "text-[#007190] font-semibold" : "text-brand-dark/70"
-                      }`}
+                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-brand-dark/70"
+                        }`}
                     >
                       {finish}
                     </motion.button>
@@ -487,7 +493,7 @@ export default function ExploreCollection() {
 
           {/* Reset Filter Button */}
           {(selectedColor || selectedFinish) && (
-            <button 
+            <button
               onClick={handleReset}
               className="font-michroma text-[11px] md:text-lg tracking-[0.15em] text-red-600 hover:text-red-700 transition-colors uppercase select-none"
             >
@@ -498,15 +504,15 @@ export default function ExploreCollection() {
 
         {/* Right Side: Grid Columns Stack Selector */}
         <div className="flex flex-col  select-none rounded bg-white shadow-sm">
-          <button 
-            onClick={() => setColumns(c => Math.min(c + 1, 5))} 
+          <button
+            onClick={() => setColumns(c => Math.min(c + 1, 5))}
             className="px-3 py-1.5 text-[15px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
             aria-label="Increase columns"
           >
             +
           </button>
-          <button 
-            onClick={() => setColumns(c => Math.max(c - 1, 2))} 
+          <button
+            onClick={() => setColumns(c => Math.max(c - 1, 2))}
             className="px-3 py-1.5 text-[15px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
             aria-label="Decrease columns"
           >
@@ -545,16 +551,16 @@ export default function ExploreCollection() {
                         willChange: "transform"
                       }}
                     />
-                    
+
                     {/* Wipe Reveal Mask (Right to Left) */}
-                    <motion.div 
+                    <motion.div
                       initial={{ x: "0%" }}
                       whileInView={{ x: "-100%" }}
                       viewport={{ once: true, margin: "20px" }}
-                      transition={{ 
-                        duration: 0.9, 
+                      transition={{
+                        duration: 0.9,
                         ease: [0.76, 0, 0.24, 1],
-                        delay: (index % 4) * 0.05 
+                        delay: (index % 4) * 0.05
                       }}
                       className="absolute inset-0 bg-white z-20 pointer-events-none"
                     />
@@ -572,13 +578,13 @@ export default function ExploreCollection() {
                     {/* Premium Icon (Diagonal Arrow) reveal */}
                     <div className="overflow-hidden flex-shrink-0">
                       <div className={`${isDarkSlab ? 'text-white/90' : 'text-brand-dark/90'} transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] delay-[100ms]`}>
-                        <svg 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="1.2" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           className="w-5 h-5 md:w-6 md:h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         >
                           <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -598,7 +604,7 @@ export default function ExploreCollection() {
             <p className="font-ivymode text-brand-dark/50 text-xl tracking-wider uppercase">
               No Slabs Match the Selected Filters.
             </p>
-            <button 
+            <button
               onClick={handleReset}
               className="mt-4 border border-brand-dark/40 px-6 py-2.5 font-michroma text-[10px] tracking-widest uppercase hover:bg-brand-dark hover:text-white transition-colors"
             >
@@ -608,17 +614,17 @@ export default function ExploreCollection() {
         )}
       </div>
 
-      <FeaturedProduct 
-        activeProduct={activeSlab?.name || null} 
-        onClose={() => setActiveSlab(null)} 
+      <FeaturedProduct
+        activeProduct={activeSlab?.name || null}
+        onClose={() => setActiveSlab(null)}
       />
       <Footer />
 
       {/* Slabs Detail Lightbox / Modal */}
       {activeSlab && activeSlab.name !== "Arabescato Vagli" && activeSlab.name !== "Calacatta Oyster" && (
-        <SlabDetailModal 
-          slab={activeSlab} 
-          onClose={() => setActiveSlab(null)} 
+        <SlabDetailModal
+          slab={activeSlab}
+          onClose={() => setActiveSlab(null)}
         />
       )}
     </div>
