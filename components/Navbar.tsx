@@ -185,7 +185,7 @@ export default function Navbar() {
         </button>
 
         {/* Logo */}
-        <Link href="/" className="cursor-pointer transition-opacity hover:opacity-90">
+        <Link href="/" className="cursor-pointer transition-opacity">
           <img
             src="/nobilita3/images/NOBILITA_white.png"
             alt="Porcellana Nobilita"
