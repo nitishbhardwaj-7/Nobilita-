@@ -64,12 +64,12 @@ export default function DimensionsSection() {
         {/* Column 2: DIMENSIONS */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] font-semibold text-brand-dark/70  uppercase text-[clamp(20px,2.5vw,28px)]"
+            className="font-didot tracking-[0.15em] font-semibold text-[#545759]  uppercase text-[clamp(20px,2.5vw,28px)]"
             style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
           >
             DIMENSIONS
           </h3>
-          <div className="font-michroma font-light text-brand-dark/70 space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-[#545759] space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p>1600 X 3200 MM</p>
             <p>1620 X 3240 MM</p>
           </div>
@@ -78,12 +78,12 @@ export default function DimensionsSection() {
         {/* Column 3: FORMAT */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] font-semibold text-brand-dark/70  uppercase text-[clamp(20px,2.5vw,28px)]"
+            className="font-didot tracking-[0.15em] font-semibold text-[#545759]  uppercase text-[clamp(20px,2.5vw,28px)]"
             style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
           >
             FORMAT
           </h3>
-          <div className="font-michroma font-light text-brand-dark/70 space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-[#545759] space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p>RECTIFIED</p>
             <p>GROSS</p>
           </div>

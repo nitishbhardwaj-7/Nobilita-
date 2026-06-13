@@ -78,10 +78,10 @@ export default function Footer() {
           {submitStatus === "sent" ? (
             /* Thank You Card */
             <div className="text-center flex flex-col items-center space-y-8 animate-[fadeIn_0.5s_ease-out]">
-              <h2 className="font-ivymode text-[26px] md:text-[40px] text-brand-dark tracking-[0.15em] uppercase font-light">
+              <h2 className="font-ivymode text-[26px] md:text-[48px] text-[#545759] tracking-[0.15em] uppercase font-light">
                 THANK YOU FOR YOUR ENQUIRY
               </h2>
-              <p className="font-cormorant text-[16px] md:text-[20px] text-brand-dark/80 italic font-light">
+              <p className="font-ivymode text-[20px] md:text-[36px] tracking-[0.05em] text-[#545759]">
                 Our team will get in touch with you shortly.
               </p>
               <div className="pt-8">
@@ -105,7 +105,7 @@ export default function Footer() {
             <>
               {/* Title */}
               <div className="w-full text-center mb-16">
-                <h2 className="font-ivymode text-[28px] md:text-[42px] text-brand-dark/70 tracking-[0.15em] uppercase font-light">
+                <h2 className="font-ivymode text-[28px] md:text-[42px] text-[#545759] tracking-[0.15em] uppercase font-light">
                   SEND YOUR QUERY
                 </h2>
               </div>
@@ -195,7 +195,7 @@ export default function Footer() {
                 <div className="sm:col-span-2 flex justify-center mt-8">
                   <button 
                     type="submit"
-                    className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-12 py-4 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.25em] text-brand-dark/70 uppercase focus:outline-none"
+                    className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-12 py-4 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.25em] text-[#545759] uppercase focus:outline-none"
                   >
                     {submitStatus === "sending" ? "SENDING..." : "SUBMIT"}
                   </button>

@@ -191,7 +191,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[75%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain mt-1"
+            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain mt-1"
           />
         </div>
       </div>

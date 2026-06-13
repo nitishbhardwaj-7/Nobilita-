@@ -524,7 +524,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-5">
                     {/* Custom Dimensions SVG Icon */}
-                    <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70 opacity-40">
+                    <div className="w-12 h-8 flex items-center justify-start text-[#545759] opacity-40">
                       <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
                         <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
                         <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
@@ -547,7 +547,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-5">
                     {/* Custom Faces SVG Icon */}
-                    <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                    <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
                       <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
                         <rect x="20.92" y="9.34" width="5.02" height="9.89" />
                         <rect x="11.66" y="9.34" width="5.02" height="9.89" />
@@ -570,7 +570,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-5">
                     {/* Custom Finishes SVG Icon */}
-                    <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                    <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
                       <svg viewBox="2 10.8 24.5 7" fill="none" className="w-10 h-auto">
                         <defs>
                           <clipPath id="clippath-vagli-icon">
@@ -791,7 +791,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-5">
                     {/* Custom Dimensions SVG Icon */}
-                    <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                    <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
                       <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
                         <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
                         <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
@@ -814,7 +814,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-5">
                     {/* Custom Faces SVG Icon */}
-                    <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                    <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
                       <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
                         <rect x="20.92" y="9.34" width="5.02" height="9.89" />
                         <rect x="11.66" y="9.34" width="5.02" height="9.89" />
@@ -837,7 +837,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-5">
                     {/* Custom Finishes SVG Icon */}
-                    <div className="w-12 h-8 flex items-center justify-start text-brand-dark/70">
+                    <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
                       <svg viewBox="2 10.8 24.5 7" fill="none" className="w-10 h-auto">
                         <defs>
                           <clipPath id="clippath-oyster-icon">
@@ -989,7 +989,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                     className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${
                       activeOysterFace === f && !showOysterBookmatch
                         ? "border-brand-dark bg-brand-dark text-white"
-                        : "border-brand-dark/30 bg-white/85 text-brand-dark/70 hover:border-brand-dark/60 hover:text-brand-dark"
+                        : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
                     }`}
                   >
                     FACE {f}

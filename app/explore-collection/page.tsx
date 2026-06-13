@@ -410,7 +410,7 @@ export default function ExploreCollection() {
                 setColorDropdownOpen(!colorDropdownOpen);
                 setFinishDropdownOpen(false);
               }}
-              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
+              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
                 }`}
             >
               <span>COLOR {selectedColor ? `(${selectedColor})` : ""}</span>
@@ -436,7 +436,7 @@ export default function ExploreCollection() {
                         setSelectedColor(color);
                         setColorDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-brand-dark/70"
+                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-[#545759]"
                         }`}
                     >
                       {color}
@@ -454,7 +454,7 @@ export default function ExploreCollection() {
                 setFinishDropdownOpen(!finishDropdownOpen);
                 setColorDropdownOpen(false);
               }}
-              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-brand-dark/70"
+              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
                 }`}
             >
               <span>FINISH {selectedFinish ? `(${selectedFinish})` : ""}</span>
@@ -480,7 +480,7 @@ export default function ExploreCollection() {
                         setSelectedFinish(finish);
                         setFinishDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-brand-dark/70"
+                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-[#545759]"
                         }`}
                     >
                       {finish}
