@@ -519,54 +519,77 @@ export default function ExploreCollection() {
       <div className="flex-1 w-full p-3 md:p-6 bg-white">
         <div className={`grid ${gridColsClass} gap-3 md:gap-4`}>
           <AnimatePresence>
-            {filteredSlabs.map((slab, index) => (
-              <motion.div
-                key={slab.name}
-                initial={{ y: 15 }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true, margin: "20px" }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: (index % 4) * 0.03 }}
-                onClick={() => setActiveSlab(slab)}
-                className="relative aspect-[4/3] group overflow-hidden border border-brand-dark/5 cursor-pointer bg-brand-cream/10"
-              >
-                {/* Slab Image Wrapper with overflow-hidden */}
-                <div className="absolute inset-0 w-full h-full overflow-hidden">
-                  <img
-                    src={slab.img}
-                    alt={slab.name}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-555 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
-                    style={{
-                      transform: "translate3d(0,0,0)",
-                      backfaceVisibility: "hidden",
-                      willChange: "transform"
-                    }}
-                  />
-                  
-                  {/* Wipe Reveal Mask (Right to Left) */}
-                  <motion.div 
-                    initial={{ x: "0%" }}
-                    whileInView={{ x: "-100%" }}
-                    viewport={{ once: true, margin: "20px" }}
-                    transition={{ 
-                      duration: 0.9, 
-                      ease: [0.76, 0, 0.24, 1],
-                      delay: (index % 4) * 0.05 
-                    }}
-                    className="absolute inset-0 bg-white z-20 pointer-events-none"
-                  />
-                </div>
+            {filteredSlabs.map((slab, index) => {
+              const isDarkSlab = slab.color === "Dark";
+              return (
+                <motion.div
+                  key={slab.name}
+                  initial={{ y: 15 }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, margin: "20px" }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: (index % 4) * 0.03 }}
+                  onClick={() => setActiveSlab(slab)}
+                  className="relative aspect-[4/3] group overflow-hidden border border-brand-dark/5 cursor-pointer bg-brand-cream/10"
+                >
+                  {/* Slab Image Wrapper with overflow-hidden */}
+                  <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <img
+                      src={slab.img}
+                      alt={slab.name}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.08]"
+                      style={{
+                        transform: "translate3d(0,0,0)",
+                        backfaceVisibility: "hidden",
+                        willChange: "transform"
+                      }}
+                    />
+                    
+                    {/* Wipe Reveal Mask (Right to Left) */}
+                    <motion.div 
+                      initial={{ x: "0%" }}
+                      whileInView={{ x: "-100%" }}
+                      viewport={{ once: true, margin: "20px" }}
+                      transition={{ 
+                        duration: 0.9, 
+                        ease: [0.76, 0, 0.24, 1],
+                        delay: (index % 4) * 0.05 
+                      }}
+                      className="absolute inset-0 bg-white z-20 pointer-events-none"
+                    />
+                  </div>
 
-                {/* White Brighten Overlay on Hover */}
-                <div className="absolute inset-0 bg-white/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10">
-                  <h3 className="font-ivymode text-brand-dark text-[18px] md:text-[22px] tracking-wider uppercase mb-1 transition-all duration-300 transform group-hover:-translate-y-1 group-hover:tracking-[0.08em] relative pb-1 inline-block w-fit">
-                    {slab.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-dark transition-all duration-300 group-hover:w-full" />
-                  </h3>
-                </div>
-              </motion.div>
-            ))}
+                  {/* Content Overlay - Name & Premium Icon (No background overlay, no gold line) */}
+                  <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 z-20 flex items-end justify-between pointer-events-none select-none">
+                    {/* Slab Name */}
+                    <div className="overflow-hidden flex-1 mr-4">
+                      <h3 className={`font-ivymode ${isDarkSlab ? 'text-white' : 'text-brand-dark'} text-[16px] md:text-[22px] tracking-[0.06em] uppercase transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+                        {slab.name}
+                      </h3>
+                    </div>
+
+                    {/* Premium Icon (Diagonal Arrow) reveal */}
+                    <div className="overflow-hidden flex-shrink-0">
+                      <div className={`${isDarkSlab ? 'text-white/90' : 'text-brand-dark/90'} transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] delay-[100ms]`}>
+                        <svg 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="1.2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          className="w-5 h-5 md:w-6 md:h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        >
+                          <line x1="7" y1="17" x2="17" y2="7"></line>
+                          <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
 

@@ -159,7 +159,7 @@ export default function CraftsmanshipSection() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto px-6 max-w-[1100px] mx-auto w-full">
         <p
           ref={paraRef}
-          className="craftsmanship-para font-ivymode mt-16 font-light text-white text-[clamp(18px,2.8vw,36px)] text-center leading-[1.5] tracking-wide max-w-[1200px]"
+          className="craftsmanship-para font-ivymode mt-6 font-light text-white text-[clamp(18px,2.8vw,36px)] text-center leading-[1.3] tracking-wide max-w-[1200px]"
         >
           In the heart of Modena, where centuries of Italian expertise{" "}
           meet innovation, NOBILITA creates porcelain surfaces that{" "}
@@ -212,7 +212,7 @@ export default function CraftsmanshipSection() {
         <span
           ref={casaRef}
           className="casa-nobile-label font-ivymode text-white/90 text-[clamp(12px,1.5vw,18px)] uppercase"
-          style={{ opacity: 0, letterSpacing: "0.10em" }}
+          style={{ opacity: 0, }}
         >
           CASA NOBILE
         </span>

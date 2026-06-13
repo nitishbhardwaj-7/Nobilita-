@@ -26,7 +26,7 @@ export default function DimensionsSection() {
     <section className="w-full bg-white py-24 flex flex-col items-center">
       {/* Title - slide up reveal */}
       <div className="w-full px-4 mb-16 text-center overflow-hidden py-1">
-        <h2 className="font-ivymode text-[clamp(28px,5vw,60px)] text-brand-dark/80 tracking-[0.1em] uppercase inline-block">
+        <h2 className="font-ivymode text-[clamp(28px,5vw,60px)] text-[#545759] tracking-[0.1em] uppercase inline-block">
           <motion.span
             initial={{ y: "100%" }}
             whileInView={{ y: 0 }}
@@ -50,12 +50,12 @@ export default function DimensionsSection() {
         {/* Column 1: THICKNESS */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] font-semibold text-brand-dark/70 uppercase text-[clamp(20px,2.5vw,28px)]"
+            className="font-didot tracking-[0.15em] font-semibold text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)]"
             style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
           >
             THICKNESS
           </h3>
-          <div className="font-michroma font-light text-brand-dark/70 space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-[#545759] space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p>6.5 MM</p>
             <p>12 MM</p>
           </div>

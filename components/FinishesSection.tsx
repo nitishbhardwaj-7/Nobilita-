@@ -46,7 +46,7 @@ export default function FinishesSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-ivymode text-[clamp(32px,5vw,60px)] text-brand-dark/80 tracking-[0.2em] text-center mb-20 uppercase"
+        className="font-ivymode text-[clamp(32px,5vw,60px)] text-[#545759] tracking-[0.2em] text-center mb-20 uppercase"
       >
         FINISHES
       </motion.h2>
@@ -101,7 +101,7 @@ export default function FinishesSection() {
                   
                   <h3
                     className={`font-didot font-medium tracking-[0.2em] uppercase text-[clamp(14px,2.2vw,28px)] ${
-                      finish.darkText ? 'text-brand-dark/80' : 'text-white'
+                      finish.darkText ? 'text-[#545759]' : 'text-white'
                     }`}
                     style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
                   >
@@ -112,7 +112,7 @@ export default function FinishesSection() {
                 {/* Subtitle Transition */}
                 <p
         className={`font-ivymode italic max-w-full ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] transition-all duration-500 ease-out ${
-                    finish.darkText ? 'text-brand-charcoal/80' : 'text-white/80'
+                    finish.darkText ? 'text-[#545759]' : 'text-white/80'
                   } ${
                     isHovered 
                       ? "opacity-100 max-h-24 mt-4 translate-y-0" 
