@@ -321,9 +321,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
     if (!activeChild || !prevChild) return;
 
-    const fromClip = vagliSlideDirection === "next" ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)";
-    const toClip = "inset(0 0 0 0)";
-
+    // Set z-indices
     Array.from(children).forEach((child, idx) => {
       const el = child as HTMLElement;
       if (idx === currentVagliSlide) {
@@ -335,16 +333,43 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
       }
     });
 
-    gsap.killTweensOf(activeChild);
-    gsap.fromTo(activeChild, 
-      { clipPath: fromClip, webkitClipPath: fromClip },
-      { 
-        clipPath: toClip, 
-        webkitClipPath: toClip,
-        duration: 0.8, 
-        ease: "power3.out" 
-      }
-    );
+    // Kill any ongoing tweens
+    gsap.killTweensOf([activeChild, prevChild]);
+
+    const isNext = vagliSlideDirection === "next";
+
+    // Start states: active slide zooms in/out depending on navigation direction and fades in
+    gsap.set(activeChild, {
+      x: "0%",
+      scale: isNext ? 1.15 : 0.85,
+      opacity: 0,
+      clipPath: "none",
+      webkitClipPath: "none"
+    });
+
+    gsap.set(prevChild, {
+      x: "0%",
+      scale: 1,
+      opacity: 1,
+      clipPath: "none",
+      webkitClipPath: "none"
+    });
+
+    // Animate active slide in (soft scale to normal & opacity fade)
+    gsap.to(activeChild, {
+      scale: 1,
+      opacity: 1,
+      duration: 1.3,
+      ease: "power3.out"
+    });
+
+    // Animate prev slide out (soft scale away & opacity fade)
+    gsap.to(prevChild, {
+      scale: isNext ? 0.88 : 1.12,
+      opacity: 0,
+      duration: 1.3,
+      ease: "power3.out"
+    });
   }, [currentVagliSlide, prevVagliSlideIndex, vagliSlideDirection]);
 
   // Calacatta Oyster Slider GSAP Transitions
@@ -357,11 +382,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
     if (!activeChild || !prevChild) return;
 
-    const fromClip = slideDirection === "next" 
-      ? "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" 
-      : "polygon(0 0, 0 0, 0 100%, 0% 100%)";
-    const toClip = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
-
+    // Set z-indices
     Array.from(children).forEach((child, idx) => {
       const el = child as HTMLElement;
       if (idx === currentOysterSlide) {
@@ -373,16 +394,43 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
       }
     });
 
-    gsap.killTweensOf(activeChild);
-    gsap.fromTo(activeChild, 
-      { clipPath: fromClip, webkitClipPath: fromClip },
-      { 
-        clipPath: toClip, 
-        webkitClipPath: toClip,
-        duration: 0.8, 
-        ease: "power3.out" 
-      }
-    );
+    // Kill any ongoing tweens
+    gsap.killTweensOf([activeChild, prevChild]);
+
+    const isNext = slideDirection === "next";
+
+    // Start states: active slide zooms in/out depending on navigation direction and fades in
+    gsap.set(activeChild, {
+      x: "0%",
+      scale: isNext ? 1.15 : 0.85,
+      opacity: 0,
+      clipPath: "none",
+      webkitClipPath: "none"
+    });
+
+    gsap.set(prevChild, {
+      x: "0%",
+      scale: 1,
+      opacity: 1,
+      clipPath: "none",
+      webkitClipPath: "none"
+    });
+
+    // Animate active slide in (soft scale to normal & opacity fade)
+    gsap.to(activeChild, {
+      scale: 1,
+      opacity: 1,
+      duration: 1.3,
+      ease: "power3.out"
+    });
+
+    // Animate prev slide out (soft scale away & opacity fade)
+    gsap.to(prevChild, {
+      scale: isNext ? 0.88 : 1.12,
+      opacity: 0,
+      duration: 1.3,
+      ease: "power3.out"
+    });
   }, [currentOysterSlide, prevOysterSlideIndex, slideDirection]);
 
   if (!activeProduct || (activeProduct !== "Arabescato Vagli" && activeProduct !== "Calacatta Oyster")) {
@@ -537,7 +585,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             {/* Right Column: Slider (Video & Images) */}
             <div
               ref={vagliRightColRef}
-              className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen bg-black flex items-center justify-center overflow-hidden group"
+              className="relative w-full lg:w-1/2 h-[50vh] lg:h-auto lg:min-h-screen bg-black flex items-center justify-center overflow-hidden group"
               style={{
                 opacity: 0,
                 transform: "translateX(30px)",
@@ -550,19 +598,17 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   const isPrev = idx === prevVagliSlideIndex;
 
                   let zIndex = "z-0";
-                  let clipPath = "";
+                  let opacity = 0;
 
                   if (isActive) {
                     zIndex = "z-10";
-                    clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
+                    opacity = 1;
                   } else if (isPrev) {
                     zIndex = "z-5";
-                    clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
+                    opacity = 1;
                   } else {
                     zIndex = "z-0";
-                    clipPath = idx > currentVagliSlide 
-                      ? "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" 
-                      : "polygon(0 0, 0 0, 0 100%, 0% 100%)";
+                    opacity = 0;
                   }
 
                   return (
@@ -570,10 +616,8 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       key={idx}
                       className={`absolute inset-0 w-full h-full ${zIndex}`}
                       style={{
-                        clipPath,
-                        WebkitClipPath: clipPath,
-                        willChange: "clip-path",
-                        transform: "translateZ(0)",
+                        opacity,
+                        willChange: "transform, opacity",
                       }}
                     >
                       {slide.type === "video" ? (
@@ -610,7 +654,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   </svg>
                 </button>
 
-                <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-xl uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
+                <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-sm uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
                   BROWSE ALL APPLICATIONS
                 </span>
 
@@ -797,7 +841,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             {/* Right Column: Slider (Video & Images) */}
             <div
               ref={oysterRightColRef}
-              className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen bg-black flex items-center justify-center overflow-hidden group"
+              className="relative w-full lg:w-1/2 h-[50vh] lg:h-auto lg:min-h-screen bg-black flex items-center justify-center overflow-hidden group"
               style={{
                 opacity: 0,
                 transform: "translateX(30px)",
@@ -810,19 +854,17 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   const isPrev = idx === prevOysterSlideIndex;
 
                   let zIndex = "z-0";
-                  let clipPath = "";
+                  let opacity = 0;
 
                   if (isActive) {
                     zIndex = "z-10";
-                    clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
+                    opacity = 1;
                   } else if (isPrev) {
                     zIndex = "z-5";
-                    clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
+                    opacity = 1;
                   } else {
                     zIndex = "z-0";
-                    clipPath = idx > currentOysterSlide 
-                      ? "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" 
-                      : "polygon(0 0, 0 0, 0 100%, 0% 100%)";
+                    opacity = 0;
                   }
 
                   return (
@@ -830,10 +872,8 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       key={idx}
                       className={`absolute inset-0 w-full h-full ${zIndex}`}
                       style={{
-                        clipPath,
-                        WebkitClipPath: clipPath,
-                        willChange: "clip-path",
-                        transform: "translateZ(0)",
+                        opacity,
+                        willChange: "transform, opacity",
                       }}
                     >
                       {slide.type === "video" ? (
@@ -870,7 +910,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   </svg>
                 </button>
 
-                <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-xl uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
+                <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-lg uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
                   BROWSE ALL APPLICATIONS
                 </span>
 
