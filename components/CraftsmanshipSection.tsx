@@ -211,8 +211,8 @@ export default function CraftsmanshipSection() {
       <div className="absolute bottom-4 right-6 md:bottom-6 md:right-16 z-10">
         <span
           ref={casaRef}
-          className="casa-nobile-label font-ivymode text-white/90 text-[clamp(12px,1.5vw,18px)] uppercase"
-          style={{ opacity: 0, }}
+          className="casa-nobile-label font-ivymode text-white/90 text-sm tracking-[0.2em] uppercase"
+          style={{ opacity: 0, letterSpacing: "0.1em" }}
         >
           CASA NOBILE
         </span>
