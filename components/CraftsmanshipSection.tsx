@@ -107,10 +107,9 @@ export default function CraftsmanshipSection() {
 
     // ── 5. CASA NOBILE — DELAYED LETTER SPACING COMPRESS ──────────────────────
     gsap.fromTo(casa,
-      { opacity: 0, letterSpacing: "0.35em" },
+      { opacity: 0 },
       {
         opacity: 1,
-        letterSpacing: "0.25em",  // compress into existing design value
         duration: 1.0,
         ease: "power2.out",
         scrollTrigger: {
@@ -148,7 +147,7 @@ export default function CraftsmanshipSection() {
       <div className="relative z-10 w-full text-center max-w-[1200px] mx-auto">
         <h2
           ref={headingRef}
-          className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,6.5vw,69px)] uppercase py-14"
+          className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,6.5vw,69px)] uppercase py-14"
           style={{ opacity: 0, letterSpacing: "0.28em" }}
         >
           ITALIAN CRAFTSMANSHIP
@@ -211,7 +210,7 @@ export default function CraftsmanshipSection() {
       <div className="absolute bottom-4 right-6 md:bottom-6 md:right-16 z-10">
         <span
           ref={casaRef}
-          className="casa-nobile-label font-ivymode text-white/90 text-sm tracking-[0.2em] uppercase"
+          className="casa-nobile-label font-ivymode text-white/90 text-[16px] tracking-[0.2em] uppercase"
           style={{ opacity: 0, letterSpacing: "0.1em" }}
         >
           CASA NOBILE

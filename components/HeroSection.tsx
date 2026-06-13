@@ -25,6 +25,57 @@ const slideshowImages = [
   "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/10.jpg",
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    }
+  }
+};
+
+const wordVariants = {
+  hidden: { y: "110%" },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
+
+const paragraphWordVariants = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: (customDelay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.0,
+      ease: [0.16, 1, 0.3, 1],
+      delay: customDelay
+    }
+  })
+};
+
+const buttonVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.45 }
+  }
+};
+
+const buttonTextVariants = {
+  hidden: { letterSpacing: "0.48em", opacity: 0 },
+  visible: {
+    letterSpacing: "0.3em",
+    opacity: 1,
+    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.55 }
+  }
+};
+
 export default function HeroSection({ title, subtitle, buttonText, bgImage }: Props) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -54,7 +105,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             initial={{ clipPath: "inset(0 0 0 100%)" }}
             animate={{ clipPath: "inset(0 0 0 0%)" }}
             exit={{ opacity: 0 }}
-            transition={{ 
+            transition={{
               clipPath: { duration: 1.5, ease: [0.76, 0, 0.24, 1] },
               opacity: { delay: 1.5, duration: 0.1 }
             }}
@@ -67,41 +118,56 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
 
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
         <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
-          {/* Word-by-word reveal heading */}
-          <h1 className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,46px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]">
+          {/* Word-by-word reveal heading triggered by parent viewport */}
+          <motion.h1 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,46px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]"
+          >
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-1">
                 <motion.span
-                  initial={{ y: "110%" }}
-                  animate={{ y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1],
-                    delay: 1.2 + i * 0.07 // delay starts after loader ends
-                  }}
+                  variants={wordVariants}
                   className="inline-block"
                 >
                   {word}
                 </motion.span>
               </span>
             ))}
-          </h1>
+          </motion.h1>
 
-          {/* Fade in body text */}
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }}
-            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,42px)] font-light leading-snug max-w-[1300px] whitespace-pre-line tracking-wide my-auto px-4 pt-10"
+          {/* Line-by-line, word-by-word cascading reveal triggered by parent viewport */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,42px)] font-light leading-snug max-w-[1300px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
           >
-            {subtitle || defaultSubtitle}
-          </motion.p>
+            {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => (
+              <span key={lineIdx} className="flex flex-wrap justify-center gap-x-[0.35em] py-0.5">
+                {line.split(" ").map((word, wordIdx) => (
+                  <span key={wordIdx} className="inline-block overflow-hidden py-0.5">
+                    <motion.span
+                      custom={0.15 + (lineIdx * 5 + wordIdx) * 0.008}
+                      variants={paragraphWordVariants}
+                      className="inline-block"
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </motion.div>
 
-          {/* Staggered entrance for CTA with hover scaleX fill */}
+          {/* Staggered entrance CTA triggered by parent viewport */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 2.0 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={buttonVariants}
             className="w-full max-w-[320px] md:max-w-[620px] mt-auto"
           >
             <Link href="/explore-collection" className="block">
@@ -110,9 +176,12 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
                 className="relative overflow-hidden border border-white/80 text-white bg-black/10 backdrop-blur-xs w-full py-4 font-michroma text-[clamp(11px,1.3vw,24px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group"
               >
                 <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">
+                <motion.span 
+                  variants={buttonTextVariants}
+                  className="relative z-10 block transition-colors duration-500 group-hover:text-brand-dark"
+                >
                   {buttonText || defaultButtonText}
-                </span>
+                </motion.span>
               </motion.button>
             </Link>
           </motion.div>

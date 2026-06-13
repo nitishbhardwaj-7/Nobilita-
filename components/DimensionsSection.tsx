@@ -23,9 +23,9 @@ const childVariants = {
 
 export default function DimensionsSection() {
   return (
-    <section className="w-full bg-white py-24 flex flex-col items-center">
+    <section className="w-full bg-white py-16 flex flex-col items-center">
       {/* Title - slide up reveal */}
-      <div className="w-full px-4 mb-16 text-center overflow-hidden py-1">
+      <div className="w-full px-4 mb-14 text-center overflow-hidden py-1">
         <h2 className="font-ivymode text-[clamp(28px,5vw,60px)] text-[#545759] tracking-[0.1em] uppercase inline-block">
           <motion.span
             initial={{ y: "100%" }}
@@ -45,7 +45,7 @@ export default function DimensionsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full max-w-7xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16"
+        className="w-full max-w-7xl px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 mb-16"
       >
         {/* Column 1: THICKNESS */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
@@ -91,29 +91,39 @@ export default function DimensionsSection() {
       </motion.div>
 
       {/* Feature Image with Centered Button */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="relative w-full px-4 md:px-0 flex justify-center items-center overflow-hidden"
-      >
-        <img
-          src="/nobilita3/images/Orobico.jpg"
-          alt="Orobico Luxury Interior"
-          loading="lazy"
-          className="w-full h-auto max-h-[450px] object-cover"
-        />
-        <motion.button 
-          whileTap={{ scale: 0.96 }}
-          className="absolute border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-2000 uppercase group overflow-hidden"
+      <div className="relative w-full px-4 md:px-0 flex justify-center items-center overflow-hidden">
+        <motion.div
+          initial={{ clipPath: "inset(0% 12% 0% 12%)", opacity: 0 }}
+          whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full overflow-hidden flex justify-center items-center"
         >
-          <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-          <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-            TECHNICAL DATA
-          </span>
-        </motion.button>
-      </motion.div>
+          <motion.img
+            initial={{ scale: 1.15 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+            src="/nobilita3/images/Orobico.jpg"
+            alt="Orobico Luxury Interior"
+            loading="lazy"
+            className="w-full h-auto max-h-[450px] object-cover origin-center"
+          />
+          <motion.button 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            whileTap={{ scale: 0.96 }}
+            className="absolute border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-2000 uppercase group overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+              TECHNICAL DATA
+            </span>
+          </motion.button>
+        </motion.div>
+      </div>
     </section>
   );
 }

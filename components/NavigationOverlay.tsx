@@ -36,7 +36,7 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 * i, ease: "easeOut" }}
-                className="font-cormorant font-light text-white tracking-[0.05em] hover:text-white/70 transition-colors text-[clamp(32px,8vw,72px)] leading-tight"
+                className="font-ivymode font-light text-white uppercase tracking-[0.25em] hover:text-white/70 transition-colors text-[clamp(16px,2vw,22px)] leading-relaxed"
               >
                 {link}
               </motion.a>

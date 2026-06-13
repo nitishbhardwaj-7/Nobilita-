@@ -261,6 +261,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
   };
   const [showVagliBookmatch, setShowVagliBookmatch] = useState(false);
   const [showOysterBookmatch, setShowOysterBookmatch] = useState(false);
+  const [activeOysterFace, setActiveOysterFace] = useState<number>(1);
 
   // Calacatta Oyster Slider States
   const [currentOysterSlide, setCurrentOysterSlide] = useState(0);
@@ -673,19 +674,29 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           </section>
 
           <section className="w-full bg-white flex flex-col justify-center items-center py-20 px-6 md:px-16">
-            <div className="relative w-full max-w-[1100px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5">
-              <img
-                src={showVagliBookmatch ? "/nobilita3/images/Arbescato Vagli/Bookmatch.jpg" : "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg"}
-                alt="Arabescato Vagli slab preview"
-                className="w-full h-auto block transition-all duration-700 ease-in-out"
-              />
+            <div className={`relative w-full max-w-[1100px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
+              showVagliBookmatch ? "aspect-[1920/1872]" : "aspect-[2/1]"
+            }`}>
+              {showVagliBookmatch ? (
+                <img
+                  src="/nobilita3/images/Arbescato Vagli/Bookmatch.jpg"
+                  alt="Arabescato Vagli Bookmatch"
+                  className="w-full h-full object-contain block transition-all duration-700 ease-in-out z-10"
+                />
+              ) : (
+                <img
+                  src="/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg"
+                  alt="Arabescato Vagli Face 1"
+                  className="absolute w-[50%] h-[200%] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                />
+              )}
               {/* Label in top-left */}
-              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1">
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20">
                 {showVagliBookmatch ? "BOOKMATCH" : "FACE 1"}
               </div>
 
               {/* VIEW BOOKMATCH button in bottom-center */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-10">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20">
                 <button
                   onClick={() => setShowVagliBookmatch(!showVagliBookmatch)}
                   className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
@@ -929,81 +940,58 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           </section>
 
           <section className="w-full bg-white flex flex-col justify-center items-center py-20 px-6 md:px-16">
-            {showOysterBookmatch ? (
-              /* Bookmatch View */
-              <div className="relative w-full max-w-[1100px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5">
+            <div className={`relative w-full max-w-[1100px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
+              showOysterBookmatch ? "aspect-[1920/1880]" : "aspect-[2/1]"
+            }`}>
+              {showOysterBookmatch ? (
                 <img
                   src="/nobilita3/images/Calacatta Oyster/Bookmatch.jpg"
                   alt="Calacatta Oyster Bookmatch"
-                  className="w-full h-auto block transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-contain block transition-all duration-700 ease-in-out z-10"
                 />
-                {/* Label in top-left */}
-                <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1">
-                  BOOKMATCH
-                </div>
+              ) : (
+                <img
+                  src={`/nobilita3/images/Links/Calacatta Oyster Face ${activeOysterFace}.jpg`}
+                  alt={`Calacatta Oyster Face ${activeOysterFace}`}
+                  className="absolute w-[50%] h-[200%] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                />
+              )}
 
-                {/* VIEW FACES button in bottom-center */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-10">
+              {/* Label in top-left */}
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20">
+                {showOysterBookmatch ? "BOOKMATCH" : `FACE ${activeOysterFace}`}
+              </div>
+
+              {/* Face switcher in top-right */}
+              <div className="absolute top-6 right-6 md:top-8 md:right-8 flex items-center space-x-2 md:space-x-3 z-20">
+                {[1, 2, 3].map((f) => (
                   <button
-                    onClick={() => setShowOysterBookmatch(false)}
-                    className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
+                    key={f}
+                    onClick={() => {
+                      setActiveOysterFace(f);
+                      setShowOysterBookmatch(false);
+                    }}
+                    className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${
+                      activeOysterFace === f && !showOysterBookmatch
+                        ? "border-brand-dark bg-brand-dark text-white"
+                        : "border-brand-dark/30 bg-white/85 text-brand-dark/70 hover:border-brand-dark/60 hover:text-brand-dark"
+                    }`}
                   >
-                    VIEW FACES
+                    FACE {f}
                   </button>
-                </div>
+                ))}
               </div>
-            ) : (
-              /* Three Slabs / Faces View */
-              <div className="w-full max-w-[1100px] flex flex-col items-center">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
-                  {/* Face 1 */}
-                  <div className="relative aspect-[9/16] md:aspect-[1/2] w-full overflow-hidden bg-brand-cream/5 border border-brand-dark/5 shadow-sm">
-                    <img
-                      src="/nobilita3/images/Links/Calacatta Oyster Face 1.jpg"
-                      alt="Calacatta Oyster Face 1"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1">
-                      FACE 1
-                    </div>
-                  </div>
 
-                  {/* Face 2 with VIEW BOOKMATCH button */}
-                  <div className="relative aspect-[9/16] md:aspect-[1/2] w-full overflow-hidden bg-brand-cream/5 border border-brand-dark/5 shadow-sm">
-                    <img
-                      src="/nobilita3/images/Links/Calacatta Oyster Face 2.jpg"
-                      alt="Calacatta Oyster Face 2"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1">
-                      FACE 2
-                    </div>
-
-                    {/* VIEW BOOKMATCH button centered at the bottom of Face 2 */}
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 w-[90%] flex justify-center">
-                      <button
-                        onClick={() => setShowOysterBookmatch(true)}
-                        className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-4 py-2.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] text-brand-dark uppercase focus:outline-none whitespace-nowrap shadow-md"
-                      >
-                        VIEW BOOKMATCH
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Face 3 */}
-                  <div className="relative aspect-[9/16] md:aspect-[1/2] w-full overflow-hidden bg-brand-cream/5 border border-brand-dark/5 shadow-sm">
-                    <img
-                      src="/nobilita3/images/Links/Calacatta Oyster Face 3.jpg"
-                      alt="Calacatta Oyster Face 3"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1">
-                      FACE 3
-                    </div>
-                  </div>
-                </div>
+              {/* VIEW BOOKMATCH button in bottom-center */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20">
+                <button
+                  onClick={() => setShowOysterBookmatch(!showOysterBookmatch)}
+                  className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
+                >
+                  {showOysterBookmatch ? `VIEW FACE ${activeOysterFace}` : "VIEW BOOKMATCH"}
+                </button>
               </div>
-            )}
+            </div>
           </section>
         </>
       )}
