@@ -503,17 +503,17 @@ export default function ExploreCollection() {
         </div>
 
         {/* Right Side: Grid Columns Stack Selector */}
-        <div className="flex flex-col  select-none rounded bg-white shadow-sm">
+        <div className="flex flex-col rounded bg-white">
           <button
             onClick={() => setColumns(c => Math.min(c + 1, 5))}
-            className="px-3 py-1.5 text-[15px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
+            className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
             aria-label="Increase columns"
           >
             +
           </button>
           <button
             onClick={() => setColumns(c => Math.max(c - 1, 2))}
-            className="px-3 py-1.5 text-[15px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
+            className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
             aria-label="Decrease columns"
           >
             -

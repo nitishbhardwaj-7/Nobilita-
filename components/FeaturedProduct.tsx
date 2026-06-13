@@ -459,11 +459,11 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
       {showVagli && (
         <>
           {/* 1. ARABESCATO VAGLI */}
-          <section className="w-full min-h-screen flex flex-col lg:flex-row bg-white text-brand-dark relative font-ivymode">
+          <section className="w-full min-h-screen flex flex-col-reverse lg:flex-row bg-white text-brand-dark relative font-ivymode">
             {/* Left Column: Spec Sheet with Slab Background */}
             <div
               ref={vagliLeftColRef}
-              className="relative w-full lg:w-1/2 min-h-screen p-6 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-r border-brand-dark/10"
+              className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen py-12 px-6 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-r border-brand-dark/10"
               style={{
                 clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
                 transform: "translateX(-50px)",
@@ -482,20 +482,20 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* BACK button */}
               <div
                 ref={vagliBackBtnRef}
-                className="absolute top-6 left-6 md:top-12 md:left-12 z-20"
+                className="fixed top-6 left-6 md:top-12 md:left-12 z-50 pointer-events-auto"
                 style={{ opacity: 0, transform: "scale(0.8)" }}
               >
                 {onClose ? (
                   <button
                     onClick={handleClose}
-                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors focus:outline-none"
+                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors focus:outline-none shadow-sm"
                   >
                     BACK
                   </button>
                 ) : (
                   <Link
                     href="/"
-                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors"
+                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors shadow-sm"
                   >
                     BACK
                   </Link>
@@ -505,7 +505,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Title */}
               <div
                 ref={vagliTitleRef}
-                className="relative z-10 w-full text-center lg:text-left mb-8 md:mb-12 mt-16 lg:mt-0 lg:max-w-none"
+                className="relative z-10 w-full text-center lg:text-left mb-8 md:mb-12 mt-6 lg:mt-0 lg:max-w-none"
                 style={{ opacity: 0, transform: "translateY(30px)" }}
               >
                 <h2 className="font-ivymode text-[36px] md:text-[64px] text-black tracking-[0.05em] uppercase font-light">
@@ -516,7 +516,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Specs Box Card - Solid White, exact sizes & alignments */}
               <div
                 ref={vagliCardRef}
-                className="relative z-10 bg-white/70 p-8 w-full max-w-[500px] shadow-sm flex flex-col space-y-10"
+                className="relative z-10 bg-white/70 p-6 md:p-8 w-full max-w-[500px] shadow-sm flex flex-col space-y-6 md:space-y-10"
                 style={{ opacity: 0, transform: "translateY(35px)" }}
               >
 
@@ -535,7 +535,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       DIMENSIONS
                     </h3>
                   </div>
-                  <div className="pl-16 mt-2">
+                  <div className="pl-12 md:pl-16 mt-2">
                     <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
                       6.5MM x 1600 x 3200 (R)<br />
                       12MM x 1620 x 3240 (G)
@@ -558,7 +558,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       FACES
                     </h3>
                   </div>
-                  <div className="pl-16 mt-2">
+                  <div className="pl-12 md:pl-16 mt-2">
                     <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
                       6.5MM – BOOKMATCH OF 1<br />
                       12MM – BOOKMATCH OF 1
@@ -586,7 +586,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       FINISHES
                     </h3>
                   </div>
-                  <div className="pl-16 mt-2">
+                  <div className="pl-12 md:pl-16 mt-2">
                     <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
                       6.5MM – POLISHED & HONED<br />
                       12MM – POLISHED & HONED
@@ -657,7 +657,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               </div>
 
               {/* Browse All Applications overlay text & slider buttons */}
-              <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-4 md:space-x-8 drop-shadow-md">
+              <div className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2 md:space-x-8 drop-shadow-md">
                 {/* Left Arrow Button */}
                 <button
                   onClick={prevVagliSlide}
@@ -669,7 +669,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   </svg>
                 </button>
 
-                <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-sm uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
+                <span className="font-michroma text-white tracking-[0.1em] md:tracking-[0.2em] text-[10px] md:text-sm uppercase whitespace-nowrap px-3 py-1.5 md:px-4 md:py-2 rounded backdrop-blur-sm pointer-events-none">
                   BROWSE ALL APPLICATIONS
                 </span>
 
@@ -687,9 +687,9 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             </div>
           </section>
 
-          <section className="w-full bg-white flex flex-col justify-center items-center py-20 px-6 md:px-16">
-            <div className={`relative w-full max-w-[1100px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
-              showVagliBookmatch ? "aspect-[1920/1872]" : "aspect-[2/1]"
+          <section className="w-full bg-white flex flex-col justify-center items-center py-10 md:py-20 px-4 md:px-16">
+            <div className={`relative w-full overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
+              showVagliBookmatch ? "max-w-[1100px] aspect-[1920/1872]" : "max-w-[1100px] aspect-[2/1]"
             }`}>
               {showVagliBookmatch ? (
                 <img
@@ -701,16 +701,16 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <img
                   src="/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg"
                   alt="Arabescato Vagli Face 1"
-                  className="absolute w-[50%] h-[200%] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                  className="absolute w-1/2 aspect-[1/2] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
                 />
               )}
               {/* Label in top-left */}
-              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20">
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20 hidden md:block">
                 {showVagliBookmatch ? "BOOKMATCH" : "FACE 1"}
               </div>
 
               {/* VIEW BOOKMATCH button in bottom-center */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20 hidden md:block">
                 <button
                   onClick={() => setShowVagliBookmatch(!showVagliBookmatch)}
                   className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
@@ -719,6 +719,19 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 </button>
               </div>
             </div>
+
+            {/* Mobile Controls for Arabescato Vagli */}
+            <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-[1100px] mt-6 gap-4 md:hidden px-2">
+              <div className="font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase">
+                {showVagliBookmatch ? "BOOKMATCH" : "FACE 1"}
+              </div>
+              <button
+                onClick={() => setShowVagliBookmatch(!showVagliBookmatch)}
+                className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase focus:outline-none w-full sm:w-auto text-center"
+              >
+                {showVagliBookmatch ? "VIEW FACE 1" : "VIEW BOOKMATCH"}
+              </button>
+            </div>
           </section>
         </>
       )}
@@ -726,11 +739,11 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
       {showOyster && (
         <>
           {/* 3. CALACATTA OYSTER */}
-          <section className="w-full min-h-screen flex flex-col lg:flex-row bg-white text-brand-dark relative font-ivymode">
+          <section className="w-full min-h-screen flex flex-col-reverse lg:flex-row bg-white text-brand-dark relative font-ivymode">
             {/* Left Column: Spec Sheet with Slab Background */}
             <div
               ref={oysterLeftColRef}
-              className="relative w-full lg:w-1/2 min-h-screen p-6 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-r border-brand-dark/10"
+              className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen py-12 px-6 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-r border-brand-dark/10"
               style={{
                 clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
                 transform: "translateX(-50px)",
@@ -749,20 +762,20 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* BACK button */}
               <div
                 ref={oysterBackBtnRef}
-                className="absolute top-6 left-6 md:top-12 md:left-12 z-20"
+                className="fixed top-6 left-6 md:top-12 md:left-12 z-50 pointer-events-auto"
                 style={{ opacity: 0, transform: "scale(0.8)" }}
               >
                 {onClose ? (
                   <button
                     onClick={handleClose}
-                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors focus:outline-none"
+                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors focus:outline-none shadow-sm"
                   >
                     BACK
                   </button>
                 ) : (
                   <Link
                     href="/"
-                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors"
+                    className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors shadow-sm"
                   >
                     BACK
                   </Link>
@@ -772,7 +785,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Title */}
               <div
                 ref={oysterTitleRef}
-                className="relative z-10 w-full text-center lg:text-left mb-8 md:mb-12 mt-16 lg:mt-0 lg:max-w-none"
+                className="relative z-10 w-full text-center lg:text-left mb-8 md:mb-12 mt-6 lg:mt-0 lg:max-w-none"
                 style={{ opacity: 0, transform: "translateY(30px)" }}
               >
                 <h2 className="font-ivymode text-[36px] md:text-[64px] text-black tracking-[0.05em] uppercase font-light">
@@ -783,7 +796,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Specs Box Card - Solid White, exact sizes & alignments */}
               <div
                 ref={oysterCardRef}
-                className="relative z-10 bg-white/70 p-8 w-full max-w-[550px] shadow-sm flex flex-col space-y-10"
+                className="relative z-10 bg-white/70 p-6 md:p-8 w-full max-w-[550px] shadow-sm flex flex-col space-y-6 md:space-y-10"
                 style={{ opacity: 0, transform: "translateY(35px)" }}
               >
 
@@ -802,7 +815,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       DIMENSIONS
                     </h3>
                   </div>
-                  <div className="pl-16 mt-2">
+                  <div className="pl-12 md:pl-16 mt-2">
                     <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
                       6.5MM x 1600 x 3200 (R)<br />
                       12MM x 1620 x 3240 (G)
@@ -825,7 +838,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       FACES
                     </h3>
                   </div>
-                  <div className="pl-16 mt-2">
+                  <div className="pl-12 md:pl-16 mt-2">
                     <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
                       6.5MM – 1  2  3<br />
                       12MM – BOOKMATCH OF 2
@@ -853,7 +866,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       FINISHES
                     </h3>
                   </div>
-                  <div className="pl-16 mt-2">
+                  <div className="pl-12 md:pl-16 mt-2">
                     <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
                       6.5MM – POLISHED & HONED<br />
                       12MM – POLISHED & HONED
@@ -924,7 +937,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               </div>
 
               {/* Browse All Applications overlay text & slider buttons */}
-              <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-4 md:space-x-8 drop-shadow-md">
+              <div className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2 md:space-x-8 drop-shadow-md">
                 {/* Left Arrow Button */}
                 <button
                   onClick={prevOysterSlide}
@@ -936,7 +949,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   </svg>
                 </button>
 
-                <span className="font-michroma text-white tracking-[0.2em] text-xs md:text-lg uppercase whitespace-nowrap px-4 py-2 rounded backdrop-blur-sm pointer-events-none">
+                <span className="font-michroma text-white tracking-[0.1em] md:tracking-[0.2em] text-[10px] md:text-sm uppercase whitespace-nowrap px-3 py-1.5 md:px-4 md:py-2 rounded backdrop-blur-sm pointer-events-none">
                   BROWSE ALL APPLICATIONS
                 </span>
 
@@ -954,9 +967,9 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             </div>
           </section>
 
-          <section className="w-full bg-white flex flex-col justify-center items-center py-20 px-6 md:px-16">
-            <div className={`relative w-full max-w-[1100px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
-              showOysterBookmatch ? "aspect-[1920/1880]" : "aspect-[2/1]"
+          <section className="w-full bg-white flex flex-col justify-center items-center py-10 md:py-20 px-4 md:px-16">
+            <div className={`relative w-full overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
+              showOysterBookmatch ? "max-w-[1100px] aspect-[1920/1880]" : "max-w-[1100px] aspect-[2/1]"
             }`}>
               {showOysterBookmatch ? (
                 <img
@@ -968,17 +981,17 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <img
                   src={`/nobilita3/images/Links/Calacatta Oyster Face ${activeOysterFace}.jpg`}
                   alt={`Calacatta Oyster Face ${activeOysterFace}`}
-                  className="absolute w-[50%] h-[200%] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                  className="absolute w-1/2 aspect-[1/2] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
                 />
               )}
 
               {/* Label in top-left */}
-              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20">
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20 hidden md:block">
                 {showOysterBookmatch ? "BOOKMATCH" : `FACE ${activeOysterFace}`}
               </div>
 
               {/* Face switcher in top-right */}
-              <div className="absolute top-6 right-6 md:top-8 md:right-8 flex items-center space-x-2 md:space-x-3 z-20">
+              <div className="absolute top-6 right-6 md:top-8 md:right-8 flex items-center space-x-2 md:space-x-3 z-20 hidden md:flex">
                 {[1, 2, 3].map((f) => (
                   <button
                     key={f}
@@ -998,7 +1011,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               </div>
 
               {/* VIEW BOOKMATCH button in bottom-center */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20 hidden md:block">
                 <button
                   onClick={() => setShowOysterBookmatch(!showOysterBookmatch)}
                   className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
@@ -1006,6 +1019,39 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   {showOysterBookmatch ? `VIEW FACE ${activeOysterFace}` : "VIEW BOOKMATCH"}
                 </button>
               </div>
+            </div>
+
+            {/* Mobile Controls for Calacatta Oyster */}
+            <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-[1100px] mt-6 gap-4 md:hidden px-2">
+              <div className="flex items-center justify-between w-full sm:w-auto">
+                <div className="font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase">
+                  {showOysterBookmatch ? "BOOKMATCH" : `FACE ${activeOysterFace}`}
+                </div>
+                <div className="flex items-center space-x-2 ml-4">
+                  {[1, 2, 3].map((f) => (
+                    <button
+                      key={f}
+                      onClick={() => {
+                        setActiveOysterFace(f);
+                        setShowOysterBookmatch(false);
+                      }}
+                      className={`border px-2.5 py-1 font-michroma text-[9px] tracking-[0.1em] uppercase transition-all duration-300 focus:outline-none ${
+                        activeOysterFace === f && !showOysterBookmatch
+                          ? "border-brand-dark bg-brand-dark text-white"
+                          : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
+                      }`}
+                    >
+                      {f}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <button
+                onClick={() => setShowOysterBookmatch(!showOysterBookmatch)}
+                className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase focus:outline-none w-full sm:w-auto text-center"
+              >
+                {showOysterBookmatch ? `VIEW FACE ${activeOysterFace}` : "VIEW BOOKMATCH"}
+              </button>
             </div>
           </section>
         </>
