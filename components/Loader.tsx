@@ -77,7 +77,7 @@ export default function Loader({ isLoading }: LoaderProps) {
             </div>
 
             {/* Sharp-edged Loading Bar */}
-            <div className="mt-16 w-[200px] h-[10px] bg-white/20 overflow-hidden relative">
+            <div className="mt-16 w-[185px] h-[10px] bg-white/20 overflow-hidden relative">
               {showContent && (
                 <div className="absolute top-0 left-0 h-full bg-white loading-bar-fill" />
               )}

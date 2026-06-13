@@ -153,7 +153,7 @@ export default function LegacySection() {
           className="panel-img absolute inset-0 w-full h-[112%] object-cover"
           style={{ top: "-6%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+        
         <div className="absolute bottom-8 left-0 right-0 text-center z-10">
           <p
             ref={labelTreviRef}
@@ -183,7 +183,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
-            className="nobilita-logo h-10 md:h-22 lg:h-24 w-auto object-contain mb-4"
+            className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain mb-4"
           />
 
           <img
@@ -209,7 +209,7 @@ export default function LegacySection() {
           className="panel-img absolute inset-0 w-full h-[112%] object-cover"
           style={{ top: "-6%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+       
         <div className="absolute bottom-8 left-0 right-0 text-center z-10">
           <p
             ref={labelPalazzoRef}
