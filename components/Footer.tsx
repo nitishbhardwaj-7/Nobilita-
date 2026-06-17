@@ -208,7 +208,7 @@ export default function Footer() {
       
       {/* Lower Footer Area */}
       <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center py-10 md:py-10 px-6">
-        <div className="w-full max-w-7xl mx-auto flex flex-col items-center space-y-12">
+        <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-12">
         
         
           {/* Links with stagger */}
