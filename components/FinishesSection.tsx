@@ -29,7 +29,7 @@ const finishes = [
     desc: "Leather-inspired texture with subtle richness and enhanced grip."
   },
   { 
-    name: "3D-5D MATTE", 
+    name: "3D / 5D MATTE", 
     img: "/nobilita3/images/Travertino Romano Classico Face 1.jpg", 
     darkText: true,
     desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces."
@@ -101,10 +101,10 @@ export default function FinishesSection() {
                     <motion.h3
                       animate={{ letterSpacing: isHovered ? "0.28em" : "0.2em" }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className={`font-didot font-medium uppercase text-[clamp(14px,2.2vw,28px)] ${
+                      className={`font-didotbold font-medium uppercase text-[clamp(14px,2.2vw,28px)] ${
                         finish.darkText ? 'text-[#545759]' : 'text-white'
                       }`}
-                      style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
+                      style={{ fontFamily: "var(--font-didotbold)" }}
                     >
                       {finish.name}
                     </motion.h3>
@@ -118,7 +118,7 @@ export default function FinishesSection() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                        className={`absolute top-full left-0 font-ivymode italic max-w-full ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] mt-4 pointer-events-none ${
+                        className={`absolute top-full left-0 font-ivymode max-w-full ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] mt-4 pointer-events-none ${
                           finish.darkText ? 'text-[#545759]' : 'text-white/80'
                         }`}
                       >

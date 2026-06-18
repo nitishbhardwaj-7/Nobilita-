@@ -28,19 +28,24 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           className="fixed inset-0 z-[9999] bg-[#007190] flex flex-col items-center justify-center"
         >
           <div className="flex flex-col items-center space-y-4 md:space-y-8 px-6 text-center">
-            {links.map((link, i) => (
-              <motion.a
-                key={link}
-                href={`#${link.toLowerCase().replace(/ /g, "-")}`}
-                onClick={onClose}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15 * i, ease: "easeOut" }}
-                className="font-ivymode font-light text-white uppercase tracking-[0.25em] hover:text-white/70 transition-colors text-[clamp(16px,2vw,22px)] leading-relaxed"
-              >
-                {link}
-              </motion.a>
-            ))}
+            {links.map((link, i) => {
+              let href = `#${link.toLowerCase().replace(/ /g, "-")}`;
+              if (link === "Technical Resources") href = "#technical-data";
+
+              return (
+                <motion.a
+                  key={link}
+                  href={href}
+                  onClick={onClose}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.15 * i, ease: "easeOut" }}
+                  className="font-ivymode font-light text-white uppercase tracking-[0.25em] hover:text-white/70 transition-colors text-[clamp(16px,2vw,22px)] leading-relaxed"
+                >
+                  {link}
+                </motion.a>
+              );
+            })}
           </div>
         </motion.div>
       )}

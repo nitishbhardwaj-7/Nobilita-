@@ -9,6 +9,7 @@ import CraftsmanshipSection from "@/components/CraftsmanshipSection";
 import DimensionsSection from "@/components/DimensionsSection";
 import ApplicationsSection from "@/components/ApplicationsSection";
 import FinishesSection from "@/components/FinishesSection";
+import TechnicalDataSection from "@/components/TechnicalDataSection";
 import Footer from "@/components/Footer";
 
 export default function HomeClient({ cmsData }: { cmsData: any }) {
@@ -43,6 +44,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
         buttonText={d.heroBtn}
         bgImage={d.heroImg}
       />
+      <TechnicalDataSection />
       <Footer />
     </main>
   );

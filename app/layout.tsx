@@ -8,6 +8,11 @@ const didot = localFont({
   variable: "--font-didot",
 });
 
+const didotBold = localFont({
+  src: "./fonts/Didot Bold.otf",
+  variable: "--font-didotbold",
+});
+
 const michroma = localFont({
   src: "./fonts/Michroma.ttf",
   variable: "--font-michroma",
@@ -47,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${montserrat.variable} ${didot.variable} ${michroma.variable} ${ivymode.variable}`}
+      className={`${cormorant.variable} ${montserrat.variable} ${didot.variable} ${didotBold.variable} ${michroma.variable} ${ivymode.variable}`}
     >
       <body className="font-ivymode antialiased">
         {children}

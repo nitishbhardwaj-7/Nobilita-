@@ -16,8 +16,8 @@ const navContainerVariants = {
 
 const navItemVariants = {
   hidden: { opacity: 0, y: 10 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.4, ease: "easeOut" }
   }
@@ -37,40 +37,7 @@ export default function Footer() {
 
   return (
     <footer id="contact-us" className="w-full flex flex-col bg-white">
-      {/* Catalog & Newsletter Section */}
-      <div className="w-full py-16 md:py-24 bg-white relative flex justify-center items-center border-t border-b border-brand-dark/10 overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video 
-            src="/nobilita3/images/Links/materials.mp4" 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover pointer-events-none select-none"
-          />
-        </div>
-        
-        {/* Buttons Container */}
-        <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-16 px-6">
-          <a 
-            href="/nobilita3/catalog.pdf" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[13px] tracking-[0.25em] text-brand-dark uppercase bg-white/70 hover:bg-brand-dark hover:text-white transition-all duration-300 backdrop-blur-sm min-w-[280px] md:min-w-[340px] text-center"
-          >
-            DOWNLOAD CATALOG
-          </a>
-          <button 
-            onClick={() => {
-              alert("Thank you for subscribing to our newsletter!");
-            }}
-            className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[13px] tracking-[0.25em] text-brand-dark uppercase bg-white/70 hover:bg-brand-dark hover:text-white transition-all duration-300 backdrop-blur-sm min-w-[280px] md:min-w-[340px] text-center focus:outline-none"
-          >
-            SUBSCRIBE TO NEWSLETTER
-          </button>
-        </div>
-      </div>
+
 
       {/* Contact Form Section */}
       <div className="w-full bg-white py-16 md:py-24 px-6 md:px-12 flex flex-col items-center min-h-[500px] justify-center">
@@ -109,18 +76,18 @@ export default function Footer() {
                   SEND YOUR QUERY
                 </h2>
               </div>
-              
+
               <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-12 w-full">
                 {/* Name */}
                 <div className="relative flex flex-col pt-5">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="name"
                     required
                     placeholder=" "
                     className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
                   />
-                  <label 
+                  <label
                     htmlFor="name"
                     className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
@@ -133,14 +100,14 @@ export default function Footer() {
 
                 {/* Email */}
                 <div className="relative flex flex-col pt-5">
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     id="email"
                     required
                     placeholder=" "
                     className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
                   />
-                  <label 
+                  <label
                     htmlFor="email"
                     className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
@@ -153,14 +120,14 @@ export default function Footer() {
 
                 {/* Phone */}
                 <div className="relative flex flex-col pt-5">
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     id="phone"
                     required
                     placeholder=" "
                     className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
                   />
-                  <label 
+                  <label
                     htmlFor="phone"
                     className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
@@ -173,14 +140,14 @@ export default function Footer() {
 
                 {/* Query */}
                 <div className="relative flex flex-col pt-5">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="query"
                     required
                     placeholder=" "
                     className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
                   />
-                  <label 
+                  <label
                     htmlFor="query"
                     className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
@@ -193,7 +160,7 @@ export default function Footer() {
 
                 {/* Submit Button with thin outline */}
                 <div className="sm:col-span-2 flex justify-center mt-8">
-                  <button 
+                  <button
                     type="submit"
                     className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-12 py-4 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.25em] text-[#545759] uppercase focus:outline-none"
                   >
@@ -205,48 +172,109 @@ export default function Footer() {
           )}
         </div>
       </div>
-      
+
       {/* Lower Footer Area */}
-      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center py-10 md:py-10 px-6">
-        <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-12">
-        
-        
-          {/* Links with stagger */}
+      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center pb-10 px-6">
+        <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-6">
+
+
+          {/* Mobile Navigation */}
           <motion.nav 
             variants={navContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="w-full flex flex-col items-center justify-center gap-y-4 md:grid md:grid-cols-5 md:gap-y-0 text-center"
+            className="md:hidden w-full flex flex-col items-center justify-center gap-y-4 text-center"
           >
             {links.map((link) => (
               <motion.a 
                 key={link}
                 variants={navItemVariants}
-                href={`#${link.replace(/ /g, "-")}`}
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,26px)] mx-auto justify-self-center text-center w-fit whitespace-nowrap"
+                href={link === "technical data" ? "#technical-data" : `#${link.replace(/ /g, "-")}`}
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
               >
                 {link}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
           </motion.nav>
-          
+
+          {/* Desktop Navigation (Equal gaps, perfect center to logo) */}
+          <motion.nav 
+            variants={navContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="hidden md:grid w-full grid-cols-[1fr_auto_1fr] items-center gap-x-[7vw] lg:gap-x-[9.5vw] xl:gap-x-[12vw] text-center px-6 md:px-16 lg:px-24"
+          >
+            {/* Left Column (about, products) */}
+            <div className="flex justify-end gap-x-[7vw] lg:gap-x-[9.5vw] xl:gap-x-[12vw]">
+              <motion.a 
+                variants={navItemVariants}
+                href="#about"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                about
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+              <motion.a 
+                variants={navItemVariants}
+                href="#products"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                products
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+            </div>
+
+            {/* Center Column (technical data - aligned to logo) */}
+            <div className="flex justify-center">
+              <motion.a 
+                variants={navItemVariants}
+                href="#technical-data"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                technical data
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+            </div>
+
+            {/* Right Column (made in italy, contact us) */}
+            <div className="flex justify-start gap-x-[vw] lg:gap-x-[8.5vw] xl:gap-x-[11vw]">
+              <motion.a 
+                variants={navItemVariants}
+                href="#made-in-italy"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                made in italy
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+              <motion.a 
+                variants={navItemVariants}
+                href="#contact-us"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                contact us
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+            </div>
+          </motion.nav>
+
           {/* Logo with fade in & slide up delay */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="w-[260px] pt-10"
+            className="w-[300px] pt-20"
           >
-            <img 
-              src="/nobilita3/images/NOBILITA_white.png" 
-              alt="Porcellana Nobilita" 
+            <img
+              src="/nobilita3/images/NOBILITA_white.png"
+              alt="Porcellana Nobilita"
               className="w-full h-auto object-contain"
             />
           </motion.div>
-          
+
         </div>
       </div>
     </footer>

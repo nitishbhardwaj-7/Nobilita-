@@ -42,15 +42,19 @@ export default function Navbar() {
       return;
     }
 
-    const checkScrollPosition = () => {
-      let threshold = 0;
+    let threshold = 380;
+    const updateThreshold = () => {
       if (isHomeScreen) {
         threshold = window.innerHeight * 0.9;
       } else if (isExplorePage) {
         const heroEl = document.getElementById("explore-hero");
         threshold = heroEl ? heroEl.offsetHeight : 380;
       }
+    };
 
+    updateThreshold();
+
+    const checkScrollPosition = () => {
       const inside = window.scrollY < threshold;
       setIsInsideBrandIntro(inside);
       if (inside) {
@@ -58,13 +62,22 @@ export default function Navbar() {
       }
     };
 
+    const handleResize = () => {
+      updateThreshold();
+      checkScrollPosition();
+    };
+
     checkScrollPosition();
     window.addEventListener("scroll", checkScrollPosition, { passive: true });
-    window.addEventListener("resize", checkScrollPosition);
+    window.addEventListener("resize", handleResize);
+
+    // Run again slightly later to ensure DOM elements have layout completed
+    const timer = setTimeout(updateThreshold, 150);
 
     return () => {
       window.removeEventListener("scroll", checkScrollPosition);
-      window.removeEventListener("resize", checkScrollPosition);
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
     };
   }, [isHomeScreen, isExplorePage]);
 

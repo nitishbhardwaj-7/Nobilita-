@@ -94,7 +94,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
   const words = headline.split(" ");
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark">
+    <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark mb-24">
       {/* Slideshow Background Images with Smooth Crossfade and Zoom-out (Ken Burns) */}
       <div className="absolute inset-0 w-full h-full bg-black">
         <AnimatePresence initial={false}>
@@ -119,12 +119,12 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
         <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
           {/* Word-by-word reveal heading triggered by parent viewport */}
-          <motion.h1 
+          <motion.h1
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="font-ivymode text-white leading-tight tracking-[0.2em] text-[clamp(24px,4.2vw,46px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]"
+            className="font-ivymode text-white leading-tight tracking-[0.1em] text-[clamp(24px,4.2vw,48px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]"
           >
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-1">
@@ -139,27 +139,34 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
           </motion.h1>
 
           {/* Line-by-line, word-by-word cascading reveal triggered by parent viewport */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,42px)] font-light leading-snug max-w-[1300px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
+            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,52px)] font-light leading-[1.1] w-full max-w-[1150px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
           >
-            {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => (
-              <span key={lineIdx} className="flex flex-wrap justify-center gap-x-[0.35em] py-0.5">
-                {line.split(" ").map((word, wordIdx) => (
-                  <span key={wordIdx} className="inline-block overflow-hidden py-0.5">
-                    <motion.span
-                      custom={0.15 + (lineIdx * 5 + wordIdx) * 0.008}
-                      variants={paragraphWordVariants}
-                      className="inline-block"
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
-              </span>
-            ))}
+            {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
+              const lines = (subtitle || defaultSubtitle).split("\n");
+              const isLastLine = lineIdx === lines.length - 1;
+              return (
+                <span
+                  key={lineIdx}
+                  className={`w-full flex flex-wrap justify-center gap-x-[0.35em] ${isLastLine ? "" : "md:justify-between md:gap-x-0"} py-0.5`}
+                >
+                  {line.split(" ").map((word, wordIdx) => (
+                    <span key={wordIdx} className="inline-block overflow-hidden py-0.5">
+                      <motion.span
+                        custom={0.15 + (lineIdx * 5 + wordIdx) * 0.008}
+                        variants={paragraphWordVariants}
+                        className="inline-block"
+                      >
+                        {word}
+                      </motion.span>
+                    </span>
+                  ))}
+                </span>
+              );
+            })}
           </motion.div>
 
           {/* Staggered entrance CTA triggered by parent viewport */}
@@ -168,15 +175,15 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             whileInView="visible"
             viewport={{ once: true }}
             variants={buttonVariants}
-            className="w-full max-w-[320px] md:max-w-[620px] mt-auto"
+            className="w-full max-w-[320px] md:max-w-[620px] mt-auto mb-10"
           >
             <Link href="/explore-collection" className="block">
-              <motion.button 
+              <motion.button
                 whileTap={{ scale: 0.96 }}
-                className="relative overflow-hidden border border-white/80 text-white bg-black/10 backdrop-blur-xs w-full py-4 font-michroma text-[clamp(11px,1.3vw,24px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group"
+                className="relative overflow-hidden border border-white/80 text-white w-full py-4 font-michroma text-[clamp(11px,1.3vw,30px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group"
               >
                 <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                <motion.span 
+                <motion.span
                   variants={buttonTextVariants}
                   className="relative z-10 block transition-colors duration-500 group-hover:text-brand-dark"
                 >

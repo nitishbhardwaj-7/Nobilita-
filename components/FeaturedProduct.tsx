@@ -796,105 +796,177 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
       {/* Face / Bookmatch Section */}
       <section className="w-full bg-white flex flex-col justify-center items-center py-10 md:py-20 px-4 md:px-16">
-        <div className={`relative w-full overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
-          showBookmatch ? "max-w-[1100px] aspect-[1920/1872]" : "max-w-[1100px] aspect-[2/1]"
-        }`}>
-          {showBookmatch && config.bookmatchImg ? (
-            <img
-              src={config.bookmatchImg}
-              alt={`${activeProduct} Bookmatch`}
-              className="w-full h-full object-contain block transition-all duration-700 ease-in-out z-10"
-            />
-          ) : (
-            <img
-              src={activeFaceImg}
-              alt={`${activeProduct} Face ${activeFace}`}
-              className="absolute w-1/2 aspect-[1/2] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
-            />
-          )}
+        {activeProduct === "Calacatta Oyster" ? (
+          // Side-by-side vertical layout for Calacatta Oyster
+          showBookmatch && config.bookmatchImg ? (
+            <div className="flex flex-col items-center w-full">
+              {/* Bookmatch Image Container */}
+              <div className="relative w-full max-w-[1100px] aspect-[1920/1872] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
+                {/* Label inside top-center */}
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                  BOOKMATCH
+                </div>
 
-          {/* Label in top-left */}
-          <div className="absolute top-6 left-6 md:top-8 md:left-8 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase bg-transparent px-3 py-1 z-20 hidden md:block">
-            {showBookmatch ? "BOOKMATCH" : `FACE ${activeFace}`}
-          </div>
-
-          {/* Face switcher in top-right */}
-          {config.availableFaces && config.availableFaces.length > 1 && (
-            <div className="absolute top-6 right-6 md:top-8 md:right-8 flex items-center space-x-2 md:space-x-3 z-20 hidden md:flex">
-              {config.availableFaces.map((f, idx) => {
-                const faceNum = idx + 1;
-                return (
+                <img
+                  src={config.bookmatchImg}
+                  alt={`${activeProduct} Bookmatch`}
+                  className="w-full h-full object-contain block transition-all duration-700 ease-in-out z-10"
+                />
+                
+                {/* BACK TO FACES button */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
-                    key={faceNum}
-                    onClick={() => {
-                      setActiveFace(faceNum);
-                      setShowBookmatch(false);
-                    }}
-                    className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${
-                      activeFace === faceNum && !showBookmatch
-                        ? "border-brand-dark bg-brand-dark text-white"
-                        : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
-                    }`}
+                    onClick={() => setShowBookmatch(false)}
+                    className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                   >
-                    FACE {faceNum}
+                    VIEW FACES
                   </button>
-                );
-              })}
+                </div>
+              </div>
             </div>
-          )}
-
-          {/* VIEW BOOKMATCH button in bottom-center */}
-          {config.bookmatchImg && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 z-20 hidden md:block">
-              <button
-                onClick={() => setShowBookmatch(!showBookmatch)}
-                className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] md:text-xs tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
-              >
-                {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* Mobile Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-[1100px] mt-6 gap-4 md:hidden px-2">
-          <div className="flex items-center justify-between w-full sm:w-auto">
-            <div className="font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase">
-              {showBookmatch ? "BOOKMATCH" : `FACE ${activeFace}`}
-            </div>
-            {config.availableFaces && config.availableFaces.length > 1 && (
-              <div className="flex items-center space-x-2 ml-4">
-                {config.availableFaces.map((f, idx) => {
+          ) : (
+            /* Side-by-side 3 Faces View */
+            <div className="w-full flex flex-col items-center">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1250px] justify-center">
+                {(config.availableFaces || []).map((faceImg, idx) => {
                   const faceNum = idx + 1;
                   return (
-                    <button
-                      key={faceNum}
-                      onClick={() => {
-                        setActiveFace(faceNum);
-                        setShowBookmatch(false);
-                      }}
-                      className={`border px-2.5 py-1 font-michroma text-[9px] tracking-[0.1em] uppercase transition-all duration-300 focus:outline-none ${
-                        activeFace === faceNum && !showBookmatch
-                          ? "border-brand-dark bg-brand-dark text-white"
-                          : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
-                      }`}
-                    >
-                      {faceNum}
-                    </button>
+                    <div key={faceNum} className="flex flex-col items-center w-full">
+                      {/* Face Image Container */}
+                      <div className="relative w-full aspect-[1/2] max-w-[360px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
+                        {/* Label inside top-center */}
+                        <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                          FACE {faceNum}
+                        </div>
+
+                        <img
+                          src={faceImg}
+                          alt={`${activeProduct} Face ${faceNum}`}
+                          className="absolute w-[200%] h-[50%] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10 max-w-none max-h-none"
+                        />
+
+                        {/* View Bookmatch button overlaid on face 2 */}
+                        {faceNum === 2 && config.bookmatchImg && (
+                          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 flex justify-center">
+                            <button
+                              onClick={() => setShowBookmatch(true)}
+                              className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                            >
+                              VIEW BOOKMATCH
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   );
                 })}
               </div>
-            )}
-          </div>
-          {config.bookmatchImg && (
-            <button
-              onClick={() => setShowBookmatch(!showBookmatch)}
-              className="border border-brand-dark/60 bg-transparent hover:bg-brand-dark hover:text-white transition-all px-6 py-2.5 font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase focus:outline-none w-full sm:w-auto text-center"
-            >
-              {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
-            </button>
-          )}
-        </div>
+            </div>
+          )
+        ) : (
+          // Original layout for all other products (e.g. Arabescato Vagli)
+          <>
+            <div className={`relative w-full overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
+              showBookmatch ? "max-w-[1100px] aspect-[1920/1872]" : "max-w-[1100px] aspect-[2/1]"
+            }`}>
+              {showBookmatch && config.bookmatchImg ? (
+                <img
+                  src={config.bookmatchImg}
+                  alt={`${activeProduct} Bookmatch`}
+                  className="w-full h-full object-contain block transition-all duration-700 ease-in-out z-10"
+                />
+              ) : (
+                <img
+                  src={activeFaceImg}
+                  alt={`${activeProduct} Face ${activeFace}`}
+                  className="absolute w-1/2 aspect-[1/2] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                />
+              )}
+
+              {/* Label inside top-center */}
+              <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                {showBookmatch ? "BOOKMATCH" : `FACE ${activeFace}`}
+              </div>
+
+              {/* Face switcher in top-right */}
+              {config.availableFaces && config.availableFaces.length > 1 && (
+                <div className="absolute top-6 right-6 md:top-8 md:right-8 flex items-center space-x-2 md:space-x-3 z-20 hidden md:flex">
+                  {config.availableFaces.map((f, idx) => {
+                    const faceNum = idx + 1;
+                    return (
+                      <button
+                        key={faceNum}
+                        onClick={() => {
+                          setActiveFace(faceNum);
+                          setShowBookmatch(false);
+                        }}
+                        className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${
+                          activeFace === faceNum && !showBookmatch
+                            ? "border-brand-dark bg-brand-dark text-white"
+                            : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
+                        }`}
+                      >
+                        FACE {faceNum}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* VIEW BOOKMATCH button in bottom-center */}
+              {config.bookmatchImg && (
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+                  <button
+                    onClick={() => setShowBookmatch(!showBookmatch)}
+                    className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                  >
+                    {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Controls */}
+            <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-[1100px] mt-6 gap-4 md:hidden px-2">
+              <div className="flex items-center justify-between w-full sm:w-auto">
+                <div className="font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase">
+                  {showBookmatch ? "BOOKMATCH" : `FACE ${activeFace}`}
+                </div>
+                {config.availableFaces && config.availableFaces.length > 1 && (
+                  <div className="flex items-center space-x-2 ml-4">
+                    {config.availableFaces.map((f, idx) => {
+                      const faceNum = idx + 1;
+                      return (
+                        <button
+                          key={faceNum}
+                          onClick={() => {
+                            setActiveFace(faceNum);
+                            setShowBookmatch(false);
+                          }}
+                          className={`border px-2.5 py-1 font-michroma text-[9px] tracking-[0.1em] uppercase transition-all duration-300 focus:outline-none ${
+                            activeFace === faceNum && !showBookmatch
+                              ? "border-brand-dark bg-brand-dark text-white"
+                              : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
+                          }`}
+                        >
+                          {faceNum}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+              {config.bookmatchImg && (
+                <button
+                  onClick={() => setShowBookmatch(!showBookmatch)}
+                  className="border border-black border-2 bg-white/80 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none w-full sm:w-auto text-center"
+                >
+                  {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
+                </button>
+              )}
+            </div>
+          </>
+        )}
       </section>
     </div>
   );

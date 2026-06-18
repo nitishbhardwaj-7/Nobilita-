@@ -14,8 +14,8 @@ const parentVariants = {
 
 const childVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" }
   }
@@ -40,7 +40,7 @@ export default function DimensionsSection() {
       </div>
 
       {/* Specification Grid with stagger */}
-      <motion.div 
+      <motion.div
         variants={parentVariants}
         initial="hidden"
         whileInView="visible"
@@ -50,8 +50,8 @@ export default function DimensionsSection() {
         {/* Column 1: THICKNESS */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] font-semibold text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)]"
-            style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
+            className="font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)]"
+            style={{ fontFamily: "var(--font-didotbold), Georgia, serif" }}
           >
             THICKNESS
           </h3>
@@ -64,8 +64,8 @@ export default function DimensionsSection() {
         {/* Column 2: DIMENSIONS */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] font-semibold text-[#545759]  uppercase text-[clamp(20px,2.5vw,28px)]"
-            style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
+            className="font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)]"
+            style={{ fontFamily: "var(--font-didotbold), Georgia, serif" }}
           >
             DIMENSIONS
           </h3>
@@ -78,8 +78,8 @@ export default function DimensionsSection() {
         {/* Column 3: FORMAT */}
         <motion.div variants={childVariants} className="flex flex-col items-center text-center space-y-6 md:space-y-6">
           <h3
-            className="font-didot tracking-[0.15em] font-semibold text-[#545759]  uppercase text-[clamp(20px,2.5vw,28px)]"
-            style={{ fontFamily: "var(--font-didot), Georgia, serif" }}
+            className="font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)]"
+            style={{ fontFamily: "var(--font-didotbold)" }}
           >
             FORMAT
           </h3>
@@ -109,19 +109,21 @@ export default function DimensionsSection() {
             loading="lazy"
             className="w-full h-auto max-h-[450px] object-cover origin-center"
           />
-          <motion.button 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            whileTap={{ scale: 0.96 }}
-            className="absolute border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-2000 uppercase group overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-              TECHNICAL DATA
-            </span>
-          </motion.button>
+          <a href="#technical-data" className="absolute z-10">
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              whileTap={{ scale: 0.96 }}
+              className="border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-2000 uppercase group overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+                TECHNICAL DATA
+              </span>
+            </motion.button>
+          </a>
         </motion.div>
       </div>
     </section>

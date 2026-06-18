@@ -13,6 +13,7 @@ const config: Config = {
         montserrat: ["var(--font-montserrat)", "sans-serif"],
         gurmukhi: ["GurmukhiMN", "sans-serif"],
         didot: ["var(--font-didot)", "serif"],
+        didotbold: ["var(--font-didotbold)", "serif"],
         michroma: ["var(--font-michroma)", "sans-serif"],
         ivymode: ["var(--font-ivymode)", "serif"],
       },

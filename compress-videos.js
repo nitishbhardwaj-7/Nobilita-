@@ -5,7 +5,9 @@ const path = require('path');
 
 const videos = [
   path.join(__dirname, 'public', 'images', 'Links', 'Calacatta Oyster Vid.mp4'),
-  path.join(__dirname, 'public', 'images', 'Links', 'arbescato vagli bathroom video.mp4')
+  path.join(__dirname, 'public', 'images', 'Links', 'arbescato vagli bathroom video.mp4'),
+  path.join(__dirname, 'public', 'images', 'Links', 'materials.mp4'),
+  path.join(__dirname, 'public', 'images', 'Links', 'Applications.mp4')
 ];
 
 function compressVideo(inputPath) {
