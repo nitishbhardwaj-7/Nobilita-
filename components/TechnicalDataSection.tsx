@@ -41,10 +41,10 @@ export default function TechnicalDataSection() {
       {/* Buttons Container */}
       <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-16 px-6">
         <a
-          href="/nobilita3/catalog.pdf"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
-          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[13px] tracking-[0.25em] text-brand-dark uppercase bg-white/70 hover:bg-brand-dark hover:text-white transition-all duration-300 backdrop-blur-sm min-w-[280px] md:min-w-[340px] text-center"
+          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[16px] tracking-[0.15em] text-[#545759] uppercase hover:bg-brand-dark hover:text-white transition-all duration-300 min-w-[280px] md:min-w-[340px] text-center"
         >
           DOWNLOAD CATALOG
         </a>
@@ -52,7 +52,7 @@ export default function TechnicalDataSection() {
           onClick={() => {
             alert("Thank you for subscribing to our newsletter!");
           }}
-          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[13px] tracking-[0.25em] text-brand-dark uppercase bg-white/70 hover:bg-brand-dark hover:text-white transition-all duration-300 backdrop-blur-sm min-w-[280px] md:min-w-[340px] text-center focus:outline-none"
+          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[16px] tracking-[0.15em] text-[#545759] uppercase hover:bg-brand-dark hover:text-white transition-all duration-300 min-w-[280px] md:min-w-[340px] text-center focus:outline-none"
         >
           SUBSCRIBE TO NEWSLETTER
         </button>
