@@ -82,7 +82,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % slideshowImages.length);
-    }, 4500); // Change image every 4.5 seconds
+    }, 7000); // Change image every 6.5 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -96,22 +96,31 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
   return (
     <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark mb-24">
       {/* Slideshow Background Images with Smooth Crossfade and Zoom-out (Ken Burns) */}
-      <div className="absolute inset-0 w-full h-full bg-black">
+      <div className="absolute inset-0 w-full h-full bg-black overflow-hidden">
         <AnimatePresence initial={false}>
-          <motion.img
+          <motion.div
             key={currentImageIndex}
-            src={slideshowImages[currentImageIndex]}
-            alt="Luxury Italian tile interior slideshow"
-            initial={{ clipPath: "inset(0 0 0 100%)" }}
-            animate={{ clipPath: "inset(0 0 0 0%)" }}
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
             exit={{ opacity: 0 }}
             transition={{
-              clipPath: { duration: 1.5, ease: [0.76, 0, 0.24, 1] },
+              x: { duration: 1.5, ease: [0.76, 0, 0.24, 1] },
               opacity: { delay: 1.5, duration: 0.1 }
             }}
-            className="absolute inset-0 w-full h-full object-cover object-bottom opacity-100"
-          />
+            className="absolute inset-0 w-full h-full overflow-hidden z-0"
+          >
+            <motion.img
+              src={slideshowImages[currentImageIndex]}
+              alt="Luxury Italian tile interior slideshow"
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
+              className="absolute inset-0 w-full h-full object-cover object-bottom opacity-100 max-w-none"
+            />
+          </motion.div>
         </AnimatePresence>
+        {/* Subtle premium dark gradient overlay for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/10 to-black/20 pointer-events-none z-10" />
       </div>
 
       <Navbar />

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = ["about", "products", "technical data", "made in italy", "contact us"];
 
@@ -25,6 +25,7 @@ const navItemVariants = {
 
 export default function Footer() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [showQueryForm, setShowQueryForm] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,12 +36,32 @@ export default function Footer() {
     }, 1500);
   };
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowQueryForm(true);
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact-form-section");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 100);
+  };
+
   return (
     <footer id="contact-us" className="w-full flex flex-col bg-white">
 
 
       {/* Contact Form Section */}
-      <div className="w-full bg-white py-16 md:py-24 px-6 md:px-12 flex flex-col items-center min-h-[500px] justify-center">
+      <AnimatePresence initial={false}>
+        {showQueryForm && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            id="contact-form-section"
+            className="w-full bg-white py-16 md:py-24 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden"
+          >
         <div className="w-full max-w-4xl flex flex-col items-center">
           {submitStatus === "sent" ? (
             /* Thank You Card */
@@ -171,7 +192,9 @@ export default function Footer() {
             </>
           )}
         </div>
-      </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
 
       {/* Lower Footer Area */}
       <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center pb-10 px-6">
@@ -186,17 +209,21 @@ export default function Footer() {
             viewport={{ once: true }}
             className="md:hidden w-full flex flex-col items-center justify-center gap-y-4 text-center"
           >
-            {links.map((link) => (
-              <motion.a 
-                key={link}
-                variants={navItemVariants}
-                href={link === "technical data" ? "#technical-data" : `#${link.replace(/ /g, "-")}`}
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
-              >
-                {link}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            ))}
+            {links.map((link) => {
+              const isContact = link === "contact us";
+              return (
+                <motion.a 
+                  key={link}
+                  variants={navItemVariants}
+                  href={link === "technical data" ? "#technical-data" : `#${link.replace(/ /g, "-")}`}
+                  onClick={isContact ? handleContactClick : undefined}
+                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
+                >
+                  {link}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </motion.a>
+              );
+            })}
           </motion.nav>
 
           {/* Desktop Navigation (Equal gaps, perfect center to logo) */}
@@ -252,6 +279,7 @@ export default function Footer() {
               <motion.a 
                 variants={navItemVariants}
                 href="#contact-us"
+                onClick={handleContactClick}
                 className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
               >
                 contact us
