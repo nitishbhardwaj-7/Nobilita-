@@ -153,6 +153,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             whileInView="visible"
             viewport={{ once: true }}
             className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,52px)] font-light leading-[1.1] w-full max-w-[1150px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
+            style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)" }}
           >
             {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
               const lines = (subtitle || defaultSubtitle).split("\n");
