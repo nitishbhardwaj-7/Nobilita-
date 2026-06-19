@@ -7,28 +7,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const applications = [
-  { name: "INTERIOR WALLS",  image: "/nobilita3/images/Calacatta Oyster Application 1.jpg", row: 1 },
-  { name: "INTERIOR FLOORS", image: "/nobilita3/images/ccc.jpg",                            row: 1 },
-  { name: "COUNTERTOPS",     image: "/nobilita3/images/mmm.jpg",                            row: 1 },
-  { name: "EXTERIOR WALLS",  image: "/nobilita3/images/15.jpg",                             row: 2 },
-  { name: "EXTERIOR FLOORS", image: "/nobilita3/images/4.jpg",                              row: 2 },
-  { name: "FURNITURE",       image: "/nobilita3/images/Arabescato Fjord (2).jpg",           row: 2 },
+  { name: "INTERIOR WALLS", image: "/nobilita3/images/Calacatta Oyster Application 1.jpg", row: 1 },
+  { name: "INTERIOR FLOORS", image: "/nobilita3/images/ccc.jpg", row: 1 },
+  { name: "COUNTERTOPS", image: "/nobilita3/images/mmm.jpg", row: 1 },
+  { name: "EXTERIOR WALLS", image: "/nobilita3/images/15.jpg", row: 2 },
+  { name: "EXTERIOR FLOORS", image: "/nobilita3/images/4.jpg", row: 2 },
+  { name: "FURNITURE", image: "/nobilita3/images/Arabescato Fjord (2).jpg", row: 2 },
 ];
 
 const DARK_LABEL = ["EXTERIOR WALLS", "EXTERIOR FLOORS", "FURNITURE"];
 
 export default function ApplicationsSection() {
-  const sectionRef  = useRef<HTMLElement>(null);
-  const headingRef  = useRef<HTMLHeadingElement>(null);
-  const row1Ref     = useRef<HTMLDivElement>(null);
-  const row2Ref     = useRef<HTMLDivElement>(null);
-  const tileRefs    = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const row1Ref = useRef<HTMLDivElement>(null);
+  const row2Ref = useRef<HTMLDivElement>(null);
+  const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    const cleanupFns: (() => void)[] = [];
     const ctx = gsap.context(() => {
       const heading = headingRef.current;
-      const row1    = row1Ref.current;
-      const row2    = row2Ref.current;
+      const row1 = row1Ref.current;
+      const row2 = row2Ref.current;
 
       if (!heading || !row1 || !row2) return;
 
@@ -93,32 +94,49 @@ export default function ApplicationsSection() {
         },
       });
 
-      // ── 4 & 5. HOVER — image parallax + label letter-spacing ─────────────
+      // ── 4 & 5. HOVER — image parallax + zoom out + label letter-spacing ─────────────
       tileRefs.current.forEach((tile) => {
         if (!tile) return;
-        const img   = tile.querySelector<HTMLElement>(".tile-img");
+        const img = tile.querySelector<HTMLElement>(".tile-img");
         const label = tile.querySelector<HTMLElement>(".tile-label");
         if (!img || !label) return;
 
-        tile.addEventListener("mousemove", (e: MouseEvent) => {
+        // Set initial scale to 1.12
+        gsap.set(img, { scale: 1.12 });
+
+        const onMouseMove = (e: MouseEvent) => {
           const rect = tile.getBoundingClientRect();
-          const x = ((e.clientX - rect.left)  / rect.width  - 0.5) * -12;
-          const y = ((e.clientY - rect.top)    / rect.height - 0.5) * -12;
+          const x = ((e.clientX - rect.left) / rect.width - 0.5) * -12;
+          const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
           gsap.to(img, { x, y, duration: 0.8, ease: "power2.out", overwrite: "auto" });
-        });
+        };
 
-        tile.addEventListener("mouseenter", () => {
+        const onMouseEnter = () => {
+          gsap.to(img, { scale: 1.07, duration: 0.8, ease: "power2.out", overwrite: "auto" });
           gsap.to(label, { letterSpacing: "0.18em", opacity: 1, duration: 0.5, ease: "power2.out" });
-        });
+        };
 
-        tile.addEventListener("mouseleave", () => {
-          gsap.to(img,   { x: 0, y: 0, duration: 1.2, ease: "power3.out", overwrite: "auto" });
+        const onMouseLeave = () => {
+          gsap.to(img, { x: 0, y: 0, scale: 1.12, duration: 1.2, ease: "power3.out", overwrite: "auto" });
           gsap.to(label, { letterSpacing: "0.1em", opacity: 0.85, duration: 0.5, ease: "power2.out" });
+        };
+
+        tile.addEventListener("mousemove", onMouseMove);
+        tile.addEventListener("mouseenter", onMouseEnter);
+        tile.addEventListener("mouseleave", onMouseLeave);
+
+        cleanupFns.push(() => {
+          tile.removeEventListener("mousemove", onMouseMove);
+          tile.removeEventListener("mouseenter", onMouseEnter);
+          tile.removeEventListener("mouseleave", onMouseLeave);
         });
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      cleanupFns.forEach((fn) => fn());
+    };
   }, []);
 
   const row1Apps = applications.filter(a => a.row === 1);
@@ -136,14 +154,14 @@ export default function ApplicationsSection() {
         className="tile-img absolute inset-0 w-full h-full object-cover"
         style={{
           willChange: "transform",
+          transform: "scale(1.12)",
         }}
       />
       {/* ── Label */}
       <div className="absolute inset-0 flex items-center justify-center p-4 text-center pointer-events-none">
         <span
-          className={`tile-label font-didot font-medium text-[clamp(16px,4vw,28px)] uppercase relative z-10 ${
-            DARK_LABEL.includes(app.name) ? "text-brand-dark" : "text-white"
-          }`}
+          className={`tile-label font-didot font-medium text-[clamp(16px,4vw,28px)] uppercase relative z-10 ${DARK_LABEL.includes(app.name) ? "text-brand-dark" : "text-white"
+            }`}
           style={{ fontFamily: "var(--font-didot), Georgia, serif", letterSpacing: "0.1em", opacity: 0 }}
         >
           {app.name}

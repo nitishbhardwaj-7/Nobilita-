@@ -173,24 +173,24 @@ export default function Navbar() {
         {/* Animated Hamburger / Close Icon */}
         <button
           onClick={() => setIsNavOpen(!isNavOpen)}
-          className="relative w-8 h-8 focus:outline-none z-[10000] transition-opacity hover:opacity-80 flex items-center justify-center"
+          className="relative w-10 h-10 focus:outline-none z-[10000] transition-opacity hover:opacity-80 flex items-center justify-center"
           aria-label="Toggle navigation menu"
         >
           <span 
-            className="absolute block h-[1px] w-7 bg-white transition-all duration-300 ease-in-out"
+            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: isNavOpen ? "translateY(0px) rotate(45deg)" : "translateY(-6px) rotate(0deg)"
             }}
           />
           <span 
-            className="absolute block h-[1px] w-7 bg-white transition-all duration-300 ease-in-out"
+            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: isNavOpen ? "scaleX(0)" : "scaleX(1)",
               opacity: isNavOpen ? 0 : 1
             }}
           />
           <span 
-            className="absolute block h-[1px] w-7 bg-white transition-all duration-300 ease-in-out"
+            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: isNavOpen ? "translateY(0px) rotate(-45deg)" : "translateY(6px) rotate(0deg)"
             }}

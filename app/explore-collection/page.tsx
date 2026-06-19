@@ -7,6 +7,7 @@ import gsap from "gsap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
+import NavigationOverlay from "@/components/NavigationOverlay";
 
 const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), {
   ssr: false,
@@ -133,6 +134,8 @@ export default function ExploreCollection() {
   // Selected slab for fullscreen detail modal
   const [activeSlab, setActiveSlab] = useState<typeof slabs[0] | null>(null);
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
   // Reset all active filters
   const handleReset = () => {
     setSelectedColor(null);
@@ -165,17 +168,49 @@ export default function ExploreCollection() {
 
       {/* Explore Collection Header Banner */}
       <div id="explore-hero" className="w-full bg-[#007190] pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
+        {/* Menu Icon on Top Left */}
+        <div className="absolute top-6 left-6 md:top-8 md:left-12 z-[10000]">
+          <button
+            onClick={() => setIsNavOpen(!isNavOpen)}
+            className="relative w-10 h-10 focus:outline-none transition-opacity hover:opacity-80 flex items-center justify-center"
+            aria-label="Toggle navigation menu"
+          >
+            <span 
+              className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+              style={{
+                transform: isNavOpen ? "translateY(0px) rotate(45deg)" : "translateY(-6px) rotate(0deg)"
+              }}
+            />
+            <span 
+              className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+              style={{
+                transform: isNavOpen ? "scaleX(0)" : "scaleX(1)",
+                opacity: isNavOpen ? 0 : 1
+              }}
+            />
+            <span 
+              className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+              style={{
+                transform: isNavOpen ? "translateY(0px) rotate(-45deg)" : "translateY(6px) rotate(0deg)"
+              }}
+            />
+          </button>
+        </div>
+
+        {/* Navigation Overlay */}
+        <NavigationOverlay isOpen={isNavOpen} onClose={() => setIsNavOpen(false)} />
+
         <Link
           href="/"
           className="absolute top-28 left-6 md:left-12 group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Back to home"
         >
-          <svg 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.2" 
-            strokeLinecap="round" 
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
             strokeLinejoin="round"
             className="w-4 h-4 md:w-4.5 md:h-4.5 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
           >

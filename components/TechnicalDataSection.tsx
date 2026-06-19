@@ -25,7 +25,7 @@ export default function TechnicalDataSection() {
   }, []);
 
   return (
-    <section id="technical-data" className="w-full min-h-screen relative flex justify-center items-center overflow-hidden">
+    <section id="technical-data" className="w-full min-h-[60vh] relative flex justify-center items-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -39,12 +39,12 @@ export default function TechnicalDataSection() {
       </div>
 
       {/* Buttons Container */}
-      <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-16 px-6">
+      <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-48 px-6">
         <a
           href=""
           target="_blank"
           rel="noopener noreferrer"
-          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[16px] tracking-[0.15em] text-[#545759] uppercase hover:bg-brand-dark hover:text-white transition-all duration-300 min-w-[280px] md:min-w-[340px] text-center"
+          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[18px] tracking-[0.15em] text-[#545759] uppercase hover:bg-brand-dark hover:text-white transition-all duration-300 min-w-[280px] md:min-w-[340px] text-center"
         >
           DOWNLOAD CATALOG
         </a>
@@ -52,7 +52,7 @@ export default function TechnicalDataSection() {
           onClick={() => {
             alert("Thank you for subscribing to our newsletter!");
           }}
-          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[16px] tracking-[0.15em] text-[#545759] uppercase hover:bg-brand-dark hover:text-white transition-all duration-300 min-w-[280px] md:min-w-[340px] text-center focus:outline-none"
+          className="border border-brand-dark/80 px-8 py-4 font-michroma text-[11px] md:text-[18px] tracking-[0.15em] text-[#545759] uppercase hover:bg-brand-dark hover:text-white transition-all duration-300 min-w-[280px] md:min-w-[340px] text-center focus:outline-none"
         >
           SUBSCRIBE TO NEWSLETTER
         </button>

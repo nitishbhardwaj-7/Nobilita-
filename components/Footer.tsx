@@ -82,7 +82,7 @@ export default function Footer() {
                       window.location.href = "/explore-collection";
                     }
                   }}
-                  className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-10 py-3.5 font-ivymode text-[14px] md:text-[16px] tracking-[0.2em] text-brand-dark uppercase focus:outline-none"
+                  className="border border-brand-dark/50 bg-white hover:bg-brand-dark hover:text-white transition-all duration-300 px-10 py-3.5 font-ivymode text-[14px] md:text-[40px] tracking-[0.2em] text-[#545759] uppercase focus:outline-none"
                 >
                   DISCOVER THE COLLECTION
                 </button>
@@ -110,7 +110,7 @@ export default function Footer() {
                   />
                   <label
                     htmlFor="name"
-                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -130,7 +130,7 @@ export default function Footer() {
                   />
                   <label
                     htmlFor="email"
-                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -150,7 +150,7 @@ export default function Footer() {
                   />
                   <label
                     htmlFor="phone"
-                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
@@ -170,7 +170,7 @@ export default function Footer() {
                   />
                   <label
                     htmlFor="query"
-                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-brand-dark/60 uppercase pointer-events-none transition-all duration-200 origin-left
+                    className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"

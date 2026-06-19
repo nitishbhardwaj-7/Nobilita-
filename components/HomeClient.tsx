@@ -32,6 +32,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
         subtitle={d.brandSubtitle}
         buttonText={d.brandBtn}
         image={d.brandImg}
+        isLoaderActive={isLoading}
       />
       <CraftsmanshipSection />
       <LegacySection />

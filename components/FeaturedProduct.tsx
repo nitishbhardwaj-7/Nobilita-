@@ -812,7 +812,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                   alt={`${activeProduct} Bookmatch`}
                   className="w-full h-full object-contain block transition-all duration-700 ease-in-out z-10"
                 />
-                
+
                 {/* BACK TO FACES button */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
@@ -866,9 +866,8 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
         ) : (
           // Original layout for all other products (e.g. Arabescato Vagli)
           <>
-            <div className={`relative w-full overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${
-              showBookmatch ? "max-w-[1100px] aspect-[1920/1872]" : "max-w-[1100px] aspect-[2/1]"
-            }`}>
+            <div className={`relative w-full overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${showBookmatch ? "max-w-[1100px] aspect-[1920/1872]" : "max-w-[1100px] aspect-[2/1]"
+              }`}>
               {showBookmatch && config.bookmatchImg ? (
                 <img
                   src={config.bookmatchImg}
@@ -900,11 +899,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                           setActiveFace(faceNum);
                           setShowBookmatch(false);
                         }}
-                        className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${
-                          activeFace === faceNum && !showBookmatch
+                        className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${activeFace === faceNum && !showBookmatch
                             ? "border-brand-dark bg-brand-dark text-white"
                             : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
-                        }`}
+                          }`}
                       >
                         FACE {faceNum}
                       </button>
@@ -943,11 +941,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                             setActiveFace(faceNum);
                             setShowBookmatch(false);
                           }}
-                          className={`border px-2.5 py-1 font-michroma text-[9px] tracking-[0.1em] uppercase transition-all duration-300 focus:outline-none ${
-                            activeFace === faceNum && !showBookmatch
+                          className={`border px-2.5 py-1 font-michroma text-[9px] tracking-[0.1em] uppercase transition-all duration-300 focus:outline-none ${activeFace === faceNum && !showBookmatch
                               ? "border-brand-dark bg-brand-dark text-white"
                               : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
-                          }`}
+                            }`}
                         >
                           {faceNum}
                         </button>
