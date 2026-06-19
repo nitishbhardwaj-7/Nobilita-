@@ -104,29 +104,20 @@ export default function ApplicationsSection() {
         // Set initial scale to 1.12
         gsap.set(img, { scale: 1.12 });
 
-        const onMouseMove = (e: MouseEvent) => {
-          const rect = tile.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width - 0.5) * -12;
-          const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
-          gsap.to(img, { x, y, duration: 0.8, ease: "power2.out", overwrite: "auto" });
-        };
-
         const onMouseEnter = () => {
-          gsap.to(img, { scale: 1.07, duration: 0.8, ease: "power2.out", overwrite: "auto" });
+          gsap.to(img, { scale: 1.07, duration: 0.8, ease: "power2.out", overwrite: "auto", delay: 0.1 });
           gsap.to(label, { letterSpacing: "0.18em", opacity: 1, duration: 0.5, ease: "power2.out" });
         };
 
         const onMouseLeave = () => {
-          gsap.to(img, { x: 0, y: 0, scale: 1.12, duration: 1.2, ease: "power3.out", overwrite: "auto" });
+          gsap.to(img, { scale: 1.12, duration: 1.2, ease: "power3.out", overwrite: "auto", delay: 0.1 });
           gsap.to(label, { letterSpacing: "0.1em", opacity: 0.85, duration: 0.5, ease: "power2.out" });
         };
 
-        tile.addEventListener("mousemove", onMouseMove);
         tile.addEventListener("mouseenter", onMouseEnter);
         tile.addEventListener("mouseleave", onMouseLeave);
 
         cleanupFns.push(() => {
-          tile.removeEventListener("mousemove", onMouseMove);
           tile.removeEventListener("mouseenter", onMouseEnter);
           tile.removeEventListener("mouseleave", onMouseLeave);
         });
