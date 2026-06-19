@@ -22,7 +22,7 @@ const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), {
 const slabs = [
   {
     name: "Arabescato Vagli",
-    img: "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg",
+    img: "/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
     color: "White",
     finish: "Polished"
   },

@@ -97,22 +97,24 @@ interface SlabConfig {
   slides: { type: "video" | "image"; src: string; poster?: string; alt?: string }[];
   bookmatchImg?: string;
   availableFaces?: string[];
+  isHorizontalFace?: boolean;
 }
 
 const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   "Arabescato Vagli": {
-    leftBg: "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg",
+    leftBg: "/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – BOOKMATCH OF 1", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/arbescato vagli bathroom video.mp4", poster: "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg", alt: "Arabescato Vagli Video" },
+      { type: "video", src: "/nobilita3/images/Links/arbescato vagli bathroom video.mp4", poster: "/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
       { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
       { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
       { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" }
     ],
     bookmatchImg: "/nobilita3/images/Arbescato Vagli/Bookmatch.jpg",
-    availableFaces: ["/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg"]
+    availableFaces: ["/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg"],
+    isHorizontalFace: true
   },
   "Calacatta Oyster": {
     leftBg: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg",
@@ -139,7 +141,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Video" },
       { type: "image", src: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Arbescato Fjord Face 1.jpg"]
+    availableFaces: ["/nobilita3/images/Links/Arbescato Fjord Face 1.jpg"],
+    isHorizontalFace: true
   },
   "Basaltina": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
@@ -149,7 +152,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Basaltina face 1.jpg", alt: "Basaltina Video" },
       { type: "image", src: "/nobilita3/images/Links/Basaltina face 1.jpg", alt: "Basaltina Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Basaltina face 1.jpg"]
+    availableFaces: ["/nobilita3/images/Links/Basaltina face 1.jpg"],
+    isHorizontalFace: true
   },
   "Calacatta Borghini": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
@@ -878,7 +882,11 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <img
                   src={activeFaceImg}
                   alt={`${activeProduct} Face ${activeFace}`}
-                  className="absolute w-1/2 aspect-[1/2] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                  className={
+                    config.isHorizontalFace
+                      ? "absolute w-full h-full object-cover block transition-all duration-700 ease-in-out z-10"
+                      : "absolute w-1/2 aspect-[1/2] rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10"
+                  }
                 />
               )}
 
@@ -900,8 +908,8 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                           setShowBookmatch(false);
                         }}
                         className={`border px-3 py-1.5 font-michroma text-[9px] md:text-[11px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none ${activeFace === faceNum && !showBookmatch
-                            ? "border-brand-dark bg-brand-dark text-white"
-                            : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
+                          ? "border-brand-dark bg-brand-dark text-white"
+                          : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
                           }`}
                       >
                         FACE {faceNum}
