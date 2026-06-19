@@ -202,7 +202,7 @@ export default function ExploreCollection() {
 
         <Link
           href="/"
-          className="absolute top-28 left-6 md:left-12 group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          className="absolute top-28 left-6 md:left-11 group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Back to home"
         >
           <svg
