@@ -803,7 +803,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Bookmatch Image Container */}
               <div className="relative w-full max-w-[1100px] aspect-[1920/1872] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
                 {/* Label inside top-center */}
-                <div className="absolute top-3 md:top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[8px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
                   BOOKMATCH
                 </div>
 
@@ -814,10 +814,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 />
 
                 {/* BACK TO FACES button */}
-                <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-2 flex justify-center">
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(false)}
-                    className="border border-black border-[1px] md:border-2 hover:bg-brand-dark hover:text-white transition-all px-2.5 py-1.5 md:px-4 md:py-1.5 font-michroma font-medium text-[8px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                    className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                   >
                     VIEW FACES
                   </button>
@@ -827,7 +827,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           ) : (
             /* Side-by-side 3 Faces View */
             <div className="w-full flex flex-col items-center">
-              <div className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-[1250px] justify-center px-1 md:px-0">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1250px] justify-center">
                 {(config.availableFaces || []).map((faceImg, idx) => {
                   const faceNum = idx + 1;
                   return (
@@ -835,7 +835,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       {/* Face Image Container */}
                       <div className="relative w-full aspect-[1/2] max-w-[360px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
                         {/* Label inside top-center */}
-                        <div className="absolute top-3 md:top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[8px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                        <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
                           FACE {faceNum}
                         </div>
 
@@ -847,10 +847,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
                         {/* View Bookmatch button overlaid on face 2 */}
                         {faceNum === 2 && config.bookmatchImg && (
-                          <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-1 md:px-4 flex justify-center">
+                          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 flex justify-center">
                             <button
                               onClick={() => setShowBookmatch(true)}
-                              className="border border-black border-[1px] md:border-2 hover:bg-brand-dark hover:text-white transition-all px-1.5 py-1 md:px-4 md:py-1.5 font-michroma font-medium text-[6px] sm:text-[8px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                              className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                             >
                               VIEW BOOKMATCH
                             </button>
