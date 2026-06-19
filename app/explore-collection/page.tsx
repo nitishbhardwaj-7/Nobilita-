@@ -202,7 +202,7 @@ export default function ExploreCollection() {
 
         <Link
           href="/"
-          className="absolute top-28 left-6 md:left-11 group flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          className="absolute top-28 left-6 md:left-11 group flex items-center justify-center w-5 h-5 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Back to home"
         >
           <svg
@@ -219,7 +219,7 @@ export default function ExploreCollection() {
           </svg>
         </Link>
 
-        <h1 className="font-ivymode text-white text-[clamp(24px,4.5vw,48px)] tracking-[0.10em] uppercase leading-tight mb-12">
+        <h1 className="font-ivymode text-white text-[clamp(16px,4.5vw,48px)] tracking-[0.10em] uppercase leading-tight mb-12">
           EXPLORE THE COLLECTION
         </h1>
 

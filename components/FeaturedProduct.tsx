@@ -558,7 +558,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
         {/* Left Column: Spec Sheet with Slab Background */}
         <div
           ref={leftColRef}
-          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen py-12 px-6 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-b lg:border-b-0 lg:border-r border-brand-dark/10"
+          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-16 pb-8 px-4 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-b lg:border-b-0 lg:border-r border-brand-dark/10"
           style={{
             clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
             transform: "translateX(-50px)",
@@ -600,10 +600,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           {/* Title */}
           <div
             ref={titleRef}
-            className="relative z-10 w-full text-center lg:text-left mb-8 md:mb-12 mt-6 lg:mt-0 lg:max-w-none"
+            className="relative z-10 w-full text-center lg:text-left mb-4 md:mb-12 mt-2 lg:mt-0 lg:max-w-none"
             style={{ opacity: 0, transform: "translateY(30px)" }}
           >
-            <h2 className="font-ivymode text-[36px] md:text-[64px] text-black tracking-[0.05em] uppercase font-light">
+            <h2 className="font-ivymode text-[26px] sm:text-[32px] md:text-[64px] text-black tracking-[0.05em] uppercase font-light">
               {activeProduct}
             </h2>
           </div>
@@ -611,26 +611,26 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           {/* Specs Box Card - Solid White, exact sizes & alignments */}
           <div
             ref={cardRef}
-            className="relative z-10 bg-white/70 p-6 md:p-8 w-full max-w-[500px] shadow-sm flex flex-col space-y-6 md:space-y-10"
+            className="relative z-10 bg-white/70 p-4 md:p-8 w-full max-w-[500px] shadow-sm flex flex-col space-y-4 md:space-y-10"
             style={{ opacity: 0, transform: "translateY(35px)" }}
           >
             {/* Dimensions */}
             <div className="flex flex-col">
-              <div className="flex items-center space-x-5">
+              <div className="flex items-center space-x-3 md:space-x-5">
                 {/* Custom Dimensions SVG Icon */}
-                <div className="w-12 h-8 flex items-center justify-start text-[#545759] opacity-40">
-                  <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
+                <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759] opacity-40">
+                  <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 md:w-10 h-auto">
                     <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
                     <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
                     <polyline points="26.1 19.35 23.12 22.54 20.15 19.35" />
                   </svg>
                 </div>
-                <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
+                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
                   DIMENSIONS
                 </h3>
               </div>
-              <div className="pl-12 md:pl-16 mt-2">
-                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
+              <div className="pl-11 md:pl-16 mt-1 md:mt-2">
+                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
                   {config.dimensions.map((dim, i) => (
                     <React.Fragment key={i}>
                       {dim}
@@ -643,21 +643,21 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
             {/* Faces */}
             <div className="flex flex-col">
-              <div className="flex items-center space-x-5">
+              <div className="flex items-center space-x-3 md:space-x-5">
                 {/* Custom Faces SVG Icon */}
-                <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
-                  <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-auto">
+                <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759]">
+                  <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 md:w-10 h-auto">
                     <rect x="20.92" y="9.34" width="5.02" height="9.89" />
                     <rect x="11.66" y="9.34" width="5.02" height="9.89" />
                     <rect x="2.41" y="9.34" width="5.02" height="9.89" />
                   </svg>
                 </div>
-                <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
+                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
                   FACES
                 </h3>
               </div>
-              <div className="pl-12 md:pl-16 mt-2">
-                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
+              <div className="pl-11 md:pl-16 mt-1 md:mt-2">
+                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
                   {config.faces.map((face, i) => (
                     <React.Fragment key={i}>
                       {face}
@@ -670,10 +670,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
             {/* Finishes */}
             <div className="flex flex-col">
-              <div className="flex items-center space-x-5">
+              <div className="flex items-center space-x-3 md:space-x-5">
                 {/* Custom Finishes SVG Icon */}
-                <div className="w-12 h-8 flex items-center justify-start text-[#545759]">
-                  <svg viewBox="2 10.8 24.5 7" fill="none" className="w-10 h-auto">
+                <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759]">
+                  <svg viewBox="2 10.8 24.5 7" fill="none" className="w-6 md:w-10 h-auto">
                     <defs>
                       <clipPath id="clippath-icon">
                         <rect x="2.16" y="10.82" width="24.03" height="6.7" />
@@ -684,12 +684,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                     </g>
                   </svg>
                 </div>
-                <h3 className="font-ivymode text-[18px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
+                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
                   FINISHES
                 </h3>
               </div>
-              <div className="pl-12 md:pl-16 mt-2">
-                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[12px] md:text-[14px]">
+              <div className="pl-11 md:pl-16 mt-1 md:mt-2">
+                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
                   {config.finishes.map((finish, i) => (
                     <React.Fragment key={i}>
                       {finish}
@@ -803,7 +803,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Bookmatch Image Container */}
               <div className="relative w-full max-w-[1100px] aspect-[1920/1872] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
                 {/* Label inside top-center */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                <div className="absolute top-3 md:top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[8px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
                   BOOKMATCH
                 </div>
 
@@ -814,10 +814,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 />
 
                 {/* BACK TO FACES button */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+                <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-2 flex justify-center">
                   <button
                     onClick={() => setShowBookmatch(false)}
-                    className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                    className="border border-black border-[1px] md:border-2 hover:bg-brand-dark hover:text-white transition-all px-2.5 py-1.5 md:px-4 md:py-1.5 font-michroma font-medium text-[8px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                   >
                     VIEW FACES
                   </button>
@@ -827,7 +827,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           ) : (
             /* Side-by-side 3 Faces View */
             <div className="w-full flex flex-col items-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1250px] justify-center">
+              <div className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-[1250px] justify-center px-1 md:px-0">
                 {(config.availableFaces || []).map((faceImg, idx) => {
                   const faceNum = idx + 1;
                   return (
@@ -835,7 +835,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       {/* Face Image Container */}
                       <div className="relative w-full aspect-[1/2] max-w-[360px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
                         {/* Label inside top-center */}
-                        <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                        <div className="absolute top-3 md:top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[8px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
                           FACE {faceNum}
                         </div>
 
@@ -847,10 +847,10 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
                         {/* View Bookmatch button overlaid on face 2 */}
                         {faceNum === 2 && config.bookmatchImg && (
-                          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 flex justify-center">
+                          <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-1 md:px-4 flex justify-center">
                             <button
                               onClick={() => setShowBookmatch(true)}
-                              className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                              className="border border-black border-[1px] md:border-2 hover:bg-brand-dark hover:text-white transition-all px-1.5 py-1 md:px-4 md:py-1.5 font-michroma font-medium text-[6px] sm:text-[8px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                             >
                               VIEW BOOKMATCH
                             </button>
@@ -924,44 +924,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               )}
             </div>
 
-            {/* Mobile Controls */}
-            <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-[1100px] mt-6 gap-4 md:hidden px-2">
-              <div className="flex items-center justify-between w-full sm:w-auto">
-                <div className="font-michroma text-[10px] tracking-[0.2em] text-brand-dark uppercase">
-                  {showBookmatch ? "BOOKMATCH" : `FACE ${activeFace}`}
-                </div>
-                {config.availableFaces && config.availableFaces.length > 1 && (
-                  <div className="flex items-center space-x-2 ml-4">
-                    {config.availableFaces.map((f, idx) => {
-                      const faceNum = idx + 1;
-                      return (
-                        <button
-                          key={faceNum}
-                          onClick={() => {
-                            setActiveFace(faceNum);
-                            setShowBookmatch(false);
-                          }}
-                          className={`border px-2.5 py-1 font-michroma text-[9px] tracking-[0.1em] uppercase transition-all duration-300 focus:outline-none ${activeFace === faceNum && !showBookmatch
-                              ? "border-brand-dark bg-brand-dark text-white"
-                              : "border-brand-dark/30 bg-white/85 text-[#545759] hover:border-brand-dark/60 hover:text-brand-dark"
-                            }`}
-                        >
-                          {faceNum}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-              {config.bookmatchImg && (
-                <button
-                  onClick={() => setShowBookmatch(!showBookmatch)}
-                  className="border border-black border-2 bg-white/80 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none w-full sm:w-auto text-center"
-                >
-                  {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
-                </button>
-              )}
-            </div>
+
           </>
         )}
       </section>
