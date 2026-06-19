@@ -6,9 +6,10 @@ import NobilitaHouseSVG from "@/components/NobilitaHouseSVG";
 
 interface LoaderProps {
   isLoading: boolean;
+  onComplete?: () => void;
 }
 
-export default function Loader({ isLoading }: LoaderProps) {
+export default function Loader({ isLoading, onComplete }: LoaderProps) {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function Loader({ isLoading }: LoaderProps) {
                 size={223} 
                 animate={true} 
                 className="w-full h-full object-contain"
+                onAnimationComplete={onComplete}
               />
             </div>
             

@@ -16,17 +16,18 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Fallback safety timer: force-hide loader after 6 seconds if needed
+    const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer);
+    }, 6000);
+    return () => clearTimeout(fallbackTimer);
   }, []);
 
   const d = cmsData || {};
 
   return (
     <main className="w-full min-h-screen bg-white">
-      <Loader isLoading={isLoading} />
+      <Loader isLoading={isLoading} onComplete={() => setIsLoading(false)} />
       <BrandIntro 
         title={d.brandTitle}
         subtitle={d.brandSubtitle}
