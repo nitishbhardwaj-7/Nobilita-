@@ -33,20 +33,12 @@ export default function NobilitaHouseSVG({
 
   // Step 1: Fetch SVG → parse paths → split into individual sub-paths
   useEffect(() => {
-    const basePath = typeof window !== "undefined" && window.location.pathname.startsWith("/nobilita3")
-      ? "/nobilita3"
-      : "";
-
-    const targetUrl = `${basePath}/images/svg/NOBILITA%20House.svg`;
-
-    fetch(targetUrl)
+    // Try the basePath path first (since assets are served there in Next.js config)
+    fetch("/nobilita3/images/svg/NOBILITA%20House.svg")
       .then((res) => {
         if (!res.ok) {
-          // If the prefix-based fetch failed, try fetching from the absolute root path as fallback
-          const fallbackUrl = targetUrl.includes("/nobilita3/")
-            ? targetUrl.replace("/nobilita3/", "/")
-            : "/images/svg/NOBILITA%20House.svg";
-          return fetch(fallbackUrl).then((r) => {
+          // If that fails, try fetching from the absolute root path as fallback
+          return fetch("/images/svg/NOBILITA%20House.svg").then((r) => {
             if (!r.ok) throw new Error("Fallback fetch failed");
             return r.text();
           });
