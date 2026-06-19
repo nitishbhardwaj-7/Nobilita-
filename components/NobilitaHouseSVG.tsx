@@ -33,8 +33,26 @@ export default function NobilitaHouseSVG({
 
   // Step 1: Fetch SVG → parse paths → split into individual sub-paths
   useEffect(() => {
-    fetch("/nobilita3/images/svg/NOBILITA House.svg")
-      .then((res) => res.text())
+    const basePath = typeof window !== "undefined" && window.location.pathname.startsWith("/nobilita3")
+      ? "/nobilita3"
+      : "";
+
+    const targetUrl = `${basePath}/images/svg/NOBILITA%20House.svg`;
+
+    fetch(targetUrl)
+      .then((res) => {
+        if (!res.ok) {
+          // If the prefix-based fetch failed, try fetching from the absolute root path as fallback
+          const fallbackUrl = targetUrl.includes("/nobilita3/")
+            ? targetUrl.replace("/nobilita3/", "/")
+            : "/images/svg/NOBILITA%20House.svg";
+          return fetch(fallbackUrl).then((r) => {
+            if (!r.ok) throw new Error("Fallback fetch failed");
+            return r.text();
+          });
+        }
+        return res.text();
+      })
       .then((svgText) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(svgText, "image/svg+xml");
@@ -47,6 +65,9 @@ export default function NobilitaHouseSVG({
           }
         });
         setSubPaths(allSubs);
+      })
+      .catch((err) => {
+        console.error("Error loading NobilitaHouseSVG:", err);
       });
   }, []);
 
