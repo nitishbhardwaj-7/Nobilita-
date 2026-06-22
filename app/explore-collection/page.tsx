@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
 import NavigationOverlay from "@/components/NavigationOverlay";
+import { useSearchParams } from "next/navigation";
 
 const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), {
   ssr: false,
@@ -118,12 +119,59 @@ const slabs = [
   }
 ];
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+
+const finishMetadata: Record<string, { name: string; img: string; desc: string }> = {
+  "Polished": {
+    name: "POLISHED",
+    img: "/nobilita3/images/Links/Onice Bianco 1.jpg",
+    desc: "A glossy and reflective surface that enhances depth, adding luxurious look."
+  },
+  "Matte": {
+    name: "MATTE",
+    img: "/nobilita3/images/Links/Basaltina face 1.jpg",
+    desc: "A non-reflective and refined finish, with added slip resistance."
+  },
+  "Honed": {
+    name: "HONED",
+    img: "/nobilita3/images/Links/Statuario Ultimo 1.jpg",
+    desc: "A smooth, satin-like finish that balances subtle sheen with modern elegance."
+  },
+  "Structured Matte": {
+    name: "STRUCTURED MATTE",
+    img: "/nobilita3/images/Links/White Camouflage Face 1.jpg",
+    desc: "Leather-inspired texture with subtle richness and enhanced grip."
+  },
+  "3D-5D Matte": {
+    name: "3D / 5D MATTE",
+    img: "/nobilita3/images/Travertino Romano Classico Face 1.jpg",
+    desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces."
+  }
+};
+
 const colors = ["White", "Gold", "Gray", "Dark"];
 const finishes = ["Polished", "Matte", "Honed", "Structured Matte", "3D-5D Matte"];
 
-export default function ExploreCollection() {
+function ExploreCollectionContent() {
+  const searchParams = useSearchParams();
+
+  const initialFinish = useMemo(() => {
+    const finish = searchParams.get("finish");
+    if (finish) {
+      const matchedKey = Object.keys(finishMetadata).find(
+        (key) => key.toLowerCase() === finish.toLowerCase()
+      );
+      return matchedKey || null;
+    }
+    return null;
+  }, [searchParams]);
+
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const [selectedFinish, setSelectedFinish] = useState<string | null>(null);
+  const [selectedFinish, setSelectedFinish] = useState<string | null>(initialFinish);
+
+  useEffect(() => {
+    setSelectedFinish(initialFinish);
+  }, [initialFinish]);
 
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
   const [finishDropdownOpen, setFinishDropdownOpen] = useState(false);
@@ -135,6 +183,8 @@ export default function ExploreCollection() {
   const [activeSlab, setActiveSlab] = useState<typeof slabs[0] | null>(null);
 
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+
 
   // Reset all active filters
   const handleReset = () => {
@@ -336,16 +386,16 @@ export default function ExploreCollection() {
         {/* Right Side: Grid Columns Stack Selector */}
         <div className="flex flex-col rounded bg-white">
           <button
-            onClick={() => setColumns(c => Math.min(c + 1, 5))}
+            onClick={() => setColumns(c => Math.max(c - 1, 2))}
             className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
-            aria-label="Increase columns"
+            aria-label="Decrease columns (Zoom in)"
           >
             +
           </button>
           <button
-            onClick={() => setColumns(c => Math.max(c - 1, 2))}
+            onClick={() => setColumns(c => Math.min(c + 1, 5))}
             className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
-            aria-label="Decrease columns"
+            aria-label="Increase columns (Zoom out)"
           >
             -
           </button>
@@ -451,5 +501,17 @@ export default function ExploreCollection() {
       />
       <Footer />
     </div>
+  );
+}
+
+export default function ExploreCollection() {
+  return (
+    <Suspense fallback={
+      <div className="w-full min-h-screen bg-[#007190] flex items-center justify-center font-michroma text-[9px] md:text-xs text-white/50 tracking-[0.2em] uppercase">
+        Loading Collection...
+      </div>
+    }>
+      <ExploreCollectionContent />
+    </Suspense>
   );
 }

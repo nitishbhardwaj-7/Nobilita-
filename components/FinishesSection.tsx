@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const finishes = [
   { 
@@ -37,7 +38,19 @@ const finishes = [
 ];
 
 export default function FinishesSection() {
+  const router = useRouter();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleFinishClick = (finish: typeof finishes[0]) => {
+    let filterName = "";
+    if (finish.name === "POLISHED") filterName = "Polished";
+    else if (finish.name === "MATTE") filterName = "Matte";
+    else if (finish.name === "HONED") filterName = "Honed";
+    else if (finish.name === "STRUCTURED MATTE") filterName = "Structured Matte";
+    else if (finish.name === "3D / 5D MATTE") filterName = "3D-5D Matte";
+
+    router.push(`/explore-collection?finish=${encodeURIComponent(filterName)}`);
+  };
 
   return (
     <section className="w-full bg-white py-24 flex flex-col items-center">
@@ -60,6 +73,7 @@ export default function FinishesSection() {
               key={finish.name}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => handleFinishClick(finish)}
               className="group relative w-full overflow-hidden cursor-pointer transition-[flex-grow] duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[flex-grow]"
               style={{ 
                 flexGrow: isHovered ? 2.5 : 1,
@@ -133,6 +147,8 @@ export default function FinishesSection() {
           );
         })}
       </div>
+
+
     </section>
   );
 }
