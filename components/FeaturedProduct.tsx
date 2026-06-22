@@ -587,14 +587,14 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             {onClose ? (
               <button
                 onClick={handleClose}
-                className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors focus:outline-none shadow-sm"
+                className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase hover:bg-brand-dark hover:text-white transition-colors focus:outline-none shadow-sm"
               >
                 BACK
               </button>
             ) : (
               <Link
                 href="/"
-                className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase bg-white/85 hover:bg-brand-dark hover:text-white transition-colors shadow-sm"
+                className="border border-brand-dark/40 px-4 py-1.5 font-michroma text-[9px] tracking-[0.2em] text-brand-dark uppercase hover:bg-brand-dark hover:text-white transition-colors shadow-sm"
               >
                 BACK
               </Link>
