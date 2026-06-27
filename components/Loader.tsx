@@ -36,7 +36,13 @@ export default function Loader({ isLoading, onComplete }: LoaderProps) {
                 size={223} 
                 animate={true} 
                 className="w-full h-full object-contain"
-                onAnimationComplete={onComplete}
+                onAnimationComplete={() => {
+                  setTimeout(() => {
+                    if (onComplete) {
+                      onComplete();
+                    }
+                  }, 2000);
+                }}
               />
             </div>
             

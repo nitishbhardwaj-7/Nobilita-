@@ -22,6 +22,7 @@ export default function DimensionsSection() {
           y: "0%",
           opacity: 1,
           duration: 2.0,
+          delay: 0.5,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".dimensions-title-span",
@@ -88,22 +89,6 @@ export default function DimensionsSection() {
           }
         );
 
-        // Parallax scroll on the image element with 2s inertia (matching legacy section)
-        gsap.fromTo(
-          img,
-          { yPercent: -6 },
-          {
-            yPercent: 6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: imageContainer,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 2,
-            },
-          }
-        );
-
         // Centered button reveal with slow delay
         if (btn) {
           gsap.fromTo(
@@ -113,7 +98,7 @@ export default function DimensionsSection() {
               opacity: 1,
               scale: 1,
               duration: 1.6,
-              delay: 1.2,
+              delay: 0.5,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: imageContainer,
@@ -132,9 +117,9 @@ export default function DimensionsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-16 flex flex-col items-center">
+    <section ref={sectionRef} className="w-full bg-white mt-[40px] flex flex-col items-center">
       {/* Title - slide up reveal */}
-      <div className="w-full px-4 mb-14 text-center overflow-hidden py-1">
+      <div className="w-full px-4 mb-[30px] text-center overflow-hidden py-1">
         <h2 className="font-ivymode text-[clamp(28px,5vw,60px)] text-[#545759] tracking-[0.1em] uppercase inline-block">
           <span className="dimensions-title-span inline-block">
             FORMAT & DIMENSIONS
@@ -143,44 +128,44 @@ export default function DimensionsSection() {
       </div>
 
       {/* Specification Grid with stagger */}
-      <div className="dimensions-grid w-full max-w-7xl px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 mb-16">
+      <div className="dimensions-grid w-full max-w-7xl px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 mb-[30px]">
         {/* Column 1: THICKNESS */}
-        <div className="dimensions-col flex flex-col items-center text-center space-y-6 md:space-y-6">
+        <div className="dimensions-col flex flex-col items-center text-center space-y-[15px] md:space-y-[15px]"> 
           <h3
             className="dimensions-col-header font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)] opacity-0"
             style={{ fontFamily: "var(--font-didotbold), Georgia, serif" }}
           >
             THICKNESS
           </h3>
-          <div className="font-michroma font-light text-[#545759] space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-[#545759] space-y-[15px] md:space-y-[15px] uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p className="dimensions-col-item opacity-0">6.5 MM</p>
             <p className="dimensions-col-item opacity-0">12 MM</p>
           </div>
         </div>
 
         {/* Column 2: DIMENSIONS */}
-        <div className="dimensions-col flex flex-col items-center text-center space-y-6 md:space-y-6">
+        <div className="dimensions-col flex flex-col items-center text-center space-y-[15px] md:space-y-[15px]">
           <h3
             className="dimensions-col-header font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)] opacity-0"
             style={{ fontFamily: "var(--font-didotbold), Georgia, serif" }}
           >
             DIMENSIONS
           </h3>
-          <div className="font-michroma font-light text-[#545759] space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-[#545759] space-y-[15px] md:space-y-[15px] uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p className="dimensions-col-item opacity-0">1600 X 3200 MM</p>
             <p className="dimensions-col-item opacity-0">1620 X 3240 MM</p>
           </div>
         </div>
 
         {/* Column 3: FORMAT */}
-        <div className="dimensions-col flex flex-col items-center text-center space-y-6 md:space-y-6">
+        <div className="dimensions-col flex flex-col items-center text-center space-y-[15px] md:space-y-[15px]">
           <h3
             className="dimensions-col-header font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)] opacity-0"
             style={{ fontFamily: "var(--font-didotbold)" }}
           >
             FORMAT
           </h3>
-          <div className="font-michroma font-light text-[#545759] space-y-3 md:space-y-4 uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
+          <div className="font-michroma font-light text-[#545759] space-y-[15px] md:space-y-[15px] uppercase tracking-wider text-[clamp(16px,2vw,22px)]">
             <p className="dimensions-col-item opacity-0">RECTIFIED</p>
             <p className="dimensions-col-item opacity-0">GROSS</p>
           </div>
@@ -194,15 +179,14 @@ export default function DimensionsSection() {
           style={{ clipPath: "inset(0% 12% 0% 12%)", opacity: 0 }}
         >
           <img
-            src="/nobilita3/images/Orobico.jpg"
-            alt="Orobico Luxury Interior"
+            src="/nobilita3/images/format & dimensions application copy new.jpg"
+            alt="Format and Dimensions"
             loading="lazy"
-            className="dimensions-img absolute inset-0 w-full h-[112%] object-cover"
-            style={{ top: "-6%" }}
+            className="dimensions-img absolute inset-0 w-full h-full object-cover"
           />
           <a href="#technical-data" className="absolute z-10">
             <button
-              className="dimensions-btn border border-white text-white bg-transparent px-10 py-3.5 font-michroma text-[clamp(12px,1.5vw,26px)] tracking-[0.25em] transition-colors duration-[2s] uppercase group overflow-hidden opacity-0"
+              className="dimensions-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group opacity-0"
             >
               <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
               <span className="relative z-10 transition-colors duration-500 group-hover:text-black">

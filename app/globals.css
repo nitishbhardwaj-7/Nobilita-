@@ -75,7 +75,7 @@ body {
 }
 
 .loading-bar-fill {
-  animation: fillBar 2.76s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: fillBar 4.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   animation-delay: 0.5s;
 }
 

@@ -20,7 +20,12 @@ async function compressImage(filePath) {
 
     console.log(`Processing ${path.basename(filePath)} (${sizeInMB.toFixed(2)} MB)...`);
     
-    const image = await Jimp.read(filePath);
+    const fileBuffer = await fs.promises.readFile(filePath);
+    const image = await Jimp.fromBuffer(fileBuffer, {
+      "image/jpeg": {
+        maxMemoryUsageInMB: 4096
+      }
+    });
     const w = image.width;
     const h = image.height;
     

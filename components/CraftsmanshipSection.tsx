@@ -40,6 +40,7 @@ export default function CraftsmanshipSection() {
         opacity: 1,
         letterSpacing: "0.15em",
         duration: 1.6,
+        delay: 0.5,
         ease: "power2.out",
         scrollTrigger: {
           trigger: heading,
@@ -58,9 +59,9 @@ export default function CraftsmanshipSection() {
 
     gsap.to(".craftsmanship-word", {
       opacity: 1,
-      duration: 0.01,
-      stagger: 0.06,
-      ease: "none",
+      duration: 0.8,
+      stagger: 0.14,
+      ease: "power2.out",
       scrollTrigger: {
         trigger: para,
         start: "top 80%",
@@ -75,6 +76,7 @@ export default function CraftsmanshipSection() {
     gsap.set(badgeText, { opacity: 0 });
 
     const tl = gsap.timeline({
+      delay: 0.5,
       scrollTrigger: {
         trigger: badgeWrap,
         start: "top 78%",
@@ -111,6 +113,7 @@ export default function CraftsmanshipSection() {
       {
         opacity: 1,
         duration: 1.0,
+        delay: 0.5,
         ease: "power2.out",
         scrollTrigger: {
           trigger: section,
@@ -143,33 +146,31 @@ export default function CraftsmanshipSection() {
       {/* Subtle black overlay to make the text pop */}
       <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
-      {/* ── TOP HEADING */}
-      <div className="relative z-10 w-full text-center max-w-[1200px] mx-auto">
+      {/* ── TOP HEADING & PARAGRAPH GROUP ── */}
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto pt-10 flex flex-col items-center px-4">
         <h2
           ref={headingRef}
-          className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,6.5vw,69px)] uppercase py-14"
-          style={{ opacity: 0, letterSpacing: "0.28em" }}
+          className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,4.5vw,66px)] uppercase text-center"
+          style={{ opacity: 0, letterSpacing: "0.13em" }}
         >
           ITALIAN CRAFTSMANSHIP
         </h2>
-      </div>
-
-      {/* ── CENTER CONTENT (Paragraph & Badge) */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto px-6 max-w-[1100px] mx-auto w-full">
         <p
           ref={paraRef}
-          className="craftsmanship-para font-ivymode mt-6 font-light text-white text-[clamp(18px,2.8vw,36px)] text-center leading-[1.3] tracking-wide max-w-[1200px]"
+          className="craftsmanship-para font-ivymode font-extralight text-white text-center text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full max-w-[85%] md:max-w-[72vw] lg:max-w-[980px] mt-2"
         >
           In the heart of Modena, where centuries of Italian expertise{" "}
           meet innovation, NOBILITA creates porcelain surfaces that{" "}
           embody the art of timeless craftsmanship.
         </p>
+      </div>
 
+      {/* ── LOWER-CENTER BADGE ── */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center mt-auto mb-6 md:mb-14 px-6 w-full">
         {/* ── MADE IN ITALY BADGE */}
         <button
           ref={badgeWrapRef}
-          className="badge-wrap group relative overflow-hidden inline-block mt-10 md:mt-32 bg-transparent cursor-pointer focus:outline-none"
-          style={{ padding: "12px 32px" }}
+          className="badge-wrap group relative overflow-hidden inline-block bg-transparent cursor-pointer focus:outline-none px-8 py-2.5"
         >
           {/* White fill — slides in from left on hover */}
           <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
@@ -198,7 +199,7 @@ export default function CraftsmanshipSection() {
 
           <span
             ref={badgeTextRef}
-            className="badge-text relative z-10 font-michroma text-white group-hover:text-black transition-colors duration-500 text-[clamp(12px,1.5vw,32px)] tracking-[0.15em] uppercase"
+            className="badge-text relative z-10 font-michroma text-white group-hover:text-black transition-colors duration-500 text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] uppercase"
             style={{ opacity: 0 }}
           >
             MADE IN ITALY

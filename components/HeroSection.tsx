@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
 import Link from "next/link";
 import Navbar from "./Navbar";
 
@@ -13,16 +14,71 @@ interface Props {
 }
 
 const slideshowImages = [
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/1.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/2.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/3.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/4.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/5.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/6.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/7.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/8.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/9.jpg",
-  "/nobilita3/images/Application%20images%20used%20for%20EXPLORE%20THE%20COLLECTION%20video/10.jpg",
+  {
+    src: "/nobilita3/images/NewImages/Arabescato%20Fjord.jpg",
+    name: "ARABESCATO FJORD",
+    textColor: "black"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Calacatta%20Oyster%20application.jpg",
+    name: "CALACATTA OYSTER",
+    textColor: "black"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Ferro%20Industriale%20(2).jpg",
+    name: "FERRO INDUSTRIALE",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Gris%20Di%20Savoie%20(2).jpg",
+    name: "GRIS DI SAVOIE",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Piasentina%20Application.jpg",
+    name: "PIASENTINA",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Travetino%20Vein%20Cut%20Application%203.jpg",
+    name: "TRAVERTINO VEIN CUT",
+    textColor: "black"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Verde%20Apli%20Application.jpg",
+    name: "VERDE ALPI",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Verde%20profondo%20application.jpg",
+    name: "VERDE PROFONDO",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/silver%20root.jpg",
+    name: "SILVER ROOT",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Calacatta%20Borghini.png",
+    name: "CALACATTA BORGHINI",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/La%20Quadrifoglio%20%281%29%20copy.jpg",
+    name: "LA QUADRIFOGLIO",
+    textColor: "white"
+  },
+  {
+    src: "/nobilita3/images/NewImages/Fior%20Di%20Melo.jpg",
+    name: "FIOR DI MELO",
+    textColor: "black"
+  },
+  {
+    src: "/nobilita3/images/NewImages/taj%20mahal.jpg",
+    name: "TAJ MAHAL",
+    textColor: "black"
+  }
 ];
 
 const containerVariants = {
@@ -78,13 +134,48 @@ const buttonTextVariants = {
 
 export default function HeroSection({ title, subtitle, buttonText, bgImage }: Props) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const prevIndexRef = useRef(0);
+  const layersRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    slideshowImages.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.src;
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % slideshowImages.length);
-    }, 7000); // Change image every 6.5 seconds
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const prev = prevIndexRef.current;
+    const next = currentImageIndex;
+    if (prev === next) return;
+
+    const prevLayer = layersRef.current[prev];
+    const nextLayer = layersRef.current[next];
+
+    if (!prevLayer || !nextLayer) return;
+
+    gsap.set(nextLayer, { zIndex: 2, opacity: 0 });
+    gsap.set(prevLayer, { zIndex: 1 });
+
+    gsap.to(nextLayer, {
+      opacity: 1,
+      duration: 1.4,
+      ease: "power2.inOut",
+      onComplete: () => {
+        gsap.set(prevLayer, { opacity: 0, zIndex: 0 });
+        gsap.set(nextLayer, { zIndex: 1 });
+        prevIndexRef.current = next;
+      }
+    });
+
+  }, [currentImageIndex]);
 
   const defaultTitle = "EXPLORE THE COLLECTION";
   const defaultSubtitle = "At NOBILITA, we believe that true luxury is not about trends, it is timeless\ndesign, enduring quality, and a deep respect for architectural legacy. Our\nporcelain tiles are not just surfaces; they are foundations for homes,\nbusinesses, and landmarks that will stand for generations.";
@@ -94,40 +185,42 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
   const words = headline.split(" ");
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark mb-24">
-      {/* Slideshow Background Images with Smooth Crossfade and Zoom-out (Ken Burns) */}
+    <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark">
+      {/* Stacked image layers — GSAP crossfades between them */}
       <div className="absolute inset-0 w-full h-full bg-black overflow-hidden">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={currentImageIndex}
-            initial={{ x: "100%" }}
-            animate={{ x: "0%" }}
-            exit={{ opacity: 0 }}
-            transition={{
-              x: { duration: 1.5, ease: [0.76, 0, 0.24, 1] },
-              opacity: { delay: 1.5, duration: 0.1 }
-            }}
-            className="absolute inset-0 w-full h-full overflow-hidden z-0"
+        {slideshowImages.map((slide, i) => (
+          <div
+            key={slide.src}
+            ref={(el) => { layersRef.current[i] = el; }}
+            className="absolute inset-0 w-full h-full"
+            style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 1 : 0 }}
           >
-            <motion.img
-              src={slideshowImages[currentImageIndex]}
-              alt="Luxury Italian tile interior slideshow"
-              initial={{ x: "-100%" }}
-              animate={{ x: "0%" }}
-              transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
-              className="absolute inset-0 w-full h-full object-cover object-bottom opacity-100 max-w-none"
+            <img
+              src={slide.src}
+              alt={`${slide.name} slab application interior`}
+              className="absolute inset-0 w-full h-full object-cover object-bottom max-w-none"
             />
-          </motion.div>
-        </AnimatePresence>
-        {/* Subtle premium dark gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/10 to-black/20 pointer-events-none z-10" />
+            {/* Name label lives inside the layer — fades with the image automatically */}
+            <div className="absolute bottom-[4vh] left-6 md:left-12 z-20 pointer-events-none select-none">
+              <span
+                className="font-ivymode tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] uppercase font-light"
+                style={{ color: slide.textColor === "white" ? "#ffffff" : "#000000" }}
+              >
+                {slide.name}
+              </span>
+            </div>
+          </div>
+        ))}
+
+        {/* Subtle premium overlay */}
+        <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
       </div>
 
       <Navbar />
 
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
         <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
-          {/* Word-by-word reveal heading triggered by parent viewport */}
+          {/* Word-by-word reveal heading */}
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -147,13 +240,12 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             ))}
           </motion.h1>
 
-          {/* Line-by-line, word-by-word cascading reveal triggered by parent viewport */}
+          {/* Line-by-line, word-by-word cascading reveal */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,52px)] font-light leading-[1.1] w-full max-w-[1150px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
-            style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)" }}
           >
             {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
               const lines = (subtitle || defaultSubtitle).split("\n");
@@ -179,23 +271,23 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             })}
           </motion.div>
 
-          {/* Staggered entrance CTA triggered by parent viewport */}
+          {/* CTA Button */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={buttonVariants}
-            className="w-full max-w-[320px] md:max-w-[620px] mt-auto mb-10"
+            className="w-full mt-auto mb-10 flex justify-center"
           >
-            <Link href="/explore-collection" className="block">
+            <Link href="/explore-collection">
               <motion.button
                 whileTap={{ scale: 0.96 }}
-                className="relative overflow-hidden border border-white/80 text-white w-full py-4 font-michroma text-[clamp(11px,1.3vw,30px)] tracking-[0.3em] transition-colors duration-500 uppercase whitespace-nowrap group"
+                className="relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
               >
                 <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                 <motion.span
                   variants={buttonTextVariants}
-                  className="relative z-10 block transition-colors duration-500 group-hover:text-brand-dark"
+                  className="relative z-10 block transition-colors duration-500 group-hover:text-black"
                 >
                   {buttonText || defaultButtonText}
                 </motion.span>

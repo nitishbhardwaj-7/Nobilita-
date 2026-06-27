@@ -16,10 +16,10 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fallback safety timer: force-hide loader after 6 seconds if needed
+    // Fallback safety timer: force-hide loader after 10 seconds if needed
     const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 6000);
+    }, 10000);
     return () => clearTimeout(fallbackTimer);
   }, []);
 

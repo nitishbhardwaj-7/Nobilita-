@@ -7,44 +7,45 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function LegacySection() {
-  const sectionRef      = useRef<HTMLElement>(null);
-  const panelLeftRef    = useRef<HTMLDivElement>(null);
-  const panelRightRef   = useRef<HTMLDivElement>(null);
-  const imgLeftRef      = useRef<HTMLImageElement>(null);
-  const imgRightRef     = useRef<HTMLImageElement>(null);
-  const labelTreviRef   = useRef<HTMLParagraphElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const panelLeftRef = useRef<HTMLDivElement>(null);
+  const panelRightRef = useRef<HTMLDivElement>(null);
+  const imgLeftRef = useRef<HTMLImageElement>(null);
+  const imgRightRef = useRef<HTMLImageElement>(null);
+  const labelTreviRef = useRef<HTMLParagraphElement>(null);
   const labelPalazzoRef = useRef<HTMLParagraphElement>(null);
-  const sketchRef       = useRef<HTMLImageElement>(null);
-  const logoRef         = useRef<HTMLImageElement>(null);
-  const taglineRef      = useRef<HTMLImageElement>(null);
+  const sketchRef = useRef<HTMLImageElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+  const taglineRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const section      = sectionRef.current;
-      const panelLeft    = panelLeftRef.current;
-      const panelRight   = panelRightRef.current;
-      const imgLeft      = imgLeftRef.current;
-      const imgRight     = imgRightRef.current;
-      const labelTrevi   = labelTreviRef.current;
+      const section = sectionRef.current;
+      const panelLeft = panelLeftRef.current;
+      const panelRight = panelRightRef.current;
+      const imgLeft = imgLeftRef.current;
+      const imgRight = imgRightRef.current;
+      const labelTrevi = labelTreviRef.current;
       const labelPalazzo = labelPalazzoRef.current;
-      const sketch       = sketchRef.current;
-      const logo         = logoRef.current;
-      const tagline      = taglineRef.current;
+      const sketch = sketchRef.current;
+      const logo = logoRef.current;
+      const tagline = taglineRef.current;
 
       if (!section || !panelLeft || !panelRight || !imgLeft || !imgRight ||
-          !labelTrevi || !labelPalazzo || !sketch || !logo || !tagline) return;
+        !labelTrevi || !labelPalazzo || !sketch || !logo || !tagline) return;
 
       // ── SET ALL INITIAL (HIDDEN) STATES ─────────────────────────────────────
-      gsap.set(panelLeft,    { clipPath: "inset(0 100% 0 0)" });
-      gsap.set(panelRight,   { clipPath: "inset(0 0 0 100%)" });
-      gsap.set(sketch,       { opacity: 0 });
-      gsap.set(labelTrevi,   { opacity: 0, x: -28 });
+      gsap.set(panelLeft, { clipPath: "inset(0 100% 0 0)" });
+      gsap.set(panelRight, { clipPath: "inset(0 0 0 100%)" });
+      gsap.set(sketch, { opacity: 0 });
+      gsap.set(labelTrevi, { opacity: 0, x: -28 });
       gsap.set(labelPalazzo, { opacity: 0, x: 28 });
-      gsap.set(logo,         { opacity: 0, scale: 0.92 });
-      gsap.set(tagline,      { opacity: 0 });
+      gsap.set(logo, { opacity: 0, scale: 0.92 });
+      gsap.set(tagline, { opacity: 0 });
 
       // ── MAIN TIMELINE ────────────────────────────────────────────────────────
       const tl = gsap.timeline({
+        delay: 0.5,
         scrollTrigger: {
           trigger: section,
           start: "top 80%",
@@ -58,55 +59,55 @@ export default function LegacySection() {
         duration: 1.4,
         ease: "power3.inOut",
       })
-      .to(panelRight, {
-        clipPath: "inset(0 0 0 0%)",
-        duration: 1.4,
-        ease: "power3.inOut",
-      }, "<")
+        .to(panelRight, {
+          clipPath: "inset(0 0 0 0%)",
+          duration: 1.4,
+          ease: "power3.inOut",
+        }, "<")
 
-      // 4. Sketch slow light-fade (starts 0.3s after panels)
-      .to(sketch, {
-        opacity: 1,
-        duration: 1.8,
-        ease: "power1.inOut",
-      }, "<0.3")
+        // 4. Sketch slow light-fade (starts 0.3s after panels)
+        .to(sketch, {
+          opacity: 1,
+          duration: 1.8,
+          ease: "power1.inOut",
+        }, "<0.3")
 
-      // 3. Labels slide in from outer edges
-      .to(labelTrevi, {
-        opacity: 1,
-        x: 0,
-        duration: 0.7,
-        ease: "power3.out",
-      }, "-=0.4")
-      .to(labelPalazzo, {
-        opacity: 1,
-        x: 0,
-        duration: 0.7,
-        ease: "power3.out",
-      }, "<")
+        // 3. Labels slide in from outer edges
+        .to(labelTrevi, {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out",
+        }, "-=0.4")
+        .to(labelPalazzo, {
+          opacity: 1,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out",
+        }, "<")
 
-      // 5. PORCELLANA char snap stagger
-      .to(".triptych-char", {
-        opacity: 1,
-        duration: 0.01,
-        stagger: 0.045,
-        ease: "none",
-      }, "-=0.8")
+        // 5. PORCELLANA char snap stagger
+        .to(".triptych-char", {
+          opacity: 1,
+          duration: 0.01,
+          stagger: 0.045,
+          ease: "none",
+        }, "-=0.8")
 
-      // 6. Logo scale up
-      .to(logo, {
-        opacity: 1,
-        scale: 1,
-        duration: 1.0,
-        ease: "power3.out",
-      }, "-=0.2")
+        // 6. Logo scale up
+        .to(logo, {
+          opacity: 1,
+          scale: 1,
+          duration: 1.0,
+          ease: "power3.out",
+        }, "-=0.2")
 
-      // 7. Tagline fade
-      .to(tagline, {
-        opacity: 1,
-        duration: 0.8,
-        ease: "power2.out",
-      }, "-=0.3");
+        // 7. Tagline fade
+        .to(tagline, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        }, "-=0.3");
 
       // ── 2. PARALLAX — opposite directions ───────────────────────────────────
       gsap.to(imgLeft, {
@@ -153,7 +154,7 @@ export default function LegacySection() {
           className="panel-img absolute inset-0 w-full h-[112%] object-cover"
           style={{ top: "-6%" }}
         />
-        
+
         <div className="absolute bottom-8 left-0 right-0 text-center z-10">
           <p
             ref={labelTreviRef}
@@ -165,11 +166,8 @@ export default function LegacySection() {
       </div>
 
       {/* ── CENTER PANEL */}
-      <div className="w-full md:w-1/3 min-h-[50vh] md:h-screen bg-white flex flex-col items-center justify-start relative px-6">
-        <div className="flex flex-col items-center justify-start w-full max-w-none px-4">
-
-         
-
+      <div className="w-full md:w-1/3 min-h-[50vh] md:h-screen bg-white flex flex-col items-center justify-end pb-8 relative px-6">
+        <div className="flex flex-col items-center justify-end w-full max-w-none px-4">
           <img
             ref={sketchRef}
             src="/nobilita3/images/Links/DP8017299.png"
@@ -183,7 +181,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
-            className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain mb-4"
+            className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain mb-8"
           />
 
           <img
@@ -191,7 +189,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain mt-1"
+            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain"
           />
         </div>
       </div>
@@ -209,7 +207,7 @@ export default function LegacySection() {
           className="panel-img absolute inset-0 w-full h-[112%] object-cover"
           style={{ top: "-6%" }}
         />
-       
+
         <div className="absolute bottom-8 left-0 right-0 text-center z-10">
           <p
             ref={labelPalazzoRef}

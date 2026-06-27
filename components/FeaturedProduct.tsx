@@ -821,7 +821,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(false)}
-                    className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                    className="border border-brand-dark/40 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                   >
                     VIEW FACES
                   </button>
@@ -854,7 +854,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 flex justify-center">
                             <button
                               onClick={() => setShowBookmatch(true)}
-                              className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                              className="border border-brand-dark/40 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                             >
                               VIEW BOOKMATCH
                             </button>
@@ -924,7 +924,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(!showBookmatch)}
-                    className="border border-black border-2 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                    className="border border-brand-dark/40 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
                   >
                     {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
                   </button>

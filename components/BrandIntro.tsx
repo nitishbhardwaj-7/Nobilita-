@@ -46,36 +46,36 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
         duration: 0.8,
         ease: "power2.out"
       })
-      .to(".brand-tag-wrapper", {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power4.out"
-      }, "-=0.6")
-      .to(".brand-tag-subtext", {
-        opacity: 1,
-        duration: 1.0,
-        ease: "power2.out"
-      }, "-=0.6")
-      .to(".brand-logo", {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power4.out"
-      }, "-=0.8")
-      .to(".brand-desc-word", {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.02,
-        ease: "power3.out"
-      }, "-=0.8")
-      .to(".brand-btn-wrapper", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      }, "-=0.6");
+        .to(".brand-tag-wrapper", {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power4.out"
+        }, "-=0.6")
+        .to(".brand-tag-subtext", {
+          opacity: 1,
+          duration: 1.0,
+          ease: "power2.out"
+        }, "-=0.6")
+        .to(".brand-logo", {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power4.out"
+        }, "-=0.8")
+        .to(".brand-desc-word", {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.02,
+          ease: "power3.out"
+        }, "-=0.8")
+        .to(".brand-btn-wrapper", {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.6");
 
       const btn = section.querySelector<HTMLElement>(".brand-story-btn");
       if (btn) {
@@ -102,8 +102,8 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
   }, [paragraphText, isLoaderActive]);
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="brand-intro-section relative w-full min-h-screen bg-[#007190] flex flex-col items-center justify-center px-6 md:px-20 py-16 md:py-24"
     >
       {/* Menu Icon on Top Left */}
@@ -113,20 +113,20 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
           className="relative w-10 h-10 focus:outline-none transition-opacity hover:opacity-80 flex items-center justify-center"
           aria-label="Toggle navigation menu"
         >
-          <span 
+          <span
             className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: isNavOpen ? "translateY(0px) rotate(45deg)" : "translateY(-6px) rotate(0deg)"
             }}
           />
-          <span 
+          <span
             className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: isNavOpen ? "scaleX(0)" : "scaleX(1)",
               opacity: isNavOpen ? 0 : 1
             }}
           />
-          <span 
+          <span
             className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: isNavOpen ? "translateY(0px) rotate(-45deg)" : "translateY(6px) rotate(0deg)"
@@ -178,7 +178,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
 
         {/* Button: OUR STORY */}
         <div className="brand-btn-wrapper opacity-0 translate-y-6">
-          <button 
+          <button
             className="brand-story-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
           >
             <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />

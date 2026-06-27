@@ -39,6 +39,7 @@ export default function ApplicationsSection() {
         opacity: 1,
         letterSpacing: "0.1em",
         duration: 1.4,
+        delay: 0.5,
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -53,6 +54,7 @@ export default function ApplicationsSection() {
       gsap.to(row1Tiles, {
         clipPath: "inset(0 0 0% 0)",
         duration: 1.1,
+        delay: 0.5,
         ease: "power3.inOut",
         stagger: 0.1,
         scrollTrigger: {
@@ -68,6 +70,7 @@ export default function ApplicationsSection() {
       gsap.to(row2Tiles, {
         clipPath: "inset(0 0 0% 0)",
         duration: 1.1,
+        delay: 0.5,
         ease: "power3.inOut",
         stagger: 0.1,
         scrollTrigger: {
@@ -86,7 +89,7 @@ export default function ApplicationsSection() {
         duration: 0.6,
         ease: "power3.out",
         stagger: { each: 0.1, from: "start" },
-        delay: 0.6,
+        delay: 1.1,
         scrollTrigger: {
           trigger: row1,
           start: "top 75%",
@@ -101,16 +104,16 @@ export default function ApplicationsSection() {
         const label = tile.querySelector<HTMLElement>(".tile-label");
         if (!img || !label) return;
 
-        // Set initial scale to 1.12
-        gsap.set(img, { scale: 1.12 });
+        // Set initial scale to 1.18
+        gsap.set(img, { scale: 1.18 });
 
         const onMouseEnter = () => {
-          gsap.to(img, { scale: 1.07, duration: 0.8, ease: "power2.out", overwrite: "auto", delay: 0.1 });
+          gsap.to(img, { scale: 1.08, duration: 0.8, ease: "power2.out", overwrite: "auto", delay: 0.1 });
           gsap.to(label, { letterSpacing: "0.18em", opacity: 1, duration: 0.5, ease: "power2.out" });
         };
 
         const onMouseLeave = () => {
-          gsap.to(img, { scale: 1.12, duration: 1.2, ease: "power3.out", overwrite: "auto", delay: 0.1 });
+          gsap.to(img, { scale: 1.18, duration: 1.2, ease: "power3.out", overwrite: "auto", delay: 0.1 });
           gsap.to(label, { letterSpacing: "0.1em", opacity: 0.85, duration: 0.5, ease: "power2.out" });
         };
 
@@ -145,7 +148,7 @@ export default function ApplicationsSection() {
         className="tile-img absolute inset-0 w-full h-full object-cover"
         style={{
           willChange: "transform",
-          transform: "scale(1.12)",
+          transform: "scale(1.18)",
         }}
       />
       {/* ── Label */}
@@ -164,12 +167,12 @@ export default function ApplicationsSection() {
   return (
     <section
       ref={sectionRef}
-      className="applications-section w-full min-h-[100vh] bg-white flex flex-col pb-10"
+      className="applications-section w-full min-h-[100vh] bg-white flex flex-col"
     >
       {/* ── HEADING */}
       <h2
         ref={headingRef}
-        className="applications-heading font-ivymode font-light text-brand-dark/80 text-[clamp(32px,8vw,60px)] text-center mt-[70px] mb-[40px] uppercase"
+        className="applications-heading font-ivymode font-light text-brand-dark/80 text-[clamp(32px,8vw,60px)] text-center mt-[40px] mb-[40px] uppercase"
         style={{ opacity: 0, letterSpacing: "0.5em" }}
       >
         APPLICATIONS

@@ -139,12 +139,12 @@ const finishMetadata: Record<string, { name: string; img: string; desc: string }
   },
   "Structured Matte": {
     name: "STRUCTURED MATTE",
-    img: "/nobilita3/images/Links/White Camouflage Face 1.jpg",
+    img: "/nobilita3/images/Links/White Camouflage Face 1 - Copy.jpg",
     desc: "Leather-inspired texture with subtle richness and enhanced grip."
   },
   "3D-5D Matte": {
     name: "3D / 5D MATTE",
-    img: "/nobilita3/images/Travertino Romano Classico Face 1.jpg",
+    img: "/nobilita3/images/Travertino Romano Classico Face 1 - Copy.jpg",
     desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces."
   }
 };
@@ -225,20 +225,20 @@ function ExploreCollectionContent() {
             className="relative w-10 h-10 focus:outline-none transition-opacity hover:opacity-80 flex items-center justify-center"
             aria-label="Toggle navigation menu"
           >
-            <span 
+            <span
               className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
               style={{
                 transform: isNavOpen ? "translateY(0px) rotate(45deg)" : "translateY(-6px) rotate(0deg)"
               }}
             />
-            <span 
+            <span
               className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
               style={{
                 transform: isNavOpen ? "scaleX(0)" : "scaleX(1)",
                 opacity: isNavOpen ? 0 : 1
               }}
             />
-            <span 
+            <span
               className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
               style={{
                 transform: isNavOpen ? "translateY(0px) rotate(-45deg)" : "translateY(6px) rotate(0deg)"
@@ -487,9 +487,12 @@ function ExploreCollectionContent() {
             </p>
             <button
               onClick={handleReset}
-              className="mt-4 border border-brand-dark/40 px-6 py-2.5 font-michroma text-[10px] tracking-widest uppercase hover:bg-brand-dark hover:text-white transition-colors"
+              className="mt-4 relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
             >
-              Clear Filters
+              <span className="absolute inset-0 bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                Clear Filters
+              </span>
             </button>
           </div>
         )}
