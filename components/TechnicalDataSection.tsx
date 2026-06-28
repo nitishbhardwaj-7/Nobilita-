@@ -5,9 +5,9 @@ import gsap from "gsap";
 
 const technicalImages = [
   { src: "/nobilita3/images/Links/Statuario Ultimo 1.jpg", name: "STATUARIO ULTIMO", textColor: "black" },
-  { src: "/nobilita3/images/Links/Arabescato Fjord (2).jpg", name: "ARABESCATO FJORD", textColor: "black" },
+  { src: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg", name: "ARABESCATO FJORD", textColor: "black" },
   { src: "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg", name: "ARABESCATO VAGLI", textColor: "black" },
-  { src: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg", name: "CALACATTA OYSTER FACE 1", textColor: "black" },
+  { src: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg", name: "CALACATTA OYSTER", textColor: "black" },
   { src: "/nobilita3/images/Links/Onice Black & White Face 1_1.jpg", name: "ONICE BLACK AND WHITE", textColor: "black" },
   { src: "/nobilita3/images/Links/Calacatta Sponda 1.jpg", name: "CALCATTA SPONDA", textColor: "black" },
   { src: "/nobilita3/images/Links/crystallo bianco 1.jpg", name: "CYSTALLO BIANCO", textColor: "black" },
