@@ -166,31 +166,37 @@ export default function LegacySection() {
       </div>
 
       {/* ── CENTER PANEL */}
-      <div className="w-full md:w-1/3 min-h-[50vh] md:h-screen bg-white flex flex-col items-center justify-end relative px-6">
-        <div className="flex flex-col items-center justify-end w-full max-w-none px-4">
+      <div className="w-full md:w-1/3 min-h-[70vh] md:h-screen bg-white flex flex-col items-center justify-end relative px-6">
+        <div className="flex-1 w-full flex flex-col items-center justify-end max-w-none px-4">
           <img
             ref={sketchRef}
             src="/nobilita3/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
-            className="sketch-img w-[105%] md:w-[200%] lg:w-[200%] max-w-none h-auto object-contain mb-8"
+            className="sketch-img w-[105%] md:w-[200%] lg:w-[200%] max-w-none h-auto object-contain"
           />
+
+          <div className="flex-grow max-h-10" />
 
           <img
             ref={logoRef}
             src="/nobilita3/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
-            className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain mb-8"
+            className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain"
           />
+
+          <div className="flex-grow max-h-10" />
 
           <img
             ref={taglineRef}
             src="/nobilita3/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain mb-8"
+            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain"
           />
+
+          <div className="flex-grow max-h-12" />
         </div>
       </div>
 
