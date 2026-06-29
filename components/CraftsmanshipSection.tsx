@@ -35,10 +35,11 @@ export default function CraftsmanshipSection() {
 
     // ── 2. HEADING — LETTER SPACING COMPRESS ON ENTER ─────────────────────────
     gsap.fromTo(heading,
-      { opacity: 0, letterSpacing: "0.28em" },
+      { opacity: 0, letterSpacing: "0.28em", marginRight: "-0.28em" },
       {
         opacity: 1,
         letterSpacing: "0.15em",
+        marginRight: "-0.15em",
         duration: 1.6,
         delay: 0.5,
         ease: "power2.out",
@@ -54,7 +55,7 @@ export default function CraftsmanshipSection() {
     const rawText = para.innerText;
     const words = rawText.split(" ");
     para.innerHTML = words
-      .map(w => `<span class="craftsmanship-word" style="display:inline-block;opacity:0;white-space:pre-wrap">${w} </span>`)
+      .map(w => `<span class="craftsmanship-word" style="display:inline-block;opacity:0;">${w}</span> `)
       .join("");
 
     gsap.to(".craftsmanship-word", {
@@ -148,21 +149,23 @@ export default function CraftsmanshipSection() {
 
       {/* ── TOP HEADING & PARAGRAPH GROUP ── */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto pt-10 flex flex-col items-center px-4">
-        <h2
-          ref={headingRef}
-          className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,4.5vw,66px)] uppercase text-center"
-          style={{ opacity: 0, letterSpacing: "0.13em" }}
-        >
-          ITALIAN CRAFTSMANSHIP
-        </h2>
-        <p
-          ref={paraRef}
-          className="craftsmanship-para font-ivymode font-extralight text-white text-center text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full max-w-[85%] md:max-w-[72vw] lg:max-w-[980px] mt-2"
-        >
-          In the heart of Modena, where centuries of Italian expertise{" "}
-          meet innovation, NOBILITA creates porcelain surfaces that{" "}
-          embody the art of timeless craftsmanship.
-        </p>
+        <div className="w-min max-w-full flex flex-col items-center">
+          <h2
+            ref={headingRef}
+            className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-nowrap"
+            style={{ opacity: 0, letterSpacing: "0.13em" }}
+          >
+            ITALIAN CRAFTSMANSHIP
+          </h2>
+          <p
+            ref={paraRef}
+            className="craftsmanship-para font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full mt-2"
+          >
+            In the heart of Modena, where centuries of Italian expertise{" "}
+            meet innovation, NOBILITA creates porcelain surfaces that{" "}
+            embody the art of timeless craftsmanship.
+          </p>
+        </div>
       </div>
 
       {/* ── LOWER-CENTER BADGE ── */}
