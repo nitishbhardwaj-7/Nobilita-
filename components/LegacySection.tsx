@@ -166,7 +166,7 @@ export default function LegacySection() {
       </div>
 
       {/* ── CENTER PANEL */}
-      <div className="w-full md:w-1/3 min-h-[50vh] md:h-screen bg-white flex flex-col items-center justify-end pb-8 relative px-6">
+      <div className="w-full md:w-1/3 min-h-[50vh] md:h-screen bg-white flex flex-col items-center justify-end relative px-6">
         <div className="flex flex-col items-center justify-end w-full max-w-none px-4">
           <img
             ref={sketchRef}
@@ -189,7 +189,7 @@ export default function LegacySection() {
             src="/nobilita3/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain"
+            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain mb-8"
           />
         </div>
       </div>

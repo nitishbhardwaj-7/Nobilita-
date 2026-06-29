@@ -148,7 +148,7 @@ export default function CraftsmanshipSection() {
       <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
       {/* ── TOP HEADING & PARAGRAPH GROUP ── */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto pt-10 flex flex-col items-center px-4">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto pt-0 flex flex-col items-center px-4">
         <div className="w-min max-w-full flex flex-col items-center">
           <h2
             ref={headingRef}
