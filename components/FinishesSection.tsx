@@ -26,7 +26,7 @@ const finishes = [
   {
     name: "STRUCTURED MATTE",
     img: "/nobilita3/images/Links/White Camouflage Face 1 - Copy.jpg",
-    darkText: true,
+    darkText: false,
     desc: "Leather-inspired texture with subtle richness and enhanced grip."
   },
   {

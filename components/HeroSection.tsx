@@ -25,7 +25,7 @@ const slideshowImages = [
     textColor: "black"
   },
   {
-    src: "/nobilita3/images/NewImages/Ferro%20Industriale%20(2).jpg",
+    src: "/nobilita3/images/NewImages/Ferro%20Industriale%20(3).jpg",
     name: "FERRO INDUSTRIALE",
     textColor: "white"
   },
@@ -42,7 +42,7 @@ const slideshowImages = [
   {
     src: "/nobilita3/images/NewImages/Travetino%20Vein%20Cut%20Application%203.jpg",
     name: "TRAVERTINO VEIN CUT",
-    textColor: "black"
+    textColor: "white"
   },
   {
     src: "/nobilita3/images/NewImages/Verde%20Apli%20Application.jpg",
@@ -60,7 +60,7 @@ const slideshowImages = [
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Calacatta%20Borghini.png",
+    src: "/nobilita3/images/NewImages/Calacatta%20BorghinI.png",
     name: "CALACATTA BORGHINI",
     textColor: "white"
   },
