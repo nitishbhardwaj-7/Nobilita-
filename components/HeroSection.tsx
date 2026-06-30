@@ -147,7 +147,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
         current: (state.current + 1) % slideshowImages.length,
         prev: state.current
       }));
-    }, 1000);
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
 
