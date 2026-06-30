@@ -253,7 +253,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             whileInView="visible"
             viewport={{ once: true }}
             variants={buttonVariants}
-            className="w-full mt-auto mb-0 flex justify-center"
+            className="w-full mt-auto mb-5 flex justify-center"
           >
             <Link href="/explore-collection">
               <motion.button
