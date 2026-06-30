@@ -49,7 +49,7 @@ const slideshowImages = [
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Verde%20profondo%20application.jpg",
+    src: "/nobilita3/images/NewImages/Verde%20profondo%20application%20new.jpg",
     name: "VERDE PROFONDO",
     textColor: "white"
   },
@@ -194,7 +194,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
 
       <Navbar />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-between pt-[15vh] pb-[8vh] px-6 md:px-12 z-10">
+      <div className="absolute inset-0 flex flex-col items-center justify-between pt-[10vh] pb-[10vh] px-6 md:px-12 z-10">
         <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
           {/* Word-by-word reveal heading */}
           <motion.h1
@@ -253,7 +253,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             whileInView="visible"
             viewport={{ once: true }}
             variants={buttonVariants}
-            className="w-full mt-auto mb-10 flex justify-center"
+            className="w-full mt-auto mb-0 flex justify-center"
           >
             <Link href="/explore-collection">
               <motion.button

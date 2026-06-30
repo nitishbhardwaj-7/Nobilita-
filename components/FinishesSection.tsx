@@ -9,31 +9,41 @@ const finishes = [
     name: "POLISHED",
     img: "/nobilita3/images/Links/Onice Bianco 1.jpg",
     darkText: true,
-    desc: "A glossy and reflective surface that enhances depth, adding luxurious look."
+    desc: "A glossy and reflective surface that enhances depth, adding luxurious look.",
+    idleOverlay: "bg-transparent",
+    hoverOverlay: "bg-black/[0.03]"
   },
   {
     name: "MATTE",
     img: "/nobilita3/images/Links/Basaltina face 1.jpg",
     darkText: false,
-    desc: "A non-reflective and refined finish, with added slip resistance."
+    desc: "A non-reflective and refined finish, with added slip resistance.",
+    idleOverlay: "bg-black/25",
+    hoverOverlay: "bg-black/10"
   },
   {
     name: "HONED",
     img: "/nobilita3/images/Links/Statuario Ultimo 1.jpg",
     darkText: true,
-    desc: "A smooth, satin-like finish that balances subtle sheen with modern elegance."
+    desc: "A smooth, satin-like finish that balances subtle sheen with modern elegance.",
+    idleOverlay: "bg-transparent",
+    hoverOverlay: "bg-black/[0.03]"
   },
   {
     name: "STRUCTURED MATTE",
     img: "/nobilita3/images/Links/White Camouflage Face 1 - Copy.jpg",
-    darkText: false,
-    desc: "Leather-inspired texture with subtle richness and enhanced grip."
+    darkText: true,
+    desc: "Leather-inspired texture with subtle richness and enhanced grip.",
+    idleOverlay: "bg-white/25",
+    hoverOverlay: "bg-white/35"
   },
   {
     name: "3D / 5D MATTE",
     img: "/nobilita3/images/Travertino Romano Classico Face 1 - Copy.jpg",
     darkText: true,
-    desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces."
+    desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces.",
+    idleOverlay: "bg-transparent",
+    hoverOverlay: "bg-black/[0.03]"
   },
 ];
 
@@ -96,10 +106,9 @@ export default function FinishesSection() {
 
               {/* Overlay */}
               <div
-                className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${finish.darkText
-                  ? (isHovered ? 'bg-black/[0.03]' : 'bg-transparent')
-                  : (isHovered ? 'bg-black/10' : 'bg-black/25')
-                  }`}
+                className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
+                  isHovered ? finish.hoverOverlay : finish.idleOverlay
+                }`}
               />
 
               {/* Content Overlay */}
