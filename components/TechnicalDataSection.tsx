@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
+import React, { useState, useEffect } from "react";
 
 const technicalImages = [
   { src: "/nobilita3/images/Links/Statuario Ultimo 1.jpg", name: "STATUARIO ULTIMO", textColor: "black" },
@@ -15,9 +14,7 @@ const technicalImages = [
   { src: "/nobilita3/images/Links/Onice Bianco 1.jpg", name: "ONICE BIANCO", textColor: "black" },
   { src: "/nobilita3/images/Links/Travertino CC 1.jpg", name: "TRAVERTINO ROMANO", textColor: "black" }
 ];export default function TechnicalDataSection() {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const prevIndexRef = useRef(0);
-  const layersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [{ current, prev }, setImageIndices] = useState({ current: 0, prev: null as number | null });
 
   useEffect(() => {
     technicalImages.forEach((slide) => {
@@ -29,32 +26,13 @@ const technicalImages = [
   // Change image every 10 seconds (matches hero timing)
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % technicalImages.length);
+      setImageIndices((state) => ({
+        current: (state.current + 1) % technicalImages.length,
+        prev: state.current
+      }));
     }, 10000);
     return () => clearInterval(timer);
   }, []);
-
-  // GSAP cross‑fade between layers
-  useEffect(() => {
-    const prev = prevIndexRef.current;
-    const next = currentImageIndex;
-    if (prev === next) return;
-    const prevLayer = layersRef.current[prev];
-    const nextLayer = layersRef.current[next];
-    if (!prevLayer || !nextLayer) return;
-    gsap.set(nextLayer, { zIndex: 2, opacity: 0 });
-    gsap.set(prevLayer, { zIndex: 1 });
-    gsap.to(nextLayer, {
-      opacity: 1,
-      duration: 1.4,
-      ease: "power2.inOut",
-      onComplete: () => {
-        gsap.set(prevLayer, { opacity: 0, zIndex: 0 });
-        gsap.set(nextLayer, { zIndex: 1 });
-        prevIndexRef.current = next;
-      }
-    });
-  }, [currentImageIndex]);
 
   return (
     <section className="relative w-full min-h-[60vh] overflow-hidden bg-brand-dark">
@@ -62,9 +40,11 @@ const technicalImages = [
         {technicalImages.map((slide, i) => (
           <div
             key={slide.src}
-            ref={(el) => { layersRef.current[i] = el; }}
-            className="absolute inset-0 w-full h-full"
-            style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 1 : 0 }}
+            className="absolute inset-0 w-full h-full transition-opacity duration-[1400ms] ease-in-out"
+            style={{
+              opacity: i === current || i === prev ? 1 : 0,
+              zIndex: i === current ? 2 : (i === prev ? 1 : 0),
+            }}
           >
             <img
               src={slide.src}

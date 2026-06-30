@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
 import Link from "next/link";
 import Navbar from "./Navbar";
 
@@ -133,9 +132,7 @@ const buttonTextVariants = {
 };
 
 export default function HeroSection({ title, subtitle, buttonText, bgImage }: Props) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const prevIndexRef = useRef(0);
-  const layersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [{ current, prev }, setImageIndices] = useState({ current: 0, prev: null as number | null });
 
   useEffect(() => {
     slideshowImages.forEach((slide) => {
@@ -146,36 +143,13 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % slideshowImages.length);
+      setImageIndices((state) => ({
+        current: (state.current + 1) % slideshowImages.length,
+        prev: state.current
+      }));
     }, 10000);
     return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    const prev = prevIndexRef.current;
-    const next = currentImageIndex;
-    if (prev === next) return;
-
-    const prevLayer = layersRef.current[prev];
-    const nextLayer = layersRef.current[next];
-
-    if (!prevLayer || !nextLayer) return;
-
-    gsap.set(nextLayer, { zIndex: 2, opacity: 0 });
-    gsap.set(prevLayer, { zIndex: 1 });
-
-    gsap.to(nextLayer, {
-      opacity: 1,
-      duration: 1.4,
-      ease: "power2.inOut",
-      onComplete: () => {
-        gsap.set(prevLayer, { opacity: 0, zIndex: 0 });
-        gsap.set(nextLayer, { zIndex: 1 });
-        prevIndexRef.current = next;
-      }
-    });
-
-  }, [currentImageIndex]);
 
   const defaultTitle = "EXPLORE THE COLLECTION";
   const defaultSubtitle = "At NOBILITA, we believe that true luxury is not about trends, it is timeless\ndesign, enduring quality, and a deep respect for architectural legacy. Our\nporcelain tiles are not just surfaces; they are foundations for homes,\nbusinesses, and landmarks that will stand for generations.";
@@ -191,9 +165,11 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
         {slideshowImages.map((slide, i) => (
           <div
             key={slide.src}
-            ref={(el) => { layersRef.current[i] = el; }}
-            className="absolute inset-0 w-full h-full"
-            style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 1 : 0 }}
+            className="absolute inset-0 w-full h-full transition-opacity duration-[1400ms] ease-in-out"
+            style={{
+              opacity: i === current || i === prev ? 1 : 0,
+              zIndex: i === current ? 2 : (i === prev ? 1 : 0),
+            }}
           >
             <img
               src={slide.src}
