@@ -64,7 +64,7 @@ const slideshowImages = [
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/La%20Quadrifoglio%20%281%29%20copy.jpg",
+    src: "/nobilita3/images/NewImages/La%20Quadrifoglio%20%281%29%20copy%20%281%29.jpg",
     name: "LA QUADRIFOGLIO",
     textColor: "white"
   },
@@ -147,7 +147,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
         current: (state.current + 1) % slideshowImages.length,
         prev: state.current
       }));
-    }, 10000);
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -221,7 +221,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="font-ivymode text-white/95 text-[clamp(16px,2.1vw,52px)] font-light leading-[1.1] w-full max-w-[1150px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
+            className="font-ivymode text-white/95 text-[clamp(13px,4vw,18px)] md:text-[clamp(16px,2vw,32px)] font-light leading-[1.3] md:leading-[1.1] w-full max-w-[1150px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
           >
             {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
               const lines = (subtitle || defaultSubtitle).split("\n");
@@ -229,7 +229,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
               return (
                 <span
                   key={lineIdx}
-                  className={`w-full flex flex-wrap justify-center gap-x-[0.35em] ${isLastLine ? "" : "md:justify-between md:gap-x-0"} py-0.5`}
+                  className={`w-full flex flex-wrap md:flex-nowrap justify-center gap-x-[0.35em] ${isLastLine ? "" : "md:justify-between md:gap-x-0"} py-0.5`}
                 >
                   {line.split(" ").map((word, wordIdx) => (
                     <span key={wordIdx} className="inline-block overflow-hidden py-0.5">
