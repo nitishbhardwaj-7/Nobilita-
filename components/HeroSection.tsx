@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Navbar from "./Navbar";
 
@@ -149,7 +149,21 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
       }));
     }, 10000);
     return () => clearInterval(timer);
-  }, []);
+  }, [current]);
+
+  const nextSlide = () => {
+    setImageIndices((state) => ({
+      current: (state.current + 1) % slideshowImages.length,
+      prev: state.current
+    }));
+  };
+
+  const prevSlide = () => {
+    setImageIndices((state) => ({
+      current: (state.current - 1 + slideshowImages.length) % slideshowImages.length,
+      prev: state.current
+    }));
+  };
 
   const defaultTitle = "EXPLORE THE COLLECTION";
   const defaultSubtitle = "At NOBILITA, we believe that true luxury is not about trends, it is timeless\ndesign, enduring quality, and a deep respect for architectural legacy. Our\nporcelain tiles are not just surfaces; they are foundations for homes,\nbusinesses, and landmarks that will stand for generations.";
@@ -162,31 +176,31 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
     <section className="relative w-full min-h-screen overflow-hidden bg-brand-dark">
       {/* Stacked image layers — GSAP crossfades between them */}
       <div className="absolute inset-0 w-full h-full bg-black overflow-hidden">
-        {slideshowImages.map((slide, i) => (
-          <div
-            key={slide.src}
-            className="absolute inset-0 w-full h-full transition-opacity duration-[1400ms] ease-in-out"
-            style={{
-              opacity: i === current || i === prev ? 1 : 0,
-              zIndex: i === current ? 2 : (i === prev ? 1 : 0),
-            }}
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={slideshowImages[current].src}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full"
           >
             <img
-              src={slide.src}
-              alt={`${slide.name} slab application interior`}
+              src={slideshowImages[current].src}
+              alt={`${slideshowImages[current].name} slab application interior`}
               className="absolute inset-0 w-full h-full object-cover object-bottom max-w-none"
             />
             {/* Name label lives inside the layer — fades with the image automatically */}
             <div className="absolute bottom-[4vh] left-6 md:left-12 z-20 pointer-events-none select-none">
               <span
                 className="font-ivymode tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] uppercase font-light"
-                style={{ color: slide.textColor === "white" ? "#ffffff" : "#000000" }}
+                style={{ color: slideshowImages[current].textColor === "white" ? "#ffffff" : "#000000" }}
               >
-                {slide.name}
+                {slideshowImages[current].name}
               </span>
             </div>
-          </div>
-        ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Subtle premium overlay */}
         <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
@@ -272,6 +286,28 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
           </motion.div>
         </div>
       </div>
+
+      {/* Left Arrow Button */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 text-white/30 hover:text-white transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none focus:ring-0 p-2 hover:scale-110 flex items-center justify-center"
+        aria-label="Previous Slide"
+      >
+        <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 h-auto">
+          <path d="M40 6H2M2 6L7 1M2 6L7 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {/* Right Arrow Button */}
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 text-white/30 hover:text-white transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none focus:ring-0 p-2 hover:scale-110 flex items-center justify-center"
+        aria-label="Next Slide"
+      >
+        <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 h-auto">
+          <path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
     </section>
   );
 }
