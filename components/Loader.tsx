@@ -41,7 +41,7 @@ export default function Loader({ isLoading, onComplete }: LoaderProps) {
                     if (onComplete) {
                       onComplete();
                     }
-                  }, 2000);
+                  }, 1000);
                 }}
               />
             </div>
