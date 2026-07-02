@@ -149,7 +149,7 @@ const finishMetadata: Record<string, { name: string; img: string; desc: string }
   }
 };
 
-const colors = ["White", "Beige", "Grey", "Green"];
+const colors = ["White", "Beige", "Grey", "Green", "Brown"];
 const finishes = ["Polished", "Matte", "Honed", "Structured Matte", "3D-5D Matte"];
 
 function ExploreCollectionContent() {
