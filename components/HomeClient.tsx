@@ -11,6 +11,7 @@ import ApplicationsSection from "@/components/ApplicationsSection";
 import FinishesSection from "@/components/FinishesSection";
 import TechnicalDataSection from "@/components/TechnicalDataSection";
 import Footer from "@/components/Footer";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function HomeClient({ cmsData }: { cmsData: any }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
   return (
     <main className="w-full min-h-screen bg-white">
       <Loader isLoading={isLoading} onComplete={() => setIsLoading(false)} />
+      <LanguageSwitcher isVisible={!isLoading} />
       <BrandIntro 
         title={d.brandTitle}
         subtitle={d.brandSubtitle}
