@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 
 const links = ["about", "products", "technical data", "made in italy", "contact us"];
 
@@ -219,27 +218,22 @@ export default function Footer() {
             {links.map((link) => {
               const isContact = link === "contact us";
               return (
-                <Link
+                <motion.a
                   key={link}
+                  variants={navItemVariants}
                   href={
                     link === "technical data"
                       ? "#technical-data"
                       : link === "products"
-                      ? "/explore-collection"
+                      ? "/nobilita3/explore-collection"
                       : `#${link.replace(/ /g, "-")}`
                   }
-                  passHref
-                  legacyBehavior
+                  onClick={isContact ? handleContactClick : undefined}
+                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
                 >
-                  <motion.a
-                    variants={navItemVariants}
-                    onClick={isContact ? handleContactClick : undefined}
-                    className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
-                  >
-                    {link}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                  </motion.a>
-                </Link>
+                  {link}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </motion.a>
               );
             })}
           </motion.nav>
@@ -254,60 +248,55 @@ export default function Footer() {
           >
             {/* Left Column (about, products) */}
             <div className="flex justify-end gap-x-[7vw] lg:gap-x-[9.5vw] xl:gap-x-[12vw]">
-              <Link href="#about" passHref legacyBehavior>
-                <motion.a
-                  variants={navItemVariants}
-                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-                >
-                  about
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
-              </Link>
-              <Link href="/nobilita3/explore-collection" passHref legacyBehavior>
-                <motion.a
-                  variants={navItemVariants}
-                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-                >
-                  products
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
-              </Link>
+              <motion.a
+                variants={navItemVariants}
+                href="#about"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                about
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+              <motion.a
+                variants={navItemVariants}
+                href="/nobilita3/explore-collection"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                products
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
             </div>
 
             {/* Center Column (technical data - aligned to logo) */}
             <div className="flex justify-center">
-              <Link href="#technical-data" passHref legacyBehavior>
-                <motion.a
-                  variants={navItemVariants}
-                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-                >
-                  technical data
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
-              </Link>
+              <motion.a
+                variants={navItemVariants}
+                href="#technical-data"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                technical data
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
             </div>
 
             {/* Right Column (made in italy, contact us) */}
             <div className="flex justify-start gap-x-[vw] lg:gap-x-[8.5vw] xl:gap-x-[11vw]">
-              <Link href="#made-in-italy" passHref legacyBehavior>
-                <motion.a
-                  variants={navItemVariants}
-                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-                >
-                  made in italy
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
-              </Link>
-              <Link href="#contact-us" passHref legacyBehavior>
-                <motion.a
-                  variants={navItemVariants}
-                  onClick={handleContactClick}
-                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-                >
-                  contact us
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
-              </Link>
+              <motion.a
+                variants={navItemVariants}
+                href="#made-in-italy"
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                made in italy
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+              <motion.a
+                variants={navItemVariants}
+                href="#contact-us"
+                onClick={handleContactClick}
+                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
+              >
+                contact us
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
             </div>
           </motion.nav>
 

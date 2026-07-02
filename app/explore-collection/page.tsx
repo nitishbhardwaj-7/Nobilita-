@@ -36,19 +36,19 @@ const slabs = [
   {
     name: "Basaltina",
     img: "/nobilita3/images/Links/Basaltina face 1.jpg",
-    color: "Dark",
+    color: "Green",
     finish: "Honed"
   },
   {
     name: "Calacatta Borghini",
     img: "/nobilita3/images/Links/Calacatta Borghini 1.jpg",
-    color: "Gold",
+    color: "Beige",
     finish: "Polished"
   },
   {
     name: "Calacatta Oyster",
     img: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg",
-    color: "Gold",
+    color: "Beige",
     finish: "3D-5D Matte"
   },
   {
@@ -84,7 +84,7 @@ const slabs = [
   {
     name: "Onice Black & White",
     img: "/nobilita3/images/Links/Onice Black & White Face 1_1.jpg",
-    color: "Dark",
+    color: "Green",
     finish: "3D-5D Matte"
   },
   {
@@ -102,7 +102,7 @@ const slabs = [
   {
     name: "Travertino CC",
     img: "/nobilita3/images/Links/Travertino CC 1.jpg",
-    color: "Gold",
+    color: "Beige",
     finish: "Structured Matte"
   },
   {
@@ -114,7 +114,7 @@ const slabs = [
   {
     name: "White Camouflage",
     img: "/nobilita3/images/Links/White Camouflage Face 1.jpg",
-    color: "Gray",
+    color: "Grey",
     finish: "Structured Matte"
   }
 ];
