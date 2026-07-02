@@ -317,7 +317,7 @@ function ExploreCollectionContent() {
                         setSelectedColor(color);
                         setColorDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-[#545759]"
+                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-black/5 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-[#545759]"
                         }`}
                     >
                       {color}
@@ -361,7 +361,7 @@ function ExploreCollectionContent() {
                         setSelectedFinish(finish);
                         setFinishDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-brand-cream/30 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-[#545759]"
+                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-black/5 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-[#545759]"
                         }`}
                     >
                       {finish}

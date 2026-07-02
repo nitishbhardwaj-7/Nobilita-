@@ -79,7 +79,7 @@ export default function Footer() {
                         if (window.location.pathname.includes("explore-collection")) {
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         } else {
-                          window.location.href = "/explore-collection";
+                          window.location.href = "/nobilita3/explore-collection";
                         }
                       }}
                       className="relative overflow-hidden border border-brand-dark/50 text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
@@ -221,7 +221,13 @@ export default function Footer() {
                 <motion.a
                   key={link}
                   variants={navItemVariants}
-                  href={link === "technical data" ? "#technical-data" : `#${link.replace(/ /g, "-")}`}
+                  href={
+                    link === "technical data"
+                      ? "#technical-data"
+                      : link === "products"
+                      ? "/nobilita3/explore-collection"
+                      : `#${link.replace(/ /g, "-")}`
+                  }
                   onClick={isContact ? handleContactClick : undefined}
                   className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
                 >
@@ -252,7 +258,7 @@ export default function Footer() {
               </motion.a>
               <motion.a
                 variants={navItemVariants}
-                href="#products"
+                href="/nobilita3/explore-collection"
                 className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
               >
                 products
