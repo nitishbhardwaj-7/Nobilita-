@@ -216,7 +216,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="font-ivymode text-white leading-tight tracking-[0.1em] text-[clamp(24px,4.2vw,48px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]"
+            className="font-ivymode text-white leading-tight tracking-[0.1em] text-[clamp(28px,4.5vw,66px)] uppercase flex flex-wrap justify-center gap-x-[0.4em]"
           >
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-1">
@@ -274,7 +274,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
                 whileTap={{ scale: 0.96 }}
                 className="relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
               >
-                <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                 <motion.span
                   variants={buttonTextVariants}
                   className="relative z-10 block transition-colors duration-500 group-hover:text-black"

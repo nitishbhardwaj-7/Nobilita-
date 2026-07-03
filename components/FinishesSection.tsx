@@ -9,7 +9,7 @@ const finishes = [
     name: "POLISHED",
     img: "/nobilita3/images/Links/Onice Bianco 1.jpg",
     darkText: true,
-    desc: "A glossy and reflective surface that enhances depth, adding luxurious look.",
+    desc: "A glossy, reflective finish that brings out the full richness of the design for a luxurious look.",
     idleOverlay: "bg-transparent",
     hoverOverlay: "bg-black/[0.03]"
   },
@@ -70,7 +70,7 @@ export default function FinishesSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="font-ivymode text-[clamp(32px,5vw,60px)] text-[#545759] tracking-[0.2em] text-center mb-[40px] uppercase"
+        className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.2em] text-center mb-[40px] uppercase"
       >
         FINISHES
       </motion.h2>
@@ -106,9 +106,8 @@ export default function FinishesSection() {
 
               {/* Overlay */}
               <div
-                className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
-                  isHovered ? finish.hoverOverlay : finish.idleOverlay
-                }`}
+                className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${isHovered ? finish.hoverOverlay : finish.idleOverlay
+                  }`}
               />
 
               {/* Content Overlay */}

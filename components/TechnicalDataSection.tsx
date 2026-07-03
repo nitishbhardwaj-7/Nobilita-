@@ -66,14 +66,14 @@ const technicalImages = [
 <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-48 px-6">
   <a href="#" target="_blank" rel="noopener noreferrer"
     className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center">
-    <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+    <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
     <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
       CATALOGUE
     </span>
   </a>
   <button onClick={() => { alert("Thank you for subscribing our newsletter!"); }}
     className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
-    <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+    <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
     <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
       NEWSLETTER
     </span>

@@ -66,7 +66,7 @@ export default function Footer() {
               {submitStatus === "sent" ? (
                 /* Thank You Card */
                 <div className="text-center flex flex-col items-center space-y-8 animate-[fadeIn_0.5s_ease-out]">
-                  <h2 className="font-ivymode text-[26px] md:text-[48px] text-[#545759] tracking-[0.15em] uppercase font-light">
+                  <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.15em] uppercase font-light">
                     THANK YOU FOR YOUR ENQUIRY
                   </h2>
                   <p className="font-ivymode text-[20px] md:text-[36px] tracking-[0.05em] text-[#545759]">
@@ -84,7 +84,7 @@ export default function Footer() {
                       }}
                       className="relative overflow-hidden border border-brand-dark/50 text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
                     >
-                      <span className="absolute inset-0 bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                      <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                       <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
                         DISCOVER THE COLLECTION
                       </span>
@@ -96,7 +96,7 @@ export default function Footer() {
                 <>
                   {/* Title */}
                   <div className="w-full text-center mb-16">
-                    <h2 className="font-ivymode text-[28px] md:text-[42px] text-[#545759] tracking-[0.15em] uppercase font-light">
+                    <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.15em] uppercase font-light">
                       SEND YOUR QUERY
                     </h2>
                   </div>
@@ -188,7 +188,7 @@ export default function Footer() {
                         type="submit"
                         className="relative overflow-hidden border border-brand-dark/50 text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
                       >
-                        <span className="absolute inset-0 bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                        <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                         <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
                           {submitStatus === "sending" ? "SENDING..." : "SUBMIT"}
                         </span>
@@ -225,8 +225,8 @@ export default function Footer() {
                     link === "technical data"
                       ? "#technical-data"
                       : link === "products"
-                      ? "/nobilita3/explore-collection"
-                      : `#${link.replace(/ /g, "-")}`
+                        ? "/nobilita3/explore-collection"
+                        : `#${link.replace(/ /g, "-")}`
                   }
                   onClick={isContact ? handleContactClick : undefined}
                   className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"

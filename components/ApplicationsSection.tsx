@@ -179,7 +179,7 @@ export default function ApplicationsSection() {
       <div className="w-full px-4 mb-[40px] mt-[40px] text-center overflow-hidden py-1">
         <h2
           ref={headingRef}
-          className="applications-heading font-ivymode text-[clamp(28px,5vw,60px)] text-[#545759] tracking-[0.1em] uppercase inline-block"
+          className="applications-heading font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.1em] uppercase inline-block"
         >
           <span className="applications-title-span inline-block">
             APPLICATIONS

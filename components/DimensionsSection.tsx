@@ -120,7 +120,7 @@ export default function DimensionsSection() {
     <section ref={sectionRef} className="w-full bg-white mt-[40px] flex flex-col items-center">
       {/* Title - slide up reveal */}
       <div className="w-full px-4 mb-[30px] text-center overflow-hidden py-1">
-        <h2 className="font-ivymode text-[clamp(28px,5vw,60px)] text-[#545759] tracking-[0.1em] uppercase inline-block">
+        <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.1em] uppercase inline-block">
           <span className="dimensions-title-span inline-block">
             FORMAT & DIMENSIONS
           </span>
@@ -188,7 +188,7 @@ export default function DimensionsSection() {
             <button
               className="dimensions-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group opacity-0"
             >
-              <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
               <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
                 TECHNICAL DATA
               </span>

@@ -269,7 +269,7 @@ function ExploreCollectionContent() {
           </svg>
         </Link>
 
-        <h1 className="font-ivymode text-white text-[clamp(16px,4.5vw,48px)] tracking-[0.10em] uppercase leading-tight mb-12">
+        <h1 className="font-ivymode text-white text-[clamp(28px,4.5vw,66px)] tracking-[0.10em] uppercase leading-tight mb-12">
           EXPLORE THE COLLECTION
         </h1>
 

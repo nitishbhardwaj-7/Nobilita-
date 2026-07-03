@@ -607,7 +607,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             className="relative z-10 w-full text-center lg:text-left mb-4 md:mb-12 mt-2 lg:mt-0 lg:max-w-none"
             style={{ opacity: 0, transform: "translateY(30px)" }}
           >
-            <h2 className="font-ivymode text-[26px] sm:text-[32px] md:text-[64px] text-black tracking-[0.05em] uppercase font-light">
+            <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-black tracking-[0.05em] uppercase font-light">
               {activeProduct}
             </h2>
           </div>

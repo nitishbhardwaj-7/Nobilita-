@@ -155,7 +155,7 @@ export default function CraftsmanshipSection() {
         <div className="w-min max-w-full flex flex-col items-center">
           <h2
             ref={headingRef}
-            className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-nowrap"
+            className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-nowrap"
             style={{ opacity: 0, letterSpacing: "0.28em", marginRight: "-0.28em" }}
           >
             {t("ITALIAN CRAFTSMANSHIP", "ARTIGIANATO ITALIANO")}
@@ -180,7 +180,7 @@ export default function CraftsmanshipSection() {
           className="badge-wrap group relative overflow-hidden inline-block bg-transparent cursor-pointer focus:outline-none px-8 py-2.5"
         >
           {/* White fill — slides in from left on hover */}
-          <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+          <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
 
           {/* Four border line elements */}
           <div
