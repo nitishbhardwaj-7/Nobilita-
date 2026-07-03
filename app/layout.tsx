@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { LanguageProvider } from "@/components/LanguageContext";
 
 const didot = localFont({
   src: "./fonts/Didot.ttf",
@@ -55,7 +56,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${montserrat.variable} ${didot.variable} ${didotBold.variable} ${michroma.variable} ${ivymode.variable}`}
     >
       <body className="font-ivymode antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

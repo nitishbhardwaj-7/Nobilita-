@@ -562,7 +562,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
         {/* Left Column: Spec Sheet with Slab Background */}
         <div
           ref={leftColRef}
-          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-16 pb-8 px-4 md:p-12 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-b lg:border-b-0 lg:border-r border-brand-dark/10"
+          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-20 pb-8 px-4 md:p-16 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-b lg:border-b-0 lg:border-r border-brand-dark/10"
           style={{
             clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
             transform: "translateX(-50px)",
@@ -750,7 +750,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                         src={slide.src}
                         poster={slide.poster}
                         className="w-full h-full object-cover"
-                        isParentReady={isOpenDone && isActive}
+                        isParentReady={isActive}
                       />
                     ) : null
                   ) : (

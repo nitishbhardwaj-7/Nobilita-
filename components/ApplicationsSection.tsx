@@ -33,20 +33,26 @@ export default function ApplicationsSection() {
 
       if (!heading || !row1 || !row2) return;
 
-      // ── 1. HEADING — letter-spacing compress ──────────────────────────────
-      gsap.set(heading, { opacity: 0, letterSpacing: "0.5em" });
-      gsap.to(heading, {
-        opacity: 1,
-        letterSpacing: "0.1em",
-        duration: 1.4,
-        delay: 0.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 82%",
-          once: true,
-        },
-      });
+      // ── 1. HEADING — slow slide-up reveal from overflow hidden ──────────────────────────────
+      const headingSpan = heading.querySelector(".applications-title-span");
+      if (headingSpan) {
+        gsap.fromTo(
+          headingSpan,
+          { y: "100%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 2.0,
+            delay: 0.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: headingSpan,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
 
       // ── 2. ROW 1 TILES — clip wipe bottom→top, staggered ─────────────────
       const row1Tiles = row1.querySelectorAll<HTMLElement>(".app-tile");
@@ -170,13 +176,16 @@ export default function ApplicationsSection() {
       className="applications-section w-full min-h-[100vh] bg-white flex flex-col"
     >
       {/* ── HEADING */}
-      <h2
-        ref={headingRef}
-        className="applications-heading font-ivymode font-light text-brand-dark/80 text-[clamp(32px,8vw,60px)] text-center mt-[40px] mb-[40px] uppercase"
-        style={{ opacity: 0, letterSpacing: "0.5em" }}
-      >
-        APPLICATIONS
-      </h2>
+      <div className="w-full px-4 mb-[40px] mt-[40px] text-center overflow-hidden py-1">
+        <h2
+          ref={headingRef}
+          className="applications-heading font-ivymode text-[clamp(28px,5vw,60px)] text-[#545759] tracking-[0.1em] uppercase inline-block"
+        >
+          <span className="applications-title-span inline-block">
+            APPLICATIONS
+          </span>
+        </h2>
+      </div>
 
       {/* ── GRID */}
       <div className="applications-grid flex-1 w-full px-4 md:px-10 flex flex-col gap-3">

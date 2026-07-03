@@ -3,10 +3,12 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/components/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CraftsmanshipSection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const paraRef = useRef<HTMLParagraphElement>(null);
@@ -44,8 +46,8 @@ export default function CraftsmanshipSection() {
         delay: 0.5,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: heading,
-          start: "top 82%",
+          trigger: section,
+          start: "top 75%",
           once: true,
         },
       }
@@ -63,9 +65,10 @@ export default function CraftsmanshipSection() {
       duration: 0.8,
       stagger: 0.14,
       ease: "power2.out",
+      delay: 2.1,
       scrollTrigger: {
-        trigger: para,
-        start: "top 80%",
+        trigger: section,
+        start: "top 75%",
         once: true,
       },
     });
@@ -153,17 +156,18 @@ export default function CraftsmanshipSection() {
           <h2
             ref={headingRef}
             className="craftsmanship-heading font-ivymode text-white font-light md:text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-nowrap"
-            style={{ opacity: 0, letterSpacing: "0.13em" }}
+            style={{ opacity: 0, letterSpacing: "0.28em", marginRight: "-0.28em" }}
           >
-            ITALIAN CRAFTSMANSHIP
+            {t("ITALIAN CRAFTSMANSHIP", "ARTIGIANATO ITALIANO")}
           </h2>
           <p
             ref={paraRef}
             className="craftsmanship-para font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full mt-2"
           >
-            In the heart of Modena, where centuries of Italian expertise{" "}
-            meet innovation, NOBILITA creates porcelain surfaces that{" "}
-            embody the art of timeless craftsmanship.
+            {t(
+              "In the heart of Modena, where centuries of Italian expertise meet innovation, NOBILITA creates porcelain surfaces that embody the art of timeless craftsmanship.",
+              "Nel cuore di Modena, dove secoli di maestria italiana incontrano l'innovazione, NOBILITA crea superfici in gres che incarnano l'arte dell'artigianato senza tempo."
+            )}
           </p>
         </div>
       </div>
