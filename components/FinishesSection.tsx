@@ -138,7 +138,7 @@ export default function FinishesSection() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                        className={`absolute top-full left-0 font-michroma max-w-full ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,20px)] mt-4 pointer-events-none ${finish.darkText ? 'text-[#545759]' : 'text-white/80'
+                        className={`absolute top-full left-0 font-michroma max-w-full ml-8 md:ml-[45px] text-[clamp(14px,1.8vw,18px)] mt-4 pointer-events-none ${finish.darkText ? 'text-[#545759]' : 'text-white/80'
                           }`}
                         style={{ wordSpacing: "0.22em" }}
                       >

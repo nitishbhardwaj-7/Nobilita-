@@ -165,13 +165,16 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
 
         {/* Bottom Paragraph Description */}
         <div className="w-full max-w-[850px]">
-          <p className="font-ivymode font-extralight text-white leading-loose text-center text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] flex flex-wrap justify-center overflow-hidden">
+          <p className="font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full mt-2">
             {words.map((word, idx) => (
-              <span key={idx} className="inline-block mr-[0.25em] overflow-hidden py-0.5">
-                <span className="brand-desc-word inline-block translate-y-full opacity-0">
-                  {word}
+              <React.Fragment key={idx}>
+                <span className="inline-block overflow-hidden align-bottom">
+                  <span className="brand-desc-word inline-block translate-y-full opacity-0">
+                    {word}
+                  </span>
                 </span>
-              </span>
+                {" "}
+              </React.Fragment>
             ))}
           </p>
         </div>

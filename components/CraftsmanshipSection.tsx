@@ -3,12 +3,11 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLanguage } from "@/components/LanguageContext";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CraftsmanshipSection() {
-  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const paraRef = useRef<HTMLParagraphElement>(null);
@@ -158,16 +157,13 @@ export default function CraftsmanshipSection() {
             className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-nowrap"
             style={{ opacity: 0, letterSpacing: "0.28em", marginRight: "-0.28em" }}
           >
-            {t("ITALIAN CRAFTSMANSHIP", "ARTIGIANATO ITALIANO")}
+            ITALIAN CRAFTSMANSHIP
           </h2>
           <p
             ref={paraRef}
             className="craftsmanship-para font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full mt-2"
           >
-            {t(
-              "In the heart of Modena, where centuries of Italian expertise meet innovation, NOBILITA creates porcelain surfaces that embody the art of timeless craftsmanship.",
-              "Nel cuore di Modena, dove secoli di maestria italiana incontrano l'innovazione, NOBILITA crea superfici in gres che incarnano l'arte dell'artigianato senza tempo."
-            )}
+            In the heart of Modena, where centuries of Italian expertise meet innovation, NOBILITA creates porcelain surfaces that embody the art of timeless craftsmanship.
           </p>
         </div>
       </div>

@@ -166,7 +166,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
   };
 
   const defaultTitle = "EXPLORE THE COLLECTION";
-  const defaultSubtitle = "At NOBILITA, we believe that true luxury is not about trends, it is timeless\ndesign, enduring quality, and a deep respect for architectural legacy. Our\nporcelain tiles are not just surfaces; they are foundations for homes,\nbusinesses, and landmarks that will stand for generations.";
+  const defaultSubtitle = "At NOBILITA, we believe that true luxury is not about trends, it is timeless design, enduring quality, and a deep respect\nfor architectural legacy. Our porcelain tiles are not just surfaces, they are foundations for homes, businesses, and\nlandmarks that will stand for generations.";
   const defaultButtonText = "VIEW ALL SLABS";
 
   const headline = title || defaultTitle;
@@ -235,7 +235,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="font-ivymode text-white/95 text-[clamp(13px,4vw,18px)] md:text-[clamp(16px,2vw,32px)] font-light leading-[1.3] md:leading-[1.1] w-full max-w-[1150px] tracking-wide my-auto px-4 pt-10 flex flex-col items-center"
+            className="font-ivymode text-white/95 text-[clamp(16px,2vw,18px)] font-extralight leading-[32px] w-full max-w-[1150px] tracking-widest my-auto px-4 pt-10 flex flex-col items-center"
           >
             {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
               const lines = (subtitle || defaultSubtitle).split("\n");
@@ -243,10 +243,10 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
               return (
                 <span
                   key={lineIdx}
-                  className={`w-full flex flex-wrap md:flex-nowrap justify-center gap-x-[0.35em] ${isLastLine ? "" : "md:justify-between md:gap-x-0"} py-0.5`}
+                  className={`w-full flex flex-wrap md:flex-nowrap justify-center gap-x-[0.35em] ${isLastLine ? "" : "md:justify-between md:gap-x-0"}`}
                 >
                   {line.split(" ").map((word, wordIdx) => (
-                    <span key={wordIdx} className="inline-block overflow-hidden py-0.5">
+                    <span key={wordIdx} className="inline-block overflow-hidden align-bottom">
                       <motion.span
                         custom={0.15 + (lineIdx * 5 + wordIdx) * 0.008}
                         variants={paragraphWordVariants}
