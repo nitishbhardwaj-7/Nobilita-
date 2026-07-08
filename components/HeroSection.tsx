@@ -14,67 +14,67 @@ interface Props {
 
 const slideshowImages = [
   {
-    src: "/nobilita3/images/NewImages/Arabescato%20Fjord.jpg",
+    src: "/images/NewImages/Arabescato%20Fjord.jpg",
     name: "ARABESCATO FJORD",
     textColor: "black"
   },
   {
-    src: "/nobilita3/images/NewImages/Calacatta%20Oyster%20application.jpg",
+    src: "/images/NewImages/Calacatta%20Oyster%20application.jpg",
     name: "CALACATTA OYSTER",
     textColor: "black"
   },
   {
-    src: "/nobilita3/images/NewImages/Ferro%20Industriale%20(3).jpg",
+    src: "/images/NewImages/Ferro%20Industriale%20(3).jpg",
     name: "FERRO INDUSTRIALE",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Gris%20Di%20Savoie%20(2).jpg",
+    src: "/images/NewImages/Gris%20Di%20Savoie%20(2).jpg",
     name: "GRIS DI SAVOIE",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Piasentina%20Application.jpg",
+    src: "/images/NewImages/Piasentina%20Application.jpg",
     name: "PIASENTINA",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Travetino%20Vein%20Cut%20Application%203.jpg",
+    src: "/images/NewImages/Travetino%20Vein%20Cut%20Application%203.jpg",
     name: "TRAVERTINO VEIN CUT",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Verde%20Apli%20Application.jpg",
+    src: "/images/NewImages/Verde%20Apli%20Application.jpg",
     name: "VERDE ALPI",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Verde%20profondo%20application%20new.jpg",
+    src: "/images/NewImages/Verde%20profondo%20application%20new.jpg",
     name: "VERDE PROFONDO",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/silver%20root.jpg",
+    src: "/images/NewImages/silver%20root.jpg",
     name: "SILVER ROOT",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Calacatta%20BorghinI.png",
+    src: "/images/NewImages/Calacatta%20BorghinI.png",
     name: "CALACATTA BORGHINI",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/La%20Quadrifoglio%20%281%29%20copy%20%281%29.jpg",
+    src: "/images/NewImages/La%20Quadrifoglio%20%281%29%20copy%20%281%29.jpg",
     name: "LA QUADRIFOGLIO",
     textColor: "white"
   },
   {
-    src: "/nobilita3/images/NewImages/Fior%20Di%20Melo.jpg",
+    src: "/images/NewImages/Fior%20Di%20Melo.jpg",
     name: "FIOR DI MELO",
     textColor: "black"
   },
   {
-    src: "/nobilita3/images/NewImages/taj%20mahal.jpg",
+    src: "/images/NewImages/taj%20mahal.jpg",
     name: "TAJ MAHAL",
     textColor: "black"
   }

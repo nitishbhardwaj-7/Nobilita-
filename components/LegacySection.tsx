@@ -139,6 +139,7 @@ export default function LegacySection() {
   return (
     <section
       ref={sectionRef}
+      id="about"
       className="triptych-section w-full min-h-screen flex flex-col md:flex-row bg-white"
     >
       {/* ── LEFT PANEL — Trevi Fountain */}
@@ -148,7 +149,7 @@ export default function LegacySection() {
       >
         <img
           ref={imgLeftRef}
-          src="/nobilita3/images/Links/Trevi-Fountain-Large.jpeg"
+          src="/images/Links/Trevi-Fountain-Large.jpeg"
           alt="Trevi Fountain"
           loading="lazy"
           className="panel-img absolute inset-0 w-full h-[112%] object-cover"
@@ -170,7 +171,7 @@ export default function LegacySection() {
         <div className="flex-1 w-full flex flex-col items-center justify-end max-w-none px-4">
           <img
             ref={sketchRef}
-            src="/nobilita3/images/Links/DP8017299.png"
+            src="/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
             className="sketch-img w-[105%] md:w-[200%] lg:w-[200%] max-w-none h-auto object-contain"
@@ -180,7 +181,7 @@ export default function LegacySection() {
 
           <img
             ref={logoRef}
-            src="/nobilita3/images/Links/NOBILITA Logo BLACK.png"
+            src="/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
             className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain"
@@ -190,7 +191,7 @@ export default function LegacySection() {
 
           <img
             ref={taglineRef}
-            src="/nobilita3/images/Links/tag grey.png"
+            src="/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
             className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain"
@@ -207,7 +208,7 @@ export default function LegacySection() {
       >
         <img
           ref={imgRightRef}
-          src="/nobilita3/images/rightlegacy.jpg"
+          src="/images/rightlegacy.jpg"
           alt="Palazzo della Civiltà Italiana"
           loading="lazy"
           className="panel-img absolute inset-0 w-full h-[112%] object-cover"

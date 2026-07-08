@@ -3,16 +3,16 @@
 import React, { useState, useEffect } from "react";
 
 const technicalImages = [
-  { src: "/nobilita3/images/Links/Statuario Ultimo 1.jpg", name: "STATUARIO ULTIMO", textColor: "black" },
-  { src: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg", name: "ARABESCATO FJORD", textColor: "black" },
-  { src: "/nobilita3/images/Links/Arabescato Vagli Face 1_1.jpg", name: "ARABESCATO VAGLI", textColor: "black" },
-  { src: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg", name: "CALACATTA OYSTER", textColor: "black" },
-  { src: "/nobilita3/images/Links/Onice Black & White Face 1_1.jpg", name: "ONICE BLACK AND WHITE", textColor: "black" },
-  { src: "/nobilita3/images/Links/Calacatta Sponda 1.jpg", name: "CALCATTA SPONDA", textColor: "black" },
-  { src: "/nobilita3/images/Links/crystallo bianco 1.jpg", name: "CYSTALLO BIANCO", textColor: "black" },
-  { src: "/nobilita3/images/Links/Fior Di Melo Face 1.jpg", name: "FIOR DI MELO", textColor: "black" },
-  { src: "/nobilita3/images/Links/Onice Bianco 1.jpg", name: "ONICE BIANCO", textColor: "black" },
-  { src: "/nobilita3/images/Links/Travertino CC 1.jpg", name: "TRAVERTINO ROMANO", textColor: "black" }
+  { src: "/images/Links/Statuario Ultimo 1.jpg", name: "STATUARIO ULTIMO", textColor: "black" },
+  { src: "/images/Links/Arbescato Fjord Face 1.jpg", name: "ARABESCATO FJORD", textColor: "black" },
+  { src: "/images/Links/Arabescato Vagli Face 1_1.jpg", name: "ARABESCATO VAGLI", textColor: "black" },
+  { src: "/images/Links/Calacatta Oyster Face 1.jpg", name: "CALACATTA OYSTER", textColor: "black" },
+  { src: "/images/Links/Onice Black & White Face 1_1.jpg", name: "ONICE BLACK AND WHITE", textColor: "black" },
+  { src: "/images/Links/Calacatta Sponda 1.jpg", name: "CALCATTA SPONDA", textColor: "black" },
+  { src: "/images/Links/crystallo bianco 1.jpg", name: "CYSTALLO BIANCO", textColor: "black" },
+  { src: "/images/Links/Fior Di Melo Face 1.jpg", name: "FIOR DI MELO", textColor: "black" },
+  { src: "/images/Links/Onice Bianco 1.jpg", name: "ONICE BIANCO", textColor: "black" },
+  { src: "/images/Links/Travertino CC 1.jpg", name: "TRAVERTINO ROMANO", textColor: "black" }
 ];export default function TechnicalDataSection() {
   const [{ current, prev }, setImageIndices] = useState({ current: 0, prev: null as number | null });
 
@@ -35,7 +35,7 @@ const technicalImages = [
   }, []);
 
   return (
-    <section className="relative w-full min-h-[60vh] overflow-hidden bg-brand-dark">
+    <section id="technical-data" className="relative w-full min-h-[60vh] overflow-hidden bg-brand-dark">
       <div className="absolute inset-0 w-full h-full bg-black overflow-hidden flex justify-center items-center">
         {technicalImages.map((slide, i) => (
           <div
@@ -64,14 +64,20 @@ const technicalImages = [
 {/* Subtle overlay for readability */}
 <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
 <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-48 px-6">
-  <a href="#" target="_blank" rel="noopener noreferrer"
-    className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center">
+  <button onClick={(e) => {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent("open-catalog-form"));
+    }}
+    className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
     <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
     <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
       CATALOGUE
     </span>
-  </a>
-  <button onClick={() => { alert("Thank you for subscribing our newsletter!"); }}
+  </button>
+  <button onClick={(e) => {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent("open-newsletter-form"));
+    }}
     className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
     <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
     <span className="relative z-10 transition-colors duration-500 group-hover:text-black">

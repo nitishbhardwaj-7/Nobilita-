@@ -102,35 +102,35 @@ interface SlabConfig {
 
 const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   "Arabescato Vagli": {
-    leftBg: "/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
+    leftBg: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – BOOKMATCH OF 1", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/arbescato vagli bathroom video.mp4", poster: "/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
-      { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
-      { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
-      { type: "image", src: "/nobilita3/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" }
+      { type: "video", src: "/images/Links/arbescato vagli bathroom video.mp4", poster: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
+      { type: "image", src: "/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
+      { type: "image", src: "/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
+      { type: "image", src: "/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" }
     ],
-    bookmatchImg: "/nobilita3/images/Arbescato Vagli/Bookmatch.jpg",
-    availableFaces: ["/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg"],
+    bookmatchImg: "/images/Arbescato Vagli/Bookmatch.jpg",
+    availableFaces: ["/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg"],
     isHorizontalFace: true
   },
   "Calacatta Oyster": {
-    leftBg: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg",
+    leftBg: "/images/Links/Calacatta Oyster Face 1.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1  2  3", "12MM – BOOKMATCH OF 2"],
     finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/Calacatta Oyster Vid.mp4", poster: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg", alt: "Calacatta Oyster Video" },
-      { type: "image", src: "/nobilita3/images/Calacatta Oyster/Calacatta Oyster1.jpg", alt: "Calacatta Oyster Slab 1" },
-      { type: "image", src: "/nobilita3/images/Calacatta Oyster/Calacatta Oyster (2).jpg", alt: "Calacatta Oyster Slab 2" }
+      { type: "video", src: "/images/Links/Calacatta Oyster Vid.mp4", poster: "/images/Links/Calacatta Oyster Face 1.jpg", alt: "Calacatta Oyster Video" },
+      { type: "image", src: "/images/Calacatta Oyster/Calacatta Oyster1.jpg", alt: "Calacatta Oyster Slab 1" },
+      { type: "image", src: "/images/Calacatta Oyster/Calacatta Oyster (2).jpg", alt: "Calacatta Oyster Slab 2" }
     ],
-    bookmatchImg: "/nobilita3/images/Calacatta Oyster/Bookmatch.jpg",
+    bookmatchImg: "/images/Calacatta Oyster/Bookmatch.jpg",
     availableFaces: [
-      "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg",
-      "/nobilita3/images/Links/Calacatta Oyster Face 2.jpg",
-      "/nobilita3/images/Links/Calacatta Oyster Face 3.jpg"
+      "/images/Links/Calacatta Oyster Face 1.jpg",
+      "/images/Links/Calacatta Oyster Face 2.jpg",
+      "/images/Links/Calacatta Oyster Face 3.jpg"
     ]
   },
   "Arabescato Fjord": {
@@ -138,10 +138,10 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Video" },
-      { type: "image", src: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Video" },
+      { type: "image", src: "/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Arbescato Fjord Face 1.jpg"],
+    availableFaces: ["/images/Links/Arbescato Fjord Face 1.jpg"],
     isHorizontalFace: true
   },
   "Basaltina": {
@@ -149,10 +149,10 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Basaltina face 1.jpg", alt: "Basaltina Video" },
-      { type: "image", src: "/nobilita3/images/Links/Basaltina face 1.jpg", alt: "Basaltina Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Video" },
+      { type: "image", src: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Basaltina face 1.jpg"],
+    availableFaces: ["/images/Links/Basaltina face 1.jpg"],
     isHorizontalFace: true
   },
   "Calacatta Borghini": {
@@ -160,120 +160,120 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     faces: ["6.5MM – 1 FACE", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Calacatta Borghini 1.jpg", alt: "Calacatta Borghini Video" },
-      { type: "image", src: "/nobilita3/images/Links/Calacatta Borghini 1.jpg", alt: "Calacatta Borghini Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Calacatta Borghini 1.jpg", alt: "Calacatta Borghini Video" },
+      { type: "image", src: "/images/Links/Calacatta Borghini 1.jpg", alt: "Calacatta Borghini Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Calacatta Borghini 1.jpg"]
+    availableFaces: ["/images/Links/Calacatta Borghini 1.jpg"]
   },
   "Calacatta Sponda": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Calacatta Sponda 1.jpg", alt: "Calacatta Sponda Video" },
-      { type: "image", src: "/nobilita3/images/Links/Calacatta Sponda 1.jpg", alt: "Calacatta Sponda Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Calacatta Sponda 1.jpg", alt: "Calacatta Sponda Video" },
+      { type: "image", src: "/images/Links/Calacatta Sponda 1.jpg", alt: "Calacatta Sponda Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Calacatta Sponda 1.jpg"]
+    availableFaces: ["/images/Links/Calacatta Sponda 1.jpg"]
   },
   "Calacatta Vagli Rosa": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Calacatta Vagli Rosa 1.jpg", alt: "Calacatta Vagli Rosa Video" },
-      { type: "image", src: "/nobilita3/images/Links/Calacatta Vagli Rosa 1.jpg", alt: "Calacatta Vagli Rosa Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Calacatta Vagli Rosa 1.jpg", alt: "Calacatta Vagli Rosa Video" },
+      { type: "image", src: "/images/Links/Calacatta Vagli Rosa 1.jpg", alt: "Calacatta Vagli Rosa Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Calacatta Vagli Rosa 1.jpg"]
+    availableFaces: ["/images/Links/Calacatta Vagli Rosa 1.jpg"]
   },
   "Crystallo Bianco": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/crystallo bianco 1.jpg", alt: "Crystallo Bianco Video" },
-      { type: "image", src: "/nobilita3/images/Links/crystallo bianco 1.jpg", alt: "Crystallo Bianco Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/crystallo bianco 1.jpg", alt: "Crystallo Bianco Video" },
+      { type: "image", src: "/images/Links/crystallo bianco 1.jpg", alt: "Crystallo Bianco Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/crystallo bianco 1.jpg"]
+    availableFaces: ["/images/Links/crystallo bianco 1.jpg"]
   },
   "Fior Di Melo": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Fior Di Melo Face 1.jpg", alt: "Fior Di Melo Video" },
-      { type: "image", src: "/nobilita3/images/Links/Fior Di Melo Face 1.jpg", alt: "Fior Di Melo Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Fior Di Melo Face 1.jpg", alt: "Fior Di Melo Video" },
+      { type: "image", src: "/images/Links/Fior Di Melo Face 1.jpg", alt: "Fior Di Melo Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Fior Di Melo Face 1.jpg"]
+    availableFaces: ["/images/Links/Fior Di Melo Face 1.jpg"]
   },
   "Onice Bianco": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Onice Bianco 1.jpg", alt: "Onice Bianco Video" },
-      { type: "image", src: "/nobilita3/images/Links/Onice Bianco 1.jpg", alt: "Onice Bianco Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Onice Bianco 1.jpg", alt: "Onice Bianco Video" },
+      { type: "image", src: "/images/Links/Onice Bianco 1.jpg", alt: "Onice Bianco Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Onice Bianco 1.jpg"]
+    availableFaces: ["/images/Links/Onice Bianco 1.jpg"]
   },
   "Onice Black & White": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – 3D-5D MATTE", "12MM – 3D-5D MATTE"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Onice Black & White Face 1_1.jpg", alt: "Onice Black & White Video" },
-      { type: "image", src: "/nobilita3/images/Links/Onice Black & White Face 1_1.jpg", alt: "Onice Black & White Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Onice Black & White Face 1_1.jpg", alt: "Onice Black & White Video" },
+      { type: "image", src: "/images/Links/Onice Black & White Face 1_1.jpg", alt: "Onice Black & White Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Onice Black & White Face 1_1.jpg"]
+    availableFaces: ["/images/Links/Onice Black & White Face 1_1.jpg"]
   },
   "Paonazzetto Inizio": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Paonazzetto Inizio 1.jpg", alt: "Paonazzetto Inizio Video" },
-      { type: "image", src: "/nobilita3/images/Links/Paonazzetto Inizio 1.jpg", alt: "Paonazzetto Inizio Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Paonazzetto Inizio 1.jpg", alt: "Paonazzetto Inizio Video" },
+      { type: "image", src: "/images/Links/Paonazzetto Inizio 1.jpg", alt: "Paonazzetto Inizio Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Paonazzetto Inizio 1.jpg"]
+    availableFaces: ["/images/Links/Paonazzetto Inizio 1.jpg"]
   },
   "Statuario Ultimo": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Statuario Ultimo 1.jpg", alt: "Statuario Ultimo Video" },
-      { type: "image", src: "/nobilita3/images/Links/Statuario Ultimo 1.jpg", alt: "Statuario Ultimo Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Statuario Ultimo 1.jpg", alt: "Statuario Ultimo Video" },
+      { type: "image", src: "/images/Links/Statuario Ultimo 1.jpg", alt: "Statuario Ultimo Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Statuario Ultimo 1.jpg"]
+    availableFaces: ["/images/Links/Statuario Ultimo 1.jpg"]
   },
   "Travertino CC": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Video" },
-      { type: "image", src: "/nobilita3/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Video" },
+      { type: "image", src: "/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Travertino CC 1.jpg"]
+    availableFaces: ["/images/Links/Travertino CC 1.jpg"]
   },
   "Venatino Betogli": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/Venatino betogli 1.jpg", alt: "Venatino Betogli Video" },
-      { type: "image", src: "/nobilita3/images/Links/Venatino betogli 1.jpg", alt: "Venatino Betogli Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Venatino betogli 1.jpg", alt: "Venatino Betogli Video" },
+      { type: "image", src: "/images/Links/Venatino betogli 1.jpg", alt: "Venatino Betogli Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/Venatino betogli 1.jpg"]
+    availableFaces: ["/images/Links/Venatino betogli 1.jpg"]
   },
   "White Camouflage": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
     slides: [
-      { type: "video", src: "/nobilita3/images/Links/materials.mp4", poster: "/nobilita3/images/Links/White Camouflage Face 1.jpg", alt: "White Camouflage Video" },
-      { type: "image", src: "/nobilita3/images/Links/White Camouflage Face 1.jpg", alt: "White Camouflage Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/White Camouflage Face 1.jpg", alt: "White Camouflage Video" },
+      { type: "image", src: "/images/Links/White Camouflage Face 1.jpg", alt: "White Camouflage Slab" }
     ],
-    availableFaces: ["/nobilita3/images/Links/White Camouflage Face 1.jpg"]
+    availableFaces: ["/images/Links/White Camouflage Face 1.jpg"]
   }
 };
 

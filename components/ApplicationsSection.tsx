@@ -7,12 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const applications = [
-  { name: "INTERIOR WALLS", image: "/nobilita3/images/Calacatta Oyster Application 1.jpg", row: 1 },
-  { name: "INTERIOR FLOORS", image: "/nobilita3/images/ccc.jpg", row: 1 },
-  { name: "COUNTERTOPS", image: "/nobilita3/images/mmm.jpg", row: 1 },
-  { name: "EXTERIOR WALLS", image: "/nobilita3/images/15.jpg", row: 2 },
-  { name: "EXTERIOR FLOORS", image: "/nobilita3/images/4.jpg", row: 2 },
-  { name: "FURNITURE", image: "/nobilita3/images/Arabescato Fjord (2).jpg", row: 2 },
+  { name: "INTERIOR WALLS", image: "/images/Calacatta Oyster Application 1.jpg", row: 1 },
+  { name: "INTERIOR FLOORS", image: "/images/ccc.jpg", row: 1 },
+  { name: "COUNTERTOPS", image: "/images/mmm.jpg", row: 1 },
+  { name: "EXTERIOR WALLS", image: "/images/15.jpg", row: 2 },
+  { name: "EXTERIOR FLOORS", image: "/images/4.jpg", row: 2 },
+  { name: "FURNITURE", image: "/images/Arabescato Fjord (2).jpg", row: 2 },
 ];
 
 const DARK_LABEL = ["EXTERIOR WALLS", "EXTERIOR FLOORS", "FURNITURE"];

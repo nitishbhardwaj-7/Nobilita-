@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const finishes = [
   {
     name: "POLISHED",
-    img: "/nobilita3/images/Links/Onice Bianco 1.jpg",
+    img: "/images/Links/Onice Bianco 1.jpg",
     darkText: true,
     desc: "A glossy, reflective finish that brings out the full richness of the design for a luxurious look.",
     idleOverlay: "bg-transparent",
@@ -15,7 +15,7 @@ const finishes = [
   },
   {
     name: "MATTE",
-    img: "/nobilita3/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina face 1.jpg",
     darkText: false,
     desc: "A non-reflective and refined finish, with added slip resistance.",
     idleOverlay: "bg-black/25",
@@ -23,7 +23,7 @@ const finishes = [
   },
   {
     name: "HONED",
-    img: "/nobilita3/images/Links/Statuario Ultimo 1.jpg",
+    img: "/images/Links/Statuario Ultimo 1.jpg",
     darkText: true,
     desc: "A smooth, satin-like finish that balances subtle sheen with modern elegance.",
     idleOverlay: "bg-transparent",
@@ -31,7 +31,7 @@ const finishes = [
   },
   {
     name: "STRUCTURED MATTE",
-    img: "/nobilita3/images/Links/White Camouflage Face 1 - Copy.jpg",
+    img: "/images/Links/White Camouflage Face 1 - Copy.jpg",
     darkText: true,
     desc: "Leather-inspired texture with subtle richness and enhanced grip.",
     idleOverlay: "bg-white/25",
@@ -39,7 +39,7 @@ const finishes = [
   },
   {
     name: "3D / 5D MATTE",
-    img: "/nobilita3/images/Travertino Romano Classico Face 1 - Copy.jpg",
+    img: "/images/Travertino Romano Classico Face 1 - Copy.jpg",
     darkText: true,
     desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces.",
     idleOverlay: "bg-transparent",

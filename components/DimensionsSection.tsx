@@ -179,7 +179,7 @@ export default function DimensionsSection() {
           style={{ clipPath: "inset(0% 12% 0% 12%)", opacity: 0 }}
         >
           <img
-            src="/nobilita3/images/format & dimensions application copy new.jpg"
+            src="/images/format & dimensions application copy new.jpg"
             alt="Format and Dimensions"
             loading="lazy"
             className="dimensions-img absolute inset-0 w-full h-full object-cover"

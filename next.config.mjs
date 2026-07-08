@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/nobilita3",
   images: {
     unoptimized: true,
     remotePatterns: [

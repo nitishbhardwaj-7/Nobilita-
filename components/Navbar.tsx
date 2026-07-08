@@ -200,7 +200,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="cursor-pointer transition-opacity">
           <img
-            src="/nobilita3/images/NOBILITA_white.png"
+            src="/images/NOBILITA_white.png"
             alt="Porcellana Nobilita"
             loading="lazy"
             className="h-10 md:h-12 w-auto object-contain"

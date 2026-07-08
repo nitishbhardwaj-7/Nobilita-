@@ -22,17 +22,6 @@ interface User {
   role: string;
 }
 
-// Global fetch interceptor to append basePath for all admin API interactions
-if (typeof window !== "undefined" && !(window as any).__fetchIntercepted) {
-  (window as any).__fetchIntercepted = true;
-  const originalFetch = window.fetch;
-  window.fetch = function (input, init) {
-    if (typeof input === "string" && input.startsWith("/api/")) {
-      input = `/nobilita3${input}`;
-    }
-    return originalFetch(input, init);
-  };
-}
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();

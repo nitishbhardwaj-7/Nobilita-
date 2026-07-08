@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { NOBILITA_HOUSE_PATHS } from "./nobilitaHousePaths";
 
 interface NobilitaHouseSVGProps {
-  variant?: "white" | "sepia";
+  variant?: "white" | "sepia" | "dark";
   size?: number;
   className?: string;
   animate?: boolean;
@@ -94,7 +94,7 @@ export default function NobilitaHouseSVG({
     };
   }, [animate]);
 
-  const strokeColor = variant === "white" ? "#ffffff" : "#8b7355";
+  const strokeColor = variant === "white" ? "#ffffff" : variant === "sepia" ? "#8b7355" : "#1a1a1a";
   const svgWidth = size;
   const svgHeight = Math.round(size * ASPECT);
 

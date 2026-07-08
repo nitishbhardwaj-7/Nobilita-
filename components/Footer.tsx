@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import NobilitaHouseSVG from "./NobilitaHouseSVG";
 
 const links = ["about", "products", "technical data", "made in italy", "contact us"];
 
@@ -25,20 +26,88 @@ const navItemVariants = {
 
 export default function Footer() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "sent">("idle");
-  const [showQueryForm, setShowQueryForm] = useState(false);
+  const [activeForm, setActiveForm] = useState<"none" | "query" | "catalog" | "newsletter" | "datasheet">("none");
+
+  React.useEffect(() => {
+    const handleOpenQuery = () => {
+      setActiveForm("query");
+      setSubmitStatus("idle");
+      setTimeout(() => {
+        const contactSection = document.getElementById("contact-form-section");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    };
+
+    const handleOpenCatalog = () => {
+      setActiveForm("catalog");
+      setSubmitStatus("idle");
+      setTimeout(() => {
+        const contactSection = document.getElementById("contact-form-section");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    };
+
+    const handleOpenNewsletter = () => {
+      setActiveForm("newsletter");
+      setSubmitStatus("idle");
+      setTimeout(() => {
+        const contactSection = document.getElementById("contact-form-section");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    };
+
+    const handleOpenDatasheet = () => {
+      setActiveForm("datasheet");
+      setSubmitStatus("idle");
+      setTimeout(() => {
+        const contactSection = document.getElementById("contact-form-section");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    };
+
+    window.addEventListener("open-query-form", handleOpenQuery);
+    window.addEventListener("open-catalog-form", handleOpenCatalog);
+    window.addEventListener("open-newsletter-form", handleOpenNewsletter);
+    window.addEventListener("open-datasheet-form", handleOpenDatasheet);
+
+    if (window.location.hash === "#contact-us") {
+      handleOpenQuery();
+    } else if (window.location.hash === "#download-catalog") {
+      handleOpenCatalog();
+    } else if (window.location.hash === "#subscribe-newsletter") {
+      handleOpenNewsletter();
+    } else if (window.location.hash === "#download-datasheet") {
+      handleOpenDatasheet();
+    }
+
+    return () => {
+      window.removeEventListener("open-query-form", handleOpenQuery);
+      window.removeEventListener("open-catalog-form", handleOpenCatalog);
+      window.removeEventListener("open-newsletter-form", handleOpenNewsletter);
+      window.removeEventListener("open-datasheet-form", handleOpenDatasheet);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitStatus("sending");
     setTimeout(() => {
       setSubmitStatus("sent");
-      setTimeout(() => setSubmitStatus("idle"), 3000);
     }, 1500);
   };
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setShowQueryForm(true);
+    setActiveForm("query");
+    setSubmitStatus("idle");
     setTimeout(() => {
       const contactSection = document.getElementById("contact-form-section");
       if (contactSection) {
@@ -53,51 +122,109 @@ export default function Footer() {
 
       {/* Contact Form Section */}
       <AnimatePresence initial={false}>
-        {showQueryForm && (
+        {activeForm !== "none" && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             id="contact-form-section"
-            className="w-full bg-white py-16 md:py-24 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden"
+            className={`w-full bg-white flex flex-col items-center justify-center overflow-hidden transition-all duration-500 ${
+              submitStatus === "sent" ? "py-0 px-0" : "py-16 md:py-24 px-6 md:px-12"
+            }`}
           >
-            <div className="w-full max-w-4xl flex flex-col items-center">
+            <div className="w-full">
               {submitStatus === "sent" ? (
-                /* Thank You Card */
-                <div className="text-center flex flex-col items-center space-y-8 animate-[fadeIn_0.5s_ease-out]">
-                  <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.15em] uppercase font-light">
-                    THANK YOU FOR YOUR ENQUIRY
-                  </h2>
-                  <p className="font-ivymode text-[20px] md:text-[36px] tracking-[0.05em] text-[#545759]">
-                    Our team will get in touch with you shortly.
-                  </p>
-                  <div className="pt-8">
-                    <button
-                      onClick={() => {
-                        setSubmitStatus("idle");
-                        if (window.location.pathname.includes("explore-collection")) {
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        } else {
-                          window.location.href = "/nobilita3/explore-collection";
-                        }
-                      }}
-                      className="relative overflow-hidden border border-brand-dark/50 text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
-                    >
-                      <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                      <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                        DISCOVER THE COLLECTION
-                      </span>
-                    </button>
+                /* Split Screen Thank You Card */
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-[60vh] md:min-h-[70vh] animate-[fadeIn_0.6s_ease-out]">
+                  {/* Left Column: Teal background with House and Logo */}
+                  <div className="bg-[#007190] py-16 px-8 flex flex-col items-center justify-center space-y-10">
+                    <div className="w-full max-w-[200px] md:max-w-[240px] flex justify-center">
+                      <NobilitaHouseSVG variant="white" size={240} className="w-full h-auto" animate={true} />
+                    </div>
+                    <div className="w-[180px] md:w-[220px]">
+                      <img
+                        src="/images/NOBILITA_white.png"
+                        alt="Porcellana Nobilita"
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Right Column: White background with Thank You and CTA */}
+                  <div className="bg-white py-16 px-8 flex flex-col items-center justify-center text-center space-y-8">
+                    {activeForm === "query" ? (
+                      <>
+                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                          THANK YOU FOR YOUR ENQUIRY
+                        </h2>
+                        <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759]">
+                          Our team will get in touch with you shortly.
+                        </p>
+                      </>
+                    ) : activeForm === "catalog" ? (
+                      <>
+                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                          DOWNLOADED SUCCESSFULLY
+                        </h2>
+                        <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759] max-w-lg leading-relaxed">
+                          Our team is available to provide tailored technical support and product guidance based on your project&apos;s specific requirements.
+                        </p>
+                      </>
+                    ) : activeForm === "newsletter" ? (
+                      <>
+                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                          SUBSCRIPTION CONFIRMED
+                        </h2>
+                        <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759] max-w-lg leading-relaxed">
+                          Thank you for joining the NOBILITA community, where architectural excellence meets Italian craftsmanship.
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                          YOUR DESIGN RESOURCE IS READY
+                        </h2>
+                        <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759] max-w-lg leading-relaxed">
+                          Our team is available to provide tailored technical support and product guidance based on your project&apos;s specific requirements.
+                        </p>
+                      </>
+                    )}
+                    <div className="pt-8 w-full max-w-[450px]">
+                      <button
+                        onClick={() => {
+                          setSubmitStatus("idle");
+                          setActiveForm("none");
+                          if (window.location.pathname.includes("explore-collection")) {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          } else {
+                            window.location.href = "/explore-collection";
+                          }
+                        }}
+                        className="relative overflow-hidden w-full border border-[#545759]/50 text-[#545759] bg-transparent py-4 font-michroma text-[clamp(11px,1.2vw,14px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
+                      >
+                        <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                        <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                          DISCOVER THE COLLECTION
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : (
                 /* Form view */
+                <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
                 <>
                   {/* Title */}
-                  <div className="w-full text-center mb-16">
-                    <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.15em] uppercase font-light">
-                      SEND YOUR QUERY
+                  <div className="w-full text-center mb-16 overflow-hidden">
+                    <h2 className="font-ivymode text-[clamp(20px,3.5vw,48px)] text-[#545759] tracking-[0.15em] uppercase font-light whitespace-nowrap">
+                      {activeForm === "query"
+                        ? "SEND YOUR QUERY"
+                        : activeForm === "catalog"
+                          ? "DOWNLOAD CATALOG"
+                          : activeForm === "newsletter"
+                            ? "SUBSCRIBE TO NEWSLETTER"
+                            : "DOWNLOAD DATASHEET"}
                     </h2>
                   </div>
 
@@ -162,23 +289,23 @@ export default function Footer() {
                       </label>
                     </div>
 
-                    {/* Query */}
+                    {/* Message or Query */}
                     <div className="relative flex flex-col pt-5">
                       <input
                         type="text"
-                        id="query"
-                        required
+                        id="message-or-query"
+                        required={activeForm === "query"}
                         placeholder=" "
                         className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
                       />
                       <label
-                        htmlFor="query"
+                        htmlFor="message-or-query"
                         className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
                       >
-                        QUERY
+                        {activeForm === "query" ? "PROJECT DETAILS" : "MESSAGE (OPTIONAL)"}
                       </label>
                     </div>
 
@@ -196,6 +323,7 @@ export default function Footer() {
                     </div>
                   </form>
                 </>
+                </div>
               )}
             </div>
           </motion.div>
@@ -223,10 +351,14 @@ export default function Footer() {
                   variants={navItemVariants}
                   href={
                     link === "technical data"
-                      ? "#technical-data"
+                      ? "/technical-data"
                       : link === "products"
-                        ? "/nobilita3/explore-collection"
-                        : `#${link.replace(/ /g, "-")}`
+                        ? "/explore-collection"
+                        : link === "about"
+                          ? "/our-story"
+                          : link === "made in italy"
+                            ? "/made-in-italy"
+                            : `#${link.replace(/ /g, "-")}`
                   }
                   onClick={isContact ? handleContactClick : undefined}
                   className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
@@ -250,7 +382,7 @@ export default function Footer() {
             <div className="flex justify-end gap-x-[7vw] lg:gap-x-[9.5vw] xl:gap-x-[12vw]">
               <motion.a
                 variants={navItemVariants}
-                href="#about"
+                href="/our-story"
                 className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
               >
                 about
@@ -258,7 +390,7 @@ export default function Footer() {
               </motion.a>
               <motion.a
                 variants={navItemVariants}
-                href="/nobilita3/explore-collection"
+                href="/explore-collection"
                 className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
               >
                 products
@@ -270,7 +402,7 @@ export default function Footer() {
             <div className="flex justify-center">
               <motion.a
                 variants={navItemVariants}
-                href="#technical-data"
+                href="/technical-data"
                 className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
               >
                 technical data
@@ -282,7 +414,7 @@ export default function Footer() {
             <div className="flex justify-start gap-x-[vw] lg:gap-x-[8.5vw] xl:gap-x-[11vw]">
               <motion.a
                 variants={navItemVariants}
-                href="#made-in-italy"
+                href="/made-in-italy"
                 className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
               >
                 made in italy
@@ -306,13 +438,15 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="w-[300px] pt-20"
+            className="pt-20 flex justify-center w-full"
           >
-            <img
-              src="/nobilita3/images/NOBILITA_white.png"
-              alt="Porcellana Nobilita"
-              className="w-full h-auto object-contain"
-            />
+            <div className="w-[260px] md:w-[320px]">
+              <img
+                src="/images/NOBILITA_white.png"
+                alt="Porcellana Nobilita"
+                className="w-full h-auto object-contain"
+              />
+            </div>
           </motion.div>
 
         </div>

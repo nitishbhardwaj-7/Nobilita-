@@ -135,12 +135,13 @@ export default function CraftsmanshipSection() {
   return (
     <section
       ref={sectionRef}
+      id="made-in-italy"
       className="craftsmanship-section relative w-full min-h-screen flex flex-col justify-between py-16 px-6 md:px-16 overflow-hidden"
     >
       {/* ── BACKGROUND IMAGE — static full-cover */}
       <div className="absolute inset-0">
         <img
-          src="/nobilita3/images/Links/MEDICI VILLA copy (7).png"
+          src="/images/Links/MEDICI VILLA copy (7).png"
           alt="Italian craftsmanship"
           loading="lazy"
           className="w-full h-full object-cover object-center"

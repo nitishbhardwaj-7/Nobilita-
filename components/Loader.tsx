@@ -49,7 +49,7 @@ export default function Loader({ isLoading, onComplete }: LoaderProps) {
             {/* Programmatic Logo Group */}
             <div className={`mt-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
               <img 
-                src="/nobilita3/images/NOBILITA_white.png" 
+                src="/images/NOBILITA_white.png" 
                 alt="Porcellana Nobilita" 
                 className="h-16 w-auto object-contain"
               />

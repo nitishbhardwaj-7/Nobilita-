@@ -143,7 +143,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
         {/* Top Header Image (tag.png) */}
         <div className="brand-tag-wrapper w-full max-w-[480px] md:max-w-[850px] flex flex-col items-center opacity-0 translate-y-8">
           <img
-            src="/nobilita3/images/Links/tag.png"
+            src="/images/Links/tag.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
             className="w-full h-auto object-contain"
@@ -156,7 +156,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
         {/* Middle Logo (NOBILITA_white.png) */}
         <div className="brand-logo-wrapper w-full max-w-[300px] md:max-w-[500px] overflow-hidden py-1">
           <img
-            src={image || "/nobilita3/images/NOBILITA_white.png"}
+            src={image || "/images/NOBILITA_white.png"}
             alt="Porcellana Nobilita"
             loading="lazy"
             className="brand-logo w-full h-auto object-contain translate-y-full opacity-0"

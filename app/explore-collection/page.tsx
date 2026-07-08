@@ -23,97 +23,97 @@ const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), {
 const slabs = [
   {
     name: "Arabescato Vagli",
-    img: "/nobilita3/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
+    img: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
     color: "White",
     finish: "Polished"
   },
   {
     name: "Arabescato Fjord",
-    img: "/nobilita3/images/Links/Arbescato Fjord Face 1.jpg",
+    img: "/images/Links/Arbescato Fjord Face 1.jpg",
     color: "White",
     finish: "Matte"
   },
   {
     name: "Basaltina",
-    img: "/nobilita3/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina face 1.jpg",
     color: "Green",
     finish: "Honed"
   },
   {
     name: "Calacatta Borghini",
-    img: "/nobilita3/images/Links/Calacatta Borghini 1.jpg",
+    img: "/images/Links/Calacatta Borghini 1.jpg",
     color: "Beige",
     finish: "Polished"
   },
   {
     name: "Calacatta Oyster",
-    img: "/nobilita3/images/Links/Calacatta Oyster Face 1.jpg",
+    img: "/images/Links/Calacatta Oyster Face 1.jpg",
     color: "Beige",
     finish: "3D-5D Matte"
   },
   {
     name: "Calacatta Sponda",
-    img: "/nobilita3/images/Links/Calacatta Sponda 1.jpg",
+    img: "/images/Links/Calacatta Sponda 1.jpg",
     color: "White",
     finish: "Polished"
   },
   {
     name: "Calacatta Vagli Rosa",
-    img: "/nobilita3/images/Links/Calacatta Vagli Rosa 1.jpg",
+    img: "/images/Links/Calacatta Vagli Rosa 1.jpg",
     color: "White",
     finish: "Polished"
   },
   {
     name: "Crystallo Bianco",
-    img: "/nobilita3/images/Links/crystallo bianco 1.jpg",
+    img: "/images/Links/crystallo bianco 1.jpg",
     color: "White",
     finish: "Honed"
   },
   {
     name: "Fior Di Melo",
-    img: "/nobilita3/images/Links/Fior Di Melo Face 1.jpg",
+    img: "/images/Links/Fior Di Melo Face 1.jpg",
     color: "White",
     finish: "Matte"
   },
   {
     name: "Onice Bianco",
-    img: "/nobilita3/images/Links/Onice Bianco 1.jpg",
+    img: "/images/Links/Onice Bianco 1.jpg",
     color: "White",
     finish: "Polished"
   },
   {
     name: "Onice Black & White",
-    img: "/nobilita3/images/Links/Onice Black & White Face 1_1.jpg",
+    img: "/images/Links/Onice Black & White Face 1_1.jpg",
     color: "Green",
     finish: "3D-5D Matte"
   },
   {
     name: "Paonazzetto Inizio",
-    img: "/nobilita3/images/Links/Paonazzetto Inizio 1.jpg",
+    img: "/images/Links/Paonazzetto Inizio 1.jpg",
     color: "White",
     finish: "Matte"
   },
   {
     name: "Statuario Ultimo",
-    img: "/nobilita3/images/Links/Statuario Ultimo 1.jpg",
+    img: "/images/Links/Statuario Ultimo 1.jpg",
     color: "White",
     finish: "Honed"
   },
   {
     name: "Travertino CC",
-    img: "/nobilita3/images/Links/Travertino CC 1.jpg",
+    img: "/images/Links/Travertino CC 1.jpg",
     color: "Beige",
     finish: "Structured Matte"
   },
   {
     name: "Venatino Betogli",
-    img: "/nobilita3/images/Links/Venatino betogli 1.jpg",
+    img: "/images/Links/Venatino betogli 1.jpg",
     color: "White",
     finish: "Polished"
   },
   {
     name: "White Camouflage",
-    img: "/nobilita3/images/Links/White Camouflage Face 1.jpg",
+    img: "/images/Links/White Camouflage Face 1.jpg",
     color: "Grey",
     finish: "Structured Matte"
   }
@@ -124,27 +124,27 @@ const useIsomorphicLayoutEffect = typeof window !== "undefined" ? React.useLayou
 const finishMetadata: Record<string, { name: string; img: string; desc: string }> = {
   "Polished": {
     name: "POLISHED",
-    img: "/nobilita3/images/Links/Onice Bianco 1.jpg",
+    img: "/images/Links/Onice Bianco 1.jpg",
     desc: "A glossy and reflective surface that enhances depth, adding luxurious look."
   },
   "Matte": {
     name: "MATTE",
-    img: "/nobilita3/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina face 1.jpg",
     desc: "A non-reflective and refined finish, with added slip resistance."
   },
   "Honed": {
     name: "HONED",
-    img: "/nobilita3/images/Links/Statuario Ultimo 1.jpg",
+    img: "/images/Links/Statuario Ultimo 1.jpg",
     desc: "A smooth, satin-like finish that balances subtle sheen with modern elegance."
   },
   "Structured Matte": {
     name: "STRUCTURED MATTE",
-    img: "/nobilita3/images/Links/White Camouflage Face 1 - Copy.jpg",
+    img: "/images/Links/White Camouflage Face 1 - Copy.jpg",
     desc: "Leather-inspired texture with subtle richness and enhanced grip."
   },
   "3D-5D Matte": {
     name: "3D / 5D MATTE",
-    img: "/nobilita3/images/Travertino Romano Classico Face 1 - Copy.jpg",
+    img: "/images/Travertino Romano Classico Face 1 - Copy.jpg",
     desc: "A multi-dimensional finish that brings depth, texture, and realism to stone surfaces."
   }
 };
@@ -274,7 +274,7 @@ function ExploreCollectionContent() {
         </h1>
 
         <img
-          src="/nobilita3/images/NOBILITA_white.png"
+          src="/images/NOBILITA_white.png"
           alt="Porcellana Nobilita"
           className="h-10 md:h-36 w-auto object-contain"
         />
