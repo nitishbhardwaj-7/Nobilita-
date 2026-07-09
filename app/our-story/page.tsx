@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,12 +48,12 @@ export default function OurStoryPage() {
         .from(".hero-logo", { opacity: 0, scale: 0.95, duration: 1.2, ease: "power3.out" }, "-=1");
 
       // 2. Section 2
-      gsap.fromTo(".sec2-bg", 
+      gsap.fromTo(".sec2-bg",
         { scale: 1.08 },
         { scale: 1, ease: "none", scrollTrigger: { trigger: ".sec2-container", start: "top bottom", end: "bottom top", scrub: true } }
       );
-      
-      gsap.fromTo(".sec2-char", 
+
+      gsap.fromTo(".sec2-char",
         { y: "120%", opacity: 0 },
         { y: "0%", opacity: 1, duration: 1.2, stagger: 0.03, ease: "expo.out", scrollTrigger: { trigger: ".sec2-title", start: "top 85%" } }
       );
@@ -67,25 +68,25 @@ export default function OurStoryPage() {
         { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "expo.out", delay: 0.6, scrollTrigger: { trigger: ".sec2-text", start: "top 80%" } }
       );
 
-      const tlImg = gsap.timeline({ 
-        scrollTrigger: { 
-          trigger: ".sec2-container", 
-          start: "top 60%", 
-          toggleActions: "play none none reverse" 
-        } 
+      const tlImg = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sec2-container",
+          start: "top 60%",
+          toggleActions: "play none none reverse"
+        }
       });
-      tlImg.fromTo(".sec2-img-wrapper", 
-        { clipPath: "inset(20% 0% 20% 0%)" }, 
+      tlImg.fromTo(".sec2-img-wrapper",
+        { clipPath: "inset(20% 0% 20% 0%)" },
         { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }
       )
-      .fromTo(".sec2-overlay", 
-        { y: "0%", opacity: 1 }, 
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }, "-=1.4"
-      )
-      .fromTo(".sec2-img-inner", 
-        { scale: 1.15 }, 
-        { scale: 1, duration: 2, ease: "power3.out" }, "-=1.8"
-      );
+        .fromTo(".sec2-overlay",
+          { y: "0%", opacity: 1 },
+          { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }, "-=1.4"
+        )
+        .fromTo(".sec2-img-inner",
+          { scale: 1.15 },
+          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.8"
+        );
 
       gsap.to(".sec2-img-inner", {
         yPercent: 8,
@@ -104,12 +105,12 @@ export default function OurStoryPage() {
       });
 
       // 4. Section 4
-      gsap.fromTo(".sec4-bg", 
+      gsap.fromTo(".sec4-bg",
         { scale: 1.08 },
         { scale: 1, ease: "none", scrollTrigger: { trigger: ".sec4-container", start: "top bottom", end: "bottom top", scrub: true } }
       );
-      
-      gsap.fromTo(".sec4-char", 
+
+      gsap.fromTo(".sec4-char",
         { y: "120%", opacity: 0 },
         { y: "0%", opacity: 1, duration: 1.2, stagger: 0.03, ease: "expo.out", scrollTrigger: { trigger: ".sec4-title", start: "top 85%" } }
       );
@@ -124,25 +125,25 @@ export default function OurStoryPage() {
         { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "expo.out", delay: 0.6, scrollTrigger: { trigger: ".sec4-text", start: "top 80%" } }
       );
 
-      const tlImg4 = gsap.timeline({ 
-        scrollTrigger: { 
-          trigger: ".sec4-container", 
-          start: "top 60%", 
-          toggleActions: "play none none reverse" 
-        } 
+      const tlImg4 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sec4-container",
+          start: "top 60%",
+          toggleActions: "play none none reverse"
+        }
       });
-      tlImg4.fromTo(".sec4-img-wrapper", 
-        { clipPath: "inset(20% 0% 20% 0%)" }, 
+      tlImg4.fromTo(".sec4-img-wrapper",
+        { clipPath: "inset(20% 0% 20% 0%)" },
         { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }
       )
-      .fromTo(".sec4-overlay", 
-        { y: "0%", opacity: 1 }, 
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }, "-=1.4"
-      )
-      .fromTo(".sec4-img-inner", 
-        { scale: 1.15 }, 
-        { scale: 1, duration: 2, ease: "power3.out" }, "-=1.8"
-      );
+        .fromTo(".sec4-overlay",
+          { y: "0%", opacity: 1 },
+          { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }, "-=1.4"
+        )
+        .fromTo(".sec4-img-inner",
+          { scale: 1.15 },
+          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.8"
+        );
 
       gsap.to(".sec4-img-inner", {
         yPercent: 8,
@@ -154,8 +155,30 @@ export default function OurStoryPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
       <Navbar />
+
+      {/* Back Button Arrow */}
+      <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50">
+        <Link
+          href="/"
+          className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/50 backdrop-blur-sm shadow-sm"
+          aria-label="Go back to home"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5 transition-transform duration-300 transform group-hover:-translate-x-0.5"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </Link>
+      </div>
 
       {/* Main Content / First Section */}
       <section className="w-full min-h-[100dvh] md:h-screen py-28 md:py-0 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start content-center">
@@ -184,12 +207,12 @@ export default function OurStoryPage() {
 
         {/* Right Column: Story Text (8 cols on desktop) */}
         <div className="md:col-span-8 flex flex-col justify-start space-y-6 md:space-y-8">
-          <motion.h1 
+          <motion.h1
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="hero-title font-ivymode font-light text-[#545759] uppercase tracking-[0.15em] text-[clamp(24px,4vw,44px)] leading-tight flex flex-wrap gap-x-[0.4em]"
+            className="hero-title font-ivymode font-light text-[#545759] uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap gap-x-[0.4em]"
           >
             {["OUR", "STORY"].map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-1">
@@ -200,7 +223,7 @@ export default function OurStoryPage() {
             ))}
           </motion.h1>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -220,7 +243,7 @@ export default function OurStoryPage() {
 
               return paragraphs.map((p, pIdx) => (
                 <p key={pIdx} className="w-full flex flex-wrap gap-x-[0.35em]">
-                  {p.map((segment, sIdx) => 
+                  {p.map((segment, sIdx) =>
                     segment.text.split(" ").filter(w => w !== "").map((word, wIdx) => {
                       const currentIdx = wordCount++;
                       return (
@@ -245,7 +268,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 2: Piano Nobile, Reimagined */}
-      <section className="sec2-container relative w-full min-h-[100dvh] md:h-screen py-28 md:py-0 grid grid-rows-[1fr_auto_1fr] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100">
+      <section className="sec2-container relative w-full min-h-[100dvh] md:h-screen pt-10 pb-16 md:pt-14 md:pb-20 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col justify-center">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -255,28 +278,24 @@ export default function OurStoryPage() {
           />
         </div>
 
-        {/* Top spacer for vertical centering */}
-        <div />
+        {/* Centered Heading */}
+        <div className="w-full text-center z-10 shrink-0 mb-10 md:mb-14">
+          <h2 className="sec2-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+            {"PIANO NOBILE, REIMAGINED".split(" ").map((word, wIdx) => (
+              <span key={wIdx} className="inline-block whitespace-nowrap">
+                {word.split("").map((char, cIdx) => (
+                  <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                    <span className="sec2-char inline-block">{char}</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </h2>
+        </div>
 
-        {/* Content wrapper */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto">
-          {/* Centered Heading */}
-          <div className="w-full text-center mb-12 md:mb-12">
-            <h2 className="sec2-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(24px,4vw,44px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
-              {"PIANO NOBILE, REIMAGINED".split(" ").map((word, wIdx) => (
-                <span key={wIdx} className="inline-block whitespace-nowrap">
-                  {word.split("").map((char, cIdx) => (
-                    <span key={cIdx} className="inline-block overflow-hidden align-bottom">
-                      <span className="sec2-char inline-block">{char}</span>
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </h2>
-          </div>
-
-          {/* Grid Layout: Text vs Image */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+        {/* Grid Layout */}
+        <div className="w-full max-w-[1440px] mx-auto z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Narrative (7 cols) */}
             <div className="sec2-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
               <div className="overflow-hidden py-1">
@@ -307,7 +326,7 @@ export default function OurStoryPage() {
 
             {/* Right Column: Verde Profondo Image (5 cols) */}
             <div className="md:col-span-5 flex justify-end items-center">
-              <div className="sec2-img-wrapper group relative w-full max-w-[380px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
+              <div className="sec2-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
                 <div className="sec2-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Verde profondo application.jpg"
@@ -316,7 +335,7 @@ export default function OurStoryPage() {
                   loading="lazy"
                 />
                 {/* Hover Button Overlay */}
-                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 z-20 flex items-end justify-center pb-6 md:pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
                     VERDE PROFONDO <span className="text-lg leading-none">&rarr;</span>
                   </span>
@@ -325,20 +344,12 @@ export default function OurStoryPage() {
             </div>
           </div>
         </div>
-
-        {/* Bottom spacer for vertical centering */}
-        <div />
-        
-        {/* Gradient fade to white at the bottom for smooth section transition */}
-        <div className="absolute bottom-0 left-0 w-full h-16 md:h-24 bg-gradient-to-t from-white/90 to-transparent z-[5] pointer-events-none"></div>
       </section>
 
       {/* Section 3: Arabescato Vagli Bookmatch Section */}
       <section className="sec3-container w-full flex flex-col bg-white">
         {/* Top Full-width Image */}
         <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group">
-          {/* Gradient fade from white at the top for smooth section transition */}
-          <div className="absolute top-0 left-0 w-full h-16 md:h-24 bg-gradient-to-b from-white/90 to-transparent z-[5] pointer-events-none"></div>
           <img
             src="/images/Our story/Arbescato Vagli BM.jpg"
             alt="Arabescato Vagli Bookmatch bathroom application"
@@ -364,7 +375,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 4: Next Generation Porcelain */}
-      <section className="sec4-container relative w-full min-h-[100dvh] md:h-screen py-28 md:py-0 grid grid-rows-[1fr_auto_1fr] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100">
+      <section className="sec4-container relative w-full min-h-[100dvh] md:h-screen pt-10 pb-16 md:pt-14 md:pb-20 px-6 md:px-12 lg:px-24 overflow-hidden border-b border-gray-100 flex flex-col justify-center">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -374,31 +385,27 @@ export default function OurStoryPage() {
           />
         </div>
 
-        {/* Top spacer for vertical centering */}
-        <div />
+        {/* Centered Heading */}
+        <div className="w-full text-center mb-10 md:mb-14 z-10 shrink-0">
+          <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+            {"NEXT GENERATION PORCELAIN".split(" ").map((word, wIdx) => (
+              <span key={wIdx} className="inline-block whitespace-nowrap">
+                {word.split("").map((char, cIdx) => (
+                  <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                    <span className="sec4-char inline-block">{char}</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </h2>
+        </div>
 
-        {/* Content wrapper */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto">
-          {/* Centered Heading */}
-          <div className="w-full text-center mb-12 md:mb-12">
-            <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(24px,4vw,44px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
-              {"NEXT GENERATION PORCELAIN".split(" ").map((word, wIdx) => (
-                <span key={wIdx} className="inline-block whitespace-nowrap">
-                  {word.split("").map((char, cIdx) => (
-                    <span key={cIdx} className="inline-block overflow-hidden align-bottom">
-                      <span className="sec4-char inline-block">{char}</span>
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </h2>
-          </div>
-
-          {/* Grid Layout: Image vs Text */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+        {/* Grid Layout */}
+        <div className="w-full max-w-[1440px] mx-auto z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-start items-center">
-              <div className="sec4-img-wrapper group relative w-full max-w-[380px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
+              <div className="sec4-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
                 <div className="sec4-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
@@ -407,7 +414,7 @@ export default function OurStoryPage() {
                   loading="lazy"
                 />
                 {/* Hover Button Overlay */}
-                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 z-20 flex items-end justify-center pb-6 md:pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
                     FERRO INDUSTRIALE <span className="text-lg leading-none">&rarr;</span>
                   </span>
@@ -440,14 +447,9 @@ export default function OurStoryPage() {
                   </span>
                 </p>
               </div>
-
-
             </div>
           </div>
         </div>
-
-        {/* Bottom spacer for vertical centering */}
-        <div />
       </section>
 
       <Footer />
