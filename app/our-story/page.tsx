@@ -181,15 +181,15 @@ export default function OurStoryPage() {
       </div>
 
       {/* Main Content / First Section */}
-      <section className="w-full min-h-[100dvh] md:h-screen py-28 md:py-0 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start content-center">
+      <section className="w-full min-h-[100dvh] md:h-screen py-28 md:py-0 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 content-center">
 
         {/* Left Column: House SVG & Logo (4 cols on desktop) */}
-        <div className="md:col-span-4 flex flex-col items-center justify-start w-full pt-2 md:pt-4">
+        <div className="md:col-span-4 flex flex-col items-center justify-between h-full w-full pt-2 md:pt-4">
           {/* House Sketch */}
           <div className="hero-house w-full flex justify-center items-center mb-4 md:mb-6">
             <NobilitaHouseSVG
               variant="dark"
-              size={240}
+              size={260}
               animate={true}
               className="opacity-90 max-w-full"
             />
@@ -227,24 +227,27 @@ export default function OurStoryPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.9] space-y-10"
+            className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.7] space-y-10"
           >
             {(() => {
               let wordCount = 0;
               const paragraphs = [
-                [{ text: "In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty." }],
-                [{ text: "The world's greatest cities were shaped by spaces that celebrated proportion, artistry, and material excellence." }],
+                [{ text: "In the grand halls of Renaissance palaces and Baroque villas, [BR] architecture was never just about building. It was an expression of [BR] culture, craftsmanship, and an enduring pursuit of beauty." }],
+                [{ text: "The world's greatest cities were shaped by spaces that celebrated [BR] proportion, artistry, and material excellence." }],
                 [
                   { text: "Among their defining features was the" },
-                  { text: "Piano Nobile – the noble floor.", highlight: true },
-                  { text: "Elevated above the bustle of the streets, it was the heart of the home, where marble, light, and masterful detailing came together to create spaces of remarkable elegance." }
+                  { text: "Piano Nobile – the noble floor. [BR]", highlight: true },
+                  { text: "Elevated above the bustle of the streets, it was the heart of the home, [BR] where marble, light, and masterful detailing came together to create [BR] spaces of remarkable elegance." }
                 ]
               ];
 
               return paragraphs.map((p, pIdx) => (
-                <p key={pIdx} className="w-full flex flex-wrap gap-x-[0.35em]">
+                <div key={pIdx} className="w-full flex flex-wrap gap-x-[0.35em] gap-y-1">
                   {p.map((segment, sIdx) =>
                     segment.text.split(" ").filter(w => w !== "").map((word, wIdx) => {
+                      if (word === "[BR]") {
+                        return <div key={`br-${sIdx}-${wIdx}`} className="hidden md:block w-full h-0 m-0"></div>;
+                      }
                       const currentIdx = wordCount++;
                       return (
                         <span key={`${sIdx}-${wIdx}`} className="inline-block overflow-hidden align-bottom">
@@ -259,7 +262,7 @@ export default function OurStoryPage() {
                       );
                     })
                   )}
-                </p>
+                </div>
               ));
             })()}
           </motion.div>
@@ -334,7 +337,15 @@ export default function OurStoryPage() {
                   className="sec2-img-inner w-full h-auto object-contain block scale-[1.15]"
                   loading="lazy"
                 />
-                {/* Hover Button Overlay */}
+                {/* Top Hover Button Overlay (Explore Full Collection) */}
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <Link href="/explore-collection" className="pointer-events-auto">
+                    <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
+                      EXPLORE FULL COLLECTION <span className="text-lg leading-none">&rarr;</span>
+                    </span>
+                  </Link>
+                </div>
+                {/* Bottom Hover Button Overlay */}
                 <div className="absolute inset-0 z-20 flex items-end justify-center pb-6 md:pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
                     VERDE PROFONDO <span className="text-lg leading-none">&rarr;</span>
@@ -358,7 +369,7 @@ export default function OurStoryPage() {
           />
           {/* Overlay Text */}
           <div className="absolute bottom-2 right-4 md:bottom-3 md:right-8 z-10">
-            <span className="font-ivymode font-light text-[#545759] uppercase tracking-[0.05em] text-[clamp(12px,1.4vw,18px)]">
+            <span className="font-ivymode font-light text-[#545759] uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] uppercase font-light">
               ARBESCATO VAGLI
             </span>
           </div>
@@ -413,7 +424,15 @@ export default function OurStoryPage() {
                   className="sec4-img-inner w-full h-auto object-contain block scale-[1.15]"
                   loading="lazy"
                 />
-                {/* Hover Button Overlay */}
+                {/* Top Hover Button Overlay (Explore Full Collection) */}
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <Link href="/explore-collection" className="pointer-events-auto">
+                    <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
+                      EXPLORE FULL COLLECTION <span className="text-lg leading-none">&rarr;</span>
+                    </span>
+                  </Link>
+                </div>
+                {/* Bottom Hover Button Overlay */}
                 <div className="absolute inset-0 z-20 flex items-end justify-center pb-6 md:pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
                     FERRO INDUSTRIALE <span className="text-lg leading-none">&rarr;</span>
@@ -426,9 +445,9 @@ export default function OurStoryPage() {
             <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
               <div className="overflow-hidden py-1">
                 <p className="sec4-line">
-                  Our inspiration comes from the great interiors of the past, but
-                  our vision is firmly contemporary: bringing the beauty, depth,
-                  and sophistication of natural stone into modern spaces through
+                  Our inspiration comes from the great interiors of the past, but<br className="hidden md:block" />
+                  our vision is firmly contemporary: bringing the beauty, depth,<br className="hidden md:block" />
+                  and sophistication of natural stone into modern spaces through<br className="hidden md:block" />
                   advanced porcelain surfaces.
                 </p>
               </div>
