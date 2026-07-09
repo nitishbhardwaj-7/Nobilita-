@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import NavigationOverlay from "./NavigationOverlay";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -181,14 +182,16 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
 
         {/* Button: OUR STORY */}
         <div className="brand-btn-wrapper opacity-0 translate-y-6">
-          <button
-            className="brand-story-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
-          >
-            <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-            <span className="relative z-10 transition-colors duration-500 group-hover:text-[#007190]">
-              {buttonText || "OUR STORY"}
-            </span>
-          </button>
+          <Link href="/our-story">
+            <button
+              className="brand-story-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
+            >
+              <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-[#007190]">
+                {buttonText || "OUR STORY"}
+              </span>
+            </button>
+          </Link>
         </div>
 
       </div>

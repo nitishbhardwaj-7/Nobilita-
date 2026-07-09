@@ -48,7 +48,7 @@ const slabs = [
   {
     name: "Calacatta Oyster",
     img: "/images/Links/Calacatta Oyster Face 1.jpg",
-    color: "Beige",
+    color: "White",
     finish: "3D-5D Matte"
   },
   {

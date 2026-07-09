@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -184,7 +185,7 @@ export default function DimensionsSection() {
             loading="lazy"
             className="dimensions-img absolute inset-0 w-full h-full object-cover"
           />
-          <a href="#technical-data" className="absolute z-10">
+          <Link href="/technical-data" className="absolute z-10">
             <button
               className="dimensions-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group opacity-0"
             >
@@ -193,7 +194,7 @@ export default function DimensionsSection() {
                 TECHNICAL DATA
               </span>
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

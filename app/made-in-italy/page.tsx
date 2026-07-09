@@ -9,21 +9,19 @@ export default function MadeInItalyPage() {
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden">
       <Navbar />
 
-      <section className="relative w-full flex flex-col justify-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-8">
+      <section className="relative w-full flex flex-col justify-center pt-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-8">
         {/* Content wrapper */}
         <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-8 md:space-y-10">
-          {/* Centered Heading */}
           <div className="w-full text-center">
-            <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(32px,5vw,56px)] leading-tight">
+            <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(24px,4vw,44px)] leading-tight">
               MADE IN ITALY
             </h2>
           </div>
 
           {/* Grid Layout: Text vs Image */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch">
-            
             {/* Left Column: Narrative (6 cols) */}
-            <div className="flex flex-col justify-center space-y-4 md:space-y-6 font-ivymode font-light text-[#545759] text-[clamp(18px,1.8vw,24px)] tracking-wide leading-[2] text-left order-2 md:order-1 h-full py-0 md:py-2">
+            <div className="flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left order-2 md:order-1 h-full py-0 md:py-2">
               <p>
                 In the heart of Italy, where rolling hills meet centuries of craftsmanship, lies Modena, a region shaped by the relentless pursuit of excellence. Home to Ferrari, Acetaia Giusti, and Brioni, Modena has long been a place where mastery is refined through patience, precision, and dedication to craft.
               </p>
@@ -58,7 +56,7 @@ export default function MadeInItalyPage() {
       <section className="relative w-full py-16 px-6 md:px-12 lg:px-24 overflow-hidden">
         <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12 md:space-y-16">
           {/* Top Text */}
-          <div className="w-full font-ivymode font-light text-[#545759] text-[clamp(18px,1.8vw,24px)] tracking-wide leading-[2] text-left space-y-6">
+          <div className="w-full font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left space-y-6 md:space-y-8">
             <p>
               Every NOBILITA slab is born from this tradition, crafted with Italian expertise, engineered for performance, and designed to stand the test of time.
             </p>
@@ -117,7 +115,7 @@ export default function MadeInItalyPage() {
           </div>
           
           {/* Bottom Text */}
-          <div className="w-full max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(16px,1.6vw,24px)] tracking-wide leading-[2] text-left px-6 md:px-12 lg:px-24">
+          <div className="w-full max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left px-6 md:px-12 lg:px-24">
             <p>
               NOBILITA works at the forefront of large-format surface innovation, with state-of-the-art production systems capable of creating ultra-large slabs in exceptional formats and multiple thicknesses. These advancements have redefined what is possible in contemporary architecture, enabling seamless surfaces, reduced visual fragmentation, and a more monolithic architectural language.
             </p>

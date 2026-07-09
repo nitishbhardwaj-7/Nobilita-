@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -172,43 +173,45 @@ export default function CraftsmanshipSection() {
       {/* ── LOWER-CENTER BADGE ── */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center mt-auto mb-6 md:mb-14 px-6 w-full">
         {/* ── MADE IN ITALY BADGE */}
-        <button
-          ref={badgeWrapRef}
-          className="badge-wrap group relative overflow-hidden inline-block bg-transparent cursor-pointer focus:outline-none px-8 py-2.5"
-        >
-          {/* White fill — slides in from left on hover */}
-          <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-
-          {/* Four border line elements */}
-          <div
-            ref={borderTopRef}
-            className="badge-border-top absolute top-0 left-1/2 -translate-x-1/2 h-px bg-white"
-            style={{ width: "0%" }}
-          />
-          <div
-            ref={borderBotRef}
-            className="badge-border-bottom absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-white"
-            style={{ width: "0%" }}
-          />
-          <div
-            ref={borderLeftRef}
-            className="badge-border-left absolute left-0 top-1/2 -translate-y-1/2 w-px bg-white"
-            style={{ height: "0%" }}
-          />
-          <div
-            ref={borderRightRef}
-            className="badge-border-right absolute right-0 top-1/2 -translate-y-1/2 w-px bg-white"
-            style={{ height: "0%" }}
-          />
-
-          <span
-            ref={badgeTextRef}
-            className="badge-text relative z-10 font-michroma text-white group-hover:text-black transition-colors duration-500 text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] uppercase"
-            style={{ opacity: 0 }}
+        <Link href="/made-in-italy">
+          <button
+            ref={badgeWrapRef}
+            className="badge-wrap group relative overflow-hidden inline-block bg-transparent cursor-pointer focus:outline-none px-8 py-2.5"
           >
-            MADE IN ITALY
-          </span>
-        </button>
+            {/* White fill — slides in from left on hover */}
+            <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+
+            {/* Four border line elements */}
+            <div
+              ref={borderTopRef}
+              className="badge-border-top absolute top-0 left-1/2 -translate-x-1/2 h-px bg-white"
+              style={{ width: "0%" }}
+            />
+            <div
+              ref={borderBotRef}
+              className="badge-border-bottom absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-white"
+              style={{ width: "0%" }}
+            />
+            <div
+              ref={borderLeftRef}
+              className="badge-border-left absolute left-0 top-1/2 -translate-y-1/2 w-px bg-white"
+              style={{ height: "0%" }}
+            />
+            <div
+              ref={borderRightRef}
+              className="badge-border-right absolute right-0 top-1/2 -translate-y-1/2 w-px bg-white"
+              style={{ height: "0%" }}
+            />
+
+            <span
+              ref={badgeTextRef}
+              className="badge-text relative z-10 font-michroma text-white group-hover:text-black transition-colors duration-500 text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] uppercase"
+              style={{ opacity: 0 }}
+            >
+              MADE IN ITALY
+            </span>
+          </button>
+        </Link>
       </div>
 
       {/* ── BOTTOM: CASA NOBILE */}

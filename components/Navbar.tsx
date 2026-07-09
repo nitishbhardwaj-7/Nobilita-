@@ -9,11 +9,12 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHomeScreen = pathname === "/";
   const isExplorePage = pathname === "/explore-collection";
+  const isOurStoryPage = pathname === "/our-story";
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isInsideBrandIntro, setIsInsideBrandIntro] = useState(isHomeScreen || isExplorePage);
+  const [isInsideBrandIntro, setIsInsideBrandIntro] = useState(isHomeScreen || isExplorePage || isOurStoryPage);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMouseNearTop = useRef(false);
@@ -37,14 +38,14 @@ export default function Navbar() {
 
   // Scroll event listener to check if we are in the initial section of the page (BrandIntro on Home, Hero on Explore)
   useEffect(() => {
-    if (!isHomeScreen && !isExplorePage) {
+    if (!isHomeScreen && !isExplorePage && !isOurStoryPage) {
       setIsInsideBrandIntro(false);
       return;
     }
 
     let threshold = 380;
     const updateThreshold = () => {
-      if (isHomeScreen) {
+      if (isHomeScreen || isOurStoryPage) {
         threshold = window.innerHeight * 0.9;
       } else if (isExplorePage) {
         const heroEl = document.getElementById("explore-hero");
@@ -79,7 +80,7 @@ export default function Navbar() {
       window.removeEventListener("resize", handleResize);
       clearTimeout(timer);
     };
-  }, [isHomeScreen, isExplorePage]);
+  }, [isHomeScreen, isExplorePage, isOurStoryPage]);
 
   // Mutation observer to hide navbar instantly when body overflow is hidden (modal open)
   useEffect(() => {

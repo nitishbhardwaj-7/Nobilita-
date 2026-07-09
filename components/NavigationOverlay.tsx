@@ -58,15 +58,15 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           className="fixed inset-0 z-[99999] bg-[#007190] w-full h-full flex flex-col overflow-y-auto md:overflow-hidden"
         >
           {/* Main Content Area */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 items-start gap-8 md:gap-12">
-            
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 content-center items-start gap-8 md:gap-12">
+
             {/* Left Column: Back button & Links */}
-            <div className="flex flex-col justify-start md:pl-8 lg:pl-16">
+            <div className="flex flex-col justify-start md:pl-8 lg:pl-16 w-full">
               {/* Top: Back Button */}
-              <div className="w-full flex justify-start mb-8 md:mb-12">
+              <div className="w-full flex justify-start mb-8 md:mb-12 shrink-0">
                 <button
                   onClick={onClose}
-                  className="group flex items-center justify-center w-12 h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+                  className="group flex items-center justify-center w-11 h-11 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
                   aria-label="Close menu"
                 >
                   <svg
@@ -85,18 +85,18 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
               </div>
 
               {/* Center: Links */}
-              <motion.div 
+              <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col space-y-6 md:space-y-10"
+                className="flex flex-col space-y-8 md:space-y-12"
               >
                 {menuLinks.map((link) => (
                   <motion.div key={link.label} variants={itemVariants}>
                     <Link
                       href={link.href}
                       onClick={() => handleLinkClick(link.href)}
-                      className="font-ivymode font-light text-white uppercase tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[clamp(22px,3.5vw,36px)] leading-relaxed inline-block"
+                      className="font-ivymode font-light text-white uppercase tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[clamp(18px,2.5vw,28px)] leading-relaxed inline-block"
                     >
                       {link.label}
                     </Link>
@@ -105,8 +105,8 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
               </motion.div>
 
               {/* Bottom: Mobile-only Logo */}
-              <div className="block md:hidden pt-12 pb-6">
-                <div className="w-[180px] mx-auto">
+              <div className="block md:hidden pt-10 pb-5">
+                <div className="w-[160px] mx-auto">
                   <img
                     src="/images/NOBILITA_white.png"
                     alt="Porcellana Nobilita"
@@ -117,19 +117,19 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
             </div>
 
             {/* Right Column: House & Logo (Desktop Only) */}
-            <div className="hidden md:flex flex-col items-center justify-start space-y-6 md:space-y-8 h-full">
+            <div className="hidden md:flex flex-col items-center justify-start w-full">
               {/* House drawing */}
-              <div className="w-full flex justify-center items-center">
-                <NobilitaHouseSVG 
-                  variant="white" 
-                  size={360} 
-                  animate={isOpen} 
+              <div className="w-full flex justify-center items-center mb-10 md:mb-16">
+                <NobilitaHouseSVG
+                  variant="white"
+                  size={260}
+                  animate={isOpen}
                   className="opacity-90 max-w-full"
                 />
               </div>
 
               {/* Logo block */}
-              <div className="w-[240px] lg:w-[280px]">
+              <div className="w-[210px] lg:w-[240px]">
                 <img
                   src="/images/NOBILITA_white.png"
                   alt="Porcellana Nobilita"
