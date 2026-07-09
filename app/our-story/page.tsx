@@ -67,7 +67,13 @@ export default function OurStoryPage() {
         { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "expo.out", delay: 0.6, scrollTrigger: { trigger: ".sec2-text", start: "top 80%" } }
       );
 
-      const tlImg = gsap.timeline({ scrollTrigger: { trigger: ".sec2-img-wrapper", start: "top 80%" } });
+      const tlImg = gsap.timeline({ 
+        scrollTrigger: { 
+          trigger: ".sec2-container", 
+          start: "top 60%", 
+          toggleActions: "play none none reverse" 
+        } 
+      });
       tlImg.fromTo(".sec2-img-wrapper", 
         { clipPath: "inset(20% 0% 20% 0%)" }, 
         { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }
@@ -118,7 +124,13 @@ export default function OurStoryPage() {
         { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "expo.out", delay: 0.6, scrollTrigger: { trigger: ".sec4-text", start: "top 80%" } }
       );
 
-      const tlImg4 = gsap.timeline({ scrollTrigger: { trigger: ".sec4-img-wrapper", start: "top 80%" } });
+      const tlImg4 = gsap.timeline({ 
+        scrollTrigger: { 
+          trigger: ".sec4-container", 
+          start: "top 60%", 
+          toggleActions: "play none none reverse" 
+        } 
+      });
       tlImg4.fromTo(".sec4-img-wrapper", 
         { clipPath: "inset(20% 0% 20% 0%)" }, 
         { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }
@@ -146,7 +158,7 @@ export default function OurStoryPage() {
       <Navbar />
 
       {/* Main Content / First Section */}
-      <section className="w-full h-screen max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start content-center">
+      <section className="w-full min-h-[100dvh] md:h-screen py-28 md:py-0 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start content-center">
 
         {/* Left Column: House SVG & Logo (4 cols on desktop) */}
         <div className="md:col-span-4 flex flex-col items-center justify-start w-full pt-2 md:pt-4">
@@ -233,7 +245,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 2: Piano Nobile, Reimagined */}
-      <section className="sec2-container relative w-full h-screen grid grid-rows-[1fr_auto_1fr] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100">
+      <section className="sec2-container relative w-full min-h-[100dvh] md:h-screen py-28 md:py-0 grid grid-rows-[1fr_auto_1fr] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -295,7 +307,7 @@ export default function OurStoryPage() {
 
             {/* Right Column: Verde Profondo Image (5 cols) */}
             <div className="md:col-span-5 flex justify-end items-center">
-              <div className="sec2-img-wrapper relative w-full max-w-[380px] shadow-lg border border-white/20 overflow-hidden" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
+              <div className="sec2-img-wrapper group relative w-full max-w-[380px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
                 <div className="sec2-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Verde profondo application.jpg"
@@ -303,6 +315,12 @@ export default function OurStoryPage() {
                   className="sec2-img-inner w-full h-auto object-contain block scale-[1.15]"
                   loading="lazy"
                 />
+                {/* Hover Button Overlay */}
+                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
+                    VERDE PROFONDO <span className="text-lg leading-none">&rarr;</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -346,7 +364,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 4: Next Generation Porcelain */}
-      <section className="sec4-container relative w-full h-screen grid grid-rows-[1fr_auto_1fr] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100">
+      <section className="sec4-container relative w-full min-h-[100dvh] md:h-screen py-28 md:py-0 grid grid-rows-[1fr_auto_1fr] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -380,7 +398,7 @@ export default function OurStoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-start items-center">
-              <div className="sec4-img-wrapper relative w-full max-w-[380px] shadow-lg border border-white/20 overflow-hidden" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
+              <div className="sec4-img-wrapper group relative w-full max-w-[380px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
                 <div className="sec4-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
@@ -388,6 +406,12 @@ export default function OurStoryPage() {
                   className="sec4-img-inner w-full h-auto object-contain block scale-[1.15]"
                   loading="lazy"
                 />
+                {/* Hover Button Overlay */}
+                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
+                    FERRO INDUSTRIALE <span className="text-lg leading-none">&rarr;</span>
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -416,6 +440,8 @@ export default function OurStoryPage() {
                   </span>
                 </p>
               </div>
+
+
             </div>
           </div>
         </div>
