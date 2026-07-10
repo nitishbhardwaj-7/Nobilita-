@@ -182,21 +182,21 @@ export default function OurStoryPage() {
 
       {/* Main Content / First Section */}
       <section className="w-full flex items-center pt-[60px] pb-[80px] relative">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row md:items-stretch gap-10 md:gap-12 lg:gap-24">
+        <div className="w-full max-w-[1300px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row md:items-stretch gap-10 md:gap-12 lg:gap-24">
           {/* Left Column: House SVG & Logo */}
-          <div className="shrink-0 flex flex-col items-center justify-between">
+          <div className="shrink-0 flex flex-col items-center justify-between gap-10">
             {/* House Sketch */}
             <div className="hero-house flex justify-center">
               <NobilitaHouseSVG
                 variant="dark"
                 size={240}
                 animate={true}
-                className="opacity-90 max-w-full"
+                className="opacity-90 max-w-full mt-[15px]"
               />
             </div>
 
             {/* Logo Block */}
-            <div className="hero-logo w-[150px] md:w-[200px]">
+            <div className="hero-logo w-[150px] md:w-[220px]">
               <img
                 src="/images/Links/NOBILITA Logo BLACK.png"
                 alt="Porcellana Nobilita"
@@ -231,7 +231,7 @@ export default function OurStoryPage() {
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
               }}
-              className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.7] space-y-6 mt-10 md:mt-12"
+              className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,20px)] tracking-widest leading-[1.7] space-y-6 mt-10 md:mt-12"
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
                 In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.
