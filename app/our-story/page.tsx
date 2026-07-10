@@ -182,7 +182,7 @@ export default function OurStoryPage() {
 
       {/* Main Content / First Section */}
       <section className="w-full flex items-center pt-[60px] pb-[60px] relative">
-        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row md:items-stretch gap-10 md:gap-12 lg:gap-24">
+        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row md:items-stretch gap-10 md:gap-16 lg:gap-28">
           {/* Left Column: House SVG & Logo */}
           <div className="shrink-0 flex flex-col items-center justify-between gap-10">
             {/* House Sketch */}
