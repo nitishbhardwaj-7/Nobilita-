@@ -94,9 +94,20 @@ export default function OurStoryPage() {
         scrollTrigger: { trigger: ".sec2-img-wrapper", start: "top bottom", end: "bottom top", scrub: true }
       });
 
-      // 3. Section 3
+      // 3. Section 3 — luxury curtain reveal + shine sweep + label
+      gsap.set(".sec3-label-text", { opacity: 0, y: 14, letterSpacing: "0.5em" });
+
+      const sec3Tl = gsap.timeline({
+        scrollTrigger: { trigger: ".sec3-container", start: "top 75%", once: true }
+      });
+      sec3Tl
+        .to(".sec3-curtain-left", { xPercent: -100, duration: 1.5, ease: "power4.inOut" })
+        .to(".sec3-curtain-right", { xPercent: 100, duration: 1.5, ease: "power4.inOut" }, "<")
+        .to(".sec3-shine", { xPercent: 250, duration: 1.3, ease: "power2.inOut" }, "-=0.9")
+        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.7");
+
       gsap.from(".sec3-img", {
-        scale: 1.1,
+        scale: 1.22,
         scrollTrigger: { trigger: ".sec3-container", start: "top bottom", end: "bottom top", scrub: 1.5 }
       });
       gsap.from(".sec3-text p", {
@@ -311,13 +322,17 @@ export default function OurStoryPage() {
                 <img
                   src="/images/Our story/Verde profondo application.jpg"
                   alt="Verde Profondo application"
-                  className="sec2-img-inner w-full h-auto object-contain block scale-[1.15]"
+                  className="sec2-img-inner w-full h-auto object-contain block scale-[1] transition-transform duration-[1500ms] ease-out group-hover:scale-[1.1]"
                   loading="lazy"
                 />
+                {/* Diagonal Shine Hover Effect */}
+                <div className="absolute inset-0 z-12 pointer-events-none overflow-hidden">
+                  <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
+                </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
-                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-3.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
                       <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
                       <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
                         EXPLORE FULL COLLECTION
@@ -326,7 +341,7 @@ export default function OurStoryPage() {
                   </Link>
                 </div>
                 {/* Bottom Right Text */}
-                <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 z-20 pointer-events-none">
+                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-20 pointer-events-none">
                   <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
                     VERDE PROFONDO
                   </span>
@@ -347,9 +362,20 @@ export default function OurStoryPage() {
             className="sec3-img w-full h-full object-cover origin-center scale-[1.1]"
             loading="lazy"
           />
+          {/* Diagonal shine sweep */}
+          <div
+            className="sec3-shine absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.55) 50%, transparent 58%)",
+              transform: "translateX(-150%)",
+            }}
+          />
+          {/* Curtain reveal panels */}
+          <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
+          <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
           {/* Overlay Text */}
-          <div className="absolute bottom-2 right-4 md:bottom-3 md:right-8 z-10">
-            <span className="font-ivymode font-light text-[#545759] uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] uppercase font-light">
+          <div className="absolute bottom-2 right-4 md:bottom-3 md:right-8 z-30 flex flex-col items-end">
+            <span className="sec3-label-text font-ivymode font-light text-[#545759] uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
               ARBESCATO VAGLI
             </span>
           </div>
@@ -401,13 +427,17 @@ export default function OurStoryPage() {
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
                   alt="Ferro Industriale application"
-                  className="sec4-img-inner w-full h-auto object-contain block scale-[1]"
+                  className="sec4-img-inner w-full h-auto object-contain block scale-[1] transition-transform duration-[1500ms] ease-out group-hover:scale-[1.1]"
                   loading="lazy"
                 />
+                {/* Diagonal Shine Hover Effect */}
+                <div className="absolute inset-0 z-12 pointer-events-none overflow-hidden">
+                  <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
+                </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
-                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-3.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
                       <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
                       <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
                         EXPLORE FULL COLLECTION
@@ -416,7 +446,7 @@ export default function OurStoryPage() {
                   </Link>
                 </div>
                 {/* Bottom Right Text */}
-                <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 z-20 pointer-events-none">
+                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-20 pointer-events-none">
                   <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
                     FERRO INDUSTRIALE
                   </span>
