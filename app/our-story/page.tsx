@@ -310,7 +310,7 @@ export default function OurStoryPage() {
                   <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
                 </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-4 md:pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-3 md:pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
                     <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
                       <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
@@ -321,7 +321,7 @@ export default function OurStoryPage() {
                   </Link>
                 </div>
                 {/* Bottom Right Text */}
-                <div className="absolute bottom-2 right-2 md:bottom- md:right-3 z-20 pointer-events-none">
+                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-20 pointer-events-none">
                   <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
                     VERDE PROFONDO
                   </span>
@@ -415,7 +415,7 @@ export default function OurStoryPage() {
                   <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
                 </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-4 md:pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-3 md:pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
                     <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
                       <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
