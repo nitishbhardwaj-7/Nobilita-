@@ -75,24 +75,14 @@ export default function OurStoryPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg.fromTo(".sec2-img-wrapper",
-        { clipPath: "inset(20% 0% 20% 0%)" },
-        { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }
+      tlImg.fromTo(".sec2-overlay",
+        { y: "0%", opacity: 1 },
+        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
       )
-        .fromTo(".sec2-overlay",
-          { y: "0%", opacity: 1 },
-          { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }, "-=1.4"
-        )
         .fromTo(".sec2-img-inner",
           { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.8"
+          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
         );
-
-      gsap.to(".sec2-img-inner", {
-        yPercent: 8,
-        ease: "none",
-        scrollTrigger: { trigger: ".sec2-img-wrapper", start: "top bottom", end: "bottom top", scrub: true }
-      });
 
       // 3. Section 3 — luxury curtain reveal + shine sweep + label
       gsap.set(".sec3-label-text", { opacity: 0, y: 14, letterSpacing: "0.5em" });
@@ -143,24 +133,14 @@ export default function OurStoryPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg4.fromTo(".sec4-img-wrapper",
-        { clipPath: "inset(20% 0% 20% 0%)" },
-        { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }
+      tlImg4.fromTo(".sec4-overlay",
+        { y: "0%", opacity: 1 },
+        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
       )
-        .fromTo(".sec4-overlay",
-          { y: "0%", opacity: 1 },
-          { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }, "-=1.4"
-        )
         .fromTo(".sec4-img-inner",
           { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.8"
+          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
         );
-
-      gsap.to(".sec4-img-inner", {
-        yPercent: 8,
-        ease: "none",
-        scrollTrigger: { trigger: ".sec4-img-wrapper", start: "top bottom", end: "bottom top", scrub: true }
-      });
     });
     return () => ctx.revert();
   }, []);
@@ -317,7 +297,7 @@ export default function OurStoryPage() {
 
             {/* Right Column: Verde Profondo Image (5 cols) */}
             <div className="md:col-span-5 flex justify-end items-center">
-              <div className="sec2-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
+              <div className="sec2-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer">
                 <div className="sec2-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Verde profondo application.jpg"
@@ -330,9 +310,9 @@ export default function OurStoryPage() {
                   <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
                 </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-4 md:pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
-                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-3.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
+                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
                       <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
                       <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
                         EXPLORE FULL COLLECTION
@@ -341,7 +321,7 @@ export default function OurStoryPage() {
                   </Link>
                 </div>
                 {/* Bottom Right Text */}
-                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-20 pointer-events-none">
+                <div className="absolute bottom-2 right-2 md:bottom- md:right-3 z-20 pointer-events-none">
                   <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
                     VERDE PROFONDO
                   </span>
@@ -374,7 +354,7 @@ export default function OurStoryPage() {
           <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
           <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
           {/* Overlay Text */}
-          <div className="absolute bottom-2 right-4 md:bottom-3 md:right-8 z-30 flex flex-col items-end">
+          <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
             <span className="sec3-label-text font-ivymode font-light text-[#545759] uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
               ARBESCATO VAGLI
             </span>
@@ -422,7 +402,7 @@ export default function OurStoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-start items-center">
-              <div className="sec4-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer" style={{ clipPath: "inset(20% 0% 20% 0%)" }}>
+              <div className="sec4-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer">
                 <div className="sec4-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
@@ -435,9 +415,9 @@ export default function OurStoryPage() {
                   <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
                 </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-4 md:pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
-                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-3.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
+                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
                       <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
                       <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
                         EXPLORE FULL COLLECTION
