@@ -240,7 +240,7 @@ export default function OurStoryPage() {
                 The world's greatest cities were shaped by spaces that celebrated proportion, artistry, and material excellence.
               </motion.p>
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
-                Among their defining features was the <span className="text-[#007190] font-normal">Piano Nobile – the noble floor.</span> Elevated above the bustle of the streets, it was the heart of the home, where marble, light, and masterful detailing came together to create spaces of remarkable elegance.
+                Among their defining features was the <span className="text-[#007190] font-normal">Piano Nobile – the noble floor. <br/> </span> Elevated above the bustle of the streets, it was the heart of the home, where marble, light, and masterful detailing came together to create spaces of remarkable elegance.
               </motion.p>
             </motion.div>
           </div>
