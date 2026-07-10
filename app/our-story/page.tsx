@@ -181,22 +181,22 @@ export default function OurStoryPage() {
       </div>
 
       {/* Main Content / First Section */}
-      <section className="w-full min-h-[100dvh] md:h-screen py-28 md:py-0 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 content-center">
-
-        {/* Left Column: House SVG & Logo (4 cols on desktop) */}
-        <div className="md:col-span-4 flex flex-col items-center justify-between h-full w-full pt-2 md:pt-4">
+      <section className="w-full min-h-screen flex flex-col justify-center pt-[100px] pb-[120px] relative">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-32 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+          {/* Left Column: House SVG & Logo (5 cols on desktop) */}
+          <div className="md:col-span-5 flex flex-col items-center justify-between w-full h-full pt-2 md:pt-4">
           {/* House Sketch */}
           <div className="hero-house w-full flex justify-center items-center mb-4 md:mb-6">
             <NobilitaHouseSVG
               variant="dark"
-              size={260}
+              size={280}
               animate={true}
               className="opacity-90 max-w-full"
             />
           </div>
 
           {/* Logo Block */}
-          <div className="hero-logo w-[150px] md:w-[200px]">
+          <div className="hero-logo w-[150px] md:w-[250px]">
             <img
               src="/images/Links/NOBILITA Logo BLACK.png"
               alt="Porcellana Nobilita"
@@ -205,8 +205,8 @@ export default function OurStoryPage() {
           </div>
         </div>
 
-        {/* Right Column: Story Text (8 cols on desktop) */}
-        <div className="md:col-span-8 flex flex-col justify-start space-y-6 md:space-y-8">
+        {/* Right Column: Story Text (7 cols on desktop) */}
+        <div className="md:col-span-7 flex flex-col justify-start h-full">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -227,51 +227,28 @@ export default function OurStoryPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.7] space-y-10"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
+            }}
+            className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,18px)] tracking-widest leading-[1.7] space-y-10 mt-[100px]"
           >
-            {(() => {
-              let wordCount = 0;
-              const paragraphs = [
-                [{ text: "In the grand halls of Renaissance palaces and Baroque villas, [BR] architecture was never just about building. It was an expression of [BR] culture, craftsmanship, and an enduring pursuit of beauty." }],
-                [{ text: "The world's greatest cities were shaped by spaces that celebrated [BR] proportion, artistry, and material excellence." }],
-                [
-                  { text: "Among their defining features was the" },
-                  { text: "Piano Nobile – the noble floor. [BR]", highlight: true },
-                  { text: "Elevated above the bustle of the streets, it was the heart of the home, [BR] where marble, light, and masterful detailing came together to create [BR] spaces of remarkable elegance." }
-                ]
-              ];
-
-              return paragraphs.map((p, pIdx) => (
-                <div key={pIdx} className="w-full flex flex-wrap gap-x-[0.35em] gap-y-1">
-                  {p.map((segment, sIdx) =>
-                    segment.text.split(" ").filter(w => w !== "").map((word, wIdx) => {
-                      if (word === "[BR]") {
-                        return <div key={`br-${sIdx}-${wIdx}`} className="hidden md:block w-full h-0 m-0"></div>;
-                      }
-                      const currentIdx = wordCount++;
-                      return (
-                        <span key={`${sIdx}-${wIdx}`} className="inline-block overflow-hidden align-bottom">
-                          <motion.span
-                            custom={0.4 + currentIdx * 0.015}
-                            variants={paragraphWordVariants}
-                            className={`inline-block ${segment.highlight ? "text-[#007190] font-normal" : ""}`}
-                          >
-                            {word}
-                          </motion.span>
-                        </span>
-                      );
-                    })
-                  )}
-                </div>
-              ));
-            })()}
+            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
+              In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.
+            </motion.p>
+            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
+              The world's greatest cities were shaped by spaces that celebrated proportion, artistry, and material excellence.
+            </motion.p>
+            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
+              Among their defining features was the <span className="text-[#007190] font-normal">Piano Nobile – the noble floor.</span> Elevated above the bustle of the streets, it was the heart of the home, where marble, light, and masterful detailing came together to create spaces of remarkable elegance.
+            </motion.p>
           </motion.div>
         </div>
-
+        </div>
       </section>
 
       {/* Section 2: Piano Nobile, Reimagined */}
-      <section className="sec2-container relative w-full min-h-[100dvh] md:h-screen pt-10 pb-16 md:pt-14 md:pb-20 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col justify-center">
+      <section className="sec2-container relative w-full min-h-[100dvh] md:min-h-screen pt-10 pb-16 md:pt-20 md:pb-20 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -282,7 +259,7 @@ export default function OurStoryPage() {
         </div>
 
         {/* Centered Heading */}
-        <div className="w-full text-center z-10 shrink-0 mb-10 md:mb-14">
+        <div className="w-full text-center z-10 shrink-0 mb-10 md:mb-20">
           <h2 className="sec2-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
             {"PIANO NOBILE, REIMAGINED".split(" ").map((word, wIdx) => (
               <span key={wIdx} className="inline-block whitespace-nowrap">
@@ -386,7 +363,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 4: Next Generation Porcelain */}
-      <section className="sec4-container relative w-full min-h-[100dvh] md:h-screen pt-10 pb-16 md:pt-14 md:pb-20 px-6 md:px-12 lg:px-24 overflow-hidden border-b border-gray-100 flex flex-col justify-center">
+      <section className="sec4-container relative w-full min-h-[100dvh] md:min-h-screen pt-10 pb-16 md:pt-20 md:pb-20 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -397,7 +374,7 @@ export default function OurStoryPage() {
         </div>
 
         {/* Centered Heading */}
-        <div className="w-full text-center mb-10 md:mb-14 z-10 shrink-0">
+        <div className="w-full text-center mb-10 md:mb-20 z-10 shrink-0">
           <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
             {"NEXT GENERATION PORCELAIN".split(" ").map((word, wIdx) => (
               <span key={wIdx} className="inline-block whitespace-nowrap">
@@ -421,7 +398,7 @@ export default function OurStoryPage() {
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
                   alt="Ferro Industriale application"
-                  className="sec4-img-inner w-full h-auto object-contain block scale-[1.15]"
+                  className="sec4-img-inner w-full h-auto object-contain block scale-[1]"
                   loading="lazy"
                 />
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
@@ -445,9 +422,9 @@ export default function OurStoryPage() {
             <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
               <div className="overflow-hidden py-1">
                 <p className="sec4-line">
-                  Our inspiration comes from the great interiors of the past, but<br className="hidden md:block" />
-                  our vision is firmly contemporary: bringing the beauty, depth,<br className="hidden md:block" />
-                  and sophistication of natural stone into modern spaces through<br className="hidden md:block" />
+                  Our inspiration comes from the great interiors of the past, but
+                  our vision is firmly contemporary: bringing the beauty, depth,
+                  and sophistication of natural stone into modern spaces through
                   advanced porcelain surfaces.
                 </p>
               </div>
