@@ -40,6 +40,14 @@ const paragraphWordVariants = {
 };
 
 export default function OurStoryPage() {
+  const handleImageEnter = (selector: string) => {
+    gsap.to(selector, { scale: 1.08, duration: 0.8, ease: "power2.out", overwrite: "auto" });
+  };
+
+  const handleImageLeave = (selector: string) => {
+    gsap.to(selector, { scale: 1.18, duration: 1.2, ease: "power3.out", overwrite: "auto" });
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // 1. Hero Section (On Load)
@@ -80,8 +88,8 @@ export default function OurStoryPage() {
         { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
       )
         .fromTo(".sec2-img-inner",
-          { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
+          { scale: 1.28 },
+          { scale: 1.18, duration: 2, ease: "power3.out" }, "-=1.4"
         );
 
       // 3. Section 3 — luxury curtain reveal + shine sweep + label
@@ -138,8 +146,8 @@ export default function OurStoryPage() {
         { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
       )
         .fromTo(".sec4-img-inner",
-          { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
+          { scale: 1.28 },
+          { scale: 1.18, duration: 2, ease: "power3.out" }, "-=1.4"
         );
     });
     return () => ctx.revert();
@@ -297,18 +305,18 @@ export default function OurStoryPage() {
 
             {/* Right Column: Verde Profondo Image (5 cols) */}
             <div className="md:col-span-5 flex justify-end items-center">
-              <div className="sec2-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer">
+              <div 
+                className="sec2-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer"
+                onMouseEnter={() => handleImageEnter(".sec2-img-inner")}
+                onMouseLeave={() => handleImageLeave(".sec2-img-inner")}
+              >
                 <div className="sec2-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Verde profondo application.jpg"
                   alt="Verde Profondo application"
-                  className="sec2-img-inner w-full h-auto object-contain block scale-[1] transition-transform duration-[1500ms] ease-out group-hover:scale-[1.1]"
+                  className="sec2-img-inner w-full h-auto object-contain block transform-gpu scale-[1.18]"
                   loading="lazy"
                 />
-                {/* Diagonal Shine Hover Effect */}
-                <div className="absolute inset-0 z-12 pointer-events-none overflow-hidden">
-                  <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
-                </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
                 <div className="absolute inset-0 z-20 flex items-start justify-center pt-3 md:pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
@@ -402,18 +410,18 @@ export default function OurStoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-start items-center">
-              <div className="sec4-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer">
+              <div 
+                className="sec4-img-wrapper group relative w-full max-w-[400px] shadow-lg border border-white/20 overflow-hidden cursor-pointer"
+                onMouseEnter={() => handleImageEnter(".sec4-img-inner")}
+                onMouseLeave={() => handleImageLeave(".sec4-img-inner")}
+              >
                 <div className="sec4-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
                   alt="Ferro Industriale application"
-                  className="sec4-img-inner w-full h-auto object-contain block scale-[1] transition-transform duration-[1500ms] ease-out group-hover:scale-[1.1]"
+                  className="sec4-img-inner w-full h-auto object-contain block transform-gpu scale-[1.18]"
                   loading="lazy"
                 />
-                {/* Diagonal Shine Hover Effect */}
-                <div className="absolute inset-0 z-12 pointer-events-none overflow-hidden">
-                  <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -skew-x-[25deg] transition-all duration-[1200ms] ease-in-out group-hover:left-[150%]" />
-                </div>
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
                 <div className="absolute inset-0 z-20 flex items-start justify-center pt-3 md:pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
