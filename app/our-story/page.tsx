@@ -356,7 +356,7 @@ export default function OurStoryPage() {
         </div>
 
         {/* Bottom Narrative Text */}
-        <div className="sec3-text w-full max-w-[1440px] mx-auto bg-white p-8 md:p-16 lg:p-16 flex flex-col">
+        <div className="sec3-text w-full max-w-[1440px] mx-auto bg-white px-6 md:px-12 lg:px-24 pt-[60px] pb-[60px]">
           <div className="w-full">
             <p className="font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
               At NOBILITA, we work closely with architects, designers, and discerning clients to create architectural experiences. Through careful selection, expert craftsmanship, and a deep understanding of design, we help create spaces that feel timeless rather than trend-driven.
