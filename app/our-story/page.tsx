@@ -317,15 +317,18 @@ export default function OurStoryPage() {
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
                 <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
-                    <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
-                      EXPLORE FULL COLLECTION <span className="text-lg leading-none">&rarr;</span>
-                    </span>
+                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                      <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
+                      <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
+                        EXPLORE FULL COLLECTION
+                      </span>
+                    </button>
                   </Link>
                 </div>
-                {/* Bottom Hover Button Overlay */}
-                <div className="absolute inset-0 z-20 flex items-end justify-center pb-6 md:pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
-                    VERDE PROFONDO <span className="text-lg leading-none">&rarr;</span>
+                {/* Bottom Right Text */}
+                <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 z-20 pointer-events-none">
+                  <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
+                    VERDE PROFONDO
                   </span>
                 </div>
               </div>
@@ -404,15 +407,18 @@ export default function OurStoryPage() {
                 {/* Top Hover Button Overlay (Explore Full Collection) */}
                 <div className="absolute inset-0 z-20 flex items-start justify-center pt-6 md:pt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                   <Link href="/explore-collection" className="pointer-events-auto">
-                    <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
-                      EXPLORE FULL COLLECTION <span className="text-lg leading-none">&rarr;</span>
-                    </span>
+                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                      <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
+                      <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
+                        EXPLORE FULL COLLECTION
+                      </span>
+                    </button>
                   </Link>
                 </div>
-                {/* Bottom Hover Button Overlay */}
-                <div className="absolute inset-0 z-20 flex items-end justify-center pb-6 md:pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="bg-[#796350]/95 text-white/90 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2">
-                    FERRO INDUSTRIALE <span className="text-lg leading-none">&rarr;</span>
+                {/* Bottom Right Text */}
+                <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 z-20 pointer-events-none">
+                  <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
+                    FERRO INDUSTRIALE
                   </span>
                 </div>
               </div>
