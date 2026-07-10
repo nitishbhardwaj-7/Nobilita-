@@ -13,7 +13,7 @@ export default function MadeInItalyPage() {
         {/* Content wrapper */}
         <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-8 md:space-y-10">
           <div className="w-full text-center">
-            <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(24px,4vw,44px)] leading-tight">
+            <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(24px,4vw,66px)] leading-tight">
               MADE IN ITALY
             </h2>
           </div>
@@ -21,11 +21,11 @@ export default function MadeInItalyPage() {
           {/* Grid Layout: Text vs Image */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch">
             {/* Left Column: Narrative (6 cols) */}
-            <div className="flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left order-2 md:order-1 h-full py-0 md:py-2">
+            <div className="flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,20px)] tracking-widest leading-[1.8] text-left order-2 md:order-1 h-full py-0 md:py-2">
               <p>
                 In the heart of Italy, where rolling hills meet centuries of craftsmanship, lies Modena, a region shaped by the relentless pursuit of excellence. Home to Ferrari, Acetaia Giusti, and Brioni, Modena has long been a place where mastery is refined through patience, precision, and dedication to craft.
               </p>
-              
+
               <p>
                 The same spirit defines its porcelain industry. Here, innovation and heritage exist side by side, transforming raw materials into surfaces of <span className="text-[#007190] font-normal">exceptional quality and enduring beauty.</span>
               </p>
@@ -41,7 +41,7 @@ export default function MadeInItalyPage() {
                   loading="lazy"
                 />
                 {/* Overlay Text */}
-                <div className="absolute bottom-2 right-2 md:bottom-3 md:right-4 z-10">
+                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-10">
                   <span className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(11px,1.4vw,16px)] drop-shadow-md">
                     PALAZZO DELLA CIVILTÀ ITALIANA
                   </span>
@@ -56,7 +56,7 @@ export default function MadeInItalyPage() {
       <section className="relative w-full py-16 px-6 md:px-12 lg:px-24 overflow-hidden">
         <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12 md:space-y-16">
           {/* Top Text */}
-          <div className="w-full font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left space-y-6 md:space-y-8">
+          <div className="w-full font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,20px)] tracking-widest leading-[1.8] text-left space-y-6 md:space-y-8">
             <p>
               Every NOBILITA slab is born from this tradition, crafted with Italian expertise, engineered for performance, and designed to stand the test of time.
             </p>
@@ -70,23 +70,23 @@ export default function MadeInItalyPage() {
             {/* Left Image */}
             <div className="relative w-full h-full border border-gray-100 group overflow-hidden">
               <img
-                src="/images/made-in-italy/Nuovocorso.jpg"
-                alt="Nuovocorso"
+                src="/images/made-in-italy/factory-image.jpeg"
+                alt="Factory"
                 className="w-full h-full object-cover block"
                 loading="lazy"
               />
             </div>
-            
+
             {/* Right Image */}
             <div className="relative w-full h-full border border-gray-100 group overflow-hidden">
               <img
-                src="/images/made-in-italy/CONTINUA+ impianto HD 2.jpg"
+                src="/images/made-in-italy/continua-impianto-hd-2.jpg"
                 alt="Large Format Slabs Processing Unit"
                 className="w-full h-full object-cover block"
                 loading="lazy"
               />
               {/* Overlay Text */}
-              <div className="absolute bottom-2 right-2 md:bottom-3 md:right-4 z-10">
+              <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-10">
                 <span className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(10px,1.2vw,16px)] drop-shadow-md">
                   LARGE FORMAT SLABS PROCESSING UNIT
                 </span>
@@ -113,7 +113,7 @@ export default function MadeInItalyPage() {
               </span>
             </div>
           </div>
-          
+
           {/* Bottom Text */}
           <div className="w-full max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left px-6 md:px-12 lg:px-24">
             <p>
@@ -127,12 +127,12 @@ export default function MadeInItalyPage() {
         <div className="relative w-full h-full mx-auto group overflow-hidden">
           {/* Background Image */}
           <img
-            src="/images/made-in-italy/Colosseo_2020 copy.jpg"
+            src="/images/made-in-italy/colosseo-2020.jpg"
             alt="Colosseum"
             className="w-full h-full object-cover block"
             loading="lazy"
           />
-          
+
           {/* Top Headline Image Overlay */}
           <div className="absolute top-8 md:top-12 lg:top-16 left-0 right-0 z-10 flex justify-center px-4 w-full pointer-events-none">
             <img
@@ -144,7 +144,7 @@ export default function MadeInItalyPage() {
           </div>
 
           {/* Overlay Text */}
-          <div className="absolute bottom-2 right-4 md:bottom-4 md:right-8 lg:right-12 z-10">
+          <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 lg:right-3 z-10">
             <span className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(11px,1.4vw,16px)] drop-shadow-md">
               COLOSSEUM
             </span>
