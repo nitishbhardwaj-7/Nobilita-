@@ -426,7 +426,7 @@ export default function OurStoryPage() {
                   </Link>
                 </div>
                 {/* Bottom Right Text */}
-                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-20 pointer-events-none">
+                <div className="absolute bottom-2 left-2 md:bottom-2 md:left-3 z-20 pointer-events-none">
                   <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
                     FERRO INDUSTRIALE
                   </span>
