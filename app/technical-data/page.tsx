@@ -16,7 +16,7 @@ export default function TechnicalDataPage() {
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.5, ease: "power4.out", delay: 0.2 }
       );
-      
+
       gsap.fromTo(".hero-desc",
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.5, ease: "power4.out", delay: 0.4 }
@@ -91,7 +91,8 @@ export default function TechnicalDataPage() {
       gsap.utils.toArray<HTMLElement>(".spill-sec").forEach((sec) => {
         const illust = sec.querySelector(".spill-illust");
         const text = sec.querySelector(".spill-text");
-        
+        const subnote = sec.querySelector(".wine-subnote");
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sec,
@@ -104,11 +105,19 @@ export default function TechnicalDataPage() {
           { x: -30, opacity: 0 },
           { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
         )
-        .fromTo(text,
-          { x: 30, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
-          "-=1.0"
-        );
+          .fromTo(text,
+            { x: 30, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
+            "-=1.0"
+          );
+
+        if (subnote) {
+          tl.fromTo(subnote,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.0, ease: "power3.out" },
+            "-=0.8"
+          );
+        }
       });
 
       // 4. Technical Specs Reveal
@@ -207,7 +216,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       WATER PROOF
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Highly resistant to water damage, due to an ultra-low absorption rate.
                     </p>
                   </div>
@@ -226,7 +235,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       SCRATCH RESISTANT
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Engineered with a tough surface strength to withstand scratches and abrasions.
                     </p>
                   </div>
@@ -245,7 +254,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       HEAT & FROST RESISTANT
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       NOBILITA does not burn, emit smoke, or release toxic substances when exposed to fire.
                     </p>
                   </div>
@@ -264,7 +273,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       EASY TO MAINTAIN
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Compatible with all types of cleaning agents, including bleach and ammonia.
                     </p>
                   </div>
@@ -283,7 +292,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       HYGIENIC & FOOD SAFE
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Non-toxic and free from harmful emissions, 100% food safe, NSF Certified.
                     </p>
                   </div>
@@ -305,7 +314,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       UV RESISTANT
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Composed of 100% natural materials, ensuring colors remain vibrant even with prolonged exposure to sunlight and extreme weather.
                     </p>
                   </div>
@@ -324,7 +333,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       ECO FRIENDLY
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Contains no substances harmful to the environment.
                     </p>
                   </div>
@@ -343,7 +352,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       RECYCLABLE
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Each slab incorporates between 52% - 98% recycled content and is fully reusable and recyclable.
                     </p>
                   </div>
@@ -362,7 +371,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       HIGH FLEXURAL STRENGTH
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
+                    <p className="font-didot font-light text-white/90 text-sm md:text-[16px] tracking-[0.12em]">
                       Designed to withstand heavy loads and pressure without bending or cracking.
                     </p>
                   </div>
@@ -388,16 +397,16 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B1. Oil Spills Subsection */}
-            <div className="spill-sec space-y-12 pt-12">
-              <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight">
+            <div className="spill-sec pt-12 pb-16 md:pb-12">
+              <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 OIL SPILLS
               </h3>
 
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-20">
+              <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Bottle Illustration */}
-                <div className="spill-illust flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center py-6">
+                <div className="spill-illust flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center">
                   <img
-                    src="/images/technical data/SVGs/SVGs/icons-11.svg"
+                    src="/images/technical data/SVGs/SVGs/icons-11.svg?v=2"
                     alt="Oil Spills"
                     className="w-full h-full object-contain"
                   />
@@ -426,16 +435,16 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B2. Coffee Spills Subsection */}
-            <div className="spill-sec space-y-12 pt-12">
-              <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight">
+            <div className="spill-sec pb-16 md:pb-12">
+              <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 COFFEE SPILLS
               </h3>
 
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-20">
+              <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Coffee Cup Illustration */}
-                <div className="spill-illust flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center py-6">
+                <div className="spill-illust flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center">
                   <img
-                    src="/images/technical data/SVGs/SVGs/icons-12.svg"
+                    src="/images/technical data/SVGs/SVGs/icons-13.svg"
                     alt="Coffee Spills"
                     className="w-full h-full object-contain"
                   />
@@ -468,24 +477,25 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B3. Wine Spills Subsection */}
-            <div className="spill-sec space-y-12 pt-12">
-              <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight">
+            <div className="spill-sec pb-16 md:pb-12">
+              <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 WINE SPILLS
               </h3>
 
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-20">
-                {/* Left Side: Spilling Wine Glass Illustration */}
-                <div className="spill-illust flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center py-6">
-                  <img
-                    src="/images/technical data/SVGs/SVGs/icons-13.svg"
-                    alt="Wine Spills"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+              <div className="space-y-12">
+                {/* Upper Row: SVG centered with Points 1-4 only */}
+                <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
+                  {/* Left Side: Spilling Wine Glass Illustration */}
+                  <div className="spill-illust flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center">
+                    <img
+                      src="/images/technical data/SVGs/SVGs/icons-12.svg"
+                      alt="Wine Spills"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
 
-                {/* Right Side: Step-by-Step Instructions */}
-                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] tracking-widest">
-                  <div className="space-y-2">
+                  {/* Right Side: Step-by-Step Instructions (Points 1-4) */}
+                  <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] tracking-widest">
                     <div className="flex items-start gap-5">
                       <span className="font-normal text-[#cce3eb]">1.</span>
                       <p>Rinse the affected area with warm water.</p>
@@ -503,9 +513,15 @@ export default function TechnicalDataPage() {
                       <p>Wipe away any residue with a damp cloth and dry the surface completely.</p>
                     </div>
                   </div>
+                </div>
 
-                  {/* Dried or Stubborn Stains Subnote */}
-                  <div className="pt-24 space-y-2">
+                {/* Lower Row: Subnote (aligned with the text above) */}
+                <div className="wine-subnote flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-16">
+                  {/* Spacer to align text with the right side column on desktop */}
+                  <div className="hidden md:block flex-shrink-0 w-52 md:w-64" />
+
+                  {/* Subnote Content */}
+                  <div className="flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] tracking-widest">
                     <h4 className="font-semibold text-white tracking-[0.05em] text-[16px] md:text-[18px]">
                       For dried or stubborn stains:
                     </h4>
