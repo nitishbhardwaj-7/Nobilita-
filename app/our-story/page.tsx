@@ -101,13 +101,12 @@ export default function OurStoryPage() {
       sec3Tl
         .to(".sec3-curtain-left", { xPercent: -100, duration: 1.5, ease: "power4.inOut" })
         .to(".sec3-curtain-right", { xPercent: 100, duration: 1.5, ease: "power4.inOut" }, "<")
-        .to(".sec3-shine", { xPercent: 250, duration: 1.3, ease: "power2.inOut" }, "-=0.9")
-        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.7");
+        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.3");
 
-      gsap.from(".sec3-img", {
-        scale: 1.22,
-        scrollTrigger: { trigger: ".sec3-container", start: "top bottom", end: "bottom top", scrub: 1.5 }
-      });
+      gsap.fromTo(".sec3-img",
+        { scale: 1 },
+        { scale: 1.22, ease: "none", scrollTrigger: { trigger: ".sec3-container", start: "top bottom", end: "bottom top", scrub: 1.5 } }
+      );
       gsap.from(".sec3-text p", {
         opacity: 0, y: 30, duration: 1, ease: "power3.out",
         scrollTrigger: { trigger: ".sec3-text", start: "top 85%" }
@@ -347,17 +346,10 @@ export default function OurStoryPage() {
           <img
             src="/images/Our story/Arbescato Vagli BM.jpg"
             alt="Arabescato Vagli Bookmatch bathroom application"
-            className="sec3-img w-full h-full object-cover origin-center scale-[1.1]"
+            className="sec3-img w-full h-full object-cover origin-center"
             loading="lazy"
           />
-          {/* Diagonal shine sweep */}
-          <div
-            className="sec3-shine absolute inset-0 z-10 pointer-events-none"
-            style={{
-              background: "linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.55) 50%, transparent 58%)",
-              transform: "translateX(-150%)",
-            }}
-          />
+
           {/* Curtain reveal panels */}
           <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
           <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />

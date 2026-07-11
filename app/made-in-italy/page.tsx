@@ -89,8 +89,12 @@ export default function MadeInItalyPage() {
       sec3Tl
         .to(".sec3-curtain-left", { xPercent: -100, duration: 1.5, ease: "power4.inOut" })
         .to(".sec3-curtain-right", { xPercent: 100, duration: 1.5, ease: "power4.inOut" }, "<")
-        .to(".sec3-shine", { xPercent: 250, duration: 1.3, ease: "power2.inOut" }, "-=0.9")
-        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.7");
+        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.3");
+
+      gsap.fromTo(".sec3-img",
+        { scale: 1 },
+        { scale: 1.22, ease: "none", scrollTrigger: { trigger: ".sec3-container", start: "top bottom", end: "bottom top", scrub: 1.5 } }
+      );
 
 
       gsap.fromTo(".sec3-paragraph",
@@ -116,9 +120,9 @@ export default function MadeInItalyPage() {
       <Navbar />
 
       {/* Section 1: Made In Italy Intro */}
-      <section className="relative w-full flex flex-col justify-center pt-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-8">
+      <section className="relative w-full flex flex-col justify-center pt-24 md:pt-16 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-12">
         {/* Content wrapper */}
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-8 md:space-y-10">
+        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col">
           <div className="w-full text-center">
             <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(24px,4vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
               {"MADE IN ITALY".split(" ").map((word, wIdx) => (
@@ -134,7 +138,7 @@ export default function MadeInItalyPage() {
           </div>
 
           {/* Grid Layout: Text vs Image */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch mt-12">
             {/* Left Column: Narrative */}
             <div className="flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,20px)] tracking-widest leading-[1.8] text-left order-2 md:order-1 h-full py-0 md:py-2">
               <p className="sec1-paragraph">
@@ -170,8 +174,8 @@ export default function MadeInItalyPage() {
       </section>
 
       {/* Section 2: Large Format Slabs */}
-      <section className="relative w-full py-16 px-6 md:px-12 lg:px-24 overflow-hidden">
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12 md:space-y-16">
+      <section className="relative w-full mt-12 px-6 md:px-12 lg:px-24 overflow-hidden">
+        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12">
           {/* Top Text */}
           <div className="sec2-text-container w-full font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,20px)] tracking-widest leading-[1.8] text-left space-y-6 md:space-y-8">
             <p className="sec2-paragraph">
@@ -216,24 +220,19 @@ export default function MadeInItalyPage() {
       </section>
 
       {/* Section 3: Duomo di Milano Full-width */}
-      <section className="sec3-container relative w-full pb-20 overflow-hidden bg-white">
-        <div className="relative w-full mx-auto flex flex-col space-y-10 md:space-y-14">
+      <section className="sec3-container relative w-full pb-12 overflow-hidden bg-white">
+        <div className="relative w-full mx-auto flex flex-col">
           {/* Top Full-width Image */}
           <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group">
-            <img
-              src="/images/made-in-italy/whiteimage.jpg"
-              alt="Duomo di Milano"
+            <video
+              src="/images/made-in-italy/duomo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="sec3-img w-full h-full object-cover origin-center"
-              loading="lazy"
             />
-            {/* Diagonal shine sweep */}
-            <div
-              className="sec3-shine absolute inset-0 z-10 pointer-events-none"
-              style={{
-                background: "linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.55) 50%, transparent 58%)",
-                transform: "translateX(-150%)",
-              }}
-            />
+
             {/* Curtain reveal panels */}
             <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
             <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
@@ -246,7 +245,7 @@ export default function MadeInItalyPage() {
           </div>
           
           {/* Bottom Text */}
-          <div className="sec3-text-container w-full max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left px-6 md:px-12 lg:px-24">
+          <div className="sec3-text-container w-full pt-12 max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left px-6 md:px-12 lg:px-24">
             <p className="sec3-paragraph">
               NOBILITA works at the forefront of large-format surface innovation, with state-of-the-art production systems capable of creating ultra-large slabs in exceptional formats and multiple thicknesses. These advancements have redefined what is possible in contemporary architecture, enabling seamless surfaces, reduced visual fragmentation, and a more monolithic architectural language.
             </p>
