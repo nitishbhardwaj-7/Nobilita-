@@ -220,7 +220,7 @@ export default function MadeInItalyPage() {
           {/* Top Full-width Image */}
           <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group">
             <video
-              src="/images/made-in-italy/duomo.mp4"
+              src="/images/made-in-italy/duomonew.mp4"
               autoPlay
               loop
               muted
@@ -240,7 +240,7 @@ export default function MadeInItalyPage() {
           </div>
           
           {/* Bottom Text */}
-          <div className="sec3-text-container w-full pt-12 max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] text-left px-6 md:px-12 lg:px-24">
+          <div className="sec3-text-container w-full pt-12 max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8] px-6 md:px-12 lg:px-24">
             <p className="sec3-paragraph">
               NOBILITA works at the forefront of large-format surface innovation, with state-of-the-art production systems capable of creating ultra-large slabs in exceptional formats and multiple thicknesses. These advancements have redefined what is possible in contemporary architecture, enabling seamless surfaces, reduced visual fragmentation, and a more monolithic architectural language.
             </p>
