@@ -171,7 +171,7 @@ export default function TechnicalDataPage() {
             ENGINEERED FOR PERFORMANCE
           </h1>
           <p
-            className="hero-desc font-ivymode font-light text-black text-[clamp(16px,1.6vw,22px)] tracking-wide leading-[1.8] max-w-[1150px] w-[92%] mx-auto mt-6 text-justify"
+            className="hero-desc font-ivymode font-light text-black text-[clamp(16px,1.6vw,22px)] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-6 text-justify"
             style={{ textAlignLast: "center" }}
           >
             Every NOBILITA surface is engineered for exceptional performance from specification to installation. Designed by architects and engineers, it combines technical precision with refined aesthetics, ensuring premium quality, consistency and reliability. NOBILITA offers outstanding durability, dimensional stability, stain resistance, and long-term performance.
@@ -207,7 +207,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       WATER PROOF
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Highly resistant to water damage, due to an ultra-low absorption rate.
                     </p>
                   </div>
@@ -226,7 +226,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       SCRATCH RESISTANT
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Engineered with a tough surface strength to withstand scratches and abrasions.
                     </p>
                   </div>
@@ -245,7 +245,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       HEAT & FROST RESISTANT
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       NOBILITA does not burn, emit smoke, or release toxic substances when exposed to fire.
                     </p>
                   </div>
@@ -264,7 +264,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       EASY TO MAINTAIN
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Compatible with all types of cleaning agents, including bleach and ammonia.
                     </p>
                   </div>
@@ -283,7 +283,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       HYGIENIC & FOOD SAFE
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Non-toxic and free from harmful emissions, 100% food safe, NSF Certified.
                     </p>
                   </div>
@@ -305,7 +305,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       UV RESISTANT
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Composed of 100% natural materials, ensuring colors remain vibrant even with prolonged exposure to sunlight and extreme weather.
                     </p>
                   </div>
@@ -324,7 +324,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       ECO FRIENDLY
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Contains no substances harmful to the environment.
                     </p>
                   </div>
@@ -343,7 +343,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       RECYCLABLE
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Each slab incorporates between 52% - 98% recycled content and is fully reusable and recyclable.
                     </p>
                   </div>
@@ -362,7 +362,7 @@ export default function TechnicalDataPage() {
                     <h3 className="font-michroma text-sm md:text-[15px] tracking-[0.15em] uppercase font-light text-white">
                       HIGH FLEXURAL STRENGTH
                     </h3>
-                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] leading-[1.8] tracking-[0.03em]">
+                    <p className="font-ivymode font-light text-white/90 text-sm md:text-[16px] tracking-[0.03em]">
                       Designed to withstand heavy loads and pressure without bending or cracking.
                     </p>
                   </div>
@@ -377,7 +377,7 @@ export default function TechnicalDataPage() {
               <h2 className="ug-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight">
                 USER GUIDE
               </h2>
-              <div className="font-ivymode font-light text-white/90 text-[clamp(16px,1.7vw,21px)] tracking-widest leading-[1.8] max-w-6xl space-y-12">
+              <div className="font-ivymode font-light text-white/90 text-[clamp(16px,1.7vw,21px)] tracking-widest max-w-6xl space-y-12">
                 <p className="ug-desc">
                   The lasting beauty and performance of a surface depend on proper care and maintenance. To help you preserve the exceptional qualities of NOBILITA porcelain surfaces, we have created a collection of maintenance guidelines.
                 </p>
@@ -404,7 +404,7 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
-                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] leading-[1.8] tracking-widest">
+                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] tracking-widest">
                   <div className="flex items-start gap-5">
                     <span className="font-normal text-[#cce3eb]">1.</span>
                     <p>Apply the cleaning product and leave for 5 minutes.</p>
@@ -442,7 +442,7 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
-                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] leading-[1.8] tracking-widest">
+                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] tracking-widest">
                   <div className="flex items-start gap-5">
                     <span className="font-normal text-[#cce3eb]">1.</span>
                     <p>Remove any excess liquid immediately.</p>
@@ -484,7 +484,7 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
-                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] leading-[1.8] tracking-widest">
+                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[clamp(15px,1.6vw,19px)] tracking-widest">
                   <div className="space-y-2">
                     <div className="flex items-start gap-5">
                       <span className="font-normal text-[#cce3eb]">1.</span>
