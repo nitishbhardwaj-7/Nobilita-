@@ -13,9 +13,12 @@ export default function TechnicalDataPage() {
       <section className="relative w-full min-h-screen flex flex-col justify-start overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/technical data/15.jpg"
-            alt="Engineered for Performance background"
+          <video
+            src="/images/technical data/engineered for perfomace.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover object-top opacity-100"
           />
         </div>
