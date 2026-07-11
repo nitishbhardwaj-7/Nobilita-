@@ -91,11 +91,6 @@ export default function MadeInItalyPage() {
         .to(".sec3-curtain-right", { xPercent: 100, duration: 1.5, ease: "power4.inOut" }, "<")
         .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.3");
 
-      gsap.fromTo(".sec3-img",
-        { scale: 1 },
-        { scale: 1.22, ease: "none", scrollTrigger: { trigger: ".sec3-container", start: "top bottom", end: "bottom top", scrub: 1.5 } }
-      );
-
 
       gsap.fromTo(".sec3-paragraph",
         { opacity: 0, y: 30 },
