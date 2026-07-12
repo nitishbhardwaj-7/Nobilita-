@@ -5,33 +5,53 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSpillAnimations } from "@/hooks/useSpillAnimations";
+import OilSpillSVG from "@/components/OilSpillSVG";
+import CoffeeSpillSVG from "@/components/CoffeeSpillSVG";
+import WineSpillSVG from "@/components/WineSpillSVG";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function TechnicalDataPage() {
+  useSpillAnimations();
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Hero Reveal
-      gsap.fromTo(".hero-title",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.5, ease: "power4.out", delay: 0.2 }
+      // 1. Hero Reveal (Character Stagger)
+      gsap.fromTo(".hero-title-char",
+        { y: "120%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 1.2, stagger: 0.04, ease: "expo.out", delay: 0.2 }
       );
 
-      gsap.fromTo(".hero-desc",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.5, ease: "power4.out", delay: 0.4 }
-      );
+      // 1b. Hero Desc Word Stagger Animation
+      const descElement = document.querySelector(".hero-desc");
+      if (descElement && descElement.textContent) {
+        const rawText = descElement.textContent;
+        const words = rawText.split(" ");
+        descElement.innerHTML = words
+          .map(w => `<span class="hero-desc-word" style="display:inline-block;opacity:0;">${w}</span> `)
+          .join("");
 
-      // 2. Characteristics Title Reveal
-      gsap.fromTo(".char-title",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
+        gsap.to(".hero-desc-word", {
           opacity: 1,
           duration: 1.2,
-          ease: "power3.out",
+          stagger: 0.15,
+          ease: "power2.out",
+          delay: 0.8,
+        });
+      }
+
+      // 2. Characteristics Title Reveal (Character Stagger)
+      gsap.fromTo(".char-title-char",
+        { y: "120%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.04,
+          ease: "expo.out",
           scrollTrigger: {
-            trigger: ".char-title",
+            trigger: ".char-title-trigger",
             start: "top 85%",
             toggleActions: "play none none reverse"
           }
@@ -55,16 +75,17 @@ export default function TechnicalDataPage() {
         }
       );
 
-      // 3. User Guide Title Reveal
-      gsap.fromTo(".ug-title",
-        { y: 30, opacity: 0 },
+      // 3. User Guide Title Reveal (Character Stagger)
+      gsap.fromTo(".ug-title-char",
+        { y: "120%", opacity: 0 },
         {
-          y: 0,
+          y: "0%",
           opacity: 1,
           duration: 1.2,
-          ease: "power3.out",
+          stagger: 0.04,
+          ease: "expo.out",
           scrollTrigger: {
-            trigger: ".ug-title",
+            trigger: ".ug-title-trigger",
             start: "top 85%",
             toggleActions: "play none none reverse"
           }
@@ -87,38 +108,7 @@ export default function TechnicalDataPage() {
         }
       );
 
-      // Spill Subsections Reveal (each gets its own ScrollTrigger trigger)
-      gsap.utils.toArray<HTMLElement>(".spill-sec").forEach((sec) => {
-        const illust = sec.querySelector(".spill-illust");
-        const text = sec.querySelector(".spill-text");
-        const subnote = sec.querySelector(".wine-subnote");
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
-        });
-
-        tl.fromTo(illust,
-          { x: -30, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
-        )
-          .fromTo(text,
-            { x: 30, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
-            "-=1.0"
-          );
-
-        if (subnote) {
-          tl.fromTo(subnote,
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.0, ease: "power3.out" },
-            "-=0.8"
-          );
-        }
-      });
 
       // 4. Technical Specs Reveal
       gsap.fromTo(".specs-title",
@@ -176,8 +166,16 @@ export default function TechnicalDataPage() {
 
         {/* Content Wrapper */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-start pt-24 md:pt-16 px-6 mt-0 md:mt-12 text-center">
-          <h1 className="hero-title font-ivymode font-light text-black uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight">
-            ENGINEERED FOR PERFORMANCE
+          <h1 className="font-ivymode font-light text-black uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+            {"ENGINEERED FOR PERFORMANCE".split(" ").map((word, wIdx) => (
+              <span key={wIdx} className="inline-block whitespace-nowrap">
+                {word.split("").map((char, cIdx) => (
+                  <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                    <span className="hero-title-char inline-block">{char}</span>
+                  </span>
+                ))}
+              </span>
+            ))}
           </h1>
           <p
             className="hero-desc font-ivymode font-light text-black text-[20px] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-6 text-justify"
@@ -194,9 +192,17 @@ export default function TechnicalDataPage() {
 
           {/* A. Characteristics Grid */}
           <div className="space-y-12">
-            <div>
-              <h2 className="char-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight">
-                CHARACTERISTICS
+            <div className="char-title char-title-trigger">
+              <h2 className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.4em]">
+                {"CHARACTERISTICS".split(" ").map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap">
+                    {word.split("").map((char, cIdx) => (
+                      <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                        <span className="char-title-char inline-block">{char}</span>
+                      </span>
+                    ))}
+                  </span>
+                ))}
               </h2>
             </div>
 
@@ -204,12 +210,12 @@ export default function TechnicalDataPage() {
               {/* Left Column (5 items) */}
               <div className="space-y-10 md:space-y-12">
                 {/* WATER PROOF */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-01.svg"
                       alt="Water Proof"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -223,12 +229,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* SCRATCH RESISTANT */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-03.svg"
                       alt="Scratch Resistant"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -242,12 +248,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* HEAT & FROST RESISTANT */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-05.svg"
                       alt="Heat & Frost Resistant"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -261,12 +267,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* EASY TO MAINTAIN */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-08.svg"
                       alt="Easy to Maintain"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -280,12 +286,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* HYGIENIC & FOOD SAFE */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-10.svg"
                       alt="Hygienic & Food Safe"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -302,12 +308,12 @@ export default function TechnicalDataPage() {
               {/* Right Column (4 items) */}
               <div className="space-y-10 md:space-y-12">
                 {/* UV RESISTANT */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-06.svg"
                       alt="UV Resistant"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -321,12 +327,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* ECO FRIENDLY */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-04.svg"
                       alt="Eco Friendly"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -340,12 +346,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* RECYCLABLE */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-07.svg"
                       alt="Recyclable"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -359,12 +365,12 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* HIGH FLEXURAL STRENGTH */}
-                <div className="char-item flex items-start gap-6 md:gap-8">
+                <div className="char-item flex items-start gap-6 md:gap-8 group">
                   <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                     <img
                       src="/images/technical data/SVGs/SVGs/icons-09.svg"
                       alt="High Flexural Strength"
-                      className="w-full h-full object-contain scale-[2.2]"
+                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
@@ -383,9 +389,19 @@ export default function TechnicalDataPage() {
           {/* B. User Guide Section */}
           <div className="pt-12">
             <div className="space-y-12">
-              <h2 className="ug-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight">
-                USER GUIDE
+            <div className="ug-title ug-title-trigger">
+              <h2 className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.4em]">
+                {"USER GUIDE".split(" ").map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap">
+                    {word.split("").map((char, cIdx) => (
+                      <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                        <span className="ug-title-char inline-block">{char}</span>
+                      </span>
+                    ))}
+                  </span>
+                ))}
               </h2>
+            </div>
               <div className="font-ivymode font-light text-white/90 text-[20px] tracking-widest max-w-6xl space-y-12">
                 <p className="ug-desc text-[20px]">
                   The lasting beauty and performance of a surface depend on proper care and maintenance. To help you preserve the exceptional qualities of NOBILITA porcelain surfaces, we have created a collection of maintenance guidelines.
@@ -404,12 +420,8 @@ export default function TechnicalDataPage() {
 
               <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Bottle Illustration */}
-                <div className="spill-illust flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center">
-                  <img
-                    src="/images/technical data/SVGs/SVGs/icons-11.svg?v=2"
-                    alt="Oil Spills"
-                    className="w-full h-full object-contain"
-                  />
+                <div className="spill-illust relative flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                  <OilSpillSVG />
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
@@ -442,12 +454,8 @@ export default function TechnicalDataPage() {
 
               <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Coffee Cup Illustration */}
-                <div className="spill-illust flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center">
-                  <img
-                    src="/images/technical data/SVGs/SVGs/icons-13.svg"
-                    alt="Coffee Spills"
-                    className="w-full h-full object-contain"
-                  />
+                <div className="spill-illust relative flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                  <CoffeeSpillSVG />
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
@@ -486,12 +494,8 @@ export default function TechnicalDataPage() {
                 {/* Upper Row: SVG centered with Points 1-4 only */}
                 <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                   {/* Left Side: Spilling Wine Glass Illustration */}
-                  <div className="spill-illust flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-12.svg"
-                      alt="Wine Spills"
-                      className="w-full h-full object-contain"
-                    />
+                  <div className="spill-illust relative flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                    <WineSpillSVG />
                   </div>
 
                   {/* Right Side: Step-by-Step Instructions (Points 1-4) */}

@@ -229,7 +229,7 @@ export default function OurStoryPage() {
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
               }}
-              className="hero-text font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,20px)] tracking-widest leading-[1.7] space-y-6 mt-10 md:mt-12"
+              className="hero-text font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.7] space-y-6 mt-10 md:mt-12"
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
                 In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.
@@ -275,7 +275,7 @@ export default function OurStoryPage() {
         <div className="w-full max-w-[1440px] mx-auto z-10 md:mt-[60px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Narrative (7 cols) */}
-            <div className="sec2-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
+            <div className="sec2-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8]">
               <div className="overflow-hidden py-1">
                 <p className="sec2-line">
                   NOBILITA takes its name from this tradition.
@@ -364,7 +364,7 @@ export default function OurStoryPage() {
         {/* Bottom Narrative Text */}
         <div className="sec3-text w-full max-w-[1440px] mx-auto bg-white px-6 md:px-12 lg:px-24 pt-[60px] pb-[60px]">
           <div className="w-full">
-            <p className="font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
+            <p className="font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8]">
               At NOBILITA, we work closely with architects, designers, and discerning clients to create architectural experiences. Through careful selection, expert craftsmanship, and a deep understanding of design, we help create spaces that feel timeless rather than trend-driven.
             </p>
           </div>
@@ -435,7 +435,7 @@ export default function OurStoryPage() {
             </div>
 
             {/* Right Column: Narrative (7 cols) */}
-            <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(15px,1.5vw,19px)] tracking-widest leading-[1.8]">
+            <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8]">
               <div className="overflow-hidden py-1">
                 <p className="sec4-line">
                   Our inspiration comes from the great interiors of the past, but

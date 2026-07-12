@@ -185,3 +185,22 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Spill paths fill animations to achieve single stroke appearance */
+@keyframes fadeInFill {
+  from {
+    fill-opacity: 0 !important;
+  }
+  to {
+    fill-opacity: 1 !important;
+  }
+}
+
+.coffee-mug, .coffee-splash, .coffee-spill,
+.oil-bottle, .oil-stream, .oil-spill,
+.wine-glass, .wine-spill {
+  fill: #ffffff !important;
+  fill-opacity: 0;
+  animation: fadeInFill 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.8s;
+}
+

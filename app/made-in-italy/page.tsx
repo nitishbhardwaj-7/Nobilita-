@@ -225,7 +225,7 @@ export default function MadeInItalyPage() {
               loop
               muted
               playsInline
-              className="sec3-img w-full h-full object-cover origin-center"
+              className="sec3-img w-full h-full object-cover origin-center" 
             />
 
             {/* Curtain reveal panels */}
@@ -233,7 +233,7 @@ export default function MadeInItalyPage() {
             <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
             {/* Overlay Text */}
             <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
-              <span className="sec3-label-text font-ivymode font-light text-[#545759] uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
+              <span className="sec3-label-text font-ivymode font-light text-white uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
                 DUOMO DI MILANO
               </span>
             </div>
