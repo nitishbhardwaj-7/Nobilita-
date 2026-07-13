@@ -66,7 +66,12 @@ export function useSpillAnimations() {
         });
 
         // 1. Section fade & shift up
-        mainTl.to(sec, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" });
+        mainTl.to(sec, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" });
+
+        // 2. Heading reveal (Title first)
+        if (heading) {
+          mainTl.to(heading, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.6");
+        }
 
         // Helper to animate drawing of paths
         const animatePathDraw = (selector: string, duration: number, stagger: number = 0.05) => {
@@ -84,19 +89,19 @@ export function useSpillAnimations() {
           return tl;
         };
 
-        // 2. SVG Drawing animations sequence
+        // 3. SVG Drawing animations sequence (Faster)
         if (isOil) {
           // Initial bottle angle before settling
           gsap.set(illust, { rotation: 2, transformOrigin: "center bottom" });
 
           // Sequence: Bottle outline -> Oil stream -> Puddle spill
-          mainTl.add(animatePathDraw(".oil-bottle", 0.8, 0.05), "-=0.8");
-          mainTl.add(animatePathDraw(".oil-stream", 0.6, 0.04), "-=0.3");
-          mainTl.add(animatePathDraw(".oil-spill", 0.9, 0.08), "-=0.2");
-          mainTl.add(animatePathDraw(".oil-spill-ripple", 0.5, 0.05), "-=0.3");
+          mainTl.add(animatePathDraw(".oil-bottle", 0.4, 0.03), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-stream", 0.3, 0.02), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-spill", 0.45, 0.04), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-spill-ripple", 0.25, 0.03), "-=0.1");
 
           // Settle bottle rotation
-          mainTl.to(illust, { rotation: 0, duration: 1.4, ease: "power3.out" }, "-=1.0");
+          mainTl.to(illust, { rotation: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
           // Loop slowly the liquid ripple across spill (6-8s)
           const ripples = sec.querySelectorAll(".oil-spill-ripple");
@@ -119,12 +124,12 @@ export function useSpillAnimations() {
           gsap.set(illust, { rotation: -1.5, transformOrigin: "center bottom" });
 
           // Sequence: Mug outline -> Splash paths -> Spill paths
-          mainTl.add(animatePathDraw(".coffee-mug", 0.9, 0.06), "-=0.8");
-          mainTl.add(animatePathDraw(".coffee-splash", 0.7, 0.04), "-=0.4");
-          mainTl.add(animatePathDraw(".coffee-spill", 0.8, 0.05), "-=0.3");
+          mainTl.add(animatePathDraw(".coffee-mug", 0.45, 0.03), "-=0.1");
+          mainTl.add(animatePathDraw(".coffee-splash", 0.35, 0.02), "-=0.1");
+          mainTl.add(animatePathDraw(".coffee-spill", 0.4, 0.03), "-=0.1");
 
           // Settle mug rotation
-          mainTl.to(illust, { rotation: 0, duration: 1.3, ease: "power3.out" }, "-=0.9");
+          mainTl.to(illust, { rotation: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
           // Steam loop animation (slow upward movement and low opacity fade)
           const steamLines = sec.querySelectorAll(".coffee-steam-line");
@@ -160,11 +165,11 @@ export function useSpillAnimations() {
           gsap.set(illust, { rotation: 4.5, transformOrigin: "center bottom" });
 
           // Sequence: Glass outline -> Wine puddle afterward
-          mainTl.add(animatePathDraw(".wine-glass", 0.9, 0.05), "-=0.8");
-          mainTl.add(animatePathDraw(".wine-spill", 0.8, 0.06), "-=0.3");
+          mainTl.add(animatePathDraw(".wine-glass", 0.45, 0.03), "-=0.1");
+          mainTl.add(animatePathDraw(".wine-spill", 0.4, 0.04), "-=0.1");
 
           // Settle glass rotation into final resting position (0deg)
-          mainTl.to(illust, { rotation: 0, duration: 1.5, ease: "power3.out" }, "-=1.0");
+          mainTl.to(illust, { rotation: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
           // Shimmer reflection loop on glass
           const wineShimmer = sec.querySelector(".wine-shimmer-line");
@@ -172,9 +177,9 @@ export function useSpillAnimations() {
             mainTl.to(wineShimmer, {
               strokeDashoffset: 0,
               opacity: 0.4,
-              duration: 0.6,
+              duration: 0.3,
               ease: "power2.out",
-            }, "-=0.4");
+            }, "-=0.2");
 
             // Loop shimmer shine
             gsap.to(wineShimmer, {
@@ -201,24 +206,19 @@ export function useSpillAnimations() {
           }
         }
 
-        // 3. Heading reveal
-        if (heading) {
-          mainTl.to(heading, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.5");
-        }
-
-        // 4. Content Text reveal
+        // 4. Content Text reveal (Points)
         if (text) {
-          mainTl.to(text, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4");
+          mainTl.to(text, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.1");
         }
 
-        // 5. Steps reveal with 80ms stagger
+        // 5. Steps reveal with stagger
         if (steps.length) {
-          mainTl.to(steps, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" }, "-=0.3");
+          mainTl.to(steps, { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: "power2.out" }, "-=0.2");
         }
 
         // 6. Subnote reveal
         if (subnote) {
-          mainTl.to(subnote, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.2");
+          mainTl.to(subnote, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.1");
         }
       });
 

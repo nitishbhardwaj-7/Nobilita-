@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import gsap from "gsap";
@@ -111,8 +112,30 @@ export default function MadeInItalyPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
       <Navbar />
+
+      {/* Back Button Arrow */}
+      <div className="absolute top-24 left-6 md:top-32 md:left-24 z-50">
+        <Link
+          href="/"
+          className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/50 backdrop-blur-sm shadow-sm"
+          aria-label="Go back to home"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5 transition-transform duration-300 transform group-hover:-translate-x-0.5"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </Link>
+      </div>
 
       {/* Section 1: Made In Italy Intro */}
       <section className="relative w-full flex flex-col justify-center pt-24 md:pt-16 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-12">
@@ -218,7 +241,7 @@ export default function MadeInItalyPage() {
       <section className="sec3-container relative w-full pb-12 overflow-hidden bg-white">
         <div className="relative w-full mx-auto flex flex-col">
           {/* Top Full-width Image */}
-          <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group">
+          <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group mt-12">
             <video
               src="/images/made-in-italy/duomo 2.mp4"
               autoPlay
@@ -240,7 +263,7 @@ export default function MadeInItalyPage() {
           </div>
           
           {/* Bottom Text */}
-          <div className="sec3-text-container w-full pt-12 max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8] px-6 md:px-12 lg:px-24">
+          <div className="sec3-text-container w-full mt-12 max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8] px-6 md:px-12 lg:px-24">
             <p className="sec3-paragraph text-[20px]">
               NOBILITA works at the forefront of large-format surface innovation, with state-of-the-art production systems capable of creating ultra-large slabs in exceptional formats and multiple thicknesses. These advancements have redefined what is possible in contemporary architecture, enabling seamless surfaces, reduced visual fragmentation, and a more monolithic architectural language.
             </p>

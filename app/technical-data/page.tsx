@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { gsap } from "gsap";
@@ -147,7 +148,7 @@ export default function TechnicalDataPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
       <Navbar />
 
       {/* 1. Hero Section */}
@@ -166,17 +167,42 @@ export default function TechnicalDataPage() {
 
         {/* Content Wrapper */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-start pt-24 md:pt-16 px-6 mt-0 md:mt-12 text-center">
-          <h1 className="font-ivymode font-light text-black uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
-            {"ENGINEERED FOR PERFORMANCE".split(" ").map((word, wIdx) => (
-              <span key={wIdx} className="inline-block whitespace-nowrap">
-                {word.split("").map((char, cIdx) => (
-                  <span key={cIdx} className="inline-block overflow-hidden align-bottom">
-                    <span className="hero-title-char inline-block">{char}</span>
-                  </span>
-                ))}
-              </span>
-            ))}
-          </h1>
+          
+          <div className="relative w-full flex items-center justify-center min-h-[44px] px-14 md:px-20">
+            {/* Back Button Arrow */}
+            <div className="absolute left-0 flex items-center h-full">
+              <Link
+                href="/"
+                className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-transparent backdrop-blur-sm shadow-sm"
+                aria-label="Go back to home"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-5 h-5 transition-transform duration-300 transform group-hover:-translate-x-0.5"
+                >
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </Link>
+            </div>
+
+            <h1 className="font-ivymode font-light text-black uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+              {"ENGINEERED FOR PERFORMANCE".split(" ").map((word, wIdx) => (
+                <span key={wIdx} className="inline-block whitespace-nowrap">
+                  {word.split("").map((char, cIdx) => (
+                    <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                      <span className="hero-title-char inline-block">{char}</span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </h1>
+          </div>
           <p
             className="hero-desc font-ivymode font-light text-black text-[20px] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-6 text-justify"
             style={{ textAlignLast: "center" }}
@@ -420,7 +446,7 @@ export default function TechnicalDataPage() {
 
               <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Bottle Illustration */}
-                <div className="spill-illust relative flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                <div className="spill-illust relative flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
                   <OilSpillSVG />
                 </div>
 
@@ -454,7 +480,7 @@ export default function TechnicalDataPage() {
 
               <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Coffee Cup Illustration */}
-                <div className="spill-illust relative flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                <div className="spill-illust relative flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
                   <CoffeeSpillSVG />
                 </div>
 
@@ -494,7 +520,7 @@ export default function TechnicalDataPage() {
                 {/* Upper Row: SVG centered with Points 1-4 only */}
                 <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                   {/* Left Side: Spilling Wine Glass Illustration */}
-                  <div className="spill-illust relative flex-shrink-0 w-52 md:w-64 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                  <div className="spill-illust relative flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
                     <WineSpillSVG />
                   </div>
 
@@ -547,7 +573,7 @@ export default function TechnicalDataPage() {
           </div>
 
           {/* C. Technical Specifications Section */}
-          <div className="space-y-12 flex flex-col items-center justify-center min-h-screen">
+          <div className="pt-12 mb-12 space-y-12 flex flex-col items-center justify-center">
             <div className="text-center">
               <h2 className="specs-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,36px)] leading-tight">
                 TECHNICAL SPECIFICATIONS FOR PROFESSIONALS
