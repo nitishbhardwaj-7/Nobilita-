@@ -190,7 +190,7 @@ export default function Footer() {
                         </p>
                       </>
                     )}
-                    <div className="pt-8 w-full max-w-[450px]">
+                    <div className="pt-8 flex justify-center w-full">
                       <button
                         onClick={() => {
                           setSubmitStatus("idle");
@@ -201,7 +201,7 @@ export default function Footer() {
                             window.location.href = "/explore-collection";
                           }
                         }}
-                        className="relative overflow-hidden w-full border border-[#545759]/50 text-[#545759] bg-transparent py-4 font-michroma text-[clamp(11px,1.2vw,14px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
+                        className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group text-center focus:outline-none whitespace-nowrap"
                       >
                         <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                         <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
@@ -317,7 +317,7 @@ export default function Footer() {
                       >
                         <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
                         <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                          {submitStatus === "sending" ? "SENDING..." : "SUBMIT"}
+                          {submitStatus === "sending" ? "SUBMITTING..." : "SUBMIT"}
                         </span>
                       </button>
                     </div>

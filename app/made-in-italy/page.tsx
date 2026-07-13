@@ -116,7 +116,7 @@ export default function MadeInItalyPage() {
       <Navbar />
 
       {/* Back Button Arrow */}
-      <div className="absolute top-24 left-6 md:top-32 md:left-24 z-50">
+      <div className="absolute top-24 left-6 md:top-32 md:left-12 z-50">
         <Link
           href="/"
           className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/50 backdrop-blur-sm shadow-sm"

@@ -166,7 +166,7 @@ export default function TechnicalDataPage() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-start pt-24 md:pt-16 px-6 mt-0 md:mt-12 text-center">
+        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-start pt-24 md:pt-16 px-6 md:px-12 mt-0 md:mt-12 text-center">
           
           <div className="relative w-full flex items-center justify-center min-h-[44px] px-14 md:px-20">
             {/* Back Button Arrow */}
@@ -516,7 +516,7 @@ export default function TechnicalDataPage() {
                 WINE SPILLS
               </h3>
 
-              <div className="space-y-12">
+              <div className="space-y-20">
                 {/* Upper Row: SVG centered with Points 1-4 only */}
                 <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                   {/* Left Side: Spilling Wine Glass Illustration */}
@@ -573,7 +573,7 @@ export default function TechnicalDataPage() {
           </div>
 
           {/* C. Technical Specifications Section */}
-          <div className="pt-12 mb-12 space-y-12 flex flex-col items-center justify-center">
+          <div className="pt-12 space-y-12 flex flex-col items-center justify-center">
             <div className="text-center">
               <h2 className="specs-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,36px)] leading-tight">
                 TECHNICAL SPECIFICATIONS FOR PROFESSIONALS
