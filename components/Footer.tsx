@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NobilitaHouseSVG from "./NobilitaHouseSVG";
+import AnimatedNeighborhood from "./AnimatedNeighborhood";
 
 const links = ["about", "products", "technical data", "made in italy", "contact us"];
 
@@ -139,8 +140,8 @@ export default function Footer() {
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-[60vh] md:min-h-[70vh] animate-[fadeIn_0.6s_ease-out]">
                   {/* Left Column: Teal background with House and Logo */}
                   <div className="bg-[#007190] py-16 px-8 flex flex-col items-center justify-center space-y-10">
-                    <div className="w-full max-w-[200px] md:max-w-[240px] flex justify-center">
-                      <NobilitaHouseSVG variant="white" size={240} className="w-full h-auto" animate={true} />
+                    <div className="w-full flex justify-center">
+                      <AnimatedNeighborhood />
                     </div>
                     <div className="w-[180px] md:w-[220px]">
                       <img

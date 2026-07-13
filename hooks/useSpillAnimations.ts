@@ -89,19 +89,23 @@ export function useSpillAnimations() {
           return tl;
         };
 
+        // Set timeline label for start of SVG animations to measure 50% completion
+        mainTl.addLabel("svgStart");
+        const textOffset = isOil ? "+=0.4" : isCoffee ? "+=0.35" : "+=0.3";
+
         // 3. SVG Drawing animations sequence (Faster)
         if (isOil) {
           // Initial bottle angle before settling
           gsap.set(illust, { rotation: 2, transformOrigin: "center bottom" });
 
           // Sequence: Bottle outline -> Oil stream -> Puddle spill
-          mainTl.add(animatePathDraw(".oil-bottle", 0.4, 0.03), "-=0.1");
-          mainTl.add(animatePathDraw(".oil-stream", 0.3, 0.02), "-=0.1");
-          mainTl.add(animatePathDraw(".oil-spill", 0.45, 0.04), "-=0.1");
-          mainTl.add(animatePathDraw(".oil-spill-ripple", 0.25, 0.03), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-bottle", 0.25, 0.015), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-stream", 0.2, 0.01), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-spill", 0.3, 0.02), "-=0.1");
+          mainTl.add(animatePathDraw(".oil-spill-ripple", 0.15, 0.015), "-=0.1");
 
           // Settle bottle rotation
-          mainTl.to(illust, { rotation: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
+          mainTl.to(illust, { rotation: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
 
           // Loop slowly the liquid ripple across spill (6-8s)
           const ripples = sec.querySelectorAll(".oil-spill-ripple");
@@ -124,12 +128,12 @@ export function useSpillAnimations() {
           gsap.set(illust, { rotation: -1.5, transformOrigin: "center bottom" });
 
           // Sequence: Mug outline -> Splash paths -> Spill paths
-          mainTl.add(animatePathDraw(".coffee-mug", 0.45, 0.03), "-=0.1");
-          mainTl.add(animatePathDraw(".coffee-splash", 0.35, 0.02), "-=0.1");
-          mainTl.add(animatePathDraw(".coffee-spill", 0.4, 0.03), "-=0.1");
+          mainTl.add(animatePathDraw(".coffee-mug", 0.3, 0.015), "-=0.1");
+          mainTl.add(animatePathDraw(".coffee-splash", 0.25, 0.01), "-=0.1");
+          mainTl.add(animatePathDraw(".coffee-spill", 0.25, 0.015), "-=0.1");
 
           // Settle mug rotation
-          mainTl.to(illust, { rotation: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
+          mainTl.to(illust, { rotation: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
 
           // Steam loop animation (slow upward movement and low opacity fade)
           const steamLines = sec.querySelectorAll(".coffee-steam-line");
@@ -165,11 +169,11 @@ export function useSpillAnimations() {
           gsap.set(illust, { rotation: 4.5, transformOrigin: "center bottom" });
 
           // Sequence: Glass outline -> Wine puddle afterward
-          mainTl.add(animatePathDraw(".wine-glass", 0.45, 0.03), "-=0.1");
-          mainTl.add(animatePathDraw(".wine-spill", 0.4, 0.04), "-=0.1");
+          mainTl.add(animatePathDraw(".wine-glass", 0.3, 0.015), "-=0.1");
+          mainTl.add(animatePathDraw(".wine-spill", 0.25, 0.02), "-=0.1");
 
           // Settle glass rotation into final resting position (0deg)
-          mainTl.to(illust, { rotation: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
+          mainTl.to(illust, { rotation: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
 
           // Shimmer reflection loop on glass
           const wineShimmer = sec.querySelector(".wine-shimmer-line");
@@ -206,9 +210,9 @@ export function useSpillAnimations() {
           }
         }
 
-        // 4. Content Text reveal (Points)
+        // 4. Content Text reveal (Points) - Begins at 50% completion of the SVG animations
         if (text) {
-          mainTl.to(text, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.1");
+          mainTl.to(text, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, `svgStart${textOffset}`);
         }
 
         // 5. Steps reveal with stagger
