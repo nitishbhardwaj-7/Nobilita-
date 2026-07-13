@@ -101,11 +101,23 @@ export default function MadeInItalyPage() {
         }
       );
 
-      // Section 4: Colosseum
+      // Section 4: Colosseum Reveal (Premium wipe & scale)
+      const tlImg4 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sec4-container",
+          start: "top 75%",
+          toggleActions: "play none none reverse"
+        }
+      });
 
-      gsap.fromTo(".sec4-tag",
+      tlImg4.fromTo(".sec4-img-inner",
+        { clipPath: "inset(100% 0% 0% 0%)", scale: 1.15 },
+        { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 2, ease: "power3.inOut" }
+      )
+      .fromTo(".sec4-tag",
         { opacity: 0, scale: 0.95, y: 40 },
-        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out", scrollTrigger: { trigger: ".sec4-container", start: "top 60%" } }
+        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" },
+        "-=1.2"
       );
     });
     return () => ctx.revert();
@@ -272,18 +284,18 @@ export default function MadeInItalyPage() {
       </section>
 
       {/* Section 4: Colosseum Background Parallax Reveal */}
-      <section className="sec4-container relative w-full h-screen overflow-hidden">
-        <div className="relative w-full h-full mx-auto group overflow-hidden">
+      <section className="sec4-container relative w-full h-screen overflow-hidden bg-white">
+        <div className="sec4-img-wrapper relative w-full h-full mx-auto group overflow-hidden">
           {/* Background Image */}
           <img
             src="/images/made-in-italy/colosseo-2020.jpg"
             alt="Colosseum"
-            className="sec4-img w-full h-full object-cover block origin-center"
+            className="sec4-img-inner w-full h-full object-cover block origin-center"
             loading="lazy"
           />
           
           {/* Top Headline Image Overlay */}
-          <div className="absolute top-8 md:top-12 lg:top-16 left-0 right-0 z-10 flex justify-center px-4 w-full pointer-events-none">
+          <div className="absolute top-8 md:top-12 lg:top-16 left-0 right-0 z-30 flex justify-center px-4 w-full pointer-events-none">
             <img
               src="/images/Links/tag grey.png"
               alt="Il Gres Imperiale d'Italia"
@@ -293,7 +305,7 @@ export default function MadeInItalyPage() {
           </div>
 
           {/* Overlay Text */}
-          <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 lg:right-3 z-10">
+          <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 lg:right-3 z-30">
             <span className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(11px,1.4vw,16px)] drop-shadow-md">
               COLOSSEUM
             </span>
