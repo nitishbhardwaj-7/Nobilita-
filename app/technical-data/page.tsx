@@ -573,7 +573,7 @@ export default function TechnicalDataPage() {
           </div>
 
           {/* C. Technical Specifications Section */}
-          <div className="pt-12 space-y-12 flex flex-col items-start w-full">
+          <div className="pt-12 mb-10 space-y-12 flex flex-col items-start w-full">
             <div className="text-left w-full">
               <h2 className="specs-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight">
                 TECHNICAL SPECIFICATIONS FOR PROFESSIONALS
