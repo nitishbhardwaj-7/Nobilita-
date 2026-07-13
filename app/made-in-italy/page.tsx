@@ -110,14 +110,18 @@ export default function MadeInItalyPage() {
         }
       });
 
-      tlImg4.fromTo(".sec4-img-inner",
-        { clipPath: "inset(100% 0% 0% 0%)", scale: 1.15 },
-        { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 2, ease: "power3.inOut" }
+      tlImg4.fromTo(".sec4-overlay",
+        { y: "0%" },
+        { y: "-100%", duration: 1.2, ease: "power3.inOut" }
+      )
+      .fromTo(".sec4-img-inner",
+        { scale: 1.15 },
+        { scale: 1, duration: 1.2, ease: "power3.out" },
+        "-=1.2"
       )
       .fromTo(".sec4-tag",
         { opacity: 0, scale: 0.95, y: 40 },
-        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" },
-        "-=1.2"
+        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" }
       );
     });
     return () => ctx.revert();
@@ -286,11 +290,12 @@ export default function MadeInItalyPage() {
       {/* Section 4: Colosseum Background Parallax Reveal */}
       <section className="sec4-container relative w-full h-screen overflow-hidden bg-white">
         <div className="sec4-img-wrapper relative w-full h-full mx-auto group overflow-hidden">
+          <div className="sec4-overlay absolute inset-0 bg-white z-10 pointer-events-none will-change-transform" />
           {/* Background Image */}
           <img
             src="/images/made-in-italy/colosseo-2020.jpg"
             alt="Colosseum"
-            className="sec4-img-inner w-full h-full object-cover block origin-center"
+            className="sec4-img-inner w-full h-full object-cover block origin-center will-change-transform"
             loading="lazy"
           />
           
