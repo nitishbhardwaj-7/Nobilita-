@@ -428,7 +428,7 @@ export default function TechnicalDataPage() {
                 ))}
               </h2>
             </div>
-              <div className="font-ivymode font-light text-white/90 text-[20px] tracking-widest max-w-6xl space-y-12">
+              <div className="font-ivymode font-light text-white/90 text-[20px] tracking-widest w-full space-y-12">
                 <p className="ug-desc text-[20px]">
                   The lasting beauty and performance of a surface depend on proper care and maintenance. To help you preserve the exceptional qualities of NOBILITA porcelain surfaces, we have created a collection of maintenance guidelines.
                 </p>
