@@ -76,17 +76,6 @@ export default function WineSpillSVG() {
           />
         ))}
 
-        {/* Add custom wine shimmer paths if needed */}
-        <path
-          d="M 175,80 L 195,110"
-          fill="none"
-          stroke="white"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          className="wine-path wine-shimmer-line"
-          opacity="0"
-          style={{ willChange: "transform, opacity" }}
-        />
       </g>
     </svg>
   );

@@ -32,7 +32,7 @@ export function useSpillAnimations() {
         if (subnote) gsap.set(subnote, { opacity: 0, y: 15 });
 
         // Initialize SVG elements for stroke drawing
-        const paths = sec.querySelectorAll<SVGPathElement>("path");
+        const paths = sec.querySelectorAll<SVGPathElement>("path:not(.no-anim)");
         paths.forEach((path) => {
           let length = 0;
           try {
@@ -127,41 +127,32 @@ export function useSpillAnimations() {
           // Initial mug angle before settling
           gsap.set(illust, { rotation: -1.5, transformOrigin: "center bottom" });
 
-          // Sequence: Mug outline -> Splash paths -> Spill paths
-          mainTl.add(animatePathDraw(".coffee-mug", 0.3, 0.015), "-=0.1");
-          mainTl.add(animatePathDraw(".coffee-splash", 0.25, 0.01), "-=0.1");
-          mainTl.add(animatePathDraw(".coffee-spill", 0.25, 0.015), "-=0.1");
+          const coffeeShape = sec.querySelector(".coffee-shape");
+          const clipRect = sec.querySelector(".coffee-clip-rect");
+
+          if (clipRect) {
+            // Start the clip rect low and with zero height
+            gsap.set(clipRect, { attr: { y: 170, height: 0 } });
+            
+            // Wipe from bottom to top
+            mainTl.to(clipRect, {
+              attr: { y: 65.93, height: 103.59 },
+              duration: 1.2,
+              ease: "power2.inOut"
+            }, "-=0.1");
+          }
+          
+          if (coffeeShape) {
+            // Fade in and slight scale up to make it feel dynamic
+            mainTl.fromTo(coffeeShape, 
+              { opacity: 0, scale: 0.95, transformOrigin: "center center" },
+              { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
+              "<" // Play at the same time as the wipe
+            );
+          }
 
           // Settle mug rotation
           mainTl.to(illust, { rotation: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
-
-          // Steam loop animation (slow upward movement and low opacity fade)
-          const steamLines = sec.querySelectorAll(".coffee-steam-line");
-          if (steamLines.length) {
-            gsap.set(steamLines, { opacity: 0, y: 5 });
-            gsap.to(steamLines, {
-              opacity: 0.25,
-              y: -8,
-              strokeDashoffset: 0,
-              duration: 4,
-              repeat: -1,
-              ease: "sine.inOut",
-              stagger: 1.2,
-            });
-          }
-
-          // Subtle coffee drip flowing downward loop
-          const splashes = sec.querySelectorAll(".coffee-splash");
-          if (splashes.length) {
-            gsap.to(splashes, {
-              y: "+=1",
-              duration: 4,
-              repeat: -1,
-              yoyo: true,
-              ease: "sine.inOut",
-              stagger: 0.1,
-            });
-          }
         }
 
         if (isWine) {

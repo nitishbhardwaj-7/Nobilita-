@@ -446,7 +446,7 @@ export default function TechnicalDataPage() {
 
               <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Bottle Illustration */}
-                <div className="spill-illust relative flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                <div className="spill-illust relative flex-shrink-0 w-40 md:w-56 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
                   <OilSpillSVG />
                 </div>
 
@@ -480,8 +480,10 @@ export default function TechnicalDataPage() {
 
               <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                 {/* Left Side: Spilling Coffee Cup Illustration */}
-                <div className="spill-illust relative flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
-                  <CoffeeSpillSVG />
+                <div className="spill-illust relative flex-shrink-0 w-40 md:w-56 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                  <div className="w-[80%] flex justify-center">
+                    <CoffeeSpillSVG />
+                  </div>
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
@@ -520,7 +522,7 @@ export default function TechnicalDataPage() {
                 {/* Upper Row: SVG centered with Points 1-4 only */}
                 <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                   {/* Left Side: Spilling Wine Glass Illustration */}
-                  <div className="spill-illust relative flex-shrink-0 w-64 md:w-80 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
+                  <div className="spill-illust relative flex-shrink-0 w-40 md:w-56 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
                     <WineSpillSVG />
                   </div>
 
@@ -548,7 +550,7 @@ export default function TechnicalDataPage() {
                 {/* Lower Row: Subnote (aligned with the text above) */}
                 <div className="wine-subnote flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-16">
                   {/* Spacer to align text with the right side column on desktop */}
-                  <div className="hidden md:block flex-shrink-0 w-52 md:w-64" />
+                  <div className="hidden md:block flex-shrink-0 w-32 md:w-44" />
 
                   {/* Subnote Content */}
                   <div className="flex-1 space-y-2 font-ivymode font-light text-white/90 text-[20px] tracking-widest">
