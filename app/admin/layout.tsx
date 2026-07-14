@@ -3,16 +3,18 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   LayoutDashboard,
   FileText,
-  Briefcase,
+  Package,
   Image as ImageIcon,
   Settings,
   LogOut,
   Menu,
   X,
-  User as UserIcon,
+  ExternalLink,
+  ChevronRight,
 } from "lucide-react";
 
 interface User {
@@ -22,6 +24,13 @@ interface User {
   role: string;
 }
 
+const menuItems = [
+  { name: "Overview", path: "/admin", icon: LayoutDashboard, exact: true },
+  { name: "Pages", path: "/admin/pages", icon: FileText, exact: false },
+  { name: "Products", path: "/admin/products", icon: Package, exact: false },
+  { name: "Media Library", path: "/admin/media", icon: ImageIcon, exact: false },
+  { name: "Settings", path: "/admin/settings", icon: Settings, exact: false },
+];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -30,7 +39,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Exclude login page from dashboard layout wrapping
   const isLoginPage = pathname === "/admin/login";
 
   useEffect(() => {
@@ -48,7 +56,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         } else {
           router.push(`/admin/login?from=${pathname}`);
         }
-      } catch (err) {
+      } catch {
         router.push(`/admin/login?from=${pathname}`);
       } finally {
         setLoading(false);
@@ -72,10 +80,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-slate-950 text-white">
-        <div className="flex flex-col items-center gap-4">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-violet-500 border-t-transparent" />
-          <p className="text-sm text-slate-400 font-medium">Verifying session...</p>
+      <div className="flex h-screen items-center justify-center bg-[#1a1a1a]">
+        <div className="flex flex-col items-center gap-6">
+          <div className="w-8 h-8 border border-white/20 border-t-white/80 rounded-full animate-spin" />
+          <p className="font-michroma text-[10px] tracking-[0.3em] uppercase text-white/40">
+            Verifying Session
+          </p>
         </div>
       </div>
     );
@@ -85,118 +95,158 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return <>{children}</>;
   }
 
-  const menuItems = [
-    { name: "Overview", path: "/admin", icon: LayoutDashboard },
-    { name: "Custom Pages", path: "/admin/pages", icon: FileText },
-    { name: "Services", path: "/admin/services", icon: Briefcase },
-    { name: "Media Library", path: "/admin/media", icon: ImageIcon },
-    { name: "Site Settings", path: "/admin/settings", icon: Settings },
-  ];
+  const pageTitle = (() => {
+    if (pathname === "/admin") return "Overview";
+    const segment = pathname.split("/")[2];
+    if (!segment) return "Dashboard";
+    return segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
+  })();
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100 font-sans">
-      {/* Mobile Sidebar Overlay */}
+    <div className="flex min-h-screen bg-[#f8f5f0]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+      {/* Mobile overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-black/60 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      {/* Sidebar navigation */}
+      {/* ── Sidebar ── */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-slate-800/80 bg-slate-900/90 backdrop-blur-md transition-transform duration-300 lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-60 flex-col bg-[#1a1a1a] transition-transform duration-300 lg:static lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex h-16 items-center justify-between border-b border-slate-800/80 px-6">
-          <Link href="/admin" className="flex items-center gap-2">
-            <span className="font-serif text-lg font-bold tracking-wider bg-gradient-to-r from-violet-400 to-indigo-200 bg-clip-text text-transparent">
-              NOBILITA CMS
-            </span>
+        {/* Logo area */}
+        <div className="flex h-16 items-center justify-between px-6 border-b border-white/[0.06]">
+          <Link href="/admin">
+            <Image
+              src="/images/NOBILITA_white.png"
+              alt="Nobilita"
+              width={120}
+              height={32}
+              className="object-contain opacity-90 hover:opacity-100 transition-opacity"
+            />
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="rounded-lg p-1 text-slate-400 hover:bg-slate-800 hover:text-white lg:hidden"
+            className="text-white/30 hover:text-white transition-colors lg:hidden"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
-        <nav className="flex-1 space-y-1.5 px-4 py-6 overflow-y-auto">
+        {/* CMS label */}
+        <div className="px-6 pt-6 pb-3">
+          <span
+            className="text-[9px] tracking-[0.35em] uppercase text-white/25"
+            style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+          >
+            Content Studio
+          </span>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto">
           {menuItems.map((item) => {
-            const isActive = pathname === item.path || (item.path !== "/admin" && pathname.startsWith(item.path));
+            const isActive = item.exact
+              ? pathname === item.path
+              : pathname === item.path || pathname.startsWith(item.path + "/");
             const Icon = item.icon;
+
             return (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                onClick={() => setSidebarOpen(false)}
+                className={`flex items-center gap-3 px-3 py-2.5 transition-all duration-150 group ${
                   isActive
-                    ? "bg-violet-600/20 text-violet-300 border-l-2 border-violet-500 shadow-md shadow-violet-900/5"
-                    : "text-slate-400 hover:bg-slate-800/50 hover:text-white"
+                    ? "bg-white/[0.07] text-white"
+                    : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"
                 }`}
               >
-                <Icon size={18} className={isActive ? "text-violet-400" : "text-slate-400"} />
-                {item.name}
+                <Icon
+                  size={15}
+                  className={isActive ? "text-white/70" : "text-white/30 group-hover:text-white/50"}
+                />
+                <span
+                  className={`text-[11px] tracking-[0.15em] uppercase ${
+                    isActive ? "text-white" : ""
+                  }`}
+                  style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+                >
+                  {item.name}
+                </span>
+                {isActive && (
+                  <ChevronRight size={12} className="ml-auto text-white/30" />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* User Card & Logout */}
-        <div className="border-t border-slate-800/80 p-4 bg-slate-900/40">
-          <div className="flex items-center gap-3 px-2 py-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-600/30 text-violet-300">
-              <UserIcon size={18} />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="truncate text-xs font-semibold text-slate-200">{user?.name || "Admin"}</p>
-              <p className="truncate text-[10px] text-slate-500 font-mono">{user?.role || "EDITOR"}</p>
-            </div>
+        {/* Bottom user area */}
+        <div className="border-t border-white/[0.06] p-4 space-y-3">
+          <div className="px-2">
+            <p className="text-[10px] text-white/50 truncate">{user?.email || "—"}</p>
+            <p
+              className="text-[9px] tracking-[0.2em] uppercase text-white/25 mt-0.5"
+              style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+            >
+              {user?.role || "ADMIN"}
+            </p>
           </div>
           <button
             onClick={handleLogout}
-            className="mt-3 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-red-400 hover:bg-red-950/20 hover:text-red-300 transition-colors"
+            className="flex w-full items-center gap-2.5 px-2 py-2 text-white/30 hover:text-red-400 transition-colors text-[11px]"
           >
-            <LogOut size={18} />
-            Sign Out
+            <LogOut size={14} />
+            <span
+              className="tracking-[0.15em] uppercase"
+              style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+            >
+              Sign Out
+            </span>
           </button>
         </div>
       </aside>
 
-      {/* Main content wrapper */}
+      {/* ── Main Content ── */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        {/* Top navbar */}
-        <header className="flex h-16 items-center justify-between border-b border-slate-800/80 bg-slate-900/30 px-6 lg:px-8">
+        {/* Topbar */}
+        <header className="flex h-16 items-center justify-between border-b border-[#1a1a1a]/10 bg-[#f8f5f0] px-6 lg:px-10">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white lg:hidden"
+              className="text-[#1a1a1a]/40 hover:text-[#1a1a1a] transition-colors lg:hidden"
             >
-              <Menu size={22} />
+              <Menu size={20} />
             </button>
-            <h1 className="text-lg font-bold tracking-tight text-white capitalize">
-              {pathname === "/admin"
-                ? "Overview Dashboard"
-                : pathname.split("/")[2]?.replace("-", " ") || "Dashboard"}
-            </h1>
+            <div>
+              <h1
+                className="text-[11px] tracking-[0.25em] uppercase text-[#1a1a1a]/80"
+                style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+              >
+                {pageTitle}
+              </h1>
+            </div>
           </div>
-          
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              target="_blank"
-              className="rounded-lg border border-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
-            >
-              View Live Website
-            </Link>
-          </div>
+
+          <Link
+            href="/"
+            target="_blank"
+            className="flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase text-[#1a1a1a]/40 hover:text-[#1a1a1a] transition-colors border-b border-transparent hover:border-[#1a1a1a]/30 pb-0.5"
+            style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+          >
+            View Site
+            <ExternalLink size={11} />
+          </Link>
         </header>
 
-        {/* Dashboard inner content area */}
-        <main className="flex-1 overflow-y-auto bg-slate-950/60 p-6 lg:p-8">
-          <div className="mx-auto max-w-6xl space-y-8">
+        {/* Page content */}
+        <main className="flex-1 overflow-y-auto p-6 lg:p-10">
+          <div className="mx-auto max-w-6xl">
             {children}
           </div>
         </main>

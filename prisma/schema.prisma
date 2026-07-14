@@ -12,47 +12,59 @@ enum Role {
   EDITOR
 }
 
+enum Status {
+  DRAFT
+  PUBLISHED
+}
+
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
   password  String
   name      String?
-  role      Role     @default(EDITOR)
+  role      Role     @default(ADMIN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Page {
-  id              String   @id @default(cuid())
-  title           String
-  slug            String   @unique
-  pageType        String   @default("CUSTOM") // e.g. HOME, ABOUT, CUSTOM
-  heroTitle       String?
-  heroDescription String?
-  sections        Json     @default("[]") // content blocks (JSON array)
-  featuredImage   String?
-  status          String   @default("DRAFT") // DRAFT, PUBLISHED
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  seoTitle       String?
+  seoDescription String?
+  sections       Json     @default("[]")
+  customHtml     String?  @db.Text
+  status         Status   @default(DRAFT)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
-model Service {
+model Product {
   id               String   @id @default(cuid())
-  serviceName      String
+  name             String
   slug             String   @unique
-  shortDescription String
-  longDescription  String   @db.Text
-  featuredImage    String?
-  galleryImages    Json     @default("[]") // Array of image URLs
-  seoTitle         String?
-  metaDescription  String?
-  metaKeywords     String?
-  canonicalUrl     String?
-  ogImage          String?
-  schemaMarkup     Json     @default("{}") // Structured Schema Org markup
-  faqSection       Json     @default("[]") // Array of { question, answer }
-  ctaSection       Json     @default("{}") // CTA configuration { title, description, linkText, linkUrl }
-  status           String   @default("DRAFT") // DRAFT, PUBLISHED
+  description      String?  @db.Text
+  color            String   @default("White")
+  finish           String?
+  thicknessMm      String[]
+  dimensions       String[]
+  format           String?
+  applications     String[]
+  coverImage       String?
+  gallery          String[] @default([])
+  
+  // Custom configuration for Exhibition/Featured product detail modal
+  leftBg           String?
+  faces            String[] @default([])
+  finishes         String[] @default([])
+  slides           Json     @default("[]")
+  availableFaces   String[] @default([])
+  bookmatchImg     String?
+  isHorizontalFace Boolean  @default(false)
+
+  order            Int      @default(0)
+  status           Status   @default(DRAFT)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }
@@ -63,19 +75,25 @@ model Media {
   fileUrl   String
   fileType  String
   fileSize  Int
+  alt       String?
+  tags      String[] @default([])
+  width     Int?
+  height    Int?
   folder    String   @default("/")
   createdAt DateTime @default(now())
 }
 
 model Settings {
-  id           String   @id @default("global")
-  siteName     String   @default("Porcellana Nobilita")
-  logoUrl      String?
-  contactEmail String?
-  contactPhone String?
-  footerText   String?
-  socialLinks  Json     @default("{}") // e.g. { facebook: "", instagram: "" }
-  trackingCode String?  @db.Text
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id             String   @id @default("global")
+  siteName       String   @default("Porcellana Nobilita")
+  logoLight      String?
+  logoDark       String?
+  contactEmail   String?
+  contactPhone   String?
+  footerText     String?
+  socialLinks    Json     @default("{}")
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }

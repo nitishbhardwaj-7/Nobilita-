@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
-export default function AdminLogin() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
@@ -11,7 +12,6 @@ export default function AdminLogin() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // If already logged in, redirect directly
   useEffect(() => {
     async function checkAuth() {
       try {
@@ -20,8 +20,8 @@ export default function AdminLogin() {
           const from = searchParams.get("from") || "/admin";
           router.push(from);
         }
-      } catch (err) {
-        // Not authenticated, stay on page
+      } catch {
+        // not authenticated — stay
       }
     }
     checkAuth();
@@ -41,9 +41,7 @@ export default function AdminLogin() {
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || "Login failed");
-      }
+      if (!res.ok) throw new Error(data.error || "Login failed");
 
       const from = searchParams.get("from") || "/admin";
       router.push(from);
@@ -56,79 +54,101 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-1/4 left-1/4 h-[300px] w-[300px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 h-[350px] w-[350px] rounded-full bg-indigo-600/10 blur-[130px] pointer-events-none" />
-
-      <div className="w-full max-w-md space-y-8 z-10">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold tracking-tight text-white font-serif">
-            Porcellana Nobilita
-          </h2>
-          <p className="mt-2 text-center text-sm text-slate-400">
-            Control Panel Login
+    <div
+      className="flex min-h-screen items-center justify-center bg-[#f8f5f0] px-4"
+      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+    >
+      <div className="w-full max-w-sm">
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-12">
+          <Image
+            src="/images/NOBILITA Logo BLACK.png"
+            alt="Nobilita"
+            width={160}
+            height={44}
+            className="object-contain mb-6"
+          />
+          <div className="w-8 h-px bg-[#1a1a1a]/20" />
+          <p
+            className="mt-4 text-[10px] tracking-[0.3em] uppercase text-[#1a1a1a]/40"
+            style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+          >
+            Content Studio
           </p>
         </div>
 
-        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 shadow-2xl">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+        {/* Form card */}
+        <div className="bg-white border border-[#1a1a1a]/8 p-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-              <div className="rounded-lg bg-red-950/40 border border-red-800 p-4 text-sm text-red-400">
+              <div className="border border-red-200 bg-red-50 px-4 py-3 text-[11px] text-red-600 tracking-wide">
                 {error}
               </div>
             )}
 
-            <div>
-              <label htmlFor="email-address" className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="email"
+                className="block text-[9px] tracking-[0.3em] uppercase text-[#1a1a1a]/50"
+                style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+              >
                 Email Address
               </label>
               <input
-                id="email-address"
-                name="email"
+                id="email"
                 type="email"
                 autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block w-full rounded-lg border border-slate-800 bg-slate-950/60 px-4 py-3 text-white placeholder-slate-500 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 text-sm transition-all"
-                placeholder="admin@example.com"
+                className="block w-full border border-[#1a1a1a]/15 bg-[#f8f5f0] px-4 py-3 text-sm text-[#1a1a1a] placeholder-[#1a1a1a]/30 focus:border-[#1a1a1a]/50 focus:outline-none transition-colors"
+                placeholder="admin@nobilita.com"
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="password"
+                className="block text-[9px] tracking-[0.3em] uppercase text-[#1a1a1a]/50"
+                style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+              >
                 Password
               </label>
               <input
                 id="password"
-                name="password"
                 type="password"
                 autoComplete="current-password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block w-full rounded-lg border border-slate-800 bg-slate-950/60 px-4 py-3 text-white placeholder-slate-500 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 text-sm transition-all"
+                className="block w-full border border-[#1a1a1a]/15 bg-[#f8f5f0] px-4 py-3 text-sm text-[#1a1a1a] placeholder-[#1a1a1a]/30 focus:border-[#1a1a1a]/50 focus:outline-none transition-colors"
                 placeholder="••••••••"
               />
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-500">
-              <span className="italic">Note: Empty database auto-seeds first account as admin.</span>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="group relative flex w-full justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white hover:from-violet-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-violet-900/25"
-              >
-                {isLoading ? "Signing in..." : "Access Dashboard"}
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-[#1a1a1a] px-4 py-3.5 text-[10px] tracking-[0.3em] uppercase text-white hover:bg-[#3d3d3d] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              style={{ fontFamily: "var(--font-michroma), sans-serif" }}
+            >
+              {isLoading ? "Authenticating..." : "Enter Studio"}
+            </button>
           </form>
         </div>
+
+        <p className="mt-6 text-center text-[10px] text-[#1a1a1a]/25 tracking-wider">
+          PORCELLANA NOBILITA — IL GRES IMPERIALE D&apos;ITALIA
+        </p>
       </div>
     </div>
+  );
+}
+
+export default function AdminLogin() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   );
 }

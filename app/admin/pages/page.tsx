@@ -8,7 +8,7 @@ interface Page {
   id: string;
   title: string;
   slug: string;
-  pageType: string;
+  customHtml?: string | null;
   status: string;
   updatedAt: string;
 }
@@ -54,106 +54,129 @@ export default function PagesList() {
     }
   };
 
+  const fontMichroma = { fontFamily: "var(--font-michroma), sans-serif" };
+  const fontIvymode = { fontFamily: "var(--font-ivymode), serif" };
+
   if (loading) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-10">
         <div className="flex justify-between items-center">
-          <div className="h-8 w-48 animate-pulse rounded-lg bg-slate-900" />
-          <div className="h-10 w-32 animate-pulse rounded-lg bg-slate-900" />
+          <div className="space-y-2">
+            <div className="h-4 w-32 animate-pulse bg-[#1a1a1a]/5" />
+            <div className="h-8 w-48 animate-pulse bg-[#1a1a1a]/5" />
+          </div>
+          <div className="h-12 w-40 animate-pulse bg-[#1a1a1a]/5" />
         </div>
-        <div className="h-96 animate-pulse rounded-2xl bg-slate-900 border border-slate-800" />
+        <div className="h-96 animate-pulse bg-white border border-[#1a1a1a]/8" />
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+      {/* Header toolbar */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white font-serif">Custom Pages</h2>
-          <p className="text-sm text-slate-400">Manage structure, blocks, and visibility of custom layout pages.</p>
+          <p className="text-[10px] tracking-[0.3em] uppercase text-[#1a1a1a]/35 mb-2" style={fontMichroma}>
+            Nobilita Content Studio
+          </p>
+          <h2 className="text-3xl font-light text-[#1a1a1a] leading-tight" style={fontIvymode}>
+            Custom Pages
+          </h2>
+          <p className="mt-2 text-sm text-[#8b8b8b]">
+            Manage structure, blocks, and visibility of custom layout pages.
+          </p>
         </div>
         <Link
           href="/admin/pages/new"
-          className="flex items-center justify-center gap-2 rounded-xl bg-violet-600 hover:bg-violet-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors self-start sm:self-auto shadow-lg shadow-violet-900/25"
+          className="flex items-center justify-center gap-2 border border-[#1a1a1a] bg-[#1a1a1a] hover:bg-transparent hover:text-[#1a1a1a] px-6 py-3.5 text-[10px] tracking-[0.2em] uppercase font-semibold text-white transition-all duration-200 self-start sm:self-auto shadow-sm"
+          style={fontMichroma}
         >
-          <Plus size={16} />
+          <Plus size={13} />
           Create New Page
         </Link>
       </div>
 
+      {/* Divider */}
+      <div className="h-px bg-[#1a1a1a]/8" />
+
       {error && (
-        <div className="rounded-xl bg-red-950/40 border border-red-800 p-4 text-sm text-red-400">
+        <div className="border-l-2 border-red-500 bg-red-500/5 p-4 text-xs text-red-600 font-medium">
           {error}
         </div>
       )}
 
       {pages.length === 0 ? (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/20 p-12 text-center">
-          <p className="text-slate-400 text-sm mb-4">No custom pages created yet.</p>
+        <div className="border border-[#1a1a1a]/8 bg-white p-16 text-center space-y-6">
+          <p className="text-[#8b8b8b] text-sm font-light">No custom pages created yet.</p>
           <Link
             href="/admin/pages/new"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 hover:bg-slate-800 px-4 py-2 text-xs font-semibold text-white transition-colors"
+            className="inline-flex items-center gap-2 border border-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white px-5 py-3 text-[10px] tracking-[0.2em] uppercase font-semibold text-[#1a1a1a] transition-all duration-200"
+            style={fontMichroma}
           >
             Create Your First Page
           </Link>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/20">
+        <div className="bg-white border border-[#1a1a1a]/8 overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left text-sm text-slate-300">
-              <thead className="border-b border-slate-800 bg-slate-900/40 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <table className="w-full border-collapse text-left text-sm text-[#1a1a1a]/80">
+              <thead className="border-b border-[#1a1a1a]/8 bg-white text-[10px] tracking-[0.2em] uppercase text-[#1a1a1a]/40 font-semibold" style={fontMichroma}>
                 <tr>
-                  <th className="px-6 py-4">Title</th>
-                  <th className="px-6 py-4">URL Slug</th>
-                  <th className="px-6 py-4">Page Type</th>
-                  <th className="px-6 py-4">Status</th>
-                  <th className="px-6 py-4">Last Updated</th>
-                  <th className="px-6 py-4 text-right">Actions</th>
+                  <th className="px-6 py-4.5 font-semibold">Title</th>
+                  <th className="px-6 py-4.5 font-semibold">URL Slug</th>
+                  <th className="px-6 py-4.5 font-semibold">Page Type</th>
+                  <th className="px-6 py-4.5 font-semibold">Status</th>
+                  <th className="px-6 py-4.5 font-semibold">Last Updated</th>
+                  <th className="px-6 py-4.5 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-[#1a1a1a]/6">
                 {pages.map((page) => (
-                  <tr key={page.id} className="hover:bg-slate-900/20 transition-colors">
-                    <td className="px-6 py-4 font-semibold text-white">{page.title}</td>
-                    <td className="px-6 py-4 font-mono text-xs text-slate-400">/{page.slug}</td>
-                    <td className="px-6 py-4 text-xs font-medium text-slate-400">{page.pageType}</td>
-                    <td className="px-6 py-4">
+                  <tr key={page.id} className="hover:bg-[#1a1a1a]/[0.015] transition-colors">
+                    <td className="px-6 py-5 font-medium text-[#1a1a1a]" style={{ fontSize: "13px" }}>{page.title}</td>
+                    <td className="px-6 py-5 font-mono text-xs text-[#8b8b8b]">/{page.slug}</td>
+                    <td className="px-6 py-5 text-[10px] tracking-[0.15em] uppercase text-[#8b8b8b]" style={fontMichroma}>
+                      {page.slug === "home" || page.slug === "" ? "Home Page" : page.customHtml ? "Pasted HTML" : "Standard Section"}
+                    </td>
+                    <td className="px-6 py-5">
                       <span
-                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                        className={`inline-flex items-center gap-1.5 px-3 py-1 text-[9px] tracking-[0.15em] uppercase font-semibold ${
                           page.status === "PUBLISHED"
-                            ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                            : "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200/50"
+                            : "bg-amber-50 text-amber-700 border border-amber-200/50"
                         }`}
+                        style={fontMichroma}
                       >
+                        <span className={`w-1.5 h-1.5 rounded-full ${page.status === "PUBLISHED" ? "bg-emerald-500" : "bg-amber-500"}`} />
                         {page.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-400">
+                    <td className="px-6 py-5 text-xs text-[#8b8b8b]">
                       {new Date(page.updatedAt).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 text-right space-x-2">
+                    <td className="px-6 py-5 text-right space-x-1.5">
                       <Link
                         href={`/${page.slug}`}
                         target="_blank"
-                        className="inline-flex rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 border border-[#1a1a1a]/8 text-[#1a1a1a]/40 hover:text-[#1a1a1a] hover:border-[#1a1a1a]/20 transition-all"
                         title="View Live Page"
                       >
-                        <ExternalLink size={16} />
+                        <ExternalLink size={13} />
                       </Link>
                       <Link
                         href={`/admin/pages/${page.id}`}
-                        className="inline-flex rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 border border-[#1a1a1a]/8 text-[#1a1a1a]/40 hover:text-[#1a1a1a] hover:border-[#1a1a1a]/20 transition-all"
                         title="Edit Page"
                       >
-                        <Edit2 size={16} />
+                        <Edit2 size={13} />
                       </Link>
                       <button
                         onClick={() => handleDelete(page.id)}
-                        className="inline-flex rounded-lg p-2 text-red-400 hover:bg-red-950/30 hover:text-red-300 transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 border border-[#1a1a1a]/8 text-red-400 hover:text-red-600 hover:border-red-200 transition-all"
                         title="Delete Page"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={13} />
                       </button>
                     </td>
                   </tr>

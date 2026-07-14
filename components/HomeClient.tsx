@@ -13,22 +13,37 @@ import TechnicalDataSection from "@/components/TechnicalDataSection";
 import Footer from "@/components/Footer";
 // import LanguageSwitcher from "@/components/LanguageSwitcher";
 
+// Global in-memory flag to ensure loader only runs once per website load/refresh.
+// It will survive client-side/SPA navigation, but reset on full reload/refresh.
+let hasLoadedGlobal = false;
+
 export default function HomeClient({ cmsData }: { cmsData: any }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!hasLoadedGlobal);
 
   useEffect(() => {
+    if (hasLoadedGlobal) {
+      setIsLoading(false);
+      return;
+    }
+
     // Fallback safety timer: force-hide loader after 10 seconds if needed
     const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
+      hasLoadedGlobal = true;
     }, 10000);
     return () => clearTimeout(fallbackTimer);
   }, []);
 
   const d = cmsData || {};
 
+  const handleComplete = () => {
+    setIsLoading(false);
+    hasLoadedGlobal = true;
+  };
+
   return (
     <main className="w-full min-h-screen bg-white">
-      <Loader isLoading={isLoading} onComplete={() => setIsLoading(false)} />
+      <Loader isLoading={isLoading} onComplete={handleComplete} />
       {/* <LanguageSwitcher isVisible={!isLoading} /> */}
       <BrandIntro 
         title={d.brandTitle}

@@ -116,6 +116,18 @@ const slabs = [
     img: "/images/Links/White Camouflage Face 1.jpg",
     color: "Grey",
     finish: "Structured Matte"
+  },
+  {
+    name: "Verde Profondo",
+    img: "/images/Our story/Verde profondo application.jpg",
+    color: "Green",
+    finish: "Matte"
+  },
+  {
+    name: "Ferro Industriale",
+    img: "/images/Our story/Ferro Industriale (2).jpg",
+    color: "Grey",
+    finish: "Matte"
   }
 ];
 
@@ -179,12 +191,53 @@ function ExploreCollectionContent() {
   // Grid column count state: 2, 3, 4, or 5 columns
   const [columns, setColumns] = useState(4);
 
+  // Dynamic products list from DB
+  const [dbProducts, setDbProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await fetch("/api/products");
+        const json = await res.json();
+        if (json.success && json.data) {
+          const published = json.data
+            .filter((p: any) => p.status === "PUBLISHED")
+            .map((p: any) => ({
+              name: p.name,
+              img: p.coverImage || p.leftBg || "",
+              color: p.color,
+              finish: p.finish || ""
+            }));
+          setDbProducts(published);
+        }
+      } catch (err) {
+        console.error("Failed to load dynamic products on explore-collection page:", err);
+      }
+    }
+    load();
+  }, []);
+
+  const slabsToRender = useMemo(() => {
+    return dbProducts.length > 0 ? dbProducts : slabs;
+  }, [dbProducts]);
+
   // Selected slab for fullscreen detail modal
   const [activeSlab, setActiveSlab] = useState<typeof slabs[0] | null>(null);
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-
+  // Auto-open active slab based on query parameter
+  useEffect(() => {
+    const productName = searchParams?.get("product");
+    if (productName) {
+      const foundSlab = slabsToRender.find(
+        (slab) => slab.name.toLowerCase() === productName.toLowerCase()
+      );
+      if (foundSlab) {
+        setActiveSlab(foundSlab);
+      }
+    }
+  }, [searchParams, slabsToRender]);
 
   // Reset all active filters
   const handleReset = () => {
@@ -196,12 +249,12 @@ function ExploreCollectionContent() {
 
   // Filter slabs based on selection
   const filteredSlabs = useMemo(() => {
-    return slabs.filter((slab) => {
+    return slabsToRender.filter((slab) => {
       const matchColor = !selectedColor || slab.color === selectedColor;
       const matchFinish = !selectedFinish || slab.finish === selectedFinish;
       return matchColor && matchFinish;
     });
-  }, [selectedColor, selectedFinish]);
+  }, [selectedColor, selectedFinish, slabsToRender]);
 
   // Tailwind Grid Columns classes map
   const gridColsClass = {

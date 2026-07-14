@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { SettingsSchema } from "@/lib/validation";
 
 export const dynamic = "force-dynamic";
 
@@ -11,21 +10,18 @@ export async function GET() {
       where: { id: "global" },
     });
 
-    // Seed default settings if not exists
     if (!settings) {
       settings = await prisma.settings.create({
         data: {
           id: "global",
           siteName: "Porcellana Nobilita",
-          logoUrl: "/logo.svg",
           contactEmail: "info@nobilita.com",
           contactPhone: "+39 02 1234567",
           footerText: "© 2026 Porcellana Nobilita. All rights reserved.",
           socialLinks: {
-            facebook: "https://facebook.com/nobilita",
-            instagram: "https://instagram.com/nobilita",
-            twitter: "https://twitter.com/nobilita",
-            linkedin: "https://linkedin.com/company/nobilita",
+            instagram: "",
+            facebook: "",
+            linkedin: "",
           },
         },
       });
@@ -45,37 +41,42 @@ export async function GET() {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-
-    const validation = SettingsSchema.safeParse(body);
-    if (!validation.success) {
-      return NextResponse.json(
-        { success: false, error: validation.error.issues[0].message },
-        { status: 400 }
-      );
-    }
-
-    const data = validation.data;
+    const {
+      siteName,
+      logoLight,
+      logoDark,
+      contactEmail,
+      contactPhone,
+      footerText,
+      socialLinks,
+      seoTitle,
+      seoDescription,
+    } = body;
 
     const updatedSettings = await prisma.settings.upsert({
       where: { id: "global" },
       update: {
-        siteName: data.siteName,
-        logoUrl: data.logoUrl,
-        contactEmail: data.contactEmail,
-        contactPhone: data.contactPhone,
-        footerText: data.footerText,
-        socialLinks: data.socialLinks as any,
-        trackingCode: data.trackingCode,
+        ...(siteName !== undefined && { siteName }),
+        ...(logoLight !== undefined && { logoLight }),
+        ...(logoDark !== undefined && { logoDark }),
+        ...(contactEmail !== undefined && { contactEmail }),
+        ...(contactPhone !== undefined && { contactPhone }),
+        ...(footerText !== undefined && { footerText }),
+        ...(socialLinks !== undefined && { socialLinks }),
+        ...(seoTitle !== undefined && { seoTitle }),
+        ...(seoDescription !== undefined && { seoDescription }),
       },
       create: {
         id: "global",
-        siteName: data.siteName,
-        logoUrl: data.logoUrl,
-        contactEmail: data.contactEmail,
-        contactPhone: data.contactPhone,
-        footerText: data.footerText,
-        socialLinks: data.socialLinks as any,
-        trackingCode: data.trackingCode,
+        siteName: siteName || "Porcellana Nobilita",
+        logoLight: logoLight || null,
+        logoDark: logoDark || null,
+        contactEmail: contactEmail || null,
+        contactPhone: contactPhone || null,
+        footerText: footerText || null,
+        socialLinks: socialLinks || {},
+        seoTitle: seoTitle || null,
+        seoDescription: seoDescription || null,
       },
     });
 

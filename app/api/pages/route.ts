@@ -59,11 +59,10 @@ export async function POST(request: Request) {
       data: {
         title: data.title,
         slug: data.slug,
-        pageType: data.pageType,
-        heroTitle: data.heroTitle,
-        heroDescription: data.heroDescription,
+        seoTitle: data.seoTitle,
+        seoDescription: data.seoDescription,
         sections: data.sections as any,
-        featuredImage: data.featuredImage,
+        customHtml: data.customHtml,
         status: data.status,
       },
     });

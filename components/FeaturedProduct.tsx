@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 
@@ -274,6 +274,28 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       { type: "image", src: "/images/Links/White Camouflage Face 1.jpg", alt: "White Camouflage Slab" }
     ],
     availableFaces: ["/images/Links/White Camouflage Face 1.jpg"]
+  },
+  "Verde Profondo": {
+    leftBg: "/images/Our story/Verde profondo application.jpg",
+    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+    finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
+    slides: [
+      { type: "image", src: "/images/Our story/Verde profondo application.jpg", alt: "Verde Profondo Application" }
+    ],
+    availableFaces: ["/images/Our story/Verde profondo application.jpg"],
+    isHorizontalFace: true
+  },
+  "Ferro Industriale": {
+    leftBg: "/images/Our story/Ferro Industriale (2).jpg",
+    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+    finishes: ["6.5MM – MATTE", "12MM – MATTE"],
+    slides: [
+      { type: "image", src: "/images/Our story/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application" }
+    ],
+    availableFaces: ["/images/Our story/Ferro Industriale (2).jpg"],
+    isHorizontalFace: true
   }
 };
 
@@ -302,8 +324,42 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
   const [showBookmatch, setShowBookmatch] = useState(false);
   const [activeFace, setActiveFace] = useState<number>(1);
 
-  // Get configuration for current active product
-  const config = activeProduct ? PRODUCT_CONFIGS[activeProduct] : null;
+  // Get configuration for current active product dynamically from DB
+  const [dbProducts, setDbProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (activeProduct) {
+      fetch("/api/products")
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.success && json.data) {
+            setDbProducts(json.data);
+          }
+        })
+        .catch((err) => console.error("Error fetching dynamic products in modal:", err));
+    }
+  }, [activeProduct]);
+
+  const config = useMemo<SlabConfig | null>(() => {
+    if (!activeProduct) return null;
+    const dbProduct = dbProducts.find(
+      (p) => p.name.toLowerCase() === activeProduct.toLowerCase()
+    );
+    if (dbProduct) {
+      return {
+        leftBg: dbProduct.leftBg || dbProduct.coverImage || undefined,
+        dimensions: dbProduct.dimensions || [],
+        faces: dbProduct.faces || [],
+        finishes: dbProduct.finishes || [],
+        slides: (Array.isArray(dbProduct.slides) ? dbProduct.slides : []) as { type: "video" | "image"; src: string; poster?: string; alt?: string }[],
+        availableFaces: dbProduct.availableFaces || [],
+        bookmatchImg: dbProduct.bookmatchImg || undefined,
+        isHorizontalFace: dbProduct.isHorizontalFace || false,
+      };
+    }
+    // Static fallback
+    return (PRODUCT_CONFIGS[activeProduct] || null) as SlabConfig | null;
+  }, [dbProducts, activeProduct]);
 
   // Reset states on product change
   useEffect(() => {
@@ -628,7 +684,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           {/* Title */}
           <div
             ref={titleRef}
-            className="relative z-10 w-full text-center lg:text-left mb-4 md:mb-12 mt-2 lg:mt-0 lg:max-w-none"
+            className="relative z-10 w-full text-center lg:text-left mb-4 md:mb-12 mt-16 md:mt-20 lg:mt-8 lg:max-w-none"
             style={{ opacity: 0, transform: "translateY(30px)" }}
           >
             <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-black tracking-[0.05em] uppercase font-light">

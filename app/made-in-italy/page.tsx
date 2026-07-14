@@ -24,7 +24,6 @@ export default function MadeInItalyPage() {
         { y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out" }
       );
 
-      // Section 1 Image Reveal
       const tlImg1 = gsap.timeline({
         scrollTrigger: {
           trigger: ".sec1-img-wrapper",
@@ -32,14 +31,10 @@ export default function MadeInItalyPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg1.fromTo(".sec1-overlay",
-        { y: "0%", opacity: 1 },
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
-      )
-        .fromTo(".sec1-img-inner",
-          { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
-        );
+      tlImg1.fromTo(".sec1-img-inner",
+        { scale: 1.15 },
+        { scale: 1, duration: 2, ease: "power3.out" }
+      );
 
       // Section 2 Top Text Paragraphs
       gsap.fromTo(".sec2-paragraph",
@@ -47,7 +42,6 @@ export default function MadeInItalyPage() {
         { y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out", scrollTrigger: { trigger: ".sec2-text-container", start: "top 85%" } }
       );
 
-      // Section 2 Left Image Reveal (Factory)
       const tlImg2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".sec2-img-wrapper-left",
@@ -55,16 +49,11 @@ export default function MadeInItalyPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg2.fromTo(".sec2-overlay-left",
-        { y: "0%", opacity: 1 },
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
-      )
-        .fromTo(".sec2-img-inner-left",
-          { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
-        );
+      tlImg2.fromTo(".sec2-img-inner-left",
+        { scale: 1.15 },
+        { scale: 1, duration: 2, ease: "power3.out" }
+      );
 
-      // Section 2 Right Image Reveal (Processing Unit)
       const tlImg3 = gsap.timeline({
         scrollTrigger: {
           trigger: ".sec2-img-wrapper-right",
@@ -72,14 +61,10 @@ export default function MadeInItalyPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg3.fromTo(".sec2-overlay-right",
-        { y: "0%", opacity: 1 },
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
-      )
-        .fromTo(".sec2-img-inner-right",
-          { scale: 1.15 },
-          { scale: 1, duration: 2, ease: "power3.out" }, "-=1.4"
-        );
+      tlImg3.fromTo(".sec2-img-inner-right",
+        { scale: 1.15 },
+        { scale: 1, duration: 2, ease: "power3.out" }
+      );
 
       // Section 3: Duomo di Milano Curtain Reveal
       gsap.set(".sec3-label-text", { opacity: 0, y: 14, letterSpacing: "0.5em" });
@@ -110,18 +95,14 @@ export default function MadeInItalyPage() {
         }
       });
 
-      tlImg4.fromTo(".sec4-overlay",
-        { y: "0%" },
-        { y: "-100%", duration: 1.2, ease: "power3.inOut" }
-      )
-      .fromTo(".sec4-img-inner",
+      tlImg4.fromTo(".sec4-img-inner",
         { scale: 1.15 },
-        { scale: 1, duration: 1.2, ease: "power3.out" },
-        "-=1.2"
+        { scale: 1, duration: 1.2, ease: "power3.out" }
       )
       .fromTo(".sec4-tag",
         { opacity: 0, scale: 0.95, y: 40 },
-        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" }
+        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" },
+        "-=0.6"
       );
     });
     return () => ctx.revert();
@@ -184,10 +165,8 @@ export default function MadeInItalyPage() {
               </p>
             </div>
 
-            {/* Right Column: Image */}
             <div className="flex order-1 md:order-2 h-full">
               <div className="sec1-img-wrapper group relative w-full h-full border border-gray-100 overflow-hidden cursor-pointer">
-                <div className="sec1-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/made-in-italy/Palazzo_della_civilt%C3%A0_del_lavoro_(EUR,_Rome)_(5904657870).jpg"
                   alt="Palazzo della civiltà del lavoro application"
@@ -207,53 +186,7 @@ export default function MadeInItalyPage() {
         </div>
       </section>
 
-      {/* Section 2: Large Format Slabs */}
-      <section className="relative w-full mt-12 px-6 md:px-12 lg:px-24 overflow-hidden">
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12">
-          {/* Top Text */}
-          <div className="sec2-text-container w-full font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8] text-left space-y-6 md:space-y-8">
-            <p className="sec2-paragraph text-[20px]">
-              Every NOBILITA slab is born from this tradition, crafted with Italian expertise, engineered for performance, and designed to stand the test of time.
-            </p>
-            <p className="sec2-paragraph text-[20px]">
-              More than a surface, it is a <span className="text-[#007190] font-normal">legacy of craftsmanship made for generations to come.</span>
-            </p>
-          </div>
-
-          {/* Grid Layout: Two Images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
-            {/* Left Image */}
-            <div className="sec2-img-wrapper-left group relative w-full h-full border border-gray-100 overflow-hidden cursor-pointer">
-              <div className="sec2-overlay-left absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
-              <img
-                src="/images/made-in-italy/factory-image.jpeg"
-                alt="Factory"
-                className="sec2-img-inner-left w-full h-full object-cover block"
-                loading="lazy"
-              />
-            </div>
-            
-            {/* Right Image */}
-            <div className="sec2-img-wrapper-right group relative w-full h-full border border-gray-100 overflow-hidden cursor-pointer">
-              <div className="sec2-overlay-right absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
-              <img
-                src="/images/made-in-italy/continua-impianto-hd-2.jpg"
-                alt="Large Format Slabs Processing Unit"
-                className="sec2-img-inner-right w-full h-full object-cover block"
-                loading="lazy"
-              />
-              {/* Overlay Text */}
-              <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-10">
-                <span className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(10px,1.2vw,16px)] drop-shadow-md">
-                  LARGE FORMAT SLABS PROCESSING UNIT
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Duomo di Milano Full-width */}
+      {/* Section 2: Duomo di Milano Full-width */}
       <section className="sec3-container relative w-full pb-12 overflow-hidden bg-white">
         <div className="relative w-full mx-auto flex flex-col">
           {/* Top Full-width Image */}
@@ -277,20 +210,65 @@ export default function MadeInItalyPage() {
               </span>
             </div>
           </div>
-          
+        </div>
+      </section>
+
+      {/* Section 3: Large Format Slabs */}
+      <section className="relative w-full px-6 md:px-12 lg:px-24 overflow-hidden">
+        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12">
+          {/* Top Text */}
+          <div className="sec2-text-container w-full font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8] text-left space-y-6 md:space-y-8">
+            <p className="sec2-paragraph text-[20px]">
+              Every NOBILITA slab is born from this tradition, crafted with Italian expertise, engineered for performance, and designed to stand the test of time.
+            </p>
+            <p className="sec2-paragraph text-[20px]">
+              More than a surface, it is a <span className="text-[#007190] font-normal">legacy of craftsmanship made for generations to come.</span>
+            </p>
+          </div>
+
+          {/* Grid Layout: Two Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+            {/* Left Image */}
+            <div className="sec2-img-wrapper-left group relative w-full h-full border border-gray-100 overflow-hidden cursor-pointer">
+              <img
+                src="/images/made-in-italy/factory-image.jpeg"
+                alt="Factory"
+                className="sec2-img-inner-left w-full h-full object-cover block"
+                loading="lazy"
+              />
+            </div>
+            
+            {/* Right Image */}
+            <div className="sec2-img-wrapper-right group relative w-full h-full border border-gray-100 overflow-hidden cursor-pointer">
+              <img
+                src="/images/made-in-italy/continua-impianto-hd-2.jpg"
+                alt="Large Format Slabs Processing Unit"
+                className="sec2-img-inner-right w-full h-full object-cover block"
+                loading="lazy"
+              />
+              {/* Overlay Text */}
+              <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-10">
+                <span className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(10px,1.2vw,16px)] drop-shadow-md">
+                  LARGE FORMAT SLABS PROCESSING UNIT
+                </span>
+              </div>
+            </div>
+          </div>
+
           {/* Bottom Text */}
-          <div className="sec3-text-container w-full mt-12 max-w-[1600px] mx-auto font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8] px-6 md:px-12 lg:px-24">
-            <p className="sec3-paragraph text-[20px]">
+          <div className="sec3-text-container w-full font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8] text-left">
+            <p className="sec3-paragraph text-[20px] mb-12">
               NOBILITA works at the forefront of large-format surface innovation, with state-of-the-art production systems capable of creating ultra-large slabs in exceptional formats and multiple thicknesses. These advancements have redefined what is possible in contemporary architecture, enabling seamless surfaces, reduced visual fragmentation, and a more monolithic architectural language.
             </p>
           </div>
         </div>
       </section>
 
+      
+
       {/* Section 4: Colosseum Background Parallax Reveal */}
       <section className="sec4-container relative w-full h-screen overflow-hidden bg-white">
         <div className="sec4-img-wrapper relative w-full h-full mx-auto group overflow-hidden">
-          <div className="sec4-overlay absolute inset-0 bg-white z-10 pointer-events-none will-change-transform" />
           {/* Background Image */}
           <img
             src="/images/made-in-italy/colosseo-2020.jpg"

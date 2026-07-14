@@ -6,10 +6,18 @@ import { saveFile } from "@/lib/upload";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const folder = searchParams.get("folder") || "/";
+    const folder = searchParams.get("folder");
+    const tag = searchParams.get("tag");
+    const search = searchParams.get("search");
 
     const media = await prisma.media.findMany({
-      where: { folder },
+      where: {
+        ...(folder && folder !== "/" && { folder }),
+        ...(tag && { tags: { has: tag } }),
+        ...(search && {
+          fileName: { contains: search, mode: "insensitive" },
+        }),
+      },
       orderBy: { createdAt: "desc" },
     });
 
@@ -29,6 +37,11 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const file = formData.get("file") as File;
     const folder = (formData.get("folder") as string) || "general";
+    const alt = (formData.get("alt") as string) || "";
+    const tagsRaw = (formData.get("tags") as string) || "";
+    const tags = tagsRaw
+      ? tagsRaw.split(",").map((t) => t.trim()).filter(Boolean)
+      : [];
 
     if (!file) {
       return NextResponse.json(
@@ -37,10 +50,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Save the file locally using the helper
     const uploadResult = await saveFile(file, folder);
 
-    // Create database entry
     const mediaEntry = await prisma.media.create({
       data: {
         fileName: uploadResult.fileName,
@@ -48,6 +59,8 @@ export async function POST(request: Request) {
         fileType: uploadResult.fileType,
         fileSize: uploadResult.fileSize,
         folder: "/" + folder,
+        alt: alt || null,
+        tags,
       },
     });
 

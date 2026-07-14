@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return getPageMetadata(
     {
       title: page.title,
-      seoTitle: page.heroTitle || page.title,
-      metaDescription: page.heroDescription,
-      featuredImage: page.featuredImage,
+      seoTitle: page.seoTitle || page.title,
+      metaDescription: page.seoDescription,
+      featuredImage: null,
     },
     page.title,
     appUrl
@@ -38,6 +38,27 @@ export default async function CustomPage({ params }: { params: { slug: string } 
     notFound();
   }
 
+  if (page.customHtml) {
+    return (
+      <iframe
+        src={`/api/pages/raw?slug=${params.slug}`}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          border: "none",
+          margin: 0,
+          padding: 0,
+          overflow: "hidden",
+          zIndex: 999999,
+        }}
+        title={page.title}
+      />
+    );
+  }
+
   const sections = (page.sections as any[]) || [];
 
   return (
@@ -47,34 +68,6 @@ export default async function CustomPage({ params }: { params: { slug: string } 
         <div className="relative w-full h-24 bg-brand-dark">
           <Navbar />
         </div>
-
-        {/* Dynamic header / hero banner from Page settings if defined */}
-        {(page.heroTitle || page.heroDescription) && (
-          <header className="relative min-h-[50vh] flex flex-col items-center justify-center py-24 px-6 text-center bg-brand-dark overflow-hidden">
-            {page.featuredImage && (
-              <>
-                <img
-                  src={page.featuredImage}
-                  alt={page.title}
-                  className="absolute inset-0 w-full h-full object-cover opacity-40"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              </>
-            )}
-            <div className="relative z-10 max-w-4xl mx-auto space-y-6">
-              {page.heroTitle && (
-                <h1 className="font-ivymode text-white text-center leading-[1.2] tracking-[0.06em] text-[clamp(28px,6vw,64px)] uppercase">
-                  {page.heroTitle}
-                </h1>
-              )}
-              {page.heroDescription && (
-                <p className="font-montserrat text-white/90 text-center max-w-2xl mx-auto text-[clamp(14px,1.8vw,20px)] font-light leading-relaxed">
-                  {page.heroDescription}
-                </p>
-              )}
-            </div>
-          </header>
-        )}
 
         {/* Dynamic section blocks loop formatted with high-end luxury branding */}
         <div className="w-full">

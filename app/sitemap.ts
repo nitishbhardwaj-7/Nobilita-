@@ -6,19 +6,18 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://nobilita.com";
 
-  // Fetch all published Custom Pages
+  // Fetch all published custom pages
   const pages = await prisma.page.findMany({
     where: { status: "PUBLISHED" },
     select: { slug: true, updatedAt: true },
   });
 
-  // Fetch all published Services
-  const services = await prisma.service.findMany({
+  // Fetch all published products
+  const products = await prisma.product.findMany({
     where: { status: "PUBLISHED" },
     select: { slug: true, updatedAt: true },
   });
 
-  // Static root route
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -26,9 +25,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 1.0,
     },
+    {
+      url: `${baseUrl}/explore-collection`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/our-story`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/technical-data`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/made-in-italy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
-  // Dynamic custom page routes
   const customPageRoutes: MetadataRoute.Sitemap = pages.map((page) => ({
     url: `${baseUrl}/${page.slug}`,
     lastModified: new Date(page.updatedAt),
@@ -36,13 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  // Dynamic service detail page routes
-  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
-    lastModified: new Date(service.updatedAt),
+  const productRoutes: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${baseUrl}/explore-collection/${product.slug}`,
+    lastModified: new Date(product.updatedAt),
     changeFrequency: "weekly",
-    priority: 0.7,
+    priority: 0.8,
   }));
 
-  return [...staticRoutes, ...customPageRoutes, ...serviceRoutes];
+  return [...staticRoutes, ...customPageRoutes, ...productRoutes];
 }

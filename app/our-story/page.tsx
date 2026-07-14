@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -8,6 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NobilitaHouseSVG from "@/components/NobilitaHouseSVG";
+import dynamic from "next/dynamic";
+
+const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), { ssr: false });
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,6 +43,8 @@ const paragraphWordVariants = {
 };
 
 export default function OurStoryPage() {
+  const [activeProduct, setActiveProduct] = useState<string | null>(null);
+
   const handleImageEnter = (selector: string) => {
     gsap.to(selector, { scale: 1.08, duration: 0.8, ease: "power2.out", overwrite: "auto" });
   };
@@ -83,14 +88,10 @@ export default function OurStoryPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg.fromTo(".sec2-overlay",
-        { y: "0%", opacity: 1 },
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
-      )
-        .fromTo(".sec2-img-inner",
-          { scale: 1.28 },
-          { scale: 1.18, duration: 2, ease: "power3.out" }, "-=1.4"
-        );
+      tlImg.fromTo(".sec2-img-inner",
+        { scale: 1.28 },
+        { scale: 1.18, duration: 2, ease: "power3.out" }
+      );
 
       // 3. Section 3 — luxury curtain reveal + shine sweep + label
       gsap.set(".sec3-label-text", { opacity: 0, y: 14, letterSpacing: "0.5em" });
@@ -140,14 +141,10 @@ export default function OurStoryPage() {
           toggleActions: "play none none reverse"
         }
       });
-      tlImg4.fromTo(".sec4-overlay",
-        { y: "0%", opacity: 1 },
-        { y: "-100%", opacity: 0, duration: 1.5, ease: "power3.inOut" }
-      )
-        .fromTo(".sec4-img-inner",
-          { scale: 1.28 },
-          { scale: 1.18, duration: 2, ease: "power3.out" }, "-=1.4"
-        );
+      tlImg4.fromTo(".sec4-img-inner",
+        { scale: 1.28 },
+        { scale: 1.18, duration: 2, ease: "power3.out" }
+      );
     });
     return () => ctx.revert();
   }, []);
@@ -309,29 +306,24 @@ export default function OurStoryPage() {
                 onMouseEnter={() => handleImageEnter(".sec2-img-inner")}
                 onMouseLeave={() => handleImageLeave(".sec2-img-inner")}
               >
-                <div className="sec2-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Verde profondo application.jpg"
                   alt="Verde Profondo application"
                   className="sec2-img-inner w-full h-auto object-contain block transform-gpu scale-[1.18]"
                   loading="lazy"
                 />
-                {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-3 md:pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
-                  <Link href="/explore-collection" className="pointer-events-auto">
-                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
-                      <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
-                      <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
-                        EXPLORE FULL COLLECTION
-                      </span>
-                    </button>
-                  </Link>
-                </div>
-                {/* Bottom Right Text */}
-                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-20 pointer-events-none">
-                  <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
-                    VERDE PROFONDO
-                  </span>
+
+                {/* Bottom Right Text Button */}
+                <div className="absolute bottom-2 right-2 md:bottom-2 md:right-2 z-20">
+                  <button 
+                    onClick={() => setActiveProduct("Verde Profondo")}
+                    className="relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block"
+                  >
+                    <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                    <span className="relative z-10 block transition-colors duration-500 group-hover:text-black drop-shadow-md group-hover:drop-shadow-none">
+                      VERDE PROFONDO
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -407,29 +399,24 @@ export default function OurStoryPage() {
                 onMouseEnter={() => handleImageEnter(".sec4-img-inner")}
                 onMouseLeave={() => handleImageLeave(".sec4-img-inner")}
               >
-                <div className="sec4-overlay absolute inset-0 bg-white/40 z-10 backdrop-blur-[2px]"></div>
                 <img
                   src="/images/Our story/Ferro Industriale (2).jpg"
                   alt="Ferro Industriale application"
                   className="sec4-img-inner w-full h-auto object-contain block transform-gpu scale-[1.18]"
                   loading="lazy"
                 />
-                {/* Top Hover Button Overlay (Explore Full Collection) */}
-                <div className="absolute inset-0 z-20 flex items-start justify-center pt-3 md:pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-[1500ms] pointer-events-none">
-                  <Link href="/explore-collection" className="pointer-events-auto">
-                    <button className="relative overflow-hidden border border-white text-white bg-transparent px-6 py-2.5 font-michroma text-[10px] md:text-[11px] tracking-widest uppercase group/btn shadow-lg transform -translate-y-4 group-hover:translate-y-0 transition-all duration-[1500ms]">
-                      <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:scale-x-100" />
-                      <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-[#545759] flex items-center gap-2">
-                        EXPLORE FULL COLLECTION
-                      </span>
-                    </button>
-                  </Link>
-                </div>
-                {/* Bottom Right Text */}
-                <div className="absolute bottom-2 left-2 md:bottom-2 md:left-3 z-20 pointer-events-none">
-                  <span className="font-ivymode font-light text-white uppercase tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] drop-shadow-lg">
-                    FERRO INDUSTRIALE
-                  </span>
+
+                {/* Bottom Left Text Button */}
+                <div className="absolute bottom-2 left-2 md:bottom-2 md:left-2 z-20">
+                  <button 
+                    onClick={() => setActiveProduct("Ferro Industriale")}
+                    className="relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block"
+                  >
+                    <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                    <span className="relative z-10 block transition-colors duration-500 group-hover:text-black drop-shadow-md group-hover:drop-shadow-none">
+                      FERRO INDUSTRIALE
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -465,6 +452,11 @@ export default function OurStoryPage() {
       </section>
 
       <Footer />
+
+      <FeaturedProduct
+        activeProduct={activeProduct}
+        onClose={() => setActiveProduct(null)}
+      />
     </div>
   );
 }

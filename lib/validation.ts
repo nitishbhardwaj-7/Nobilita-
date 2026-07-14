@@ -1,74 +1,65 @@
 import { z } from "zod";
 
-// Admin & Editor login validation
+// Admin login validation
 export const LoginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-// Dynamic sections/blocks inside a page
+// Dynamic section block schema (flexible per-type content)
 export const SectionBlockSchema = z.object({
   id: z.string(),
-  type: z.enum(["hero", "text", "features", "testimonials", "faq", "cta", "gallery", "rich-text"]),
+  type: z.string(),
   content: z.record(z.string(), z.any()),
 });
 
-// Custom Page input validation
+// Page validation
 export const PageSchema = z.object({
   title: z.string().min(2, "Title must be at least 2 characters"),
   slug: z
     .string()
     .min(1, "Slug is required")
-    .regex(/^[a-z0-9-_/]+$/, "Slug can only contain lowercase letters, numbers, hyphens, underscores, and forward slashes"),
-  pageType: z.string().default("CUSTOM"),
-  heroTitle: z.string().optional().nullable(),
-  heroDescription: z.string().optional().nullable(),
+    .regex(
+      /^[a-z0-9-_/]+$/,
+      "Slug can only contain lowercase letters, numbers, hyphens, underscores, and slashes"
+    ),
+  seoTitle: z.string().optional().nullable(),
+  seoDescription: z.string().optional().nullable(),
   sections: z.array(SectionBlockSchema).default([]),
-  featuredImage: z.string().optional().nullable(),
+  customHtml: z.string().optional().nullable(),
   status: z.enum(["DRAFT", "PUBLISHED"]).default("DRAFT"),
 });
 
-// Service item input validation
-export const ServiceSchema = z.object({
-  serviceName: z.string().min(2, "Service name must be at least 2 characters"),
+// Product / Slab validation
+export const ProductSchema = z.object({
+  name: z.string().min(1, "Product name is required"),
   slug: z
     .string()
     .min(1, "Slug is required")
-    .regex(/^[a-z0-9-_]+$/, "Slug can only contain lowercase letters, numbers, hyphens, and underscores"),
-  shortDescription: z.string().min(5, "Short description must be at least 5 characters"),
-  longDescription: z.string().min(10, "Long description must be at least 10 characters"),
-  featuredImage: z.string().optional().nullable(),
-  galleryImages: z.array(z.string()).default([]),
-  seoTitle: z.string().optional().nullable(),
-  metaDescription: z.string().optional().nullable(),
-  metaKeywords: z.string().optional().nullable(),
-  canonicalUrl: z.string().url("Must be a valid URL").optional().nullable().or(z.literal("")),
-  ogImage: z.string().optional().nullable(),
-  schemaMarkup: z.record(z.string(), z.any()).default({}),
-  faqSection: z
-    .array(
-      z.object({
-        question: z.string().min(2, "Question is required"),
-        answer: z.string().min(2, "Answer is required"),
-      })
-    )
-    .default([]),
-  ctaSection: z
-    .object({
-      title: z.string().optional().nullable(),
-      description: z.string().optional().nullable(),
-      linkText: z.string().optional().nullable(),
-      linkUrl: z.string().optional().nullable(),
-    })
-    .default({}),
+    .regex(/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"),
+  description: z.string().optional().nullable(),
+  finish: z.string().optional().nullable(),
+  thicknessMm: z.array(z.string()).default([]),
+  dimensions: z.array(z.string()).default([]),
+  format: z.string().optional().nullable(),
+  applications: z.array(z.string()).default([]),
+  coverImage: z.string().optional().nullable(),
+  gallery: z.array(z.string()).default([]),
+  order: z.number().int().default(0),
   status: z.enum(["DRAFT", "PUBLISHED"]).default("DRAFT"),
 });
 
-// Global Site settings validation
+// Global site settings validation
 export const SettingsSchema = z.object({
-  siteName: z.string().min(2, "Site name must be at least 2 characters"),
-  logoUrl: z.string().optional().nullable(),
-  contactEmail: z.string().email("Invalid contact email").optional().nullable().or(z.literal("")),
+  siteName: z.string().min(1, "Site name is required").optional(),
+  logoLight: z.string().optional().nullable(),
+  logoDark: z.string().optional().nullable(),
+  contactEmail: z
+    .string()
+    .email("Invalid email")
+    .optional()
+    .nullable()
+    .or(z.literal("")),
   contactPhone: z.string().optional().nullable(),
   footerText: z.string().optional().nullable(),
   socialLinks: z
@@ -79,5 +70,6 @@ export const SettingsSchema = z.object({
       linkedin: z.string().optional().nullable(),
     })
     .default({}),
-  trackingCode: z.string().optional().nullable(),
+  seoTitle: z.string().optional().nullable(),
+  seoDescription: z.string().optional().nullable(),
 });

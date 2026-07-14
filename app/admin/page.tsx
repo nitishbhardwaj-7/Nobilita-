@@ -2,41 +2,49 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FileText, Briefcase, Image as ImageIcon, Settings, Plus, ArrowUpRight } from "lucide-react";
+import { FileText, Package, Image as ImageIcon, ArrowUpRight, Plus } from "lucide-react";
+
+interface Stats {
+  pagesCount: number;
+  productsCount: number;
+  mediaCount: number;
+  publishedPages: number;
+  publishedProducts: number;
+}
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState({
+  const [stats, setStats] = useState<Stats>({
     pagesCount: 0,
-    servicesCount: 0,
+    productsCount: 0,
     mediaCount: 0,
     publishedPages: 0,
-    publishedServices: 0,
+    publishedProducts: 0,
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchStats() {
       try {
-        const [pagesRes, servicesRes, mediaRes] = await Promise.all([
+        const [pagesRes, productsRes, mediaRes] = await Promise.all([
           fetch("/api/pages"),
-          fetch("/api/services"),
+          fetch("/api/products"),
           fetch("/api/media"),
         ]);
 
         const pagesData = pagesRes.ok ? await pagesRes.json() : { data: [] };
-        const servicesData = servicesRes.ok ? await servicesRes.json() : { data: [] };
+        const productsData = productsRes.ok ? await productsRes.json() : { data: [] };
         const mediaData = mediaRes.ok ? await mediaRes.json() : { data: [] };
 
         const pages = pagesData.data || [];
-        const services = servicesData.data || [];
+        const products = productsData.data || [];
         const media = mediaData.data || [];
 
         setStats({
           pagesCount: pages.length,
-          servicesCount: services.length,
+          productsCount: products.length,
           mediaCount: media.length,
           publishedPages: pages.filter((p: any) => p.status === "PUBLISHED").length,
-          publishedServices: services.filter((s: any) => s.status === "PUBLISHED").length,
+          publishedProducts: products.filter((p: any) => p.status === "PUBLISHED").length,
         });
       } catch (err) {
         console.error("Error fetching stats:", err);
@@ -47,142 +55,141 @@ export default function AdminDashboard() {
     fetchStats();
   }, []);
 
+  const fontMichroma = { fontFamily: "var(--font-michroma), sans-serif" };
+  const fontIvymode = { fontFamily: "var(--font-ivymode), serif" };
+
+  const cards = [
+    {
+      label: "Pages",
+      count: stats.pagesCount,
+      detail: `${stats.publishedPages} published · ${stats.pagesCount - stats.publishedPages} draft`,
+      href: "/admin/pages",
+      icon: FileText,
+      cta: "Manage Pages",
+    },
+    {
+      label: "Products",
+      count: stats.productsCount,
+      detail: `${stats.publishedProducts} published · ${stats.productsCount - stats.publishedProducts} draft`,
+      href: "/admin/products",
+      icon: Package,
+      cta: "Manage Products",
+    },
+    {
+      label: "Media Assets",
+      count: stats.mediaCount,
+      detail: "Uploaded images & files",
+      href: "/admin/media",
+      icon: ImageIcon,
+      cta: "Open Library",
+    },
+  ];
+
+  const quickActions = [
+    { label: "New Page", href: "/admin/pages/new" },
+    { label: "New Product", href: "/admin/products/new" },
+    { label: "Upload Media", href: "/admin/media" },
+    { label: "Site Settings", href: "/admin/settings" },
+  ];
+
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="space-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[1, 2, 3].map((n) => (
-            <div key={n} className="h-32 animate-pulse rounded-2xl bg-slate-900 border border-slate-800" />
+            <div key={n} className="h-36 bg-white border border-[#1a1a1a]/8 animate-pulse" />
           ))}
         </div>
-        <div className="h-64 animate-pulse rounded-2xl bg-slate-900 border border-slate-800" />
+        <div className="h-48 bg-white border border-[#1a1a1a]/8 animate-pulse" />
       </div>
     );
   }
 
-  const cards = [
-    {
-      name: "Custom Pages",
-      count: stats.pagesCount,
-      detail: `${stats.publishedPages} Published / ${stats.pagesCount - stats.publishedPages} Drafts`,
-      link: "/admin/pages",
-      icon: FileText,
-      color: "from-violet-500/20 to-purple-500/20 text-violet-400 border-violet-500/30",
-    },
-    {
-      name: "Services Pages",
-      count: stats.servicesCount,
-      detail: `${stats.publishedServices} Published / ${stats.servicesCount - stats.publishedServices} Drafts`,
-      link: "/admin/services",
-      icon: Briefcase,
-      color: "from-indigo-500/20 to-blue-500/20 text-indigo-400 border-indigo-500/30",
-    },
-    {
-      name: "Media Assets",
-      count: stats.mediaCount,
-      detail: "Uploaded images & documents",
-      link: "/admin/media",
-      icon: ImageIcon,
-      color: "from-emerald-500/20 to-teal-500/20 text-emerald-400 border-emerald-500/30",
-    },
-  ];
-
   return (
-    <div className="space-y-8">
-      {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40 p-6 lg:p-8">
-        <div className="absolute top-0 right-0 -mt-4 -mr-4 h-32 w-32 rounded-full bg-violet-500/10 blur-3xl pointer-events-none" />
-        <div className="max-w-xl space-y-2">
-          <h2 className="text-xl font-bold text-white sm:text-2xl font-serif">Welcome back to Nobilita Portal</h2>
-          <p className="text-sm text-slate-400">
-            Create pages, update your services descriptions, upload media assets, and customize meta tags to optimize your site for Google search engines.
-          </p>
-        </div>
+    <div className="space-y-10" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+      {/* Welcome header */}
+      <div>
+        <p className="text-[10px] tracking-[0.3em] uppercase text-[#1a1a1a]/35 mb-2" style={fontMichroma}>
+          Nobilita Content Studio
+        </p>
+        <h2 className="text-3xl font-light text-[#1a1a1a] leading-tight" style={fontIvymode}>
+          Welcome Back
+        </h2>
+        <p className="mt-2 text-sm text-[#8b8b8b]">
+          Manage your pages, product catalogue, and media library from here.
+        </p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Divider */}
+      <div className="h-px bg-[#1a1a1a]/8" />
+
+      {/* Stats grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {cards.map((card) => {
           const Icon = card.icon;
           return (
             <div
-              key={card.name}
-              className={`relative overflow-hidden rounded-2xl border bg-gradient-to-br ${card.color} p-6 shadow-md transition-all duration-300 hover:scale-[1.01]`}
+              key={card.label}
+              className="bg-white border border-[#1a1a1a]/8 p-6 flex flex-col justify-between group hover:border-[#1a1a1a]/20 transition-colors"
             >
-              <div className="flex justify-between items-start">
-                <div className="space-y-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">{card.name}</p>
-                  <h3 className="text-4xl font-extrabold text-white tracking-tight">{card.count}</h3>
-                  <p className="text-xs text-slate-400">{card.detail}</p>
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <p className="text-[9px] tracking-[0.3em] uppercase text-[#1a1a1a]/40 mb-3" style={fontMichroma}>
+                    {card.label}
+                  </p>
+                  <p className="text-4xl font-light text-[#1a1a1a]" style={fontIvymode}>
+                    {card.count}
+                  </p>
                 </div>
-                <div className="rounded-xl bg-slate-900/60 p-3 border border-slate-800">
-                  <Icon size={24} />
+                <div className="w-9 h-9 border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a]/30">
+                  <Icon size={15} />
                 </div>
               </div>
-              <Link
-                href={card.link}
-                className="mt-6 flex items-center justify-center gap-1.5 rounded-xl bg-slate-950/80 hover:bg-slate-950 px-4 py-2 text-xs font-semibold text-white border border-slate-800 transition-colors"
-              >
-                Manage Items
-                <ArrowUpRight size={14} />
-              </Link>
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] text-[#8b8b8b]">{card.detail}</p>
+                <Link
+                  href={card.href}
+                  className="flex items-center gap-1 text-[9px] tracking-[0.2em] uppercase text-[#1a1a1a]/40 hover:text-[#1a1a1a] transition-colors"
+                  style={fontMichroma}
+                >
+                  {card.cta}
+                  <ArrowUpRight size={11} />
+                </Link>
+              </div>
             </div>
           );
         })}
       </div>
 
-      {/* Quick Actions Panel */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/20 p-6 space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400">Quick Actions</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Quick actions */}
+      <div>
+        <p className="text-[9px] tracking-[0.3em] uppercase text-[#1a1a1a]/35 mb-4" style={fontMichroma}>
+          Quick Actions
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {quickActions.map((action) => (
             <Link
-              href="/admin/pages/new"
-              className="flex items-center justify-between rounded-xl border border-slate-800 hover:border-violet-500/50 bg-slate-900/50 hover:bg-slate-900 p-4 transition-all group"
+              key={action.href}
+              href={action.href}
+              className="flex items-center justify-between border border-[#1a1a1a]/10 bg-white hover:bg-[#1a1a1a] hover:border-[#1a1a1a] px-4 py-3.5 group transition-all duration-200"
             >
-              <span className="text-sm font-medium text-slate-300 group-hover:text-white">Create Page</span>
-              <div className="rounded-lg bg-violet-600/10 text-violet-400 p-2 group-hover:bg-violet-600 group-hover:text-white transition-colors">
-                <Plus size={16} />
-              </div>
+              <span
+                className="text-[10px] tracking-[0.15em] uppercase text-[#1a1a1a]/60 group-hover:text-white transition-colors"
+                style={fontMichroma}
+              >
+                {action.label}
+              </span>
+              <Plus size={13} className="text-[#1a1a1a]/30 group-hover:text-white transition-colors" />
             </Link>
-
-            <Link
-              href="/admin/services/new"
-              className="flex items-center justify-between rounded-xl border border-slate-800 hover:border-indigo-500/50 bg-slate-900/50 hover:bg-slate-900 p-4 transition-all group"
-            >
-              <span className="text-sm font-medium text-slate-300 group-hover:text-white">Add Service</span>
-              <div className="rounded-lg bg-indigo-600/10 text-indigo-400 p-2 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                <Plus size={16} />
-              </div>
-            </Link>
-
-            <Link
-              href="/admin/media"
-              className="flex items-center justify-between rounded-xl border border-slate-800 hover:border-emerald-500/50 bg-slate-900/50 hover:bg-slate-900 p-4 transition-all group col-span-1 sm:col-span-2"
-            >
-              <span className="text-sm font-medium text-slate-300 group-hover:text-white">Upload Media</span>
-              <div className="rounded-lg bg-emerald-600/10 text-emerald-400 p-2 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                <Plus size={16} />
-              </div>
-            </Link>
-          </div>
+          ))}
         </div>
+      </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/20 p-6 space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400">Settings Configuration</h3>
-          <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4 flex flex-col justify-between h-[132px]">
-            <p className="text-xs text-slate-400">
-              Configure global parameters like page title suffix, corporate contact phone, logos, footer copyrights, and SEO trackers.
-            </p>
-            <Link
-              href="/admin/settings"
-              className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 px-4 py-2.5 text-xs font-semibold text-white border border-slate-800 transition-colors"
-            >
-              <Settings size={14} />
-              Open Site Settings
-            </Link>
-          </div>
-        </div>
+      {/* Info banner */}
+      <div className="border-l-2 border-[#1a1a1a]/20 pl-5 py-1">
+        <p className="text-xs text-[#8b8b8b] leading-relaxed">
+          <span className="text-[#1a1a1a]/60 font-medium">Pro tip:</span> Publish a page from the Pages editor to push content live instantly via cache revalidation. Draft pages are only visible in the admin preview.
+        </p>
       </div>
     </div>
   );
