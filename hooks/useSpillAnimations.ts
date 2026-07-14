@@ -50,9 +50,9 @@ export function useSpillAnimations() {
             strokeDasharray: length,
             strokeDashoffset: length,
             stroke: "#ffffff",
-            strokeWidth: 0.6,
+            strokeWidth: 1.0,
             fillOpacity: isSteam || isShimmer ? 0 : 0,
-            opacity: isSteam || isShimmer ? 0 : 0.8,
+            opacity: isSteam || isShimmer ? 0 : 1,
           });
         });
 

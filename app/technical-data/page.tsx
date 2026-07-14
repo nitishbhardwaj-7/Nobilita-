@@ -523,7 +523,9 @@ export default function TechnicalDataPage() {
                 <div className="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
                   {/* Left Side: Spilling Wine Glass Illustration */}
                   <div className="spill-illust relative flex-shrink-0 w-40 md:w-56 h-auto flex items-center justify-center" style={{ perspective: '800px' }}>
-                    <WineSpillSVG />
+                    <div className="w-[85%] flex justify-center">
+                      <WineSpillSVG />
+                    </div>
                   </div>
 
                   {/* Right Side: Step-by-Step Instructions (Points 1-4) */}
