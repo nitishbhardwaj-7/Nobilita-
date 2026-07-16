@@ -166,7 +166,7 @@ export default function TechnicalDataPage() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-start pt-24 md:pt-16 px-6 md:px-12 mt-0 md:mt-12 text-center">
+        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-start pt-24 md:pt-20 px-6 md:px-12 mt-0 md:mt-12 text-center">
 
           <div className="relative w-full flex items-center justify-center min-h-[44px] px-14 md:px-20">
             {/* Back Button Arrow */}
@@ -204,7 +204,7 @@ export default function TechnicalDataPage() {
             </h1>
           </div>
           <p
-            className="hero-desc font-ivymode font-light text-black text-[20px] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-6 text-justify"
+            className="hero-desc font-ivymode font-light text-black text-[20px] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-10 text-justify"
             style={{ textAlignLast: "center" }}
           >
             Every NOBILITA surface is engineered for exceptional performance from specification to installation. Designed by architects and engineers, it combines technical precision with refined aesthetics, ensuring premium quality, consistency and reliability. NOBILITA offers outstanding durability, dimensional stability, stain resistance, and long-term performance.
@@ -213,11 +213,11 @@ export default function TechnicalDataPage() {
       </section>
 
       {/* 2. Characteristics, User Guide & Technical Specifications Section */}
-      <section className="relative w-full pt-20 pb-0 md:pt-12 md:pb-0 px-6 md:px-12 lg:px-24 bg-[#007190] text-white">
+      <section className="relative w-full pt-20 pb-0 md:pt-16 md:pb-0 px-6 md:px-12 lg:px-24 bg-[#007190] text-white">
         <div className="max-w-[1600px] mx-auto flex flex-col">
 
           {/* A. Characteristics Grid */}
-          <div className="space-y-12">
+          <div className="space-y-16">
             <div className="char-title char-title-trigger">
               <h2 className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.4em]">
                 {"CHARACTERISTICS".split(" ").map((word, wIdx) => (
@@ -413,8 +413,8 @@ export default function TechnicalDataPage() {
           </div>
 
           {/* B. User Guide Section */}
-          <div className="pt-12">
-            <div className="space-y-12">
+          <div className="pt-16">
+            <div className="space-y-16">
               <div className="ug-title ug-title-trigger">
                 <h2 className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.4em]">
                   {"USER GUIDE".split(" ").map((word, wIdx) => (
@@ -439,7 +439,7 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B1. Oil Spills Subsection */}
-            <div className="spill-sec pt-12">
+            <div className="spill-sec pt-16">
               <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 OIL SPILLS
               </h3>
@@ -513,7 +513,7 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B3. Wine Spills Subsection */}
-            <div className="spill-sec pt-12">
+            <div className="spill-sec pt-12 mb-12">
               <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 WINE SPILLS
               </h3>
@@ -576,43 +576,45 @@ export default function TechnicalDataPage() {
 
           </div>
 
-          {/* C. Technical Specifications Section */}
-          <div className="pt-12 mb-10 space-y-12 flex flex-col items-start w-full">
-            <div className="text-left w-full">
-              <h2 className="specs-title font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,36px)] leading-tight">
-                TECHNICAL SPECIFICATIONS FOR PROFESSIONALS
-              </h2>
-            </div>
+        </div>
+      </section>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full">
-              {/* DOWNLOAD ITALIAN */}
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.dispatchEvent(new CustomEvent("open-datasheet-form"));
-                }}
-                className="specs-btn relative overflow-hidden border border-white/50 px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
-              >
-                <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                <span className="relative z-10 font-michroma text-white text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-[#007190]">DOWNLOAD</span>
-                <span className="relative z-10 font-michroma text-white text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-[#007190]">ITALIAN</span>
-              </button>
-
-              {/* DOWNLOAD ENGLISH */}
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.dispatchEvent(new CustomEvent("open-datasheet-form"));
-                }}
-                className="specs-btn relative overflow-hidden border border-white/50 px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
-              >
-                <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                <span className="relative z-10 font-michroma text-white text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-[#007190]">DOWNLOAD</span>
-                <span className="relative z-10 font-michroma text-white text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-[#007190]">ENGLISH</span>
-              </button>
-            </div>
+      {/* C. Technical Specifications Section */}
+      <section className="relative w-full py-16 px-6 md:px-12 lg:px-24 bg-white text-brand-dark">
+        <div className="max-w-[1600px] mx-auto flex flex-col items-start w-full space-y-16">
+          <div className="text-left w-full">
+            <h2 className="specs-title font-ivymode font-light text-[#007190] uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,40px)] leading-tight">
+              TECHNICAL SPECIFICATIONS FOR PROFESSIONALS
+            </h2>
           </div>
 
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-32 w-full">
+            {/* DOWNLOAD ITALIAN */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-datasheet-form"));
+              }}
+              className="specs-btn relative overflow-hidden border border-brand-dark/50 px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
+            >
+              <span className="absolute -inset-[1px] bg-brand-dark scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="relative z-10 font-michroma text-brand-dark text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">DOWNLOAD</span>
+              <span className="relative z-10 font-michroma text-brand-dark text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">ITALIAN</span>
+            </button>
+
+            {/* DOWNLOAD ENGLISH */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-datasheet-form"));
+              }}
+              className="specs-btn relative overflow-hidden border border-brand-dark/50 px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
+            >
+              <span className="absolute -inset-[1px] bg-brand-dark scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="relative z-10 font-michroma text-brand-dark text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">DOWNLOAD</span>
+              <span className="relative z-10 font-michroma text-brand-dark text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">ENGLISH</span>
+            </button>
+          </div>
         </div>
       </section>
 

@@ -281,20 +281,20 @@ function ExploreCollectionContent() {
             <span
               className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
               style={{
-                transform: isNavOpen ? "translateY(0px) rotate(45deg)" : "translateY(-6px) rotate(0deg)"
+                transform: "translateY(-6px) rotate(0deg)"
               }}
             />
             <span
               className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
               style={{
-                transform: isNavOpen ? "scaleX(0)" : "scaleX(1)",
-                opacity: isNavOpen ? 0 : 1
+                transform: "scaleX(1)",
+                opacity: 1
               }}
             />
             <span
               className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
               style={{
-                transform: isNavOpen ? "translateY(0px) rotate(-45deg)" : "translateY(6px) rotate(0deg)"
+                transform: "translateY(6px) rotate(0deg)"
               }}
             />
           </button>
