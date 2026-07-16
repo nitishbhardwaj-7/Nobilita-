@@ -598,8 +598,8 @@ export default function TechnicalDataPage() {
               className="specs-btn relative overflow-hidden border border-[#007190] px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
             >
               <span className="absolute -inset-[1px] bg-[#007190] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-black">DOWNLOAD</span>
-              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-black">ITALIAN</span>
+              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">DOWNLOAD</span>
+              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">ITALIAN</span>
             </button>
 
             {/* DOWNLOAD ENGLISH */}
@@ -611,8 +611,8 @@ export default function TechnicalDataPage() {
               className="specs-btn relative overflow-hidden border border-[#007190] px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
             >
               <span className="absolute -inset-[1px] bg-[#007190] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-black">DOWNLOAD</span>
-              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-black">ENGLISH</span>
+              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">DOWNLOAD</span>
+              <span className="relative z-10 font-michroma text-[#007190] text-base md:text-lg tracking-[0.2em] transition-colors duration-500 group-hover:text-white">ENGLISH</span>
             </button>
           </div>
         </div>
