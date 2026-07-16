@@ -271,7 +271,7 @@ export default function MadeInItalyPage() {
         <div className="sec4-img-wrapper relative w-full h-full mx-auto group overflow-hidden">
           {/* Background Image */}
           <img
-            src="/images/made-in-italy/colosseo-2020.jpg"
+            src="/images/made-in-italy/colosseo-2020-compressed.jpg"
             alt="Colosseum"
             className="sec4-img-inner w-full h-full object-cover block origin-center will-change-transform"
             loading="lazy"
