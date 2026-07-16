@@ -21,7 +21,7 @@ export default function CoffeeSpillSVG() {
         </clipPath>
       </defs>
       <g clipPath="url(#coffeeClippath)">
-        <path d={mainCompoundPath} fill="#fff" className="coffee-shape no-anim" />
+        <path d={mainCompoundPath} fill="#fff" className="coffee-shape no-anim" opacity="0.9" />
       </g>
     </svg>
   );
