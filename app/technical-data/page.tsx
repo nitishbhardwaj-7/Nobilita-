@@ -513,7 +513,7 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B3. Wine Spills Subsection */}
-            <div className="spill-sec pt-12 mb-12">
+            <div className="spill-sec pt-12 mb-16">
               <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 WINE SPILLS
               </h3>
@@ -583,7 +583,7 @@ export default function TechnicalDataPage() {
       <section className="relative w-full py-16 px-6 md:px-12 lg:px-24 bg-white text-brand-dark">
         <div className="max-w-[1600px] mx-auto flex flex-col items-start w-full space-y-16">
           <div className="text-left w-full">
-            <h2 className="specs-title font-ivymode font-light text-[#007190] uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,41px)] leading-tight">
+            <h2 className="specs-title font-ivymode font-light text-[#007190] uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,42px)] leading-tight">
               TECHNICAL SPECIFICATIONS FOR PROFESSIONALS
             </h2>
           </div>
