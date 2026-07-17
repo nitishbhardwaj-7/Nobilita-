@@ -146,7 +146,7 @@ export function useSpillAnimations() {
             // Fade in and slight scale up to make it feel dynamic
             mainTl.fromTo(coffeeShape, 
               { opacity: 0, scale: 0.95, transformOrigin: "center center" },
-              { opacity: 0.9, scale: 1, duration: 1.2, ease: "power2.out" },
+              { opacity: 0.7, scale: 1, duration: 1.2, ease: "power2.out" },
               "<" // Play at the same time as the wipe
             );
           }
