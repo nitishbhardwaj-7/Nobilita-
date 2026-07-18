@@ -232,181 +232,175 @@ export default function TechnicalDataPage() {
               </h2>
             </div>
 
-            <div className="char-grid grid grid-cols-1 md:grid-cols-2 gap-x-16 md:gap-x-24 lg:gap-x-32 gap-y-12">
-              {/* Left Column (5 items) */}
-              <div className="space-y-10 md:space-y-12">
-                {/* WATER PROOF */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-01.svg"
-                      alt="Water Proof"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      WATER PROOF
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Highly resistant to water damage, due to an ultra-low absorption rate.
-                    </p>
-                  </div>
+            <div className="char-grid grid grid-cols-1 md:grid-cols-2 gap-x-16 md:gap-x-24 lg:gap-x-32 gap-y-10 md:gap-y-12">
+              {/* WATER PROOF */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-01.svg"
+                    alt="Water Proof"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
                 </div>
-
-                {/* SCRATCH RESISTANT */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-03.svg"
-                      alt="Scratch Resistant"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      SCRATCH RESISTANT
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Engineered with a tough surface strength to withstand scratches and abrasions.
-                    </p>
-                  </div>
-                </div>
-
-                {/* HEAT & FROST RESISTANT */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-05.svg"
-                      alt="Heat & Frost Resistant"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      HEAT & FROST RESISTANT
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      NOBILITA does not burn, emit smoke, or release toxic substances when exposed to fire.
-                    </p>
-                  </div>
-                </div>
-
-                {/* EASY TO MAINTAIN */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-08.svg"
-                      alt="Easy to Maintain"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      EASY TO MAINTAIN
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Compatible with all types of cleaning agents, including bleach and ammonia.
-                    </p>
-                  </div>
-                </div>
-
-                {/* HYGIENIC & FOOD SAFE */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-10.svg"
-                      alt="Hygienic & Food Safe"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      HYGIENIC & FOOD SAFE
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Non-toxic and free from harmful emissions, 100% food safe, NSF Certified.
-                    </p>
-                  </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    WATER PROOF
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Highly resistant to water damage, due to an ultra-low absorption rate.
+                  </p>
                 </div>
               </div>
 
-              {/* Right Column (4 items) */}
-              <div className="space-y-10 md:space-y-12">
-                {/* UV RESISTANT */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-06.svg"
-                      alt="UV Resistant"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      UV RESISTANT
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Composed of 100% natural materials, ensuring colors remain vibrant even with prolonged exposure to sunlight and extreme weather.
-                    </p>
-                  </div>
+              {/* UV RESISTANT */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-06.svg"
+                    alt="UV Resistant"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
                 </div>
-
-                {/* ECO FRIENDLY */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-04.svg"
-                      alt="Eco Friendly"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      ECO FRIENDLY
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Contains no substances harmful to the environment.
-                    </p>
-                  </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    UV RESISTANT
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Composed of 100% natural materials, ensuring colors remain vibrant even with prolonged exposure to sunlight and extreme weather.
+                  </p>
                 </div>
+              </div>
 
-                {/* RECYCLABLE */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-07.svg"
-                      alt="Recyclable"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      RECYCLABLE
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Each slab incorporates between 52% - 98% recycled content and is fully reusable and recyclable.
-                    </p>
-                  </div>
+              {/* SCRATCH RESISTANT */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-03.svg"
+                    alt="Scratch Resistant"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
                 </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    SCRATCH RESISTANT
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Engineered with a tough surface strength to withstand scratches and abrasions.
+                  </p>
+                </div>
+              </div>
 
-                {/* HIGH FLEXURAL STRENGTH */}
-                <div className="char-item flex items-start gap-6 md:gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                    <img
-                      src="/images/technical data/SVGs/SVGs/icons-09.svg"
-                      alt="High Flexural Strength"
-                      className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
-                      HIGH FLEXURAL STRENGTH
-                    </h3>
-                    <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
-                      Designed to withstand heavy loads and pressure without bending or cracking.
-                    </p>
-                  </div>
+              {/* ECO FRIENDLY */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-04.svg"
+                    alt="Eco Friendly"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    ECO FRIENDLY
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Contains no substances harmful to the environment.
+                  </p>
+                </div>
+              </div>
+
+              {/* HEAT & FROST RESISTANT */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-05.svg"
+                    alt="Heat & Frost Resistant"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    HEAT & FROST RESISTANT
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    NOBILITA does not burn, emit smoke, or release toxic substances when exposed to fire.
+                  </p>
+                </div>
+              </div>
+
+              {/* RECYCLABLE */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-07.svg"
+                    alt="Recyclable"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    RECYCLABLE
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Each slab incorporates between 52% - 98% recycled content and is fully reusable and recyclable.
+                  </p>
+                </div>
+              </div>
+
+              {/* EASY TO MAINTAIN */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-08.svg"
+                    alt="Easy to Maintain"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    EASY TO MAINTAIN
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Compatible with all types of cleaning agents, including bleach and ammonia.
+                  </p>
+                </div>
+              </div>
+
+              {/* HIGH FLEXURAL STRENGTH */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-09.svg"
+                    alt="High Flexural Strength"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    HIGH FLEXURAL STRENGTH
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Designed to withstand heavy loads and pressure without bending or cracking.
+                  </p>
+                </div>
+              </div>
+
+              {/* HYGIENIC & FOOD SAFE */}
+              <div className="char-item flex items-start gap-6 md:gap-8 group">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                  <img
+                    src="/images/technical data/SVGs/SVGs/icons-10.svg"
+                    alt="Hygienic & Food Safe"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                    HYGIENIC & FOOD SAFE
+                  </h3>
+                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                    Non-toxic and free from harmful emissions, 100% food safe, NSF Certified.
+                  </p>
                 </div>
               </div>
             </div>
