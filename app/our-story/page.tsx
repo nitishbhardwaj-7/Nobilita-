@@ -272,27 +272,26 @@ export default function OurStoryPage() {
         <div className="w-full max-w-[1440px] mx-auto z-10 mt-8 md:mt-[60px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Narrative (7 cols) */}
-            <div className="sec2-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
-              <div className="overflow-hidden py-1">
+            <div className="sec2-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
+              <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   NOBILITA takes its name from this tradition.
                 </p>
               </div>
 
-              <div className="overflow-hidden py-1">
+              <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   NOBILITA represents a philosophy rather than a status. It is a
                   belief that exceptional materials, thoughtful design, and skilled
                   craftsmanship have the power to elevate everyday spaces into
                   something{" "}
                   <span className="sec2-highlight inline-block text-[#007190] font-normal">
-                    extraordinary
+                    extraordinary.
                   </span>
-                  .
                 </p>
               </div>
 
-              <div className="overflow-hidden py-1">
+              <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   Today, that philosophy guides everything we do.
                 </p>
@@ -422,8 +421,8 @@ export default function OurStoryPage() {
             </div>
 
             {/* Right Column: Narrative (7 cols) */}
-            <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
-              <div className="overflow-hidden py-1">
+            <div className="sec4-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
+              <div className="overflow-hidden py-0.5">
                 <p className="sec4-line">
                   Our inspiration comes from the great interiors of the past, but
                   our vision is firmly contemporary: bringing the beauty, depth,
@@ -432,13 +431,13 @@ export default function OurStoryPage() {
                 </p>
               </div>
 
-              <div className="overflow-hidden py-1">
+              <div className="overflow-hidden py-0.5">
                 <p className="sec4-line">
                   Because true luxury is not defined by excess.
                 </p>
               </div>
 
-              <div className="overflow-hidden py-1">
+              <div className="overflow-hidden py-0.5">
                 <p className="sec4-line">
                   It is defined by{" "}
                   <span className="sec4-highlight inline-block text-[#007190] font-normal">
