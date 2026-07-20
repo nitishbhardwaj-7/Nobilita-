@@ -174,7 +174,7 @@ export default function LegacySection() {
             src="/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
-            className="sketch-img w-[85%] max-w-[340px] md:w-[200%] lg:w-[200%] md:max-w-none h-auto object-contain"
+            className="sketch-img w-[100%] max-w-[340px] md:w-[200%] lg:w-[200%] md:max-w-none h-auto object-contain"
           />
 
           <div className="hidden md:block flex-grow max-h-10" />
@@ -184,7 +184,7 @@ export default function LegacySection() {
             src="/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
-            className="nobilita-logo h-14 md:h-22 lg:h-24 w-[280px] object-contain"
+            className="nobilita-logo h-12 md:h-22 lg:h-24 w-[280px] object-contain"
           />
 
           <div className="hidden md:block flex-grow max-h-10" />
