@@ -176,8 +176,8 @@ export default function OurStoryPage() {
       </div>
 
       {/* Main Content / First Section */}
-      <section className="w-full flex items-center pt-[60px] pb-[60px] relative">
-        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row md:items-stretch gap-10 md:gap-16 lg:gap-28">
+      <section className="w-full flex items-center pt-8 pb-10 md:pt-[60px] md:pb-[60px] relative">
+        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row md:items-stretch gap-8 md:gap-16 lg:gap-28">
           {/* Left Column: House SVG & Logo */}
           <div className="shrink-0 flex flex-col items-center justify-between gap-10">
             {/* House Sketch */}
@@ -201,16 +201,16 @@ export default function OurStoryPage() {
           </div>
 
           {/* Right Column: Story Text */}
-          <div className="flex-1 flex flex-col justify-center min-w-0">
+          <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left min-w-0">
             <motion.h1
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={containerVariants}
-              className="hero-title font-ivymode font-light text-[#545759] uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap gap-x-[0.4em]"
+              className="hero-title font-ivymode font-light text-[#545759] uppercase tracking-[0.08em] md:tracking-[0.15em] text-[clamp(28px,6vw,66px)] md:text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center md:justify-start gap-x-[0.3em] md:gap-x-[0.4em]"
             >
               {["OUR", "STORY"].map((word, i) => (
-                <span key={i} className="inline-block overflow-hidden">
+                <span key={i} className="inline-block overflow-hidden py-2 md:py-0 px-[1px]">
                   <motion.span variants={wordVariants} className="inline-block">
                     {word}
                   </motion.span>
@@ -226,7 +226,7 @@ export default function OurStoryPage() {
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
               }}
-              className="hero-text font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.7] space-y-6 mt-10 md:mt-12"
+              className="hero-text font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.7] space-y-6 mt-8 md:mt-12 text-center md:text-left"
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
                 In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.
@@ -243,7 +243,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 2: Piano Nobile, Reimagined */}
-      <section className="sec2-container relative w-full pt-10 pb-16 md:pt-[60px] md:pb-[80px] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col">
+      <section className="sec2-container relative w-full pt-8 pb-8 md:pt-[60px] md:pb-[80px] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -255,11 +255,11 @@ export default function OurStoryPage() {
 
         {/* Centered Heading */}
         <div className="w-full z-10 shrink-0">
-          <h2 className="sec2-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+          <h2 className="sec2-title font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.18em] text-[clamp(24px,5.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em]">
             {"PIANO NOBILE, REIMAGINED".split(" ").map((word, wIdx) => (
               <span key={wIdx} className="inline-block whitespace-nowrap">
                 {word.split("").map((char, cIdx) => (
-                  <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                  <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
                     <span className="sec2-char inline-block">{char}</span>
                   </span>
                 ))}
@@ -269,10 +269,10 @@ export default function OurStoryPage() {
         </div>
 
         {/* Grid Layout */}
-        <div className="w-full max-w-[1440px] mx-auto z-10 md:mt-[60px]">
+        <div className="w-full max-w-[1440px] mx-auto z-10 mt-8 md:mt-[60px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Narrative (7 cols) */}
-            <div className="sec2-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8]">
+            <div className="sec2-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
               <div className="overflow-hidden py-1">
                 <p className="sec2-line">
                   NOBILITA takes its name from this tradition.
@@ -354,9 +354,9 @@ export default function OurStoryPage() {
         </div>
 
         {/* Bottom Narrative Text */}
-        <div className="sec3-text w-full max-w-[1440px] mx-auto bg-white px-6 md:px-12 lg:px-24 pt-[60px] pb-[60px]">
+        <div className="sec3-text w-full max-w-[1440px] mx-auto bg-white px-6 md:px-12 lg:px-24 pt-[40px] pb-[40px] md:pt-[60px] md:pb-[60px] text-center md:text-left">
           <div className="w-full">
-            <p className="font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8]">
+            <p className="font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8]">
               At NOBILITA, we work closely with architects, designers, and discerning clients to create architectural experiences. Through careful selection, expert craftsmanship, and a deep understanding of design, we help create spaces that feel timeless rather than trend-driven.
             </p>
           </div>
@@ -364,7 +364,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Section 4: Next Generation Porcelain */}
-      <section className="sec4-container relative w-full pt-10 pb-16 md:pt-[60px] md:pb-[80px] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col">
+      <section className="sec4-container relative w-full pt-8 pb-8 md:pt-[60px] md:pb-[80px] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 flex flex-col">
         {/* Background Marble Slab */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -376,11 +376,11 @@ export default function OurStoryPage() {
 
         {/* Centered Heading */}
         <div className="w-full z-10 shrink-0">
-          <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.18em] text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+          <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.18em] text-[clamp(24px,5.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em]">
             {"NEXT GENERATION PORCELAIN".split(" ").map((word, wIdx) => (
               <span key={wIdx} className="inline-block whitespace-nowrap">
                 {word.split("").map((char, cIdx) => (
-                  <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                  <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
                     <span className="sec4-char inline-block">{char}</span>
                   </span>
                 ))}
@@ -390,7 +390,7 @@ export default function OurStoryPage() {
         </div>
 
         {/* Grid Layout */}
-        <div className="w-full max-w-[1440px] mx-auto z-10 md:mt-[60px]">
+        <div className="w-full max-w-[1440px] mx-auto z-10 mt-8 md:mt-[60px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-start items-center">
@@ -422,7 +422,7 @@ export default function OurStoryPage() {
             </div>
 
             {/* Right Column: Narrative (7 cols) */}
-            <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[20px] tracking-widest leading-[1.8]">
+            <div className="sec4-text md:col-span-7 flex flex-col space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
               <div className="overflow-hidden py-1">
                 <p className="sec4-line">
                   Our inspiration comes from the great interiors of the past, but

@@ -120,9 +120,9 @@ export default function DimensionsSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white mt-[40px] flex flex-col items-center">
       {/* Title - slide up reveal */}
-      <div className="w-full px-4 mb-[30px] text-center overflow-hidden py-1">
-        <h2 className="font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.1em] uppercase inline-block">
-          <span className="dimensions-title-span inline-block">
+      <div className="w-full px-4 mb-[30px] text-center overflow-hidden py-2 md:py-1">
+        <h2 className="font-ivymode text-[clamp(20px,4.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.06em] md:tracking-[0.1em] uppercase inline-block">
+          <span className="dimensions-title-span inline-block py-1">
             FORMAT & DIMENSIONS
           </span>
         </h2>
@@ -174,7 +174,7 @@ export default function DimensionsSection() {
       </div>
 
       {/* Feature Image with Centered Button */}
-      <div className="relative w-full px-4 md:px-0 flex justify-center items-center overflow-hidden">
+      <div className="relative w-full px-0 flex justify-center items-center overflow-hidden">
         <div
           className="dimensions-img-container relative w-full h-[300px] md:h-[450px] overflow-hidden flex justify-center items-center"
           style={{ clipPath: "inset(0% 12% 0% 12%)", opacity: 0 }}

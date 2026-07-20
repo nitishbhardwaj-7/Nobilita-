@@ -150,7 +150,6 @@ export function useSpillAnimations() {
               "<" // Play at the same time as the wipe
             );
           }
-
           // Settle mug rotation
           mainTl.to(illust, { rotation: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
         }

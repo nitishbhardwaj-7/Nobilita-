@@ -168,9 +168,9 @@ export default function TechnicalDataPage() {
         {/* Content Wrapper */}
         <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-start pt-24 md:pt-20 px-6 md:px-12 mt-0 md:mt-12 text-center">
 
-          <div className="relative w-full flex items-center justify-center min-h-[44px] px-14 md:px-20">
+          <div className="w-full flex flex-col md:flex-row items-center justify-center relative px-4 md:px-20 gap-4 md:gap-0">
             {/* Back Button Arrow */}
-            <div className="absolute left-0 flex items-center h-full">
+            <div className="self-start md:absolute md:left-0 flex items-center">
               <Link
                 href="/"
                 className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-transparent backdrop-blur-sm shadow-sm"
@@ -191,11 +191,11 @@ export default function TechnicalDataPage() {
               </Link>
             </div>
 
-            <h1 className="font-ivymode font-light text-black uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap justify-center gap-x-[0.4em]">
+            <h1 className="font-ivymode font-light text-black uppercase tracking-[0.04em] md:tracking-[0.15em] text-[clamp(26px,5.5vw,52px)] md:text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em] px-2 md:px-0">
               {"ENGINEERED FOR PERFORMANCE".split(" ").map((word, wIdx) => (
                 <span key={wIdx} className="inline-block whitespace-nowrap">
                   {word.split("").map((char, cIdx) => (
-                    <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                    <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
                       <span className="hero-title-char inline-block">{char}</span>
                     </span>
                   ))}
@@ -204,7 +204,7 @@ export default function TechnicalDataPage() {
             </h1>
           </div>
           <p
-            className="hero-desc font-ivymode font-light text-black text-[20px] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-10 text-justify"
+            className="hero-desc font-ivymode font-light text-black text-[15px] sm:text-[16px] md:text-[20px] tracking-wide max-w-[1150px] w-[92%] mx-auto mt-6 md:mt-10 text-justify"
             style={{ textAlignLast: "center" }}
           >
             Every NOBILITA surface is engineered for exceptional performance from specification to installation. Designed by architects and engineers, it combines technical precision with refined aesthetics, ensuring premium quality, consistency and reliability. NOBILITA offers outstanding durability, dimensional stability, stain resistance, and long-term performance.
@@ -219,11 +219,11 @@ export default function TechnicalDataPage() {
           {/* A. Characteristics Grid */}
           <div className="space-y-16">
             <div className="char-title char-title-trigger">
-              <h2 className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.4em]">
+              <h2 className="font-ivymode font-light text-white uppercase tracking-[0.04em] md:tracking-[0.15em] text-[clamp(28px,6.5vw,52px)] md:text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.3em] md:gap-x-[0.4em]">
                 {"CHARACTERISTICS".split(" ").map((word, wIdx) => (
                   <span key={wIdx} className="inline-block whitespace-nowrap">
                     {word.split("").map((char, cIdx) => (
-                      <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                      <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
                         <span className="char-title-char inline-block">{char}</span>
                       </span>
                     ))}
@@ -242,11 +242,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     WATER PROOF
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Highly resistant to water damage, due to an ultra-low absorption rate.
                   </p>
                 </div>
@@ -261,11 +261,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     UV RESISTANT
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Composed of 100% natural materials, ensuring colors remain vibrant even with prolonged exposure to sunlight and extreme weather.
                   </p>
                 </div>
@@ -280,11 +280,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     SCRATCH RESISTANT
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Engineered with a tough surface strength to withstand scratches and abrasions.
                   </p>
                 </div>
@@ -299,11 +299,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     ECO FRIENDLY
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Contains no substances harmful to the environment.
                   </p>
                 </div>
@@ -318,11 +318,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     HEAT & FROST RESISTANT
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     NOBILITA does not burn, emit smoke, or release toxic substances when exposed to fire.
                   </p>
                 </div>
@@ -337,11 +337,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     RECYCLABLE
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Each slab incorporates between 52% - 98% recycled content and is fully reusable and recyclable.
                   </p>
                 </div>
@@ -356,11 +356,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     EASY TO MAINTAIN
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Compatible with all types of cleaning agents, including bleach and ammonia.
                   </p>
                 </div>
@@ -375,11 +375,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     HIGH FLEXURAL STRENGTH
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Designed to withstand heavy loads and pressure without bending or cracking.
                   </p>
                 </div>
@@ -394,11 +394,11 @@ export default function TechnicalDataPage() {
                     className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
-                <div className="flex-1 space-y-4">
-                  <h3 className="font-michroma text-sm md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
+                <div className="flex-1 space-y-2 md:space-y-4">
+                  <h3 className="font-michroma text-base md:text-[18px] tracking-[0.15em] uppercase font-light text-white">
                     HYGIENIC & FOOD SAFE
                   </h3>
-                  <p className="font-ivymode font-light text-white/90 text-[18px] tracking-[0.12em] leading-[1]">
+                  <p className="font-ivymode font-light text-white/90 text-[14px] md:text-[18px] tracking-[0.08em] leading-normal">
                     Non-toxic and free from harmful emissions, 100% food safe, NSF Certified.
                   </p>
                 </div>
@@ -410,11 +410,11 @@ export default function TechnicalDataPage() {
           <div className="pt-16">
             <div className="space-y-16">
               <div className="ug-title ug-title-trigger">
-                <h2 className="font-ivymode font-light text-white uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.4em]">
+                <h2 className="font-ivymode font-light text-white uppercase tracking-[0.06em] md:tracking-[0.15em] text-[clamp(26px,5.5vw,52px)] md:text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.3em] md:gap-x-[0.4em]">
                   {"USER GUIDE".split(" ").map((word, wIdx) => (
                     <span key={wIdx} className="inline-block whitespace-nowrap">
                       {word.split("").map((char, cIdx) => (
-                        <span key={cIdx} className="inline-block overflow-hidden align-bottom">
+                        <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
                           <span className="ug-title-char inline-block">{char}</span>
                         </span>
                       ))}
@@ -422,11 +422,11 @@ export default function TechnicalDataPage() {
                   ))}
                 </h2>
               </div>
-              <div className="font-ivymode font-light text-white/90 text-[20px] tracking-widest w-full space-y-12">
-                <p className="ug-desc text-[20px]">
+              <div className="font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[20px] tracking-widest w-full space-y-8 md:space-y-12">
+                <p className="ug-desc">
                   The lasting beauty and performance of a surface depend on proper care and maintenance. To help you preserve the exceptional qualities of NOBILITA porcelain surfaces, we have created a collection of maintenance guidelines.
                 </p>
-                <p className="ug-desc text-[20px]">
+                <p className="ug-desc">
                   Explore our easy-to-follow care instructions and cleaning recommendations. Whether for residential or commercial applications, these guidelines ensure your NOBILITA surfaces continue to perform and look their best for generations to come.
                 </p>
               </div>

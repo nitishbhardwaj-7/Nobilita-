@@ -167,37 +167,37 @@ export default function LegacySection() {
       </div>
 
       {/* ── CENTER PANEL */}
-      <div className="w-full md:w-1/3 min-h-[70vh] md:h-screen bg-white flex flex-col items-center justify-end relative px-6">
-        <div className="flex-1 w-full flex flex-col items-center justify-end max-w-none px-4">
+      <div className="w-full md:w-1/3 mb-10 md:py-0 md:min-h-0 md:h-screen bg-white flex flex-col items-center justify-center md:justify-end relative px-6">
+        <div className="w-full md:flex-1 flex flex-col items-center justify-center md:justify-end max-w-none px-4 space-y-6 md:space-y-0">
           <img
             ref={sketchRef}
             src="/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
-            className="sketch-img w-[105%] md:w-[200%] lg:w-[200%] max-w-none h-auto object-contain"
+            className="sketch-img w-[85%] max-w-[340px] md:w-[200%] lg:w-[200%] md:max-w-none h-auto object-contain"
           />
 
-          <div className="flex-grow max-h-10" />
+          <div className="hidden md:block flex-grow max-h-10" />
 
           <img
             ref={logoRef}
             src="/images/Links/NOBILITA Logo BLACK.png"
             alt="Nobilita Logo"
             loading="lazy"
-            className="nobilita-logo h-10 md:h-22 lg:h-24 w-[240px] object-contain"
+            className="nobilita-logo h-14 md:h-22 lg:h-24 w-[280px] object-contain"
           />
 
-          <div className="flex-grow max-h-10" />
+          <div className="hidden md:block flex-grow max-h-10" />
 
           <img
             ref={taglineRef}
             src="/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[40%] md:w-[80%] lg:w-[85%] max-w-[350px] h-auto object-contain"
+            className="tagline-text w-[75%] sm:w-[60%] md:w-[80%] lg:w-[85%] max-w-[320px] md:max-w-[350px] h-auto object-contain"
           />
 
-          <div className="flex-grow max-h-12" />
+          <div className="hidden md:block flex-grow max-h-12" />
         </div>
       </div>
 

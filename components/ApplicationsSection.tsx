@@ -176,12 +176,12 @@ export default function ApplicationsSection() {
       className="applications-section w-full min-h-[100vh] bg-white flex flex-col"
     >
       {/* ── HEADING */}
-      <div className="w-full px-4 mb-[40px] mt-[40px] text-center overflow-hidden py-1">
+      <div className="w-full px-4 mb-[40px] mt-[40px] text-center overflow-hidden py-2 md:py-1">
         <h2
           ref={headingRef}
-          className="applications-heading font-ivymode text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.1em] uppercase inline-block"
+          className="applications-heading font-ivymode text-[clamp(20px,4.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.06em] md:tracking-[0.1em] uppercase inline-block"
         >
-          <span className="applications-title-span inline-block">
+          <span className="applications-title-span inline-block py-1">
             APPLICATIONS
           </span>
         </h2>

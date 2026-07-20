@@ -153,10 +153,10 @@ export default function CraftsmanshipSection() {
 
       {/* ── TOP HEADING & PARAGRAPH GROUP ── */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto pt-0 flex flex-col items-center px-4">
-        <div className="w-min max-w-full flex flex-col items-center">
+        <div className="w-auto max-w-full md:w-min flex flex-col items-center">
           <h2
             ref={headingRef}
-            className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-nowrap"
+            className="craftsmanship-heading font-ivymode text-white font-light text-[clamp(20px,5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] uppercase text-center whitespace-normal md:whitespace-nowrap leading-tight py-1"
             style={{ opacity: 0, letterSpacing: "0.28em", marginRight: "-0.28em" }}
           >
             ITALIAN CRAFTSMANSHIP
