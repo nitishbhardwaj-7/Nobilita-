@@ -137,7 +137,7 @@ export default function CraftsmanshipSection() {
     <section
       ref={sectionRef}
       id="made-in-italy"
-      className="craftsmanship-section relative w-full min-h-screen flex flex-col justify-between py-16 px-6 md:px-16 overflow-hidden"
+      className="craftsmanship-section relative w-full min-h-screen flex flex-col justify-between py-6 md:py-16 px-6 md:px-16 overflow-hidden"
     >
       {/* ── BACKGROUND IMAGE — static full-cover */}
       <div className="absolute inset-0">

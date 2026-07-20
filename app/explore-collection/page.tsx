@@ -270,7 +270,7 @@ function ExploreCollectionContent() {
       <Navbar />
 
       {/* Explore Collection Header Banner */}
-      <div id="explore-hero" className="w-full bg-[#007190] pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
+      <div id="explore-hero" className="w-full bg-[#007190] pt-32 md:pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center relative">
         {/* Menu Icon on Top Left */}
         <div className="absolute top-6 left-6 md:top-8 md:left-12 z-[10000]">
           <button
@@ -305,7 +305,7 @@ function ExploreCollectionContent() {
 
         <Link
           href="/"
-          className="absolute top-28 left-6 md:left-11 group flex items-center justify-center w-5 h-5 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          className="absolute top-20 left-6 md:top-28 md:left-11 group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Back to home"
         >
           <svg
@@ -322,7 +322,7 @@ function ExploreCollectionContent() {
           </svg>
         </Link>
 
-        <h1 className="font-ivymode text-white text-[clamp(20px,4.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] tracking-[0.06em] md:tracking-[0.10em] uppercase leading-tight py-1 mb-12">
+        <h1 className="font-ivymode text-white text-[clamp(17px,4.8vw,66px)] md:text-[clamp(28px,4.5vw,66px)] tracking-[0.04em] md:tracking-[0.10em] uppercase leading-tight py-1 mb-8 md:mb-12 whitespace-nowrap">
           EXPLORE THE COLLECTION
         </h1>
 

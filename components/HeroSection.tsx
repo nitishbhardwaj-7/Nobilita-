@@ -216,7 +216,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="font-ivymode text-white leading-tight tracking-[0.05em] md:tracking-[0.1em] text-[clamp(28px,6.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] uppercase flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em]"
+            className="font-ivymode text-white leading-tight tracking-[0.03em] md:tracking-[0.1em] text-[clamp(17px,4.8vw,66px)] md:text-[clamp(28px,4.5vw,66px)] uppercase flex flex-nowrap whitespace-nowrap justify-center gap-x-[0.25em] md:gap-x-[0.4em]"
           >
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden py-2 md:py-1 px-[1px]">

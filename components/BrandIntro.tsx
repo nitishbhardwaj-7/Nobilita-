@@ -34,7 +34,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        delay: 0.8, // Delay slightly for loader exit animation to complete
+        delay: isLoaderActive ? 0.8 : 0.1, // Delay slightly only if loader animation is active
         scrollTrigger: {
           trigger: section,
           start: "top 75%",

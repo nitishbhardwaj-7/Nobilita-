@@ -58,15 +58,15 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           className="fixed inset-0 z-[99999] bg-[#007190] w-full h-full flex flex-col overflow-y-auto md:overflow-hidden"
         >
           {/* Main Content Area */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 content-center items-start gap-8 md:gap-12">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 content-center items-center md:items-start gap-8 md:gap-12">
 
             {/* Left Column: Back button & Links */}
-            <div className="flex flex-col justify-start md:pl-8 lg:pl-16 w-full">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left justify-start md:pl-8 lg:pl-16 w-full">
               {/* Top: Back Button */}
               <div className="w-full flex justify-start mb-8 md:mb-12 shrink-0">
                 <button
                   onClick={onClose}
-                  className="group flex items-center justify-center w-11 h-11 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+                  className="group flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
                   aria-label="Close menu"
                 >
                   <svg
@@ -76,7 +76,7 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                     strokeWidth="1.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-5 h-5 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
+                    className="w-4 h-4 md:w-5 md:h-5 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
                   >
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
@@ -89,7 +89,7 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col space-y-8 md:space-y-12"
+                className="flex flex-col items-center md:items-start space-y-8 md:space-y-12"
               >
                 {menuLinks.map((link) => (
                   <motion.div key={link.label} variants={itemVariants}>

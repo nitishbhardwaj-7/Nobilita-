@@ -13,24 +13,39 @@ import TechnicalDataSection from "@/components/TechnicalDataSection";
 import Footer from "@/components/Footer";
 // import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-// Global in-memory flag to ensure loader only runs once per website load/refresh.
-// It will survive client-side/SPA navigation, but reset on full reload/refresh.
 let hasLoadedGlobal = false;
 
 export default function HomeClient({ cmsData }: { cmsData: any }) {
-  const [isLoading, setIsLoading] = useState(!hasLoadedGlobal);
+  const [isLoading, setIsLoading] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      const seen = sessionStorage.getItem("has_seen_nobilita_loader");
+      if (seen === "true" || hasLoadedGlobal) {
+        hasLoadedGlobal = true;
+        return false;
+      }
+    }
+    return !hasLoadedGlobal;
+  });
 
   useEffect(() => {
-    if (hasLoadedGlobal) {
-      setIsLoading(false);
-      return;
+    if (typeof window !== "undefined") {
+      const seen = sessionStorage.getItem("has_seen_nobilita_loader");
+      if (seen === "true" || hasLoadedGlobal) {
+        setIsLoading(false);
+        hasLoadedGlobal = true;
+        return;
+      }
     }
 
     // Fallback safety timer: force-hide loader after 10 seconds if needed
     const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
       hasLoadedGlobal = true;
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("has_seen_nobilita_loader", "true");
+      }
     }, 10000);
+
     return () => clearTimeout(fallbackTimer);
   }, []);
 
@@ -39,6 +54,9 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
   const handleComplete = () => {
     setIsLoading(false);
     hasLoadedGlobal = true;
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("has_seen_nobilita_loader", "true");
+    }
   };
 
   return (

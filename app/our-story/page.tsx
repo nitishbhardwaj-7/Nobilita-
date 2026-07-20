@@ -157,7 +157,7 @@ export default function OurStoryPage() {
       <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50">
         <Link
           href="/"
-          className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/50 backdrop-blur-sm shadow-sm"
+          className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Go back to home"
         >
           <svg
@@ -167,7 +167,7 @@ export default function OurStoryPage() {
             strokeWidth="1.2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-5 h-5 transition-transform duration-300 transform group-hover:-translate-x-0.5"
+            className="w-4 h-4 md:w-4.5 md:h-4.5 text-brand-dark/80 group-hover:text-brand-dark transition-transform duration-300 transform group-hover:-translate-x-0.5"
           >
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
