@@ -235,7 +235,7 @@ export default function OurStoryPage() {
                 The world's greatest cities were shaped by spaces that celebrated proportion, artistry, and material excellence.
               </motion.p>
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
-                Among their defining features was the <span className="text-[#007190] font-normal">Piano Nobile – the noble floor. <br/> </span> Elevated above the bustle of the streets, it was the heart of the home, where marble, light, and masterful detailing came together to create spaces of remarkable elegance.
+                Among their defining features was the <span className="text-[#007190] font-normal">Piano Nobile – the noble floor. <br /> </span> Elevated above the bustle of the streets, it was the heart of the home, where marble, light, and masterful detailing came together to create spaces of remarkable elegance.
               </motion.p>
             </motion.div>
           </div>
@@ -300,7 +300,7 @@ export default function OurStoryPage() {
 
             {/* Right Column: Verde Profondo Image (5 cols) */}
             <div className="md:col-span-5 flex justify-end items-center">
-              <div 
+              <div
                 className="sec2-img-wrapper group relative w-full max-w-[400px] xl:max-w-[480px] 2xl:max-w-[560px] shadow-lg border border-white/20 overflow-hidden cursor-pointer"
                 onMouseEnter={() => handleImageEnter(".sec2-img-inner")}
                 onMouseLeave={() => handleImageLeave(".sec2-img-inner")}
@@ -314,7 +314,7 @@ export default function OurStoryPage() {
 
                 {/* Bottom Right Text Button */}
                 <div className="absolute bottom-2 right-2 md:bottom-2 md:right-2 z-20">
-                  <button 
+                  <button
                     onClick={() => setActiveProduct("Verde Profondo")}
                     className="relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block"
                   >
@@ -374,8 +374,8 @@ export default function OurStoryPage() {
         </div>
 
         {/* Centered Heading */}
-        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 z-10 shrink-0">
-          <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.18em] text-[clamp(24px,5.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em]">
+        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-8 lg:px-12 xl:px-16 z-10 shrink-0">
+          <h2 className="sec4-title font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.08em] lg:tracking-[0.12em] xl:tracking-[0.16em] text-[clamp(24px,5.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap md:flex-nowrap justify-center gap-x-[0.25em] md:gap-x-[0.35em]">
             {"NEXT GENERATION PORCELAIN".split(" ").map((word, wIdx) => (
               <span key={wIdx} className="inline-block whitespace-nowrap">
                 {word.split("").map((char, cIdx) => (
@@ -393,7 +393,7 @@ export default function OurStoryPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-start items-center">
-              <div 
+              <div
                 className="sec4-img-wrapper group relative w-full max-w-[400px] xl:max-w-[480px] 2xl:max-w-[560px] shadow-lg border border-white/20 overflow-hidden cursor-pointer"
                 onMouseEnter={() => handleImageEnter(".sec4-img-inner")}
                 onMouseLeave={() => handleImageLeave(".sec4-img-inner")}
@@ -407,7 +407,7 @@ export default function OurStoryPage() {
 
                 {/* Bottom Left Text Button */}
                 <div className="absolute bottom-2 left-2 md:bottom-2 md:left-2 z-20">
-                  <button 
+                  <button
                     onClick={() => setActiveProduct("Ferro Industriale")}
                     className="relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block"
                   >
