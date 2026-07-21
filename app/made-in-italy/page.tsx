@@ -135,9 +135,9 @@ export default function MadeInItalyPage() {
       </div>
 
       {/* Section 1: Made In Italy Intro */}
-      <section className="relative w-full flex flex-col justify-center pt-28 md:pt-16 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-12">
+      <section className="relative w-full flex flex-col justify-center pt-28 md:pt-16 px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-12">
         {/* Content wrapper */}
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col">
+        <div className="relative z-10 w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col">
           <div className="w-full text-center">
             <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.18em] text-[clamp(28px,6vw,66px)] md:text-[clamp(28px,4vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em]">
               {"MADE IN ITALY".split(" ").map((word, wIdx) => (
@@ -214,8 +214,8 @@ export default function MadeInItalyPage() {
       </section>
 
       {/* Section 3: Large Format Slabs */}
-      <section className="relative w-full px-6 md:px-12 lg:px-24 overflow-hidden">
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col space-y-12">
+      <section className="relative w-full px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden">
+        <div className="relative z-10 w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col space-y-12">
           {/* Top Text */}
           <div className="sec2-text-container w-full font-ivymode font-light text-[#545759] text-[15px] sm:text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left space-y-6 md:space-y-8">
             <p className="sec2-paragraph">
@@ -269,13 +269,19 @@ export default function MadeInItalyPage() {
       {/* Section 4: Colosseum Background Parallax Reveal */}
       <section className="sec4-container relative w-full h-screen overflow-hidden bg-white">
         <div className="sec4-img-wrapper relative w-full h-full mx-auto group overflow-hidden">
-          {/* Background Image */}
-          <img
-            src="/images/made-in-italy/colosseo-2020-compressed.jpg"
-            alt="Colosseum"
-            className="sec4-img-inner w-full h-full object-cover block origin-center will-change-transform"
-            loading="lazy"
-          />
+          {/* Background Image (Responsive Desktop / Mobile) */}
+          <picture className="w-full h-full block">
+            <source
+              media="(max-width: 767px)"
+              srcSet="/images/made-in-italy/colosseo-mobile.jpg"
+            />
+            <img
+              src="/images/made-in-italy/colosseo-2020-compressed.jpg"
+              alt="Colosseum"
+              className="sec4-img-inner w-full h-full object-cover block origin-center will-change-transform"
+              loading="lazy"
+            />
+          </picture>
           
           {/* Top Headline Image Overlay */}
           <div className="absolute top-8 md:top-12 lg:top-16 left-0 right-0 z-30 flex justify-center px-4 w-full pointer-events-none">

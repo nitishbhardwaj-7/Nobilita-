@@ -230,12 +230,32 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             ))}
           </motion.h1>
 
-          {/* Line-by-line, word-by-word cascading reveal */}
+          {/* Mobile Version: Clean normal paragraph flow */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="font-ivymode text-white/95 text-[14px] sm:text-[15px] md:text-[18px] font-extralight leading-[26px] md:leading-[32px] w-full max-w-[1150px] tracking-widest my-auto px-4 pt-10 flex flex-col items-center"
+            className="block md:hidden font-ivymode text-white/95 text-[14px] sm:text-[15px] font-extralight leading-[26px] my-auto px-2 pt-6 text-center tracking-wider"
+          >
+            {(subtitle || defaultSubtitle).replace(/\n/g, " ").split(" ").map((word, wordIdx) => (
+              <span key={wordIdx} className="inline-block overflow-hidden align-bottom mx-[0.15em]">
+                <motion.span
+                  custom={0.15 + wordIdx * 0.008}
+                  variants={paragraphWordVariants}
+                  className="inline-block"
+                >
+                  {word}
+                </motion.span>
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Desktop Version: Preserved line-by-line, word-by-word cascading reveal */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="hidden md:flex font-ivymode text-white/95 text-[18px] font-extralight leading-[32px] w-full max-w-[1150px] tracking-widest my-auto px-4 pt-10 flex-col items-center"
           >
             {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
               const lines = (subtitle || defaultSubtitle).split("\n");
@@ -243,7 +263,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
               return (
                 <span
                   key={lineIdx}
-                  className={`w-full flex flex-wrap md:flex-nowrap justify-center gap-x-[0.35em] ${isLastLine ? "" : "md:justify-between md:gap-x-0"}`}
+                  className={`w-full flex flex-nowrap ${isLastLine ? "justify-center gap-x-[0.35em]" : "justify-between gap-x-0"}`}
                 >
                   {line.split(" ").map((word, wordIdx) => (
                     <span key={wordIdx} className="inline-block overflow-hidden align-bottom">

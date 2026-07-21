@@ -213,8 +213,8 @@ export default function TechnicalDataPage() {
       </section>
 
       {/* 2. Characteristics, User Guide & Technical Specifications Section */}
-      <section className="relative w-full pt-20 pb-0 md:pt-16 md:pb-0 px-6 md:px-12 lg:px-24 bg-[#007190] text-white">
-        <div className="max-w-[1600px] mx-auto flex flex-col">
+      <section className="relative w-full pt-20 pb-0 md:pt-16 md:pb-0 px-6 md:px-12 lg:px-20 xl:px-24 bg-[#007190] text-white">
+        <div className="max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col">
 
           {/* A. Characteristics Grid */}
           <div className="space-y-16">
@@ -574,8 +574,8 @@ export default function TechnicalDataPage() {
       </section>
 
       {/* C. Technical Specifications Section */}
-      <section className="relative w-full pt-16 mb-20 px-6 md:px-12 lg:px-24 bg-white text-brand-dark">
-        <div className="max-w-[1600px] mx-auto flex flex-col items-start w-full space-y-16">
+      <section className="relative w-full pt-16 mb-20 px-6 md:px-12 lg:px-20 xl:px-24 bg-white text-brand-dark">
+        <div className="max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col items-start w-full space-y-16">
           <div className="text-center w-full">
             <h2 className="specs-title font-ivymode font-light text-[#007190] uppercase tracking-[0.15em] text-[clamp(28px,4.5vw,42px)] leading-tight">
               TECHNICAL SPECIFICATIONS FOR PROFESSIONALS

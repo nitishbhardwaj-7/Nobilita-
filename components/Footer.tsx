@@ -333,7 +333,7 @@ export default function Footer() {
 
       {/* Lower Footer Area */}
       <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center pb-10 px-6">
-        <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-6">
+        <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-0">
 
 
           {/* Mobile Navigation */}
@@ -342,7 +342,7 @@ export default function Footer() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="md:hidden w-full flex flex-col items-center justify-center gap-y-4 text-center"
+            className="md:hidden pt-10 w-full flex flex-col items-center justify-center gap-y-4 text-center"
           >
             {links.map((link) => {
               const isContact = link === "contact us";
@@ -439,7 +439,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="pt-20 flex justify-center w-full"
+            className="pt-10 md:pt-20 flex justify-center w-full"
           >
             <div className="w-[260px] md:w-[320px]">
               <img
