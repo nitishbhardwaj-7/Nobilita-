@@ -153,10 +153,10 @@ export default function Footer() {
                   </div>
 
                   {/* Right Column: White background with Thank You and CTA */}
-                  <div className="bg-white py-16 px-8 flex flex-col items-center justify-center text-center space-y-8">
+                  <div className="bg-white py-12 sm:py-16 px-4 sm:px-8 flex flex-col items-center justify-center text-center space-y-8">
                     {activeForm === "query" ? (
                       <>
-                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                        <h2 className="font-ivymode text-[clamp(16px,4.5vw,34px)] text-[#545759] tracking-[0.10em] sm:tracking-[0.15em] uppercase font-light leading-tight">
                           THANK YOU FOR YOUR ENQUIRY
                         </h2>
                         <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759]">
@@ -165,7 +165,7 @@ export default function Footer() {
                       </>
                     ) : activeForm === "catalog" ? (
                       <>
-                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                        <h2 className="font-ivymode text-[clamp(16px,4.5vw,34px)] text-[#545759] tracking-[0.10em] sm:tracking-[0.15em] uppercase font-light leading-tight">
                           DOWNLOADED SUCCESSFULLY
                         </h2>
                         <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759] max-w-lg leading-relaxed">
@@ -174,7 +174,7 @@ export default function Footer() {
                       </>
                     ) : activeForm === "newsletter" ? (
                       <>
-                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                        <h2 className="font-ivymode text-[clamp(16px,4.5vw,34px)] text-[#545759] tracking-[0.10em] sm:tracking-[0.15em] uppercase font-light leading-tight">
                           SUBSCRIPTION CONFIRMED
                         </h2>
                         <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759] max-w-lg leading-relaxed">
@@ -183,7 +183,7 @@ export default function Footer() {
                       </>
                     ) : (
                       <>
-                        <h2 className="font-ivymode text-[clamp(18px,2.5vw,34px)] text-[#545759] tracking-[0.15em] uppercase font-light leading-tight whitespace-nowrap">
+                        <h2 className="font-ivymode text-[clamp(16px,4.5vw,34px)] text-[#545759] tracking-[0.10em] sm:tracking-[0.15em] uppercase font-light leading-tight">
                           YOUR DESIGN RESOURCE IS READY
                         </h2>
                         <p className="font-ivymode text-[clamp(14px,1.4vw,18px)] tracking-[0.05em] text-[#545759] max-w-lg leading-relaxed">
@@ -191,7 +191,7 @@ export default function Footer() {
                         </p>
                       </>
                     )}
-                    <div className="pt-8 flex justify-center w-full">
+                    <div className="pt-8 flex justify-center w-full px-2">
                       <button
                         onClick={() => {
                           setSubmitStatus("idle");
@@ -202,10 +202,10 @@ export default function Footer() {
                             window.location.href = "/explore-collection";
                           }
                         }}
-                        className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group text-center focus:outline-none whitespace-nowrap"
+                        className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-4 sm:px-8 py-2.5 font-michroma text-[clamp(10px,3vw,14px)] md:text-[clamp(12px,1.5vw,20px)] tracking-[0.08em] sm:tracking-[0.18em] md:tracking-[0.25em] transition-colors duration-500 uppercase group text-center focus:outline-none max-w-full"
                       >
                         <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                        <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                        <span className="relative z-10 transition-colors duration-500 group-hover:text-white block whitespace-nowrap">
                           DISCOVER THE COLLECTION
                         </span>
                       </button>

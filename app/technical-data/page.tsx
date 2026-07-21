@@ -151,6 +151,28 @@ export default function TechnicalDataPage() {
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
       <Navbar />
 
+      {/* Back Button Arrow */}
+      <div className="absolute top-20 left-6 md:top-32 md:left-12 z-50">
+        <Link
+          href="/"
+          className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          aria-label="Go back to home"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-4 h-4 md:w-4.5 md:h-4.5 text-brand-dark/80 group-hover:text-brand-dark transition-transform duration-300 transform group-hover:-translate-x-0.5"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </Link>
+      </div>
+
       {/* 1. Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col justify-start overflow-hidden">
         {/* Background Image */}
@@ -166,31 +188,9 @@ export default function TechnicalDataPage() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-start pt-24 md:pt-20 px-6 md:px-12 mt-0 md:mt-12 text-center">
+        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-start pt-28 md:pt-20 px-6 md:px-12 mt-0 md:mt-12 text-center">
 
           <div className="w-full flex flex-col md:flex-row items-center justify-center relative px-4 md:px-20 gap-4 md:gap-0">
-            {/* Back Button Arrow */}
-            <div className="self-start md:absolute md:left-0 flex items-center">
-              <Link
-                href="/"
-                className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
-                aria-label="Go back to home"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-4 h-4 md:w-4.5 md:h-4.5 text-brand-dark/80 group-hover:text-brand-dark transition-transform duration-300 transform group-hover:-translate-x-0.5"
-                >
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-              </Link>
-            </div>
-
             <h1 className="font-ivymode font-light text-black uppercase tracking-[0.04em] md:tracking-[0.15em] text-[clamp(26px,5.5vw,52px)] md:text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em] px-2 md:px-0">
               {"ENGINEERED FOR PERFORMANCE".split(" ").map((word, wIdx) => (
                 <span key={wIdx} className="inline-block whitespace-nowrap">
