@@ -191,7 +191,7 @@ export default function Footer() {
                         </p>
                       </>
                     )}
-                    <div className="pt-8 flex justify-center w-full px-2">
+                    <div className="flex justify-center w-full px-2">
                       <button
                         onClick={() => {
                           setSubmitStatus("idle");
