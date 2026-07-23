@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import NobilitaHouseSVG from "./NobilitaHouseSVG";
 import AnimatedNeighborhood from "./AnimatedNeighborhood";
@@ -331,7 +332,7 @@ export default function Footer() {
       </AnimatePresence>
 
       {/* Lower Footer Area */}
-      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center pb-10 px-6">
+      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center px-6">
         <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-0">
 
 
@@ -370,66 +371,59 @@ export default function Footer() {
             })}
           </motion.nav>
 
-          {/* Desktop Navigation (Equal gaps, perfect center to logo) */}
+          {/* Desktop Navigation (100% mathematically equal spacing & perfect center alignment) */}
           <motion.nav
             variants={navContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hidden md:grid w-full grid-cols-[1fr_auto_1fr] items-center gap-x-[7vw] lg:gap-x-[9.5vw] xl:gap-x-[12vw] text-center px-6 md:px-16 lg:px-24"
+            className="hidden md:flex w-full max-w-[1300px] lg:max-w-[1550px] xl:max-w-[1800px] 2xl:max-w-[2100px] mx-auto items-center justify-between text-center px-6 md:px-12 lg:px-16"
           >
-            {/* Left Column (about, products) */}
-            <div className="flex justify-end gap-x-[7vw] lg:gap-x-[9.5vw] xl:gap-x-[12vw]">
-              <motion.a
-                variants={navItemVariants}
-                href="/our-story"
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-              >
-                about
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-              <motion.a
-                variants={navItemVariants}
-                href="/explore-collection"
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-              >
-                products
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            </div>
+            <motion.a
+              variants={navItemVariants}
+              href="/our-story"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              about
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
 
-            {/* Center Column (technical data - aligned to logo) */}
-            <div className="flex justify-center">
-              <motion.a
-                variants={navItemVariants}
-                href="/technical-data"
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-              >
-                technical data
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            </div>
+            <motion.a
+              variants={navItemVariants}
+              href="/explore-collection"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              products
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
 
-            {/* Right Column (made in italy, contact us) */}
-            <div className="flex justify-start gap-x-[vw] lg:gap-x-[8.5vw] xl:gap-x-[11vw]">
-              <motion.a
-                variants={navItemVariants}
-                href="/made-in-italy"
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-              >
-                made in italy
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-              <motion.a
-                variants={navItemVariants}
-                href="#contact-us"
-                onClick={handleContactClick}
-                className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] text-center w-fit whitespace-nowrap"
-              >
-                contact us
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            </div>
+            <motion.a
+              variants={navItemVariants}
+              href="/technical-data"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              technical data
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
+
+            <motion.a
+              variants={navItemVariants}
+              href="/made-in-italy"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              made in italy
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
+
+            <motion.a
+              variants={navItemVariants}
+              href="#contact-us"
+              onClick={handleContactClick}
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              contact us
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
           </motion.nav>
 
           {/* Logo with fade in & slide up delay */}
@@ -438,7 +432,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="pt-10 md:pt-20 flex justify-center w-full"
+            className="pt-10 md:pt-20 pb-12 flex justify-center w-full"
           >
             <div className="w-[260px] md:w-[320px]">
               <img
@@ -449,6 +443,15 @@ export default function Footer() {
             </div>
           </motion.div>
 
+        </div>
+      </div>
+
+      {/* Bottom Copyright & Legal Strip */}
+      <div className="w-full bg-[#007190] py-6 px-6 md:px-16 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 md:gap-16 text-white/80 font-light text-xs md:text-sm tracking-wide">
+        <span>© Copyright 2026 Nobilita Granite & Marble Tr. L.L.C</span>
+        <div className="flex items-center gap-8 md:gap-12">
+          <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
         </div>
       </div>
     </footer>

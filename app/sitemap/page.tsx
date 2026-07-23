@@ -1,0 +1,151 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function SitemapPage() {
+  return (
+    <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
+      <Navbar />
+
+      {/* Hero Banner with Title Overlay */}
+      <section className="relative w-full h-[320px] md:h-[440px] xl:h-[500px] overflow-hidden bg-gray-900 mt-[64px] md:mt-[80px]">
+        <img
+          src="/images/Links/Calacatta Oyster Application 1.jpg"
+          alt="Sitemap Background"
+          className="w-full h-full object-cover object-center opacity-85"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10" />
+
+        {/* Title overlay - aligned to exact container bounds */}
+        <div className="absolute inset-0 flex items-center z-20">
+          <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+            <h1 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(36px,6.5vw,80px)] drop-shadow-lg">
+              Sitemap
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      {/* Breadcrumb Navigation */}
+      <div className="w-full bg-white border-b border-gray-100 py-5">
+        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex items-center gap-3 text-xs md:text-sm lg:text-base font-ivymode tracking-widest text-[#545759]">
+          <Link href="/" className="hover:text-black transition-colors">
+            Home
+          </Link>
+          <span className="text-gray-400 font-light">&rsaquo;</span>
+          <span className="font-medium text-black">Sitemap</span>
+        </div>
+      </div>
+
+      {/* Sitemap Tree Hierarchy */}
+      <main className="w-full flex-1 bg-white py-12 md:py-20">
+        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 font-ivymode text-[#545759]">
+          <ul className="space-y-8 text-base md:text-lg tracking-widest leading-relaxed list-none">
+            {/* Profile / Our Story */}
+            <li className="flex flex-col gap-2">
+              <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
+                <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
+                <Link href="/our-story" className="hover:text-[#007190] transition-colors">
+                  Profile
+                </Link>
+              </div>
+            </li>
+
+            {/* Products */}
+            <li className="flex flex-col gap-4">
+              <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
+                <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
+                <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                  Products
+                </Link>
+              </div>
+              <ul className="pl-8 md:pl-10 space-y-3.5 text-sm md:text-base lg:text-lg">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
+                  <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                    Arabescato Vagli
+                  </Link>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
+                  <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                    Calacatta Oyster
+                  </Link>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
+                  <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                    Travertino Romano Classico Cross Cut
+                  </Link>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
+                  <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                    Verde Profondo
+                  </Link>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
+                  <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                    Fior Di Melo
+                  </Link>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
+                  <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
+                    Ferro Industriale
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            {/* Technical Data */}
+            <li className="flex flex-col gap-2">
+              <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
+                <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
+                <Link href="/technical-data" className="hover:text-[#007190] transition-colors">
+                  Technical Data
+                </Link>
+              </div>
+            </li>
+
+            {/* Made in Italy */}
+            <li className="flex flex-col gap-2">
+              <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
+                <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
+                <Link href="/made-in-italy" className="hover:text-[#007190] transition-colors">
+                  Made in Italy
+                </Link>
+              </div>
+            </li>
+
+            {/* Contact Us */}
+            <li className="flex flex-col gap-2">
+              <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
+                <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
+                <Link href="/#contact-us" className="hover:text-[#007190] transition-colors">
+                  Contact Us
+                </Link>
+              </div>
+            </li>
+
+            {/* Privacy Policy */}
+            <li className="flex flex-col gap-2">
+              <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
+                <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
+                <Link href="/privacy-policy" className="hover:text-[#007190] transition-colors">
+                  Privacy Policy
+                </Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
