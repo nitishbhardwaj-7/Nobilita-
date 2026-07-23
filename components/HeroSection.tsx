@@ -209,7 +209,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
       <Navbar />
 
       <div className="absolute inset-0 flex flex-col items-center justify-between pt-[10vh] pb-[10vh] px-6 md:px-12 z-10">
-        <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] text-center">
+        <div className="flex flex-col items-center justify-between h-full w-full max-w-[1300px] xl:max-w-[1800px] 2xl:max-w-[2200px] text-center">
           {/* Word-by-word reveal heading */}
           <motion.h1
             initial="hidden"
@@ -250,35 +250,24 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
             ))}
           </motion.div>
 
-          {/* Desktop Version: Preserved line-by-line, word-by-word cascading reveal */}
+          {/* Desktop Version: Preserved original width and styling, now with normal paragraph flow */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hidden md:flex font-ivymode text-white/95 text-[18px] font-extralight leading-[32px] w-full max-w-[1150px] tracking-widest my-auto px-4 pt-10 flex-col items-center"
+            className="hidden md:block font-ivymode text-white/95 text-[18px] font-extralight leading-[32px] w-full max-w-[1150px] tracking-widest my-auto px-4 pt-10 text-center"
           >
-            {(subtitle || defaultSubtitle).split("\n").map((line, lineIdx) => {
-              const lines = (subtitle || defaultSubtitle).split("\n");
-              const isLastLine = lineIdx === lines.length - 1;
-              return (
-                <span
-                  key={lineIdx}
-                  className={`w-full flex flex-nowrap ${isLastLine ? "justify-center gap-x-[0.35em]" : "justify-between gap-x-0"}`}
+            {(subtitle || defaultSubtitle).replace(/\n/g, " ").split(" ").map((word, wordIdx) => (
+              <span key={wordIdx} className="inline-block overflow-hidden align-bottom mx-[0.15em]">
+                <motion.span
+                  custom={0.15 + wordIdx * 0.008}
+                  variants={paragraphWordVariants}
+                  className="inline-block"
                 >
-                  {line.split(" ").map((word, wordIdx) => (
-                    <span key={wordIdx} className="inline-block overflow-hidden align-bottom">
-                      <motion.span
-                        custom={0.15 + (lineIdx * 5 + wordIdx) * 0.008}
-                        variants={paragraphWordVariants}
-                        className="inline-block"
-                      >
-                        {word}
-                      </motion.span>
-                    </span>
-                  ))}
-                </span>
-              );
-            })}
+                  {word}
+                </motion.span>
+              </span>
+            ))}
           </motion.div>
 
           {/* CTA Button */}

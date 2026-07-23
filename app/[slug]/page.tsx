@@ -77,15 +77,15 @@ export default async function CustomPage({ params }: { params: { slug: string } 
             switch (section.type) {
               case "hero":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="relative w-full min-h-[70vh] flex flex-col items-center justify-center py-24 px-6 bg-brand-dark text-center overflow-hidden"
                   >
                     {content.bgImage && (
                       <>
-                        <img 
-                          src={content.bgImage} 
-                          alt={content.title || "Hero banner"} 
+                        <img
+                          src={content.bgImage}
+                          alt={content.title || "Hero banner"}
                           className="absolute inset-0 w-full h-full object-cover opacity-50"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -118,8 +118,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "text":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className={`py-24 px-6 md:px-20 ${index % 2 === 0 ? "bg-white" : "bg-brand-cream/40"}`}
                   >
                     <div className="max-w-4xl mx-auto space-y-6 text-center md:text-left">
@@ -144,8 +144,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "cta":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="w-full py-20 px-6 md:px-20 bg-[#007190] text-center"
                   >
                     <div className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-8">
@@ -177,8 +177,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "features":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="py-24 px-6 md:px-20 bg-brand-cream/20"
                   >
                     <div className="max-w-6xl mx-auto">
@@ -211,8 +211,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "testimonials":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="py-24 px-6 md:px-20 bg-white"
                   >
                     <div className="max-w-4xl mx-auto text-center">
@@ -246,8 +246,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "faq":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="py-24 px-6 md:px-20 bg-brand-cream/10"
                   >
                     <div className="max-w-3xl mx-auto">
@@ -275,8 +275,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "gallery":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="py-24 px-6 md:px-20 bg-white"
                   >
                     <div className="max-w-6xl mx-auto">
@@ -289,9 +289,9 @@ export default async function CustomPage({ params }: { params: { slug: string } 
                         {(content.images || []).map((imgUrl: string, idx: number) => (
                           <div key={idx} className="relative aspect-[4/3] overflow-hidden bg-brand-cream/40 group border border-brand-cream">
                             {imgUrl ? (
-                              <img 
-                                src={imgUrl} 
-                                alt={`Gallery item ${idx + 1}`} 
+                              <img
+                                src={imgUrl}
+                                alt={`Gallery item ${idx + 1}`}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                               />
                             ) : (
@@ -308,8 +308,8 @@ export default async function CustomPage({ params }: { params: { slug: string } 
 
               case "rich-text":
                 return (
-                  <section 
-                    key={section.id || index} 
+                  <section
+                    key={section.id || index}
                     className="py-20 px-6 md:px-20 bg-white"
                   >
                     <div

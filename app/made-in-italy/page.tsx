@@ -99,11 +99,11 @@ export default function MadeInItalyPage() {
         { scale: 1.15 },
         { scale: 1, duration: 1.2, ease: "power3.out" }
       )
-      .fromTo(".sec4-tag",
-        { opacity: 0, scale: 0.95, y: 40 },
-        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" },
-        "-=0.6"
-      );
+        .fromTo(".sec4-tag",
+          { opacity: 0, scale: 0.95, y: 40 },
+          { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: "power3.out" },
+          "-=0.6"
+        );
     });
     return () => ctx.revert();
   }, []);
@@ -134,32 +134,62 @@ export default function MadeInItalyPage() {
         </Link>
       </div>
 
-      {/* Section 1: Made In Italy Intro */}
-      <section className="relative w-full flex flex-col justify-center pt-28 md:pt-16 px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden border-t border-gray-100 mt-0 md:mt-12">
+      {/* Section 1: Duomo di Milano Full-width */}
+      <section className="sec3-container relative w-full pt-12 md:pt-20 overflow-hidden bg-white">
+        <div className="relative w-full mx-auto flex flex-col">
+          {/* Top Full-width Image */}
+          <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group mt-0">
+            <video
+              src="/images/made-in-italy/duomo 2.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="sec3-img w-full h-full object-cover origin-center"
+            />
+
+            {/* Curtain reveal panels */}
+            <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
+            <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
+
+            {/* Top Heading Overlay */}
+            <div className="absolute inset-0 flex items-start justify-center pt-8 md:pt-6 z-30 pointer-events-none">
+              <h1 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.18em] text-[clamp(26px,5.5vw,52px)] md:text-[clamp(26px,5.5vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em] drop-shadow-md">
+                {"MADE IN ITALY".split(" ").map((word, wIdx) => (
+                  <span key={wIdx} className="inline-block whitespace-nowrap">
+                    {word.split("").map((char, cIdx) => (
+                      <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
+                        <span className="hero-char inline-block">{char}</span>
+                      </span>
+                    ))}
+                  </span>
+                ))}
+              </h1>
+            </div>
+
+            {/* Overlay Text */}
+            <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
+              <span className="sec3-label-text font-ivymode font-light text-white uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
+                DUOMO DI MILANO
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Made In Italy Intro */}
+      <section className="relative w-full flex flex-col justify-center pb-12 px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden border-t border-gray-100 pt-12 md:pt-16">
         {/* Content wrapper */}
         <div className="relative z-10 w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col">
-          <div className="w-full text-center">
-            <h2 className="font-ivymode font-light text-[#545759] uppercase tracking-[0.06em] md:tracking-[0.18em] text-[clamp(28px,6vw,66px)] md:text-[clamp(28px,4vw,66px)] leading-tight flex flex-wrap justify-center gap-x-[0.3em] md:gap-x-[0.4em]">
-              {"MADE IN ITALY".split(" ").map((word, wIdx) => (
-                <span key={wIdx} className="inline-block whitespace-nowrap">
-                  {word.split("").map((char, cIdx) => (
-                    <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
-                      <span className="hero-char inline-block">{char}</span>
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </h2>
-          </div>
 
           {/* Grid Layout: Text vs Image */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch mt-0">
             {/* Left Column: Narrative */}
             <div className="flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[15px] sm:text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left order-2 md:order-1 h-full py-0 md:py-2">
               <p className="sec1-paragraph">
                 In the heart of Italy, where rolling hills meet centuries of craftsmanship, lies Modena, a region shaped by the relentless pursuit of excellence. Home to Ferrari, Acetaia Giusti, and Brioni, Modena has long been a place where mastery is refined through patience, precision, and dedication to craft.
               </p>
-              
+
               <p className="sec1-paragraph">
                 The same spirit defines its porcelain industry. Here, innovation and heritage exist side by side, transforming raw materials into surfaces of <span className="text-[#007190] font-normal">exceptional quality and enduring beauty.</span>
               </p>
@@ -182,33 +212,6 @@ export default function MadeInItalyPage() {
               </div>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: Duomo di Milano Full-width */}
-      <section className="sec3-container relative w-full pb-12 overflow-hidden bg-white">
-        <div className="relative w-full mx-auto flex flex-col">
-          {/* Top Full-width Image */}
-          <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group mt-12">
-            <video
-              src="/images/made-in-italy/duomo 2.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="sec3-img w-full h-full object-cover origin-center" 
-            />
-
-            {/* Curtain reveal panels */}
-            <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
-            <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
-            {/* Overlay Text */}
-            <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
-              <span className="sec3-label-text font-ivymode font-light text-white uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
-                DUOMO DI MILANO
-              </span>
-            </div>
           </div>
         </div>
       </section>
@@ -237,7 +240,7 @@ export default function MadeInItalyPage() {
                 loading="lazy"
               />
             </div>
-            
+
             {/* Right Image */}
             <div className="sec2-img-wrapper-right group relative w-full h-full border border-gray-100 overflow-hidden cursor-pointer">
               <img
@@ -264,7 +267,7 @@ export default function MadeInItalyPage() {
         </div>
       </section>
 
-      
+
 
       {/* Section 4: Colosseum Background Parallax Reveal */}
       <section className="sec4-container relative w-full h-screen overflow-hidden bg-white">
@@ -282,7 +285,7 @@ export default function MadeInItalyPage() {
               loading="lazy"
             />
           </picture>
-          
+
           {/* Top Headline Image Overlay */}
           <div className="absolute top-8 md:top-12 lg:top-16 left-0 right-0 z-30 flex justify-center px-4 w-full pointer-events-none">
             <img

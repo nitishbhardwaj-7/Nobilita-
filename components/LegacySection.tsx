@@ -174,7 +174,7 @@ export default function LegacySection() {
             src="/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
-            className="sketch-img w-[100%] max-w-[340px] md:w-[200%] lg:w-[200%] md:max-w-none h-auto object-contain"
+            className="sketch-img w-[80%] sm:w-[70%] md:w-[85%] lg:w-[95%] max-w-[340px] md:max-w-[360px] h-auto object-contain"
           />
 
           <div className="hidden md:block flex-grow max-h-10" />
@@ -194,7 +194,7 @@ export default function LegacySection() {
             src="/images/Links/tag grey.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
-            className="tagline-text w-[75%] sm:w-[60%] md:w-[80%] lg:w-[85%] max-w-[320px] md:max-w-[350px] h-auto object-contain"
+            className="tagline-text w-[80%] sm:w-[70%] md:w-[85%] lg:w-[95%] max-w-[340px] md:max-w-[360px] h-auto object-contain"
           />
 
           <div className="hidden md:block flex-grow max-h-12" />

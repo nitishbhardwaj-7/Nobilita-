@@ -1023,7 +1023,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
     return (
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-[150] overflow-y-auto bg-white"
+        className="fixed inset-0 z-[200000] overflow-y-auto bg-white"
         style={{ opacity: 0 }}
       >
         <div className="relative w-full min-h-screen bg-white">

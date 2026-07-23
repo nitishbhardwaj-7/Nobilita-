@@ -131,7 +131,7 @@ export default function DimensionsSection() {
       {/* Specification Grid with stagger */}
       <div className="dimensions-grid w-full max-w-7xl px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 mb-[30px]">
         {/* Column 1: THICKNESS */}
-        <div className="dimensions-col flex flex-col items-center text-center space-y-[15px] md:space-y-[15px]"> 
+        <div className="dimensions-col flex flex-col items-center text-center space-y-[15px] md:space-y-[15px]">
           <h3
             className="dimensions-col-header font-didotbold tracking-[0.15em] text-[#545759] uppercase text-[clamp(20px,2.5vw,28px)] opacity-0"
             style={{ fontFamily: "var(--font-didotbold), Georgia, serif" }}

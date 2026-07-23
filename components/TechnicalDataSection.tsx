@@ -13,7 +13,7 @@ const technicalImages = [
   { src: "/images/Links/Fior Di Melo Face 1.jpg", name: "FIOR DI MELO", textColor: "black" },
   { src: "/images/Links/Onice Bianco 1.jpg", name: "ONICE BIANCO", textColor: "black" },
   { src: "/images/Links/Travertino CC 1.jpg", name: "TRAVERTINO ROMANO", textColor: "black" }
-];export default function TechnicalDataSection() {
+]; export default function TechnicalDataSection() {
   const [{ current, prev }, setImageIndices] = useState({ current: 0, prev: null as number | null });
 
   useEffect(() => {
@@ -61,31 +61,31 @@ const technicalImages = [
             </div>
           </div>
         ))}
-{/* Subtle overlay for readability */}
-<div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
-<div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-48 px-6">
-  <button onClick={(e) => {
-      e.preventDefault();
-      window.dispatchEvent(new CustomEvent("open-catalog-form"));
-    }}
-    className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
-    <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-    <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-      CATALOGUE
-    </span>
-  </button>
-  <button onClick={(e) => {
-      e.preventDefault();
-      window.dispatchEvent(new CustomEvent("open-newsletter-form"));
-    }}
-    className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
-    <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-    <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-      NEWSLETTER
-    </span>
-  </button>
-</div>
-</div>
+        {/* Subtle overlay for readability */}
+        <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
+        <div className="relative z-10 w-full max-w-6xl flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-48 px-6">
+          <button onClick={(e) => {
+            e.preventDefault();
+            window.dispatchEvent(new CustomEvent("open-catalog-form"));
+          }}
+            className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
+            <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+              CATALOGUE
+            </span>
+          </button>
+          <button onClick={(e) => {
+            e.preventDefault();
+            window.dispatchEvent(new CustomEvent("open-newsletter-form"));
+          }}
+            className="relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group min-w-[280px] md:min-w-[340px] text-center focus:outline-none">
+            <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+              NEWSLETTER
+            </span>
+          </button>
+        </div>
+      </div>
     </section>
   );
 }

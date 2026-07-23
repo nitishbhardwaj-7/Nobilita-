@@ -130,9 +130,8 @@ export default function Footer() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             id="contact-form-section"
-            className={`w-full bg-white flex flex-col items-center justify-center overflow-hidden transition-all duration-500 ${
-              submitStatus === "sent" ? "py-0 px-0" : "py-16 md:py-24 px-6 md:px-12"
-            }`}
+            className={`w-full bg-white flex flex-col items-center justify-center overflow-hidden transition-all duration-500 ${submitStatus === "sent" ? "py-0 px-0" : "py-16 md:py-24 px-6 md:px-12"
+              }`}
           >
             <div className="w-full">
               {submitStatus === "sent" ? (
@@ -215,115 +214,115 @@ export default function Footer() {
               ) : (
                 /* Form view */
                 <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-                <>
-                  {/* Title */}
-                  <div className="w-full text-center mb-16 overflow-hidden">
-                    <h2 className="font-ivymode text-[clamp(20px,3.5vw,48px)] text-[#545759] tracking-[0.15em] uppercase font-light whitespace-nowrap">
-                      {activeForm === "query"
-                        ? "SEND YOUR QUERY"
-                        : activeForm === "catalog"
-                          ? "DOWNLOAD CATALOG"
-                          : activeForm === "newsletter"
-                            ? "SUBSCRIBE TO NEWSLETTER"
-                            : "DOWNLOAD DATASHEET"}
-                    </h2>
-                  </div>
+                  <>
+                    {/* Title */}
+                    <div className="w-full text-center mb-16 overflow-hidden">
+                      <h2 className="font-ivymode text-[clamp(20px,3.5vw,48px)] text-[#545759] tracking-[0.15em] uppercase font-light whitespace-nowrap">
+                        {activeForm === "query"
+                          ? "SEND YOUR QUERY"
+                          : activeForm === "catalog"
+                            ? "DOWNLOAD CATALOG"
+                            : activeForm === "newsletter"
+                              ? "SUBSCRIBE TO NEWSLETTER"
+                              : "DOWNLOAD DATASHEET"}
+                      </h2>
+                    </div>
 
-                  <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-12 w-full">
-                    {/* Name */}
-                    <div className="relative flex flex-col pt-5">
-                      <input
-                        type="text"
-                        id="name"
-                        required
-                        placeholder=" "
-                        className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
-                      />
-                      <label
-                        htmlFor="name"
-                        className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
+                    <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-12 w-full">
+                      {/* Name */}
+                      <div className="relative flex flex-col pt-5">
+                        <input
+                          type="text"
+                          id="name"
+                          required
+                          placeholder=" "
+                          className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                        />
+                        <label
+                          htmlFor="name"
+                          className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
-                      >
-                        NAME
-                      </label>
-                    </div>
+                        >
+                          NAME
+                        </label>
+                      </div>
 
-                    {/* Email */}
-                    <div className="relative flex flex-col pt-5">
-                      <input
-                        type="email"
-                        id="email"
-                        required
-                        placeholder=" "
-                        className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
-                      />
-                      <label
-                        htmlFor="email"
-                        className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
+                      {/* Email */}
+                      <div className="relative flex flex-col pt-5">
+                        <input
+                          type="email"
+                          id="email"
+                          required
+                          placeholder=" "
+                          className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                        />
+                        <label
+                          htmlFor="email"
+                          className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
-                      >
-                        EMAIL
-                      </label>
-                    </div>
+                        >
+                          EMAIL
+                        </label>
+                      </div>
 
-                    {/* Phone */}
-                    <div className="relative flex flex-col pt-5">
-                      <input
-                        type="tel"
-                        id="phone"
-                        required
-                        placeholder=" "
-                        className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
-                      />
-                      <label
-                        htmlFor="phone"
-                        className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
+                      {/* Phone */}
+                      <div className="relative flex flex-col pt-5">
+                        <input
+                          type="tel"
+                          id="phone"
+                          required
+                          placeholder=" "
+                          className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                        />
+                        <label
+                          htmlFor="phone"
+                          className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
-                      >
-                        PHONE
-                      </label>
-                    </div>
+                        >
+                          PHONE
+                        </label>
+                      </div>
 
-                    {/* Message or Query */}
-                    <div className="relative flex flex-col pt-5">
-                      <input
-                        type="text"
-                        id="message-or-query"
-                        required={activeForm === "query"}
-                        placeholder=" "
-                        className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
-                      />
-                      <label
-                        htmlFor="message-or-query"
-                        className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
+                      {/* Message or Query */}
+                      <div className="relative flex flex-col pt-5">
+                        <input
+                          type="text"
+                          id="message-or-query"
+                          required={activeForm === "query"}
+                          placeholder=" "
+                          className="peer bg-transparent border-b border-brand-dark/30 py-3 font-michroma text-[12px] md:text-[14px] text-brand-dark focus:outline-none focus:border-brand-dark transition-colors placeholder:text-brand-dark/30"
+                        />
+                        <label
+                          htmlFor="message-or-query"
+                          className="absolute left-0 top-6 font-michroma font-bold text-[14px] md:text-[18px] tracking-[0.2em] text-[#545759] uppercase pointer-events-none transition-all duration-200 origin-left
                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                                peer-focus:-translate-y-7 peer-focus:scale-75
                                peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:scale-75"
-                      >
-                        {activeForm === "query" ? "PROJECT DETAILS" : "MESSAGE (OPTIONAL)"}
-                      </label>
-                    </div>
+                        >
+                          {activeForm === "query" ? "PROJECT DETAILS" : "MESSAGE (OPTIONAL)"}
+                        </label>
+                      </div>
 
-                    {/* Submit Button with thin outline */}
-                    <div className="sm:col-span-2 flex justify-center mt-8">
-                      <button
-                        type="submit"
-                        className="relative overflow-hidden border border-brand-dark/50 text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
-                      >
-                        <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-                        <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                          {submitStatus === "sending" ? "SUBMITTING..." : "SUBMIT"}
-                        </span>
-                      </button>
-                    </div>
-                  </form>
-                </>
+                      {/* Submit Button with thin outline */}
+                      <div className="sm:col-span-2 flex justify-center mt-8">
+                        <button
+                          type="submit"
+                          className="relative overflow-hidden border border-brand-dark/50 text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
+                        >
+                          <span className="absolute -inset-[1px] bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                          <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                            {submitStatus === "sending" ? "SUBMITTING..." : "SUBMIT"}
+                          </span>
+                        </button>
+                      </div>
+                    </form>
+                  </>
                 </div>
               )}
             </div>

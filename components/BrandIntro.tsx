@@ -105,30 +105,30 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
   return (
     <section
       ref={sectionRef}
-      className="brand-intro-section relative w-full min-h-screen bg-[#007190] flex flex-col items-center justify-center px-6 md:px-20 py-16 md:py-24"
+      className="brand-intro-section relative w-full min-h-screen bg-[#007190] flex flex-col items-center justify-center px-6 md:px-16 lg:px-24 py-16 md:py-20 lg:py-24"
     >
       {/* Menu Icon on Top Left */}
-      <div className="brand-menu-btn-wrapper absolute top-6 left-6 md:top-8 md:left-12 z-[10000] opacity-0">
+      <div className="brand-menu-btn-wrapper absolute top-6 left-6 md:top-8 md:left-12 lg:top-10 lg:left-14 z-[10000] opacity-0">
         <button
           onClick={() => setIsNavOpen(!isNavOpen)}
-          className="relative w-10 h-10 focus:outline-none transition-opacity hover:opacity-80 flex items-center justify-center"
+          className="relative w-10 h-10 lg:w-11 lg:h-11 focus:outline-none transition-opacity hover:opacity-80 flex items-center justify-center"
           aria-label="Toggle navigation menu"
         >
           <span
-            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[1px] w-12 lg:w-13 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: "translateY(-6px) rotate(0deg)"
             }}
           />
           <span
-            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[1px] w-12 lg:w-13 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: "scaleX(1)",
               opacity: 1
             }}
           />
           <span
-            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[1px] w-12 lg:w-13 bg-white/80 transition-all duration-300 ease-in-out"
             style={{
               transform: "translateY(6px) rotate(0deg)"
             }}
@@ -139,23 +139,23 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
       {/* Navigation Overlay */}
       <NavigationOverlay isOpen={isNavOpen} onClose={() => setIsNavOpen(false)} />
 
-      <div className="w-full max-w-5xl flex flex-col items-center text-center space-y-10 md:space-y-14">
+      <div className="w-full max-w-5xl lg:max-w-6xl xl:max-w-7xl flex flex-col items-center text-center space-y-9 md:space-y-12 lg:space-y-14">
 
         {/* Top Header Image (tag.png) */}
-        <div className="brand-tag-wrapper w-full max-w-[480px] md:max-w-[850px] flex flex-col items-center opacity-0 translate-y-8">
+        <div className="brand-tag-wrapper w-full max-w-[450px] md:max-w-[750px] lg:max-w-[920px] xl:max-w-[1050px] flex flex-col items-center opacity-0 translate-y-8">
           <img
             src="/images/Links/tag.png"
             alt="Il Gres Imperiale d'Italia"
             loading="lazy"
             className="w-full h-auto object-contain"
           />
-          <span className="brand-tag-subtext font-michroma text-white/50 text-[clamp(12px,1.8vw,24px)] tracking-[0.2em] block opacity-0">
+          <span className="brand-tag-subtext font-michroma text-white/50 text-[clamp(12px,1.5vw,20px)] lg:text-[clamp(15px,1.5vw,24px)] tracking-[0.2em] block opacity-0 mt-1 md:mt-2">
             The Imperial Stone of Italy
           </span>
         </div>
 
         {/* Middle Logo (NOBILITA_white.png) */}
-        <div className="brand-logo-wrapper w-full max-w-[300px] md:max-w-[500px] overflow-hidden py-1">
+        <div className="brand-logo-wrapper w-full max-w-[280px] md:max-w-[450px] lg:max-w-[560px] xl:max-w-[640px] overflow-hidden py-1">
           <img
             src={image || "/images/NOBILITA_white.png"}
             alt="Porcellana Nobilita"
@@ -165,8 +165,8 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
         </div>
 
         {/* Bottom Paragraph Description */}
-        <div className="w-full max-w-[850px]">
-          <p className="font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[clamp(16px,2vw,18px)] tracking-widest leading-[32px] w-full mt-2">
+        <div className="w-full max-w-[800px] lg:max-w-[980px] xl:max-w-[1120px]">
+          <p className="font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[clamp(15px,1.4vw,18px)] lg:text-[clamp(17px,1.5vw,21px)] xl:text-[clamp(18px,1.5vw,23px)] tracking-widest leading-[30px] lg:leading-[38px] xl:leading-[42px] w-full mt-2">
             {words.map((word, idx) => (
               <React.Fragment key={idx}>
                 <span className="inline-block overflow-hidden align-bottom">
@@ -184,7 +184,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
         <div className="brand-btn-wrapper opacity-0 translate-y-6">
           <Link href="/our-story">
             <button
-              className="brand-story-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
+              className="brand-story-btn relative overflow-hidden border border-white text-white bg-transparent px-8 py-2.5 lg:px-10 lg:py-3.5 font-michroma text-[clamp(12px,1.3vw,18px)] lg:text-[clamp(14px,1.4vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group"
             >
               <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
               <span className="relative z-10 transition-colors duration-500 group-hover:text-[#007190]">
