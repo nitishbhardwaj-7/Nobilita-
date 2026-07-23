@@ -12,7 +12,7 @@ const technicalImages = [
   { src: "/images/Links/crystallo bianco 1.jpg", name: "CYSTALLO BIANCO", textColor: "black" },
   { src: "/images/Links/Fior Di Melo Face 1.jpg", name: "FIOR DI MELO", textColor: "black" },
   { src: "/images/Links/Onice Bianco 1.jpg", name: "ONICE BIANCO", textColor: "black" },
-  { src: "/images/Links/Travertino CC 1.jpg", name: "TRAVERTINO ROMANO", textColor: "black" }
+  { src: "/images/Links/Travertino CC 1.jpg", name: "TRAVERTINO ROMANO CLASSICO CROSS CUT", textColor: "black" }
 ]; export default function TechnicalDataSection() {
   const [{ current, prev }, setImageIndices] = useState({ current: 0, prev: null as number | null });
 

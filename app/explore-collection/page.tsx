@@ -100,7 +100,7 @@ const slabs = [
     finish: "Honed"
   },
   {
-    name: "Travertino CC",
+    name: "Travertino Romano Classico Cross Cut",
     img: "/images/Links/Travertino CC 1.jpg",
     color: "Beige",
     finish: "Structured Matte"

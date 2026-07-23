@@ -167,14 +167,14 @@ export default function LegacySection() {
       </div>
 
       {/* ── CENTER PANEL */}
-      <div className="w-full md:w-1/3 mb-10 md:py-0 md:min-h-0 md:h-screen bg-white flex flex-col items-center justify-center md:justify-end relative px-6">
+      <div className="w-full md:w-1/3 mb-10 md:mb-0 lg:mb-0 md:py-0 md:min-h-0 md:h-screen bg-white flex flex-col items-center justify-center md:justify-end relative px-6">
         <div className="w-full md:flex-1 flex flex-col items-center justify-center md:justify-end max-w-none px-4 space-y-6 md:space-y-0">
           <img
             ref={sketchRef}
             src="/images/Links/DP8017299.png"
             alt="Palazzo architectural sketch"
             loading="lazy"
-            className="sketch-img w-[80%] sm:w-[70%] md:w-[85%] lg:w-[95%] max-w-[340px] md:max-w-[360px] h-auto object-contain"
+            className="sketch-img w-[80%] mt-10 md:mt-0 lg:mt-0 sm:w-[70%] md:w-[85%] lg:w-[95%] max-w-[340px] md:max-w-[360px] h-auto object-contain"
           />
 
           <div className="hidden md:block flex-grow max-h-10" />

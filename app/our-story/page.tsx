@@ -95,6 +95,7 @@ export default function OurStoryPage() {
 
       // 3. Section 3 — luxury curtain reveal + shine sweep + label
       gsap.set(".sec3-label-text", { opacity: 0, y: 14, letterSpacing: "0.5em" });
+      gsap.set(".sec3-tag-grey", { opacity: 0, y: 14 });
 
       const sec3Tl = gsap.timeline({
         scrollTrigger: { trigger: ".sec3-container", start: "top 75%", once: true }
@@ -102,7 +103,8 @@ export default function OurStoryPage() {
       sec3Tl
         .to(".sec3-curtain-left", { xPercent: -100, duration: 1.5, ease: "power4.inOut" })
         .to(".sec3-curtain-right", { xPercent: 100, duration: 1.5, ease: "power4.inOut" }, "<")
-        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.3");
+        .to(".sec3-tag-grey", { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, "-=0.3")
+        .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.6");
 
       gsap.fromTo(".sec3-img",
         { scale: 1 },
@@ -226,7 +228,7 @@ export default function OurStoryPage() {
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
               }}
-              className="hero-text font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.7] space-y-6 mt-8 md:mt-12 text-center md:text-left"
+              className="hero-text font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.7] 2xl:leading-[1.9] space-y-6 mt-8 md:mt-12 text-center md:text-left"
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
                 In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.
@@ -272,7 +274,7 @@ export default function OurStoryPage() {
         <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 z-10 mt-8 md:mt-[60px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Narrative (7 cols) */}
-            <div className="sec2-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
+            <div className="sec2-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
               <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   NOBILITA takes its name from this tradition.
@@ -344,6 +346,17 @@ export default function OurStoryPage() {
           {/* Curtain reveal panels */}
           <div className="sec3-curtain-left absolute inset-y-0 left-0 w-1/2 bg-white z-20 pointer-events-none" />
           <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
+
+          {/* Top Tagline Image (tag grey) */}
+          <div className="absolute top-5 md:top-8 lg:top-10 left-1/2 -translate-x-1/2 z-30 w-[75%] max-w-[340px] sm:max-w-[500px] md:max-w-[650px] lg:max-w-[800px] xl:max-w-[900px] pointer-events-none flex justify-center">
+            <img
+              src="/images/Links/tag grey.png"
+              alt="Il Gres Imperiale d'Italia"
+              className="sec3-tag-grey w-full h-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+
           {/* Overlay Text */}
           <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
             <span className="sec3-label-text font-ivymode font-light text-[#545759] uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
@@ -355,7 +368,7 @@ export default function OurStoryPage() {
         {/* Bottom Narrative Text */}
         <div className="sec3-text w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto bg-white px-6 md:px-12 lg:px-20 xl:px-24 pt-[40px] pb-[40px] md:pt-[60px] md:pb-[60px] text-center md:text-left">
           <div className="w-full">
-            <p className="font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8]">
+            <p className="font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95]">
               At NOBILITA, we work closely with architects, designers, and discerning clients to create architectural experiences. Through careful selection, expert craftsmanship, and a deep understanding of design, we help create spaces that feel timeless rather than trend-driven.
             </p>
           </div>
@@ -421,7 +434,7 @@ export default function OurStoryPage() {
             </div>
 
             {/* Right Column: Narrative (7 cols) */}
-            <div className="sec4-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] tracking-widest leading-[1.8] text-center md:text-left">
+            <div className="sec4-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
               <div className="overflow-hidden py-0.5">
                 <p className="sec4-line">
                   Our inspiration comes from the great interiors of the past, but

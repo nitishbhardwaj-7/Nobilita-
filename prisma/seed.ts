@@ -247,7 +247,7 @@ const slabs = [
     }
   },
   {
-    name: "Travertino CC",
+    name: "Travertino Romano Classico Cross Cut",
     img: "/images/Links/Travertino CC 1.jpg",
     color: "Beige",
     finish: "Structured Matte",
@@ -257,8 +257,8 @@ const slabs = [
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
       slides: [
-        { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Video" },
-        { type: "image", src: "/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Slab" }
+        { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Travertino CC 1.jpg", alt: "Travertino Romano Classico Cross Cut Video" },
+        { type: "image", src: "/images/Links/Travertino CC 1.jpg", alt: "Travertino Romano Classico Cross Cut Slab" }
       ],
       availableFaces: ["/images/Links/Travertino CC 1.jpg"],
       isHorizontalFace: false

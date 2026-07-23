@@ -245,13 +245,13 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     ],
     availableFaces: ["/images/Links/Statuario Ultimo 1.jpg"]
   },
-  "Travertino CC": {
+  "Travertino Romano Classico Cross Cut": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
     slides: [
-      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Video" },
-      { type: "image", src: "/images/Links/Travertino CC 1.jpg", alt: "Travertino CC Slab" }
+      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Travertino CC 1.jpg", alt: "Travertino Romano Classico Cross Cut Video" },
+      { type: "image", src: "/images/Links/Travertino CC 1.jpg", alt: "Travertino Romano Classico Cross Cut Slab" }
     ],
     availableFaces: ["/images/Links/Travertino CC 1.jpg"]
   },

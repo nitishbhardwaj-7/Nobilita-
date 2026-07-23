@@ -58,15 +58,15 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           className="fixed inset-0 z-[99999] bg-[#007190] w-full h-full flex flex-col overflow-y-auto md:overflow-hidden"
         >
           {/* Main Content Area */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 content-center items-center md:items-start gap-8 md:gap-12">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full 2xl:max-w-[1800px] 2xl:mx-auto h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 2xl:py-20 content-center items-center md:items-start gap-8 md:gap-12 2xl:gap-16">
 
             {/* Left Column: Back button & Links */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left justify-start md:pl-8 lg:pl-16 w-full">
               {/* Top: Back Button */}
-              <div className="w-full flex justify-start mb-8 md:mb-12 shrink-0">
+              <div className="w-full flex justify-start mb-8 md:mb-12 2xl:mb-16 shrink-0">
                 <button
                   onClick={onClose}
-                  className="group flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+                  className="group flex items-center justify-center w-10 h-10 md:w-11 md:h-11 2xl:w-14 2xl:h-14 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
                   aria-label="Close menu"
                 >
                   <svg
@@ -76,7 +76,7 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                     strokeWidth="1.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-4 h-4 md:w-5 md:h-5 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
+                    className="w-4 h-4 md:w-5 md:h-5 2xl:w-6 2xl:h-6 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
                   >
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
@@ -89,14 +89,14 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col items-center md:items-start space-y-8 md:space-y-12"
+                className="flex flex-col items-center md:items-start space-y-8 md:space-y-12 2xl:space-y-14"
               >
                 {menuLinks.map((link) => (
                   <motion.div key={link.label} variants={itemVariants}>
                     <Link
                       href={link.href}
                       onClick={() => handleLinkClick(link.href)}
-                      className="font-ivymode font-light text-white uppercase tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[clamp(18px,2.5vw,28px)] leading-relaxed inline-block"
+                      className="font-ivymode font-light text-white uppercase tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[clamp(18px,2.5vw,28px)] 2xl:text-[38px] leading-relaxed inline-block"
                     >
                       {link.label}
                     </Link>
@@ -119,17 +119,17 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
             {/* Right Column: House & Logo (Desktop Only) */}
             <div className="hidden md:flex flex-col items-center justify-start w-full">
               {/* House drawing */}
-              <div className="w-full flex justify-center items-center mb-10 md:mb-16">
+              <div className="w-full flex justify-center items-center mb-10 md:mb-16 2xl:mb-20">
                 <NobilitaHouseSVG
                   variant="white"
                   size={260}
                   animate={isOpen}
-                  className="opacity-90 max-w-full"
+                  className="opacity-90 max-w-full 2xl:w-[380px] h-auto"
                 />
               </div>
 
               {/* Logo block */}
-              <div className="w-[210px] lg:w-[240px]">
+              <div className="w-[210px] lg:w-[240px] 2xl:w-[320px]">
                 <img
                   src="/images/NOBILITA_white.png"
                   alt="Porcellana Nobilita"

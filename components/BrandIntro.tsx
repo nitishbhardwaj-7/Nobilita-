@@ -179,7 +179,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
             ))}
           </p>
         </div>
-
+        
         {/* Button: OUR STORY */}
         <div className="brand-btn-wrapper opacity-0 translate-y-6">
           <Link href="/our-story">
