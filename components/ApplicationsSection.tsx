@@ -173,7 +173,7 @@ export default function ApplicationsSection() {
   return (
     <section
       ref={sectionRef}
-      className="applications-section w-full min-h-[100vh] bg-white flex flex-col"
+      className="applications-section w-full bg-white flex flex-col pb-8 md:pb-12"
     >
       {/* ── HEADING */}
       <div className="w-full px-4 mb-[40px] mt-[40px] text-center overflow-hidden py-2 md:py-1">

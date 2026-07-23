@@ -118,9 +118,9 @@ export default function DimensionsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-white mt-[40px] flex flex-col items-center">
+    <section ref={sectionRef} className="w-full bg-white flex flex-col items-center">
       {/* Title - slide up reveal */}
-      <div className="w-full px-4 mb-[30px] text-center overflow-hidden py-2 md:py-1">
+      <div className="w-full px-4 mb-8 md:mb-10 text-center overflow-hidden py-2 md:py-1">
         <h2 className="font-ivymode text-[clamp(28px,6.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.06em] md:tracking-[0.1em] uppercase inline-block">
           <span className="dimensions-title-span inline-block py-1">
             FORMAT & DIMENSIONS
@@ -129,7 +129,7 @@ export default function DimensionsSection() {
       </div>
 
       {/* Specification Grid with stagger */}
-      <div className="dimensions-grid w-full max-w-7xl px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 mb-[30px]">
+      <div className="dimensions-grid w-full max-w-7xl px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 mb-12 md:mb-16">
         {/* Column 1: THICKNESS */}
         <div className="dimensions-col flex flex-col items-center text-center space-y-[15px] md:space-y-[15px]">
           <h3

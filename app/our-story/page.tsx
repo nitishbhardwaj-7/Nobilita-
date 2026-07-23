@@ -348,7 +348,7 @@ export default function OurStoryPage() {
           <div className="sec3-curtain-right absolute inset-y-0 right-0 w-1/2 bg-white z-20 pointer-events-none" />
 
           {/* Top Tagline Image (tag grey) */}
-          <div className="absolute top-5 md:top-8 lg:top-10 left-1/2 -translate-x-1/2 z-30 w-[75%] max-w-[340px] sm:max-w-[500px] md:max-w-[650px] lg:max-w-[800px] xl:max-w-[900px] pointer-events-none flex justify-center">
+          <div className="absolute top-5 md:top-12 lg:top-12 left-1/2 -translate-x-1/2 z-30 w-[75%] max-w-[340px] sm:max-w-[500px] md:max-w-[650px] lg:max-w-[800px] xl:max-w-[900px] pointer-events-none flex justify-center">
             <img
               src="/images/Links/tag grey.png"
               alt="Il Gres Imperiale d'Italia"
