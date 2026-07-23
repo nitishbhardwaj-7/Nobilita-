@@ -215,8 +215,8 @@ export default function MadeInItalyPage() {
             />
           </picture>
 
-          {/* Headline Image Overlay */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex justify-center px-4 w-full pointer-events-none">
+          {/* Headline Image Overlay - Positioned at top */}
+          <div className="absolute top-8 md:top-14 lg:top-16 left-1/2 -translate-x-1/2 z-30 flex justify-center px-4 w-full pointer-events-none">
             <img
               src="/images/Links/tag grey.png"
               alt="Il Gres Imperiale d'Italia"
