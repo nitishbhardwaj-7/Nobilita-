@@ -448,7 +448,7 @@ export default function Footer() {
 
       {/* Bottom Copyright & Legal Strip */}
       <div className="w-full bg-[#007190] py-6 px-6 md:px-16 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 md:gap-16 text-white/80 font-light text-xs md:text-sm tracking-wide">
-        <span>© Copyright 2026 Nobilita Granite & Marble Tr. L.L.C</span>
+        <span>© Copyright 2026 Nobilita</span>
         <div className="flex items-center gap-8 md:gap-12">
           <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
           <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>

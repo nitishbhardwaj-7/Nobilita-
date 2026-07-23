@@ -120,9 +120,9 @@ export default function DimensionsSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white flex flex-col items-center">
       {/* Title - slide up reveal */}
-      <div className="w-full px-4 mb-8 md:mb-10 text-center overflow-hidden py-2 md:py-1">
+      <div className="w-full px-4 mb-[40px] text-center overflow-hidden">
         <h2 className="font-ivymode text-[clamp(28px,6.5vw,66px)] md:text-[clamp(28px,4.5vw,66px)] text-[#545759] tracking-[0.06em] md:tracking-[0.1em] uppercase inline-block">
-          <span className="dimensions-title-span inline-block py-1">
+          <span className="dimensions-title-span inline-block">
             FORMAT & DIMENSIONS
           </span>
         </h2>

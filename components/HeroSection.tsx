@@ -191,7 +191,7 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
               className="absolute inset-0 w-full h-full object-cover object-bottom max-w-none"
             />
             {/* Name label lives inside the layer — fades with the image automatically */}
-            <div className="absolute bottom-[4vh] left-6 md:left-10 lg:left-12 z-20 pointer-events-none select-none">
+            <div className="absolute bottom-2 left-3 md:bottom-2 md:left-3 z-20 pointer-events-none select-none">
               <span
                 className="font-ivymode tracking-[0.20em] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] uppercase font-light"
                 style={{ color: slideshowImages[current].textColor === "white" ? "#ffffff" : "#000000" }}

@@ -55,15 +55,15 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="fixed inset-0 z-[99999] bg-[#007190] w-full h-full flex flex-col overflow-y-auto md:overflow-hidden"
+          className="fixed inset-0 z-[99999] bg-[#007190] w-full h-[100dvh] md:h-full flex flex-col overflow-y-auto md:overflow-hidden"
         >
           {/* Main Content Area */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full 2xl:max-w-[1800px] 2xl:mx-auto h-full relative px-8 py-12 md:px-16 lg:px-24 md:py-16 2xl:py-20 content-center items-center md:items-start gap-8 md:gap-12 2xl:gap-16">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full max-w-[1050px] xl:max-w-[1150px] 2xl:max-w-[1280px] mx-auto h-full relative px-6 py-6 md:px-12 md:py-10 2xl:py-14 content-center items-stretch gap-6 md:gap-12 2xl:gap-16">
 
             {/* Left Column: Back button & Links */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left justify-start md:pl-8 lg:pl-16 w-full">
+            <div className="flex flex-col justify-between items-center md:items-start text-center md:text-left w-full h-full min-h-0">
               {/* Top: Back Button */}
-              <div className="w-full flex justify-start mb-8 md:mb-12 2xl:mb-16 shrink-0">
+              <div className="w-full flex justify-start shrink-0 mb-4 md:mb-6 2xl:mb-8">
                 <button
                   onClick={onClose}
                   className="group flex items-center justify-center w-10 h-10 md:w-11 md:h-11 2xl:w-14 2xl:h-14 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
@@ -84,19 +84,19 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                 </button>
               </div>
 
-              {/* Center: Links */}
+              {/* Links container - centered with clean gaps on mobile, spaced out on desktop */}
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col items-center md:items-start space-y-8 md:space-y-12 2xl:space-y-14"
+                className="flex-1 flex flex-col justify-center md:justify-between items-center md:items-start w-full my-auto py-4 md:py-0 gap-6 sm:gap-7 md:gap-0"
               >
                 {menuLinks.map((link) => (
                   <motion.div key={link.label} variants={itemVariants}>
                     <Link
                       href={link.href}
                       onClick={() => handleLinkClick(link.href)}
-                      className="font-ivymode font-light text-white uppercase tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[clamp(18px,2.5vw,28px)] 2xl:text-[38px] leading-relaxed inline-block"
+                      className="font-ivymode font-light text-white uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[19px] sm:text-[22px] md:text-[clamp(18px,2.5vw,28px)] 2xl:text-[38px] leading-tight inline-block whitespace-nowrap"
                     >
                       {link.label}
                     </Link>
@@ -105,36 +105,37 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
               </motion.div>
 
               {/* Bottom: Mobile-only Logo */}
-              <div className="block md:hidden pt-10 pb-5">
-                <div className="w-[160px] mx-auto">
+              <div className="block md:hidden shrink-0 pt-6 pb-4">
+                <div className="w-[160px] sm:w-[180px] mx-auto">
                   <img
                     src="/images/NOBILITA_white.png"
                     alt="Porcellana Nobilita"
-                    className="w-full h-auto object-contain"
+                    className="w-full h-auto object-contain opacity-95"
                   />
                 </div>
               </div>
             </div>
 
             {/* Right Column: House & Logo (Desktop Only) */}
-            <div className="hidden md:flex flex-col items-center justify-start w-full">
-              {/* House drawing */}
-              <div className="w-full flex justify-center items-center mb-10 md:mb-16 2xl:mb-20">
-                <NobilitaHouseSVG
-                  variant="white"
-                  size={260}
-                  animate={isOpen}
-                  className="opacity-90 max-w-full 2xl:w-[380px] h-auto"
-                />
-              </div>
+            <div className="hidden md:flex flex-col justify-between items-end w-full h-full">
+              <div className="flex flex-col justify-between items-center h-full">
+                {/* House drawing */}
+                <div className="w-[220px] lg:w-[250px] 2xl:w-[320px] shrink-0">
+                  <NobilitaHouseSVG
+                    variant="white"
+                    animate={isOpen}
+                    className="opacity-90 w-full h-auto block"
+                  />
+                </div>
 
-              {/* Logo block */}
-              <div className="w-[210px] lg:w-[240px] 2xl:w-[320px]">
-                <img
-                  src="/images/NOBILITA_white.png"
-                  alt="Porcellana Nobilita"
-                  className="w-full h-auto object-contain"
-                />
+                {/* Logo block */}
+                <div className="w-[209px] lg:w-[238px] 2xl:w-[304px] shrink-0 mt-6 md:mt-10 2xl:mt-14">
+                  <img
+                    src="/images/NOBILITA_white.png"
+                    alt="Porcellana Nobilita"
+                    className="w-full h-auto object-contain block"
+                  />
+                </div>
               </div>
             </div>
 

@@ -191,15 +191,16 @@ function ExploreCollectionContent() {
   // Grid column count state: 2, 3, 4, or 5 columns
   const [columns, setColumns] = useState(4);
 
-  // Dynamic products list from DB
-  const [dbProducts, setDbProducts] = useState<any[]>([]);
+  // Dynamic products list from DB, initialized with static slabs for instant smooth rendering
+  const [dbProducts, setDbProducts] = useState<any[]>(slabs);
 
   useEffect(() => {
+    let isMounted = true;
     async function load() {
       try {
         const res = await fetch("/api/products");
         const json = await res.json();
-        if (json.success && json.data) {
+        if (isMounted && json.success && Array.isArray(json.data) && json.data.length > 0) {
           const published = json.data
             .filter((p: any) => p.status === "PUBLISHED")
             .map((p: any) => ({
@@ -208,17 +209,22 @@ function ExploreCollectionContent() {
               color: p.color,
               finish: p.finish || ""
             }));
-          setDbProducts(published);
+          if (published.length > 0) {
+            setDbProducts(published);
+          }
         }
       } catch (err) {
         console.error("Failed to load dynamic products on explore-collection page:", err);
       }
     }
     load();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const slabsToRender = useMemo(() => {
-    return dbProducts.length > 0 ? dbProducts : slabs;
+    return dbProducts;
   }, [dbProducts]);
 
   // Selected slab for fullscreen detail modal

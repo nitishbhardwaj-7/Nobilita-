@@ -29,14 +29,27 @@ export default function SitemapPage() {
         </div>
       </section>
 
-      {/* Breadcrumb Navigation */}
+      {/* Back Button Navigation Strip */}
       <div className="w-full bg-white border-b border-gray-100 py-5">
-        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex items-center gap-3 text-xs md:text-sm lg:text-base font-ivymode tracking-widest text-[#545759]">
-          <Link href="/" className="hover:text-black transition-colors">
-            Home
+        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex items-center">
+          <Link
+            href="/"
+            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] transition-all duration-300 focus:outline-none"
+            aria-label="Go back to home"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4 md:w-4.5 md:h-4.5 text-brand-dark/80 group-hover:text-brand-dark transition-transform duration-300 transform group-hover:-translate-x-0.5"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
           </Link>
-          <span className="text-gray-400 font-light">&rsaquo;</span>
-          <span className="font-medium text-black">Sitemap</span>
         </div>
       </div>
 
