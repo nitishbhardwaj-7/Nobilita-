@@ -51,7 +51,7 @@ const technicalImages = [
               alt={`${slide.name} technical view`}
               className="absolute inset-0 w-full h-full object-cover object-bottom max-w-none"
             />
-            <div className="absolute bottom-2 left-3 md:bottom-2 md:left-3 z-20 pointer-events-none select-none">
+            <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-20 pointer-events-none select-none text-right">
               <span
                 className="font-ivymode tracking-[0.20em] text-[clamp(11px,1.2vw,16px)] uppercase font-light"
                 style={{ color: slide.textColor === "white" ? "#ffffff" : "#000000" }}

@@ -11,30 +11,12 @@ export default function PrivacyPolicyPage() {
       <Navbar />
 
       {/* Hero Banner with Title Overlay */}
-      <section className="relative w-full h-[300px] md:h-[420px] xl:h-[480px] overflow-hidden bg-gray-900 mt-[64px] md:mt-[80px]">
-        <img
-          src="/images/Links/Basaltina face 1.jpg"
-          alt="Privacy Policy Background"
-          className="w-full h-full object-cover object-center opacity-75"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10" />
-
-        {/* Title overlay - aligned to exact container bounds */}
-        <div className="absolute inset-0 flex items-center z-20">
-          <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
-            <h1 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(36px,6.5vw,80px)] drop-shadow-lg">
-              Privacy Policy
-            </h1>
-          </div>
-        </div>
-      </section>
-
-      {/* Back Button Navigation Strip */}
-      <div className="w-full bg-white border-b border-gray-100 py-5">
-        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex items-center">
+      <section className="relative w-full overflow-hidden bg-white mt-[64px] md:mt-[80px]">
+        {/* Back Button Arrow */}
+        <div className="absolute top-6 left-6 md:top-8 md:left-12 z-30">
           <Link
             href="/"
-            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] transition-all duration-300 focus:outline-none"
+            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
             aria-label="Go back to home"
           >
             <svg
@@ -44,14 +26,29 @@ export default function PrivacyPolicyPage() {
               strokeWidth="1.2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-4 h-4 md:w-4.5 md:h-4.5 text-brand-dark/80 group-hover:text-brand-dark transition-transform duration-300 transform group-hover:-translate-x-0.5"
+              className="w-4 h-4 md:w-4.5 md:h-4.5 text-white group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
             >
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
           </Link>
         </div>
-      </div>
+
+        <img
+          src="/images/privacy page image.jpg.jpeg"
+          alt="Privacy Policy Background"
+          className="w-full h-auto object-contain block"
+        />
+
+        {/* Title overlay - aligned to exact container bounds */}
+        <div className="absolute inset-0 flex items-center z-20 pointer-events-none">
+          <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+            <h1 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(36px,6.5vw,80px)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+              Privacy Policy
+            </h1>
+          </div>
+        </div>
+      </section>
 
       {/* Main Privacy Policy Content */}
       <main className="w-full flex-1 bg-white py-12 md:py-16">

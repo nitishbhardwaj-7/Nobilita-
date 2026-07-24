@@ -302,36 +302,45 @@ const slabs = [
   },
   {
     name: "Verde Profondo",
-    img: "/images/Our story/Verde profondo application.jpg",
+    img: "/images/Verde profondo/Verde profondo face 1.jpg",
     color: "Green",
     finish: "Matte",
     config: {
-      leftBg: "/images/Our story/Verde profondo application.jpg",
+      leftBg: "/images/Verde profondo/Verde profondo face 1.jpg",
       dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
-      faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+      faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
       finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
       slides: [
-        { type: "image", src: "/images/Our story/Verde profondo application.jpg", alt: "Verde Profondo Application" }
+        { type: "image", src: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Application" },
+        { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-1-riv.jpg", alt: "Verde Profondo Interior 1" },
+        { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-2-riv.jpg", alt: "Verde Profondo Interior 2" },
+        { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-1-PAV.jpg", alt: "Verde Profondo Floor" }
       ],
-      availableFaces: ["/images/Our story/Verde profondo application.jpg"],
-      isHorizontalFace: true
+      availableFaces: [
+        "/images/Verde profondo/Verde profondo face 1.jpg",
+        "/images/Verde profondo/Verde profondo face 2.jpg",
+        "/images/Verde profondo/Verde profondo face 3.jpg"
+      ],
+      isHorizontalFace: false
     }
   },
   {
     name: "Ferro Industriale",
-    img: "/images/Our story/Ferro Industriale (2).jpg",
+    img: "/images/Ferro Industriale/Ferro Industriale.jpg",
     color: "Grey",
     finish: "Matte",
     config: {
-      leftBg: "/images/Our story/Ferro Industriale (2).jpg",
+      leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
       dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – MATTE", "12MM – MATTE"],
       slides: [
-        { type: "image", src: "/images/Our story/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application" }
+        { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application 2" },
+        { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (1).jpg", alt: "Ferro Industriale Application 1" },
+        { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (3).jpg", alt: "Ferro Industriale Application 3" }
       ],
-      availableFaces: ["/images/Our story/Ferro Industriale (2).jpg"],
-      isHorizontalFace: true
+      availableFaces: ["/images/Ferro Industriale/Ferro Industriale.jpg"],
+      isHorizontalFace: false
     }
   }
 ];

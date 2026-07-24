@@ -276,25 +276,34 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/White Camouflage Face 1.jpg"]
   },
   "Verde Profondo": {
-    leftBg: "/images/Our story/Verde profondo application.jpg",
+    leftBg: "/images/Verde profondo/Verde profondo face 1.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
-    faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+    faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
     finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
     slides: [
-      { type: "image", src: "/images/Our story/Verde profondo application.jpg", alt: "Verde Profondo Application" }
+      { type: "image", src: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Application" },
+      { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-1-riv.jpg", alt: "Verde Profondo Application 1" },
+      { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-2-riv.jpg", alt: "Verde Profondo Application 2" },
+      { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-1-PAV.jpg", alt: "Verde Profondo Application 3" }
     ],
-    availableFaces: ["/images/Our story/Verde profondo application.jpg"],
+    availableFaces: [
+      "/images/Verde profondo/Verde profondo face 1.jpg",
+      "/images/Verde profondo/Verde profondo face 2.jpg",
+      "/images/Verde profondo/Verde profondo face 3.jpg"
+    ],
     isHorizontalFace: true
   },
   "Ferro Industriale": {
-    leftBg: "/images/Our story/Ferro Industriale (2).jpg",
+    leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
-      { type: "image", src: "/images/Our story/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application" }
+      { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application 2" },
+      { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (1).jpg", alt: "Ferro Industriale Application 1" },
+      { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (3).jpg", alt: "Ferro Industriale Application 3" }
     ],
-    availableFaces: ["/images/Our story/Ferro Industriale (2).jpg"],
+    availableFaces: ["/images/Ferro Industriale/Ferro Industriale.jpg"],
     isHorizontalFace: true
   }
 };
@@ -342,23 +351,26 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
   const config = useMemo<SlabConfig | null>(() => {
     if (!activeProduct) return null;
+    const staticConfig = PRODUCT_CONFIGS[activeProduct] || null;
     const dbProduct = dbProducts.find(
       (p) => p.name.toLowerCase() === activeProduct.toLowerCase()
     );
     if (dbProduct) {
+      const dbSlides = Array.isArray(dbProduct.slides) ? dbProduct.slides : [];
+      const dbFaces = Array.isArray(dbProduct.availableFaces) ? dbProduct.availableFaces : [];
+
       return {
-        leftBg: dbProduct.leftBg || dbProduct.coverImage || undefined,
-        dimensions: dbProduct.dimensions || [],
-        faces: dbProduct.faces || [],
-        finishes: dbProduct.finishes || [],
-        slides: (Array.isArray(dbProduct.slides) ? dbProduct.slides : []) as { type: "video" | "image"; src: string; poster?: string; alt?: string }[],
-        availableFaces: dbProduct.availableFaces || [],
-        bookmatchImg: dbProduct.bookmatchImg || undefined,
-        isHorizontalFace: dbProduct.isHorizontalFace || false,
+        leftBg: staticConfig?.leftBg || dbProduct.leftBg || dbProduct.coverImage || undefined,
+        dimensions: (dbProduct.dimensions && dbProduct.dimensions.length > 0) ? dbProduct.dimensions : (staticConfig?.dimensions || []),
+        faces: (dbProduct.faces && dbProduct.faces.length > 0) ? dbProduct.faces : (staticConfig?.faces || []),
+        finishes: (dbProduct.finishes && dbProduct.finishes.length > 0) ? dbProduct.finishes : (staticConfig?.finishes || []),
+        slides: (staticConfig?.slides && staticConfig.slides.length >= dbSlides.length ? staticConfig.slides : dbSlides) as { type: "video" | "image"; src: string; poster?: string; alt?: string }[],
+        availableFaces: (staticConfig?.availableFaces && staticConfig.availableFaces.length >= dbFaces.length ? staticConfig.availableFaces : dbFaces),
+        bookmatchImg: staticConfig?.bookmatchImg || dbProduct.bookmatchImg || undefined,
+        isHorizontalFace: staticConfig?.isHorizontalFace ?? dbProduct.isHorizontalFace ?? false,
       };
     }
-    // Static fallback
-    return (PRODUCT_CONFIGS[activeProduct] || null) as SlabConfig | null;
+    return staticConfig as SlabConfig | null;
   }, [dbProducts, activeProduct]);
 
   // Reset states on product change
@@ -880,8 +892,8 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
       {/* Face / Bookmatch Section */}
       <section className="w-full bg-white flex flex-col justify-center items-center py-10 md:py-20 px-4 md:px-16">
-        {activeProduct === "Calacatta Oyster" ? (
-          // Side-by-side vertical layout for Calacatta Oyster
+        {(config.availableFaces || []).length > 1 ? (
+          // Side-by-side layout for products with multiple faces
           showBookmatch && config.bookmatchImg ? (
             <div className="flex flex-col items-center w-full">
               {/* Bookmatch Image Container */}
@@ -909,9 +921,9 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               </div>
             </div>
           ) : (
-            /* Side-by-side 3 Faces View */
+            /* Side-by-side Faces View */
             <div className="w-full flex flex-col items-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1250px] justify-center">
+              <div className={`grid grid-cols-1 ${config.availableFaces?.length === 2 ? "md:grid-cols-2 max-w-[900px]" : "md:grid-cols-3 max-w-[1250px]"} gap-8 w-full justify-center`}>
                 {(config.availableFaces || []).map((faceImg, idx) => {
                   const faceNum = idx + 1;
                   return (
@@ -926,7 +938,11 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                         <img
                           src={faceImg}
                           alt={`${activeProduct} Face ${faceNum}`}
-                          className="absolute w-[200%] h-[50%] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10 max-w-none max-h-none"
+                          className={
+                            config.isHorizontalFace
+                              ? "absolute inset-0 w-full h-full object-cover block transition-all duration-700 ease-in-out z-10"
+                              : "absolute w-[200%] h-[50%] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 object-cover origin-center block transition-all duration-700 ease-in-out z-10 max-w-none max-h-none"
+                          }
                         />
 
                         {/* View Bookmatch button overlaid on face 2 */}

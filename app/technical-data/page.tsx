@@ -587,7 +587,7 @@ export default function TechnicalDataPage() {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                window.dispatchEvent(new CustomEvent("open-datasheet-form"));
+                window.dispatchEvent(new CustomEvent("open-datasheet-form", { detail: { language: "italian" } }));
               }}
               className="specs-btn relative overflow-hidden border border-[#007190] px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
             >
@@ -600,7 +600,7 @@ export default function TechnicalDataPage() {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                window.dispatchEvent(new CustomEvent("open-datasheet-form"));
+                window.dispatchEvent(new CustomEvent("open-datasheet-form", { detail: { language: "english" } }));
               }}
               className="specs-btn relative overflow-hidden border border-[#007190] px-8 md:px-16 py-10 flex flex-col items-center justify-center space-y-2 bg-transparent transition-colors duration-500 group focus:outline-none w-full md:w-auto"
             >

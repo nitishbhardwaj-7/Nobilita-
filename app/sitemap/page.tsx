@@ -12,6 +12,28 @@ export default function SitemapPage() {
 
       {/* Hero Banner with Title Overlay */}
       <section className="relative w-full h-[320px] md:h-[440px] xl:h-[500px] overflow-hidden bg-gray-900 mt-[64px] md:mt-[80px]">
+        {/* Back Button Arrow */}
+        <div className="absolute top-6 left-6 md:top-8 md:left-12 z-30">
+          <Link
+            href="/"
+            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/30 hover:border-white/80 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 focus:outline-none"
+            aria-label="Go back to home"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4 md:w-4.5 md:h-4.5 text-white/90 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </Link>
+        </div>
+
         <img
           src="/images/Links/Calacatta Oyster Application 1.jpg"
           alt="Sitemap Background"
@@ -28,30 +50,6 @@ export default function SitemapPage() {
           </div>
         </div>
       </section>
-
-      {/* Back Button Navigation Strip */}
-      <div className="w-full bg-white border-b border-gray-100 py-5">
-        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex items-center">
-          <Link
-            href="/"
-            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] transition-all duration-300 focus:outline-none"
-            aria-label="Go back to home"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4 md:w-4.5 md:h-4.5 text-brand-dark/80 group-hover:text-brand-dark transition-transform duration-300 transform group-hover:-translate-x-0.5"
-            >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </Link>
-        </div>
-      </div>
 
       {/* Sitemap Tree Hierarchy */}
       <main className="w-full flex-1 bg-white py-12 md:py-20">

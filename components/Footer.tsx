@@ -29,6 +29,23 @@ const navItemVariants = {
 export default function Footer() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [activeForm, setActiveForm] = useState<"none" | "query" | "catalog" | "newsletter" | "datasheet">("none");
+  const [selectedLanguage, setSelectedLanguage] = useState<"english" | "italian">("english");
+
+  const triggerPdfDownload = (lang: "english" | "italian") => {
+    const pdfUrl = lang === "italian"
+      ? "/Pdfs/TECHNICAL%20DATA%20SHEET%20-%20ITALIAN.pdf"
+      : "/Pdfs/TECHNICAL%20DATA%20SHEET%20-%20ENGLISH.pdf";
+    const fileName = lang === "italian"
+      ? "TECHNICAL DATA SHEET - ITALIAN.pdf"
+      : "TECHNICAL DATA SHEET - ENGLISH.pdf";
+
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   React.useEffect(() => {
     const handleOpenQuery = () => {
@@ -42,7 +59,11 @@ export default function Footer() {
       }, 100);
     };
 
-    const handleOpenCatalog = () => {
+    const handleOpenCatalog = (e?: Event) => {
+      const customEvent = e as CustomEvent<{ language?: "english" | "italian" }>;
+      if (customEvent?.detail?.language) {
+        setSelectedLanguage(customEvent.detail.language);
+      }
       setActiveForm("catalog");
       setSubmitStatus("idle");
       setTimeout(() => {
@@ -64,7 +85,11 @@ export default function Footer() {
       }, 100);
     };
 
-    const handleOpenDatasheet = () => {
+    const handleOpenDatasheet = (e?: Event) => {
+      const customEvent = e as CustomEvent<{ language?: "english" | "italian" }>;
+      if (customEvent?.detail?.language) {
+        setSelectedLanguage(customEvent.detail.language);
+      }
       setActiveForm("datasheet");
       setSubmitStatus("idle");
       setTimeout(() => {
@@ -101,6 +126,11 @@ export default function Footer() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitStatus("sending");
+
+    if (activeForm === "catalog" || activeForm === "datasheet") {
+      triggerPdfDownload(selectedLanguage);
+    }
+
     setTimeout(() => {
       setSubmitStatus("sent");
     }, 1500);
@@ -191,6 +221,7 @@ export default function Footer() {
                         </p>
                       </>
                     )}
+
                     <div className="flex justify-center w-full px-2">
                       <button
                         onClick={() => {

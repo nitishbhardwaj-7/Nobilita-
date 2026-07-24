@@ -119,13 +119,13 @@ const slabs = [
   },
   {
     name: "Verde Profondo",
-    img: "/images/Our story/Verde profondo application.jpg",
+    img: "/images/Verde profondo/Verde profondo face 1.jpg",
     color: "Green",
     finish: "Matte"
   },
   {
     name: "Ferro Industriale",
-    img: "/images/Our story/Ferro Industriale (2).jpg",
+    img: "/images/Ferro Industriale/Ferro Industriale.jpg",
     color: "Grey",
     finish: "Matte"
   }
@@ -203,12 +203,18 @@ function ExploreCollectionContent() {
         if (isMounted && json.success && Array.isArray(json.data) && json.data.length > 0) {
           const published = json.data
             .filter((p: any) => p.status === "PUBLISHED")
-            .map((p: any) => ({
-              name: p.name,
-              img: p.coverImage || p.leftBg || "",
-              color: p.color,
-              finish: p.finish || ""
-            }));
+            .map((p: any) => {
+              const staticMatch = slabs.find(s => s.name.toLowerCase() === p.name.toLowerCase());
+              const img = (p.coverImage && !p.coverImage.includes("Our story"))
+                ? p.coverImage
+                : (staticMatch?.img || p.coverImage || p.leftBg || "");
+              return {
+                name: p.name,
+                img,
+                color: p.color,
+                finish: p.finish || ""
+              };
+            });
           if (published.length > 0) {
             setDbProducts(published);
           }
@@ -466,7 +472,7 @@ function ExploreCollectionContent() {
         <div className={`grid ${gridColsClass} gap-3 md:gap-4`}>
           <AnimatePresence>
             {filteredSlabs.map((slab, index) => {
-              const isDarkSlab = slab.color === "Dark";
+              const isWhiteTextSlab = slab.color === "Dark" || slab.name.toLowerCase() === "verde profondo" || slab.name.toLowerCase() === "ferro industriale";
               return (
                 <motion.div
                   key={slab.name}
@@ -506,18 +512,18 @@ function ExploreCollectionContent() {
                     />
                   </div>
 
-                  {/* Content Overlay - Name & Premium Icon (No background overlay, no gold line) */}
+                  {/* Content Overlay - Name & Premium Icon */}
                   <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 z-20 flex items-end justify-between pointer-events-none select-none">
                     {/* Slab Name */}
                     <div className="overflow-hidden flex-1 mr-4">
-                      <h3 className={`font-ivymode ${isDarkSlab ? 'text-white' : 'text-brand-dark'} text-[16px] md:text-[22px] tracking-[0.06em] uppercase transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+                      <h3 className={`font-ivymode ${isWhiteTextSlab ? 'text-white drop-shadow-md' : 'text-brand-dark'} text-[16px] md:text-[22px] tracking-[0.06em] uppercase transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
                         {slab.name}
                       </h3>
                     </div>
 
                     {/* Premium Icon (Diagonal Arrow) reveal */}
                     <div className="overflow-hidden flex-shrink-0">
-                      <div className={`${isDarkSlab ? 'text-white/90' : 'text-brand-dark/90'} transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] delay-[100ms]`}>
+                      <div className={`${isWhiteTextSlab ? 'text-white/90 drop-shadow-md' : 'text-brand-dark/90'} transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] delay-[100ms]`}>
                         <svg
                           viewBox="0 0 24 24"
                           fill="none"

@@ -215,7 +215,7 @@ export default function CraftsmanshipSection() {
       </div>
 
       {/* ── BOTTOM: CASA NOBILE */}
-      <div className="absolute bottom-4 right-6 md:bottom-2 md:right-16 z-10">
+      <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-10">
         <span
           ref={casaRef}
           className="casa-nobile-label font-ivymode text-white/90 text-[16px] tracking-[0.2em] uppercase"

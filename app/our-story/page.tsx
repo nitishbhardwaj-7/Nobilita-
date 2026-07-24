@@ -106,10 +106,6 @@ export default function OurStoryPage() {
         .to(".sec3-tag-grey", { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, "-=0.3")
         .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.6");
 
-      gsap.fromTo(".sec3-img",
-        { scale: 1 },
-        { scale: 1.22, ease: "none", scrollTrigger: { trigger: ".sec3-container", start: "top bottom", end: "bottom top", scrub: 1.5 } }
-      );
       gsap.from(".sec3-text p", {
         opacity: 0, y: 30, duration: 1, ease: "power3.out",
         scrollTrigger: { trigger: ".sec3-text", start: "top 85%" }
@@ -335,11 +331,11 @@ export default function OurStoryPage() {
       {/* Section 3: Arabescato Vagli Bookmatch Section */}
       <section className="sec3-container w-full flex flex-col bg-white">
         {/* Top Full-width Image */}
-        <div className="w-full relative aspect-[21/9] md:aspect-[2.39/1] overflow-hidden group">
+        <div className="w-full relative overflow-hidden group">
           <img
-            src="/images/Our story/Arbescato Vagli BM.jpg"
-            alt="Arabescato Vagli Bookmatch bathroom application"
-            className="sec3-img w-full h-full object-cover origin-center"
+            src="/images/app2.jpg.jpeg"
+            alt="Arabescato Vagli Bookmatch application"
+            className="sec3-img w-full h-auto object-contain block mx-auto"
             loading="lazy"
           />
 
@@ -359,8 +355,8 @@ export default function OurStoryPage() {
 
           {/* Overlay Text */}
           <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
-            <span className="sec3-label-text font-ivymode font-light text-[#545759] uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
-              ARBESCATO VAGLI
+            <span className="sec3-label-text font-ivymode font-light text-white uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
+              BASALTINA
             </span>
           </div>
         </div>
