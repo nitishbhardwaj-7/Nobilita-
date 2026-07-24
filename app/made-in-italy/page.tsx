@@ -241,7 +241,7 @@ export default function MadeInItalyPage() {
       </section>
 
       {/* Section 3: Large Format Slabs */}
-      <section className="sec3-container relative w-full px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden py-12 md:py-16">
+      <section className="sec3-container relative w-full px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden">
         <div className="relative z-10 w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col space-y-12">
           {/* Top Text */}
           <div className="sec3-text-container w-full font-ivymode font-light text-[#545759] text-[15px] sm:text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left space-y-6 md:space-y-8">
