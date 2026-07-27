@@ -44,8 +44,8 @@ const slideshowImages = [
     textColor: "white"
   },
   {
-    src: "/images/NewImages/Verde%20Apli%20Application.jpg",
-    name: "VERDE ALPI",
+    src: "/images/NewImages/Basaltina%20Application.jpg",
+    name: "BASALTINA",
     textColor: "white"
   },
   {

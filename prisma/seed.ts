@@ -302,11 +302,11 @@ const slabs = [
   },
   {
     name: "Verde Profondo",
-    img: "/images/Verde profondo/Verde profondo face 1.jpg",
+    img: "/images/Verde profondo/Verde profondo rotate.jpg",
     color: "Green",
     finish: "Matte",
     config: {
-      leftBg: "/images/Verde profondo/Verde profondo face 1.jpg",
+      leftBg: "/images/Verde profondo/Verde profondo rotate.jpg",
       dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
       faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
       finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],

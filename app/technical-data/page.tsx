@@ -155,7 +155,7 @@ export default function TechnicalDataPage() {
       <div className="absolute top-20 left-6 md:top-32 md:left-12 z-50">
         <Link
           href="/"
-          className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
           aria-label="Go back to home"
         >
           <svg

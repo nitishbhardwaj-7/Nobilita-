@@ -173,13 +173,13 @@ export default function Footer() {
                     <div className="w-full flex justify-center">
                       <AnimatedNeighborhood />
                     </div>
-                    <div className="w-[180px] md:w-[220px]">
+                    <Link href="/" className="w-[180px] md:w-[220px] inline-block hover:opacity-90 transition-opacity">
                       <img
                         src="/images/NOBILITA_white.png"
                         alt="Porcellana Nobilita"
                         className="w-full h-auto object-contain"
                       />
-                    </div>
+                    </Link>
                   </div>
 
                   {/* Right Column: White background with Thank You and CTA */}
@@ -363,7 +363,7 @@ export default function Footer() {
       </AnimatePresence>
 
       {/* Lower Footer Area */}
-      <div className="w-full min-h-[30vh] bg-[#007190] flex flex-col items-center justify-center px-6">
+      <div className="w-full bg-[#007190] flex flex-col items-center px-6 pt-6 md:pt-6">
         <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-0">
 
 
@@ -463,27 +463,29 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="pt-10 md:pt-20 pb-12 flex justify-center w-full"
+            className="pt-10 md:pt-10 pb-10 flex justify-center w-full"
           >
-            <div className="w-[260px] md:w-[320px]">
+            <Link href="/" className="w-[260px] md:w-[320px] inline-block hover:opacity-90 transition-opacity">
               <img
                 src="/images/NOBILITA_white.png"
                 alt="Porcellana Nobilita"
                 className="w-full h-auto object-contain"
               />
-            </div>
+            </Link>
           </motion.div>
 
         </div>
       </div>
 
       {/* Bottom Copyright & Legal Strip */}
-      <div className="w-full bg-[#007190] py-6 px-6 md:px-16 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 md:gap-16 text-white/80 font-light text-xs md:text-sm tracking-wide">
-        <span>© Copyright 2026 Nobilita</span>
-        <div className="flex items-center gap-8 md:gap-12">
-          <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
-        </div>
+      <div className="w-full bg-[#007190] py-6 px-6 md:px-16 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 md:gap-12 text-white/80 font-light text-xs md:text-sm tracking-wide text-center">
+        <Link href="/privacy-policy" className="hover:text-white transition-colors">
+          Privacy Policy
+        </Link>
+        <span>© Copyright 2026 PORCELLANA NOBILITA</span>
+        <Link href="/sitemap" className="hover:text-white transition-colors">
+          Sitemap
+        </Link>
       </div>
     </footer>
   );

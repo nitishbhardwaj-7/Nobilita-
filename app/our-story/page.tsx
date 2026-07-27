@@ -152,10 +152,10 @@ export default function OurStoryPage() {
       <Navbar />
 
       {/* Back Button Arrow */}
-      <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50">
+      <div className="absolute top-6 left-6 md:top-8 md:left-12 z-50">
         <Link
           href="/"
-          className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          className="group flex items-center justify-center w-10 h-10 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Go back to home"
         >
           <svg
@@ -174,22 +174,22 @@ export default function OurStoryPage() {
       </div>
 
       {/* Main Content / First Section */}
-      <section className="w-full flex items-center pt-8 pb-10 md:pt-[60px] md:pb-[60px] relative">
-        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex flex-col md:flex-row md:items-stretch gap-8 md:gap-16 lg:gap-28">
+      <section className="w-full flex items-center pt-[clamp(2rem,5vw,4.5rem)] pb-[clamp(2rem,4vw,4rem)] relative">
+        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 flex flex-col md:flex-row md:items-stretch gap-6 md:gap-[clamp(2rem,4vw,5rem)]">
           {/* Left Column: House SVG & Logo */}
-          <div className="shrink-0 flex flex-col items-center justify-between gap-10">
+          <div className="shrink-0 flex flex-col items-center justify-between gap-6 md:gap-0 md:py-0.5">
             {/* House Sketch */}
             <div className="hero-house flex justify-center">
               <NobilitaHouseSVG
                 variant="dark"
                 size={240}
                 animate={true}
-                className="opacity-90 max-w-full mt-[15px]"
+                className="opacity-90 max-w-full w-[clamp(120px,15vw,220px)] h-auto"
               />
             </div>
 
             {/* Logo Block */}
-            <div className="hero-logo w-[150px] md:w-[220px]">
+            <div className="hero-logo w-[clamp(100px,13vw,190px)]">
               <img
                 src="/images/Links/NOBILITA Logo BLACK.png"
                 alt="Porcellana Nobilita"
@@ -199,16 +199,16 @@ export default function OurStoryPage() {
           </div>
 
           {/* Right Column: Story Text */}
-          <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left min-w-0">
+          <div className="flex-1 flex flex-col justify-between items-center md:items-start text-center md:text-left min-w-0">
             <motion.h1
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={containerVariants}
-              className="hero-title font-ivymode font-light text-[#545759] uppercase tracking-[0.08em] md:tracking-[0.15em] text-[clamp(28px,6vw,66px)] md:text-[clamp(28px,4.5vw,66px)] leading-tight flex flex-wrap justify-center md:justify-start gap-x-[0.3em] md:gap-x-[0.4em]"
+              className="hero-title font-ivymode font-light text-[#545759] uppercase tracking-[clamp(0.06em,0.7vw,0.15em)] text-[clamp(26px,4.5vw,62px)] leading-tight flex flex-wrap justify-center md:justify-start gap-x-[0.35em]"
             >
               {["OUR", "STORY"].map((word, i) => (
-                <span key={i} className="inline-block overflow-hidden py-2 md:py-0 px-[1px]">
+                <span key={i} className="inline-block overflow-hidden py-1 md:py-0 px-[1px]">
                   <motion.span variants={wordVariants} className="inline-block">
                     {word}
                   </motion.span>
@@ -224,7 +224,7 @@ export default function OurStoryPage() {
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
               }}
-              className="hero-text font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.7] 2xl:leading-[1.9] space-y-6 mt-8 md:mt-12 text-center md:text-left"
+              className="hero-text font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,21px)] tracking-widest leading-[1.75] space-y-[clamp(1rem,1.75vw,1.6rem)] mt-[clamp(1.25rem,2.5vw,2.5rem)] text-center md:text-left"
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
                 In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.
@@ -353,11 +353,17 @@ export default function OurStoryPage() {
             />
           </div>
 
-          {/* Overlay Text */}
-          <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-30 flex flex-col items-end">
-            <span className="sec3-label-text font-ivymode font-light text-white uppercase text-[clamp(11px,1.2vw,16px)] inline-block">
-              BASALTINA
-            </span>
+          {/* Bottom Right Text Button */}
+          <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-30">
+            <button
+              onClick={() => setActiveProduct("Basaltina")}
+              className="sec3-label-text relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block cursor-pointer"
+            >
+              <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+              <span className="relative z-10 block transition-colors duration-500 group-hover:text-black drop-shadow-md group-hover:drop-shadow-none">
+                BASALTINA
+              </span>
+            </button>
           </div>
         </div>
 

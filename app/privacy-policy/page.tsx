@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
         <div className="absolute top-6 left-6 md:top-8 md:left-12 z-30">
           <Link
             href="/"
-            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
+            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
             aria-label="Go back to home"
           >
             <svg
@@ -56,9 +56,6 @@ export default function PrivacyPolicyPage() {
           
           {/* Main Title & Intro */}
           <div>
-            <h2 className="font-ivymode font-light text-[#222222] text-[26px] md:text-[32px] tracking-[0.02em] mb-4">
-              Privacy Policy
-            </h2>
             <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
               At NOBILITA, we value your privacy. This Privacy Policy explains how we collect, use, disclose, and process your personal data when you use our website or otherwise interact with us.
             </p>
@@ -66,16 +63,12 @@ export default function PrivacyPolicyPage() {
 
           {/* Section: What Personal Data Do We Collect */}
           <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
+            <h3 className="font-ivymode font-light text-[#007190] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
               What Personal Data Do We Collect?
             </h3>
-            <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light mb-5">
-              We may collect the following personal data from you:
-            </p>
-
             <div className="space-y-5">
               <div>
-                <h4 className="font-ivymode font-light text-[#222222] text-[18px] md:text-[21px] tracking-[0.02em] mb-1.5">
+                <h4 className="font-ivymode font-light text-[#007190] text-[18px] md:text-[21px] tracking-[0.02em] mb-1.5">
                   Contact Information:
                 </h4>
                 <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
@@ -84,7 +77,7 @@ export default function PrivacyPolicyPage() {
               </div>
 
               <div>
-                <h4 className="font-ivymode font-light text-[#222222] text-[18px] md:text-[21px] tracking-[0.02em] mb-1.5">
+                <h4 className="font-ivymode font-light text-[#007190] text-[18px] md:text-[21px] tracking-[0.02em] mb-1.5">
                   Inquiry Information:
                 </h4>
                 <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
@@ -93,7 +86,7 @@ export default function PrivacyPolicyPage() {
               </div>
 
               <div>
-                <h4 className="font-ivymode font-light text-[#222222] text-[18px] md:text-[21px] tracking-[0.02em] mb-1.5">
+                <h4 className="font-ivymode font-light text-[#007190] text-[18px] md:text-[21px] tracking-[0.02em] mb-1.5">
                   Website Usage Data:
                 </h4>
                 <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
@@ -105,7 +98,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Section: How Do We Use Your Personal Data */}
           <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
+            <h3 className="font-ivymode font-light text-[#007190] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
               How Do We Use Your Personal Data?
             </h3>
             <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light mb-3">
@@ -122,7 +115,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Section: Disclosure of Your Personal Data */}
           <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
+            <h3 className="font-ivymode font-light text-[#007190] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
               Disclosure of Your Personal Data
             </h3>
             <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
@@ -132,7 +125,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Section: Data Retention */}
           <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
+            <h3 className="font-ivymode font-light text-[#007190] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
               Data Retention
             </h3>
             <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
@@ -142,7 +135,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Section: Security */}
           <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
+            <h3 className="font-ivymode font-light text-[#007190] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
               Security
             </h3>
             <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
@@ -150,39 +143,15 @@ export default function PrivacyPolicyPage() {
             </p>
           </div>
 
-          {/* Section: Mobile App */}
-          <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
-              Mobile App
-            </h3>
-            <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
-              To delete your account in the mobile app, go to the menu, select Profile, tap Delete Account, and confirm by pressing Okay.
-            </p>
-          </div>
-
           {/* Section: Changes to this Privacy Policy */}
           <div>
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
+            <h3 className="font-ivymode font-light text-[#007190] text-[20px] md:text-[24px] tracking-[0.02em] mt-8 mb-3">
               Changes to this Privacy Policy
             </h3>
             <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
               We may update this Privacy Policy from time to time. We will post the updated Privacy Policy on our website.
             </p>
           </div>
-
-          {/* Section: Contact Us */}
-          <div className="pt-4 border-t border-gray-100">
-            <h3 className="font-ivymode font-light text-[#222222] text-[20px] md:text-[24px] tracking-[0.02em] mt-6 mb-3">
-              Contact Us
-            </h3>
-            <p className="text-[15px] sm:text-[16px] md:text-[18px] 2xl:text-[20px] tracking-widest leading-[1.8] font-light">
-              If you have any questions about this Privacy Policy, please contact us at{" "}
-              <a href="mailto:info@nobilita.it" className="text-[#007190] hover:underline font-normal">
-                info@nobilita.it
-              </a>.
-            </p>
-          </div>
-
         </div>
       </main>
 

@@ -119,7 +119,7 @@ const slabs = [
   },
   {
     name: "Verde Profondo",
-    img: "/images/Verde profondo/Verde profondo face 1.jpg",
+    img: "/images/Verde profondo/Verde profondo rotate.jpg",
     color: "Green",
     finish: "Matte"
   },
@@ -205,9 +205,7 @@ function ExploreCollectionContent() {
             .filter((p: any) => p.status === "PUBLISHED")
             .map((p: any) => {
               const staticMatch = slabs.find(s => s.name.toLowerCase() === p.name.toLowerCase());
-              const img = (p.coverImage && !p.coverImage.includes("Our story"))
-                ? p.coverImage
-                : (staticMatch?.img || p.coverImage || p.leftBg || "");
+              const img = staticMatch?.img || ((p.coverImage && !p.coverImage.includes("Our story")) ? p.coverImage : (p.leftBg || ""));
               return {
                 name: p.name,
                 img,

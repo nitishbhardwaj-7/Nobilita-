@@ -128,7 +128,7 @@ export default function MadeInItalyPage() {
       <div className="absolute top-20 left-6 md:top-32 md:left-12 z-50">
         <Link
           href="/"
-          className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+          className="group flex items-center justify-center w-10 h-10 rounded-full border border-brand-dark/20 hover:border-brand-dark/60 bg-brand-dark/[0.03] hover:bg-brand-dark/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
           aria-label="Go back to home"
         >
           <svg
@@ -207,7 +207,7 @@ export default function MadeInItalyPage() {
               <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   The same spirit defines its porcelain industry. Here, innovation and heritage exist side by side, transforming raw materials into surfaces of{" "}
-                  <span className="sec2-highlight inline-block text-[#007190] font-normal">
+                  <span className="sec2-highlight inline text-[#007190] font-normal">
                     exceptional quality and enduring beauty.
                   </span>
                 </p>
@@ -253,7 +253,7 @@ export default function MadeInItalyPage() {
             <div className="overflow-hidden py-0.5">
               <p className="sec3-line">
                 More than a surface, it is a{" "}
-                <span className="sec3-highlight inline-block text-[#007190] font-normal">
+                <span className="sec3-highlight inline text-[#007190] font-normal">
                   legacy of craftsmanship made for generations to come.
                 </span>
               </p>

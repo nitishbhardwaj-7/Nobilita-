@@ -276,7 +276,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/White Camouflage Face 1.jpg"]
   },
   "Verde Profondo": {
-    leftBg: "/images/Verde profondo/Verde profondo face 1.jpg",
+    leftBg: "/images/Verde profondo/Verde profondo rotate.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
     finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
