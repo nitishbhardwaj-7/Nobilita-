@@ -15,7 +15,7 @@ const finishes = [
   },
   {
     name: "MATTE",
-    img: "/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina matte.jpg",
     darkText: false,
     desc: "A non-reflective and refined finish, with added slip resistance.",
     idleOverlay: "bg-black/25",

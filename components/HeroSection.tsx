@@ -44,7 +44,7 @@ const slideshowImages = [
     textColor: "white"
   },
   {
-    src: "/images/NewImages/Basaltina%20Application.jpg",
+    src: "/images/NewImages/Basaltina.jpg",
     name: "BASALTINA",
     textColor: "white"
   },

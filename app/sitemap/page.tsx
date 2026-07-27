@@ -2,10 +2,34 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function SitemapPage() {
+  const listContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const listItemVariants = {
+    hidden: { opacity: 0, x: -16 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 1, 0.5, 1],
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
       <Navbar />
@@ -13,7 +37,12 @@ export default function SitemapPage() {
       {/* Hero Banner with Title Overlay */}
       <section className="relative w-full h-[320px] md:h-[440px] xl:h-[500px] overflow-hidden bg-gray-900 mt-[64px] md:mt-[80px]">
         {/* Back Button Arrow */}
-        <div className="absolute top-6 left-6 md:top-8 md:left-12 z-30">
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="absolute top-6 left-6 md:top-8 md:left-12 z-30"
+        >
           <Link
             href="/"
             className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:border-white/80 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 focus:outline-none"
@@ -32,21 +61,29 @@ export default function SitemapPage() {
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
           </Link>
-        </div>
+        </motion.div>
 
-        <img
+        <motion.img
+          initial={{ scale: 1.06, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.85 }}
+          transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
           src="/images/Links/Calacatta Oyster Application 1.jpg"
           alt="Sitemap Background"
-          className="w-full h-full object-cover object-center opacity-85"
+          className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10" />
 
         {/* Title overlay - aligned to exact container bounds */}
         <div className="absolute inset-0 flex items-center z-20">
           <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
-            <h1 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(36px,6.5vw,80px)] drop-shadow-lg">
+            <motion.h1
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+              className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(36px,6.5vw,80px)] drop-shadow-lg"
+            >
               Sitemap
-            </h1>
+            </motion.h1>
           </div>
         </div>
       </section>
@@ -54,19 +91,24 @@ export default function SitemapPage() {
       {/* Sitemap Tree Hierarchy */}
       <main className="w-full flex-1 bg-white py-12 md:py-20">
         <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 font-ivymode text-[#545759]">
-          <ul className="space-y-8 text-base md:text-lg tracking-widest leading-relaxed list-none">
+          <motion.ul
+            variants={listContainerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8 text-base md:text-lg tracking-widest leading-relaxed list-none"
+          >
             {/* Profile / Our Story */}
-            <li className="flex flex-col gap-2">
+            <motion.li variants={listItemVariants} className="flex flex-col gap-2">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
                 <Link href="/our-story" className="hover:text-[#007190] transition-colors">
-                  Profile
+                  Our Story
                 </Link>
               </div>
-            </li>
+            </motion.li>
 
             {/* Products */}
-            <li className="flex flex-col gap-4">
+            <motion.li variants={listItemVariants} className="flex flex-col gap-4">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
                 <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
@@ -111,48 +153,48 @@ export default function SitemapPage() {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </motion.li>
 
             {/* Technical Data */}
-            <li className="flex flex-col gap-2">
+            <motion.li variants={listItemVariants} className="flex flex-col gap-2">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
                 <Link href="/technical-data" className="hover:text-[#007190] transition-colors">
                   Technical Data
                 </Link>
               </div>
-            </li>
+            </motion.li>
 
             {/* Made in Italy */}
-            <li className="flex flex-col gap-2">
+            <motion.li variants={listItemVariants} className="flex flex-col gap-2">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
                 <Link href="/made-in-italy" className="hover:text-[#007190] transition-colors">
                   Made in Italy
                 </Link>
               </div>
-            </li>
+            </motion.li>
 
             {/* Contact Us */}
-            <li className="flex flex-col gap-2">
+            <motion.li variants={listItemVariants} className="flex flex-col gap-2">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
                 <Link href="/#contact-us" className="hover:text-[#007190] transition-colors">
                   Contact Us
                 </Link>
               </div>
-            </li>
+            </motion.li>
 
             {/* Privacy Policy */}
-            <li className="flex flex-col gap-2">
+            <motion.li variants={listItemVariants} className="flex flex-col gap-2">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
                 <Link href="/privacy-policy" className="hover:text-[#007190] transition-colors">
                   Privacy Policy
                 </Link>
               </div>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </div>
       </main>
 

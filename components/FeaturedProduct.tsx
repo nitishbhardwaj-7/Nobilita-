@@ -1027,11 +1027,20 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 </div>
               )}
             </div>
-
-
           </>
         )}
       </section>
+
+      {/* Bottom Copyright & Legal Strip */}
+      <div className="w-full bg-[#007190] py-6 px-6 md:px-16 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 md:gap-12 text-white/80 font-light text-xs md:text-sm tracking-wide text-center">
+        <Link href="/privacy-policy" className="hover:text-white transition-colors">
+          Privacy Policy
+        </Link>
+        <span>© Copyright 2026 PORCELLANA NOBILITA</span>
+        <Link href="/sitemap" className="hover:text-white transition-colors">
+          Sitemap
+        </Link>
+      </div>
     </div>
   );
 

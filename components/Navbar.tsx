@@ -178,20 +178,20 @@ export default function Navbar() {
           aria-label="Toggle navigation menu"
         >
           <span 
-            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[2px] w-12 bg-white transition-all duration-300 ease-in-out"
             style={{
               transform: "translateY(-6px) rotate(0deg)"
             }}
           />
           <span 
-            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[2px] w-12 bg-white transition-all duration-300 ease-in-out"
             style={{
               transform: "scaleX(1)",
               opacity: 1
             }}
           />
           <span 
-            className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[2px] w-12 bg-white transition-all duration-300 ease-in-out"
             style={{
               transform: "translateY(6px) rotate(0deg)"
             }}

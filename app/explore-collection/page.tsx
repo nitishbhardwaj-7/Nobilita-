@@ -188,8 +188,34 @@ function ExploreCollectionContent() {
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
   const [finishDropdownOpen, setFinishDropdownOpen] = useState(false);
 
-  // Grid column count state: 2, 3, 4, or 5 columns
+  // Grid column count state: 1, 2, 3, 4, or 5 columns
   const [columns, setColumns] = useState(4);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const handleZoomIn = () => {
+    if (isMobile) {
+      setColumns(1);
+    } else {
+      setColumns(c => Math.max(c - 1, 1));
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (isMobile) {
+      setColumns(2);
+    } else {
+      setColumns(c => Math.min(c + 1, 5));
+    }
+  };
 
   // Dynamic products list from DB, initialized with static slabs for instant smooth rendering
   const [dbProducts, setDbProducts] = useState<any[]>(slabs);
@@ -268,11 +294,12 @@ function ExploreCollectionContent() {
 
   // Tailwind Grid Columns classes map
   const gridColsClass = {
-    2: "grid-cols-2",
+    1: "grid-cols-1",
+    2: "grid-cols-2 md:grid-cols-2",
     3: "grid-cols-2 md:grid-cols-3",
     4: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
     5: "grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-  }[columns as 2 | 3 | 4 | 5] || "grid-cols-2 md:grid-cols-4";
+  }[columns as 1 | 2 | 3 | 4 | 5] || "grid-cols-2 md:grid-cols-4";
 
   return (
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden font-ivymode relative">
@@ -289,20 +316,20 @@ function ExploreCollectionContent() {
             aria-label="Toggle navigation menu"
           >
             <span
-              className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+              className="absolute block h-[2px] w-12 bg-white transition-all duration-300 ease-in-out"
               style={{
                 transform: "translateY(-6px) rotate(0deg)"
               }}
             />
             <span
-              className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+              className="absolute block h-[2px] w-12 bg-white transition-all duration-300 ease-in-out"
               style={{
                 transform: "scaleX(1)",
                 opacity: 1
               }}
             />
             <span
-              className="absolute block h-[1px] w-12 bg-white/80 transition-all duration-300 ease-in-out"
+              className="absolute block h-[2px] w-12 bg-white transition-all duration-300 ease-in-out"
               style={{
                 transform: "translateY(6px) rotate(0deg)"
               }}
@@ -358,7 +385,17 @@ function ExploreCollectionContent() {
                 }`}
             >
               <span>COLOR {selectedColor ? `(${selectedColor})` : ""}</span>
-              <span className={`inline-block transition-transform duration-200 ${colorDropdownOpen ? "rotate-180" : "rotate-0"}`}>∨</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300 ${colorDropdownOpen ? "rotate-180" : "rotate-0"}`}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </button>
 
             <AnimatePresence>
@@ -402,7 +439,17 @@ function ExploreCollectionContent() {
                 }`}
             >
               <span>FINISH {selectedFinish ? `(${selectedFinish})` : ""}</span>
-              <span className={`inline-block transition-transform duration-200 ${finishDropdownOpen ? "rotate-180" : "rotate-0"}`}>∨</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300 ${finishDropdownOpen ? "rotate-180" : "rotate-0"}`}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </button>
 
             <AnimatePresence>
@@ -449,14 +496,14 @@ function ExploreCollectionContent() {
         {/* Right Side: Grid Columns Stack Selector */}
         <div className="flex flex-col rounded bg-white">
           <button
-            onClick={() => setColumns(c => Math.max(c - 1, 2))}
+            onClick={handleZoomIn}
             className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
             aria-label="Decrease columns (Zoom in)"
           >
             +
           </button>
           <button
-            onClick={() => setColumns(c => Math.min(c + 1, 5))}
+            onClick={handleZoomOut}
             className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
             aria-label="Increase columns (Zoom out)"
           >

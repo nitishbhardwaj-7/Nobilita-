@@ -76,6 +76,11 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
           y: 0,
           duration: 0.8,
           ease: "power3.out"
+        }, "-=0.6")
+        .to(".brand-social-wrapper", {
+          opacity: 1,
+          duration: 1.0,
+          ease: "power2.out"
         }, "-=0.6");
 
       const btn = section.querySelector<HTMLElement>(".brand-story-btn");
@@ -115,25 +120,86 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
           aria-label="Toggle navigation menu"
         >
           <span
-            className="absolute block h-[1px] w-12 lg:w-13 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[2px] w-12 lg:w-13 bg-white transition-all duration-300 ease-in-out"
             style={{
               transform: "translateY(-6px) rotate(0deg)"
             }}
           />
           <span
-            className="absolute block h-[1px] w-12 lg:w-13 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[2px] w-12 lg:w-13 bg-white transition-all duration-300 ease-in-out"
             style={{
               transform: "scaleX(1)",
               opacity: 1
             }}
           />
           <span
-            className="absolute block h-[1px] w-12 lg:w-13 bg-white/80 transition-all duration-300 ease-in-out"
+            className="absolute block h-[2px] w-12 lg:w-13 bg-white transition-all duration-300 ease-in-out"
             style={{
               transform: "translateY(6px) rotate(0deg)"
             }}
           />
         </button>
+      </div>
+
+      {/* Vertical Social Media Links Sidebar */}
+      <div className="brand-social-wrapper absolute left-6 md:left-12 lg:left-14 bottom-8 md:bottom-12 z-30 flex flex-col items-center gap-4.5 md:gap-5 opacity-0">
+        {/* Top Vertical Divider Line */}
+        <div className="w-[1px] h-14 md:h-20 bg-white/40 mb-1" />
+
+        {/* Instagram */}
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/90 hover:text-white transition-all duration-300 transform hover:scale-110"
+          aria-label="Instagram"
+        >
+          <svg className="w-5.5 h-5.5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+
+        {/* Facebook */}
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/90 hover:text-white transition-all duration-300 transform hover:scale-110"
+          aria-label="Facebook"
+        >
+          <svg className="w-5 h-5 md:w-5.5 md:h-5.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+
+        {/* YouTube */}
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/90 hover:text-white transition-all duration-300 transform hover:scale-110"
+          aria-label="YouTube"
+        >
+          <svg className="w-5.5 h-5.5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="5" ry="5" />
+            <polygon points="10 8 16 12 10 16 10 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          </svg>
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/90 hover:text-white transition-all duration-300 transform hover:scale-110"
+          aria-label="LinkedIn"
+        >
+          <svg className="w-5 h-5 md:w-5.5 md:h-5.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+          </svg>
+        </a>
       </div>
 
       {/* Navigation Overlay */}
