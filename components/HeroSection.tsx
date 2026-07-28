@@ -77,6 +77,11 @@ const slideshowImages = [
     src: "/images/NewImages/taj%20mahal.jpg",
     name: "TAJ MAHAL",
     textColor: "black"
+  },
+  {
+    src: "/images/verde-alpi.webp",
+    name: "VERDE ALPI",
+    textColor: "white"
   }
 ];
 

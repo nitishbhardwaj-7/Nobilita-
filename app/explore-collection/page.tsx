@@ -35,7 +35,7 @@ const slabs = [
   },
   {
     name: "Basaltina",
-    img: "/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina matte.jpg",
     color: "Green",
     finish: "Honed"
   },
@@ -141,7 +141,7 @@ const finishMetadata: Record<string, { name: string; img: string; desc: string }
   },
   "Matte": {
     name: "MATTE",
-    img: "/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina matte.jpg",
     desc: "A non-reflective and refined finish, with added slip resistance."
   },
   "Honed": {
@@ -381,7 +381,7 @@ function ExploreCollectionContent() {
                 setColorDropdownOpen(!colorDropdownOpen);
                 setFinishDropdownOpen(false);
               }}
-              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
+              className={`group font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
                 }`}
             >
               <span>COLOR {selectedColor ? `(${selectedColor})` : ""}</span>
@@ -389,12 +389,12 @@ function ExploreCollectionContent() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300 ${colorDropdownOpen ? "rotate-180" : "rotate-0"}`}
+                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${colorDropdownOpen ? "rotate-180 text-[#007190]" : "rotate-0 group-hover:translate-y-0.5"}`}
               >
-                <polyline points="6 9 12 15 18 9"></polyline>
+                <path d="M6 9l6 6 6-6" />
               </svg>
             </button>
 
@@ -435,7 +435,7 @@ function ExploreCollectionContent() {
                 setFinishDropdownOpen(!finishDropdownOpen);
                 setColorDropdownOpen(false);
               }}
-              className={`font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
+              className={`group font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
                 }`}
             >
               <span>FINISH {selectedFinish ? `(${selectedFinish})` : ""}</span>
@@ -443,12 +443,12 @@ function ExploreCollectionContent() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300 ${finishDropdownOpen ? "rotate-180" : "rotate-0"}`}
+                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${finishDropdownOpen ? "rotate-180 text-[#007190]" : "rotate-0 group-hover:translate-y-0.5"}`}
               >
-                <polyline points="6 9 12 15 18 9"></polyline>
+                <path d="M6 9l6 6 6-6" />
               </svg>
             </button>
 

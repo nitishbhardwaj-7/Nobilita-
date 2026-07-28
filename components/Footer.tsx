@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import NobilitaHouseSVG from "./NobilitaHouseSVG";
 import AnimatedNeighborhood from "./AnimatedNeighborhood";
 
-const links = ["about", "products", "technical data", "made in italy", "contact us"];
+const links = ["about", "products", "technical data", "made in italy", "blogs", "newsletter", "contact us"];
 
 const navContainerVariants = {
   hidden: {},
@@ -390,7 +390,11 @@ export default function Footer() {
                           ? "/our-story"
                           : link === "made in italy"
                             ? "/made-in-italy"
-                            : `#${link.replace(/ /g, "-")}`
+                            : link === "blogs"
+                              ? "/blogs"
+                              : link === "newsletter"
+                                ? "/newsletter"
+                                : `#${link.replace(/ /g, "-")}`
                   }
                   onClick={isContact ? handleContactClick : undefined}
                   className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
@@ -443,6 +447,24 @@ export default function Footer() {
               className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
             >
               made in italy
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
+
+            <motion.a
+              variants={navItemVariants}
+              href="/blogs"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              blogs
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
+
+            <motion.a
+              variants={navItemVariants}
+              href="/newsletter"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              newsletter
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
 

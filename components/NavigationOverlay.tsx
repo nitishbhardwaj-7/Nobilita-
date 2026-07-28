@@ -15,6 +15,8 @@ const menuLinks = [
   { label: "PRODUCTS", href: "/explore-collection" },
   { label: "TECHNICAL RESOURCES", href: "/technical-data" },
   { label: "MADE IN ITALY", href: "/made-in-italy" },
+  { label: "BLOGS", href: "/blogs" },
+  { label: "NEWSLETTER", href: "/newsletter" },
   { label: "CONTACT US", href: "/#contact-us" }
 ];
 

@@ -144,7 +144,7 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
       {/* Vertical Social Media Links Sidebar */}
       <div className="brand-social-wrapper absolute left-6 md:left-12 lg:left-14 bottom-8 md:bottom-12 z-30 flex flex-col items-center gap-4.5 md:gap-5 opacity-0">
         {/* Top Vertical Divider Line */}
-        <div className="w-[1px] h-14 md:h-20 bg-white/40 mb-1" />
+        <div className="w-[1px] h-14 md:h-20 bg-white/20 mb-1" />
 
         {/* Instagram */}
         <a
@@ -174,19 +174,6 @@ export default function BrandIntro({ title, subtitle, buttonText, image, isLoade
           </svg>
         </a>
 
-        {/* YouTube */}
-        <a
-          href="https://youtube.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white/90 hover:text-white transition-all duration-300 transform hover:scale-110"
-          aria-label="YouTube"
-        >
-          <svg className="w-5.5 h-5.5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="5" ry="5" />
-            <polygon points="10 8 16 12 10 16 10 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-          </svg>
-        </a>
 
         {/* LinkedIn */}
         <a

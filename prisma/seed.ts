@@ -68,16 +68,16 @@ const slabs = [
   },
   {
     name: "Basaltina",
-    img: "/images/Links/Basaltina face 1.jpg",
+    img: "/images/Links/Basaltina matte.jpg",
     color: "Green",
     finish: "Honed",
     config: {
-      leftBg: undefined,
+      leftBg: "/images/Links/Basaltina matte.jpg",
       dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – HONED", "12MM – HONED"],
       slides: [
-        { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Video" },
+        { type: "image", src: "/images/NewImages/Basaltina.jpg", alt: "Basaltina Application" },
         { type: "image", src: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Slab" }
       ],
       availableFaces: ["/images/Links/Basaltina face 1.jpg"],

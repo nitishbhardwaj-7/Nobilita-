@@ -332,11 +332,13 @@ export default function OurStoryPage() {
       <section className="sec3-container w-full flex flex-col bg-white">
         {/* Top Full-width Image */}
         <div className="w-full relative overflow-hidden group">
-          <img
-            src="/images/app2.jpg.jpeg"
-            alt="Arabescato Vagli Bookmatch application"
+          <video
+            src="/images/basaltina.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="sec3-img w-full h-auto object-contain block mx-auto"
-            loading="lazy"
           />
 
           {/* Curtain reveal panels */}

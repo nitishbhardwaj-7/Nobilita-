@@ -145,11 +145,12 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     isHorizontalFace: true
   },
   "Basaltina": {
+    leftBg: "/images/Links/Basaltina matte.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
-      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Video" },
+      { type: "image", src: "/images/NewImages/Basaltina.jpg", alt: "Basaltina Application" },
       { type: "image", src: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Slab" }
     ],
     availableFaces: ["/images/Links/Basaltina face 1.jpg"],
@@ -281,6 +282,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
     finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
     slides: [
+      { type: "video", src: "/images/Verde profondo/Verde Profondo video.mp4", poster: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Video" },
       { type: "image", src: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Application" },
       { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-1-riv.jpg", alt: "Verde Profondo Application 1" },
       { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-2-riv.jpg", alt: "Verde Profondo Application 2" },
@@ -299,6 +301,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
+      { type: "video", src: "/images/Ferro Industriale/ferro industirale video.mp4", poster: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Video" },
       { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application 2" },
       { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (1).jpg", alt: "Ferro Industriale Application 1" },
       { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (3).jpg", alt: "Ferro Industriale Application 3" }
