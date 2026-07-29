@@ -62,7 +62,7 @@ export default function NewsletterPage() {
         >
           <Link
             href="/"
-            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
+            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:border-white/70 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 focus:outline-none"
             aria-label="Go back to home"
           >
             <svg
@@ -116,28 +116,29 @@ export default function NewsletterPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
             {newsletterPosts.map((post) => (
               <motion.div key={post.id} variants={cardVariants}>
-                <div className="relative w-full aspect-[16/10] overflow-hidden group cursor-pointer shadow-md">
-                  {/* Newsletter Image */}
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover object-center transform scale-[1.08] group-hover:scale-100 transition-transform duration-700 ease-out"
-                  />
+                <Link href={post.href}>
+                  <div className="relative w-full aspect-[16/10] overflow-hidden group cursor-pointer shadow-md">
+                    {/* Newsletter Image */}
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover object-center transform scale-[1.08] group-hover:scale-100 transition-transform duration-700 ease-out"
+                    />
+                    {/* Centered Newsletter Title */}
+                    <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 text-center z-10 pointer-events-none">
+                      <h2 className="font-ivymode font-light text-white text-[clamp(22px,2.6vw,44px)] tracking-[0.08em] group-hover:tracking-[0.22em] transition-all duration-500 ease-out leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] uppercase">
+                        {post.title}
+                      </h2>
+                    </div>
 
-                  {/* Centered Newsletter Title */}
-                  <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 text-center z-10 pointer-events-none">
-                    <h2 className="font-ivymode font-light text-white text-[clamp(22px,2.6vw,44px)] tracking-wide leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] uppercase">
-                      {post.title}
-                    </h2>
+                    {/* Bottom Right Date */}
+                    <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-10 pointer-events-none select-none text-right">
+                      <span className="font-ivymode font-light text-[#599eb8] md:text-[#5293ac] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] tracking-[0.20em] drop-shadow-md">
+                        {post.date}
+                      </span>
+                    </div>
                   </div>
-
-                  {/* Bottom Right Date */}
-                  <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-10 pointer-events-none select-none text-right">
-                    <span className="font-ivymode font-light text-[#599eb8] md:text-[#5293ac] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] tracking-[0.20em] drop-shadow-md">
-                      {post.date}
-                    </span>
-                  </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

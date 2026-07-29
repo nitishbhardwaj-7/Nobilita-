@@ -1,34 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export default function BlogsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
+gsap.registerPlugin(ScrollTrigger);
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
+export default function BlogsPage() {
+  const blogTileRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const blogPosts = [
     {
@@ -47,6 +30,91 @@ export default function BlogsPage() {
     },
   ];
 
+  useEffect(() => {
+    const cleanupFns: (() => void)[] = [];
+
+    const ctx = gsap.context(() => {
+      blogTileRefs.current.forEach((tile) => {
+        if (!tile) return;
+
+        const img = tile.querySelector<HTMLElement>(".blog-card-img");
+        const titleEl = tile.querySelector<HTMLElement>(".blog-card-title");
+
+        if (!img || !titleEl) return;
+
+        // 1. Initial Clip-Path Reveal & Scale on Scroll
+        gsap.set(tile, { clipPath: "inset(0 0 100% 0)" });
+        gsap.set(img, { scale: 1.2 });
+        gsap.set(titleEl, { y: 15, opacity: 0 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: tile,
+            start: "top 85%",
+            once: true,
+          },
+        });
+
+        tl.to(tile, {
+          clipPath: "inset(0 0 0% 0)",
+          duration: 1.2,
+          ease: "power3.inOut",
+        })
+          .to(
+            img,
+            {
+              scale: 1.08,
+              duration: 1.4,
+              ease: "power2.out",
+            },
+            "-=1.0"
+          )
+          .to(
+            titleEl,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.8"
+          );
+
+        // 2. Interactive Image Hover Effect (smooth scale without text expansion)
+        const onMouseEnter = () => {
+          gsap.to(img, {
+            scale: 1.0,
+            duration: 0.9,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        };
+
+        const onMouseLeave = () => {
+          gsap.to(img, {
+            scale: 1.08,
+            duration: 1.2,
+            ease: "power3.out",
+            overwrite: "auto",
+          });
+        };
+
+        tile.addEventListener("mouseenter", onMouseEnter);
+        tile.addEventListener("mouseleave", onMouseLeave);
+
+        cleanupFns.push(() => {
+          tile.removeEventListener("mouseenter", onMouseEnter);
+          tile.removeEventListener("mouseleave", onMouseLeave);
+        });
+      });
+    });
+
+    return () => {
+      ctx.revert();
+      cleanupFns.forEach((fn) => fn());
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
       <Navbar />
@@ -62,7 +130,7 @@ export default function BlogsPage() {
         >
           <Link
             href="/"
-            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
+            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:border-white/70 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 focus:outline-none"
             aria-label="Go back to home"
           >
             <svg
@@ -106,42 +174,39 @@ export default function BlogsPage() {
 
       {/* Main Blogs Grid Section */}
       <main className="w-full flex-1 bg-white py-12 md:py-20">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24"
-        >
+        <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
-            {blogPosts.map((post) => (
-              <motion.div key={post.id} variants={cardVariants}>
-                <div className="relative w-full aspect-[16/10] overflow-hidden group cursor-pointer shadow-md">
+            {blogPosts.map((post, idx) => (
+              <Link key={post.id} href={post.href} className="block">
+                <div
+                  ref={(el) => { blogTileRefs.current[idx] = el; }}
+                  className="blog-tile group relative w-full aspect-[16/10] overflow-hidden cursor-pointer shadow-md"
+                >
                   {/* Blog Image */}
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover object-center transform scale-[1.08] group-hover:scale-100 transition-transform duration-700 ease-out"
+                    className="blog-card-img w-full h-full object-cover object-center transform"
                   />
 
                   {/* Centered Blog Title */}
                   <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 text-center z-10 pointer-events-none">
-                    <h2 className="font-ivymode font-light text-white text-[clamp(22px,2.6vw,44px)] tracking-wide leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] whitespace-pre-line">
+                    <h2 className="blog-card-title font-ivymode font-light text-white text-[clamp(22px,2.6vw,44px)] tracking-wide leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] whitespace-pre-line uppercase">
                       {post.title}
                     </h2>
                   </div>
 
                   {/* Bottom Right Date */}
-                  <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-10 pointer-events-none select-none text-right">
-                    <span className="font-ivymode font-light text-[#007190] md:text-[#007190] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] tracking-[0.20em] drop-shadow-md">
+                  <div className="absolute bottom-2 right-3 md:bottom-3 md:right-4 z-10 pointer-events-none select-none text-right">
+                    <span className="blog-card-date font-ivymode font-light text-[#007190] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] tracking-[0.20em] drop-shadow-md block">
                       {post.date}
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </Link>
             ))}
           </div>
-        </motion.div>
+        </div>
       </main>
 
       <Footer />

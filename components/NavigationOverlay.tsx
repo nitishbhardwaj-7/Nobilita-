@@ -59,32 +59,33 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
           transition={{ duration: 0.4 }}
           className="fixed inset-0 z-[99999] bg-[#007190] w-full h-[100dvh] md:h-full flex flex-col overflow-y-auto md:overflow-hidden"
         >
-          {/* Main Content Area */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full max-w-[1050px] xl:max-w-[1150px] 2xl:max-w-[1280px] mx-auto h-full relative px-6 py-6 md:px-12 md:py-10 2xl:py-14 content-center items-stretch gap-6 md:gap-12 2xl:gap-16">
+          {/* Top-Left Back Button */}
+          <div className="absolute top-6 left-6 md:top-8 md:left-12 lg:top-10 lg:left-14 z-50">
+            <button
+              onClick={onClose}
+              className="group flex items-center justify-center w-10 h-10 md:w-11 md:h-11 2xl:w-14 2xl:h-14 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
+              aria-label="Close menu"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4 md:w-5 md:h-5 2xl:w-6 2xl:h-6 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
+              >
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+          </div>
 
-            {/* Left Column: Back button & Links */}
+          {/* Main Content Area */}
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 w-full max-w-[1050px] xl:max-w-[1150px] 2xl:max-w-[1280px] mx-auto h-full relative px-6 pt-20 pb-8 md:px-12 md:py-10 2xl:py-14 content-center items-stretch gap-6 md:gap-12 2xl:gap-16">
+
+            {/* Left Column: Links */}
             <div className="flex flex-col justify-between items-center md:items-start text-center md:text-left w-full h-full min-h-0">
-              {/* Top: Back Button */}
-              <div className="w-full flex justify-start shrink-0 mb-4 md:mb-6 2xl:mb-8">
-                <button
-                  onClick={onClose}
-                  className="group flex items-center justify-center w-10 h-10 md:w-11 md:h-11 2xl:w-14 2xl:h-14 rounded-full border border-white/20 hover:border-white/60 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm transition-all duration-300 focus:outline-none"
-                  aria-label="Close menu"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4 md:w-5 md:h-5 2xl:w-6 2xl:h-6 text-white/80 group-hover:text-white transition-transform duration-300 transform group-hover:-translate-x-0.5"
-                  >
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                  </svg>
-                </button>
-              </div>
 
               {/* Links container - centered with clean gaps on mobile, spaced out on desktop */}
               <motion.div

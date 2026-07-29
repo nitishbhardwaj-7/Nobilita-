@@ -45,7 +45,7 @@ export default function SitemapPage() {
         >
           <Link
             href="/"
-            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/40 hover:border-white/90 bg-black/20 hover:bg-black/40 backdrop-blur-md transition-all duration-300 focus:outline-none"
+            className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:border-white/70 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 focus:outline-none"
             aria-label="Go back to home"
           >
             <svg
@@ -63,14 +63,16 @@ export default function SitemapPage() {
           </Link>
         </motion.div>
 
-        <motion.img
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-          src="/images/verde-alpi-full-sitemap.webp"
-          alt="Sitemap Background"
-          className="w-full h-full object-cover object-center block"
-        />
+        <div className="w-full h-full -scale-x-100 overflow-hidden">
+          <motion.img
+            initial={{ scale: 1.05, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+            src="/images/verde-alpi-full-sitemap-copy.jpg"
+            alt="Sitemap Background"
+            className="w-full h-full object-cover object-center block"
+          />
+        </div>
 
         {/* Title overlay - aligned to exact container bounds */}
         <div className="absolute inset-0 flex items-center z-20 pointer-events-none">
