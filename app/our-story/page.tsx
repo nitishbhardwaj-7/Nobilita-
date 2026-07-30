@@ -333,7 +333,7 @@ export default function OurStoryPage() {
         {/* Top Full-width Image */}
         <div className="w-full relative overflow-hidden group">
           <video
-            src="/images/basaltina.mp4"
+            src="/images/nobilita%20basaltina.mp4"
             autoPlay
             loop
             muted

@@ -363,8 +363,8 @@ export default function Footer() {
       </AnimatePresence>
 
       {/* Lower Footer Area */}
-      <div className="w-full bg-[#007190] flex flex-col items-center px-6 pt-6 md:pt-6">
-        <div className="w-full max-w-[95rem] mx-auto flex flex-col items-center space-y-0">
+      <div className="w-full bg-[#007190] flex flex-col items-center px-2 md:px-4 lg:px-6 pt-6 md:pt-6">
+        <div className="w-full mx-auto flex flex-col items-center space-y-0">
 
 
           {/* Mobile Navigation */}
@@ -406,13 +406,13 @@ export default function Footer() {
             })}
           </motion.nav>
 
-          {/* Desktop Navigation (100% mathematically equal spacing & perfect center alignment) */}
+          {/* Desktop Navigation */}
           <motion.nav
             variants={navContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hidden md:flex w-full max-w-[1300px] lg:max-w-[1550px] xl:max-w-[1800px] 2xl:max-w-[2100px] mx-auto items-center justify-between text-center px-6 md:px-12 lg:px-16"
+            className="hidden md:flex w-full items-center justify-between text-center"
           >
             <motion.a
               variants={navItemVariants}
