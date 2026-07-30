@@ -79,7 +79,7 @@ const slideshowImages = [
     textColor: "black"
   },
   {
-    src: "/images/NOBILITA%20VERDE%20ALPI%20new.png",
+    src: "/images/NOBILITA%20VERDE%20ALPI%20final.png",
     name: "VERDE ALPI",
     textColor: "white"
   }
