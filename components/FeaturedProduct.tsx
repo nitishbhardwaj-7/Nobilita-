@@ -340,40 +340,143 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
   const [dbProducts, setDbProducts] = useState<any[]>([]);
 
   useEffect(() => {
-    if (activeProduct) {
-      fetch("/api/products")
-        .then((res) => res.json())
-        .then((json) => {
-          if (json.success && json.data) {
-            setDbProducts(json.data);
-          }
-        })
-        .catch((err) => console.error("Error fetching dynamic products in modal:", err));
-    }
+    let isMounted = true;
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((json) => {
+        if (isMounted && json.success && Array.isArray(json.data)) {
+          setDbProducts(json.data);
+        }
+      })
+      .catch((err) => console.error("Error fetching dynamic products in modal:", err));
+
+    return () => {
+      isMounted = false;
+    };
   }, [activeProduct]);
 
   const config = useMemo<SlabConfig | null>(() => {
     if (!activeProduct) return null;
+
     const staticConfig = PRODUCT_CONFIGS[activeProduct] || null;
     const dbProduct = dbProducts.find(
-      (p) => p.name.toLowerCase() === activeProduct.toLowerCase()
+      (p) =>
+        p.name?.trim().toLowerCase() === activeProduct.trim().toLowerCase() ||
+        p.slug?.trim().toLowerCase() === activeProduct.trim().toLowerCase()
     );
-    if (dbProduct) {
-      const dbSlides = Array.isArray(dbProduct.slides) ? dbProduct.slides : [];
-      const dbFaces = Array.isArray(dbProduct.availableFaces) ? dbProduct.availableFaces : [];
 
-      return {
-        leftBg: staticConfig?.leftBg || dbProduct.leftBg || dbProduct.coverImage || undefined,
-        dimensions: (dbProduct.dimensions && dbProduct.dimensions.length > 0) ? dbProduct.dimensions : (staticConfig?.dimensions || []),
-        faces: (dbProduct.faces && dbProduct.faces.length > 0) ? dbProduct.faces : (staticConfig?.faces || []),
-        finishes: (dbProduct.finishes && dbProduct.finishes.length > 0) ? dbProduct.finishes : (staticConfig?.finishes || []),
-        slides: (staticConfig?.slides && staticConfig.slides.length >= dbSlides.length ? staticConfig.slides : dbSlides) as { type: "video" | "image"; src: string; poster?: string; alt?: string }[],
-        availableFaces: (staticConfig?.availableFaces && staticConfig.availableFaces.length >= dbFaces.length ? staticConfig.availableFaces : dbFaces),
-        bookmatchImg: staticConfig?.bookmatchImg || dbProduct.bookmatchImg || undefined,
-        isHorizontalFace: staticConfig?.isHorizontalFace ?? dbProduct.isHorizontalFace ?? false,
-      };
+    let leftBg = dbProduct?.leftBg || dbProduct?.coverImage || staticConfig?.leftBg;
+    let bookmatchImg = dbProduct?.bookmatchImg || staticConfig?.bookmatchImg;
+    let isHorizontalFace = dbProduct?.isHorizontalFace ?? staticConfig?.isHorizontalFace ?? false;
+
+    // Dimensions: Prioritize DB product dimensions if non-empty, then thicknessMm if provided, then staticConfig
+    let dimensions: string[] = [];
+    if (Array.isArray(dbProduct?.dimensions) && dbProduct.dimensions.length > 0) {
+      dimensions = [...dbProduct.dimensions];
+    } else if (Array.isArray(dbProduct?.thicknessMm) && dbProduct.thicknessMm.length > 0) {
+      dimensions = dbProduct.thicknessMm.map((t: string, idx: number) => {
+        const thicknessStr = t.toUpperCase().includes("MM") ? t.toUpperCase() : `${t}MM`;
+        return `${thicknessStr} x 1600 x 3200${idx === 0 ? " (R)" : " (G)"}`;
+      });
+    } else if (staticConfig?.dimensions && staticConfig.dimensions.length > 0) {
+      dimensions = [...staticConfig.dimensions];
+    } else {
+      dimensions = ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"];
     }
-    return staticConfig as SlabConfig | null;
+
+    // Faces: Prioritize DB product faces if non-empty, then staticConfig
+    let faces: string[] = [];
+    if (Array.isArray(dbProduct?.faces) && dbProduct.faces.length > 0) {
+      faces = [...dbProduct.faces];
+    } else if (staticConfig?.faces && staticConfig.faces.length > 0) {
+      faces = [...staticConfig.faces];
+    } else if (Array.isArray(dbProduct?.availableFaces) && dbProduct.availableFaces.length > 0) {
+      const thicknessStr = (dbProduct.thicknessMm && dbProduct.thicknessMm[0]) ? (dbProduct.thicknessMm[0].toUpperCase().includes("MM") ? dbProduct.thicknessMm[0].toUpperCase() : `${dbProduct.thicknessMm[0]}MM`) : "6.5MM";
+      faces = [`${thicknessStr} – ${dbProduct.availableFaces.length} FACE${dbProduct.availableFaces.length > 1 ? "S" : ""}`];
+    } else {
+      faces = ["1 FACE"];
+    }
+
+    // Finishes: Prioritize DB product finishes if non-empty, then finish + thicknessMm, then staticConfig
+    let finishes: string[] = [];
+    if (Array.isArray(dbProduct?.finishes) && dbProduct.finishes.length > 0) {
+      finishes = [...dbProduct.finishes];
+    } else if (staticConfig?.finishes && staticConfig.finishes.length > 0) {
+      finishes = [...staticConfig.finishes];
+    } else if (dbProduct?.finish || (Array.isArray(dbProduct?.thicknessMm) && dbProduct.thicknessMm.length > 0)) {
+      const finishName = (dbProduct.finish || "POLISHED").toUpperCase();
+      if (Array.isArray(dbProduct.thicknessMm) && dbProduct.thicknessMm.length > 0) {
+        finishes = dbProduct.thicknessMm.map((t: string) => {
+          const thicknessStr = t.toUpperCase().includes("MM") ? t.toUpperCase() : `${t}MM`;
+          return `${thicknessStr} – ${finishName}`;
+        });
+      } else {
+        finishes = [finishName];
+      }
+    } else {
+      finishes = ["POLISHED"];
+    }
+
+    // Slides
+    let slides: { type: "video" | "image"; src: string; poster?: string; alt?: string }[] = [];
+    const rawDbSlides = Array.isArray(dbProduct?.slides) ? dbProduct.slides : [];
+    if (rawDbSlides.length > 0) {
+      slides = rawDbSlides.map((s: any) => {
+        if (typeof s === "string") {
+          const isVideo = s.endsWith(".mp4") || s.endsWith(".webm");
+          return { type: isVideo ? "video" : "image", src: s, alt: dbProduct?.name || activeProduct };
+        }
+        return s;
+      });
+    } else if (staticConfig?.slides && staticConfig.slides.length > 0) {
+      slides = [...staticConfig.slides];
+    }
+
+    // Fallbacks if slides array is empty
+    if (slides.length === 0) {
+      if (dbProduct?.coverImage) {
+        slides.push({ type: "image", src: dbProduct.coverImage, alt: activeProduct });
+      }
+      if (dbProduct && Array.isArray(dbProduct.gallery)) {
+        dbProduct.gallery.forEach((img: string, i: number) => {
+          if (img && img !== dbProduct.coverImage) {
+            slides.push({ type: "image", src: img, alt: `${activeProduct} ${i + 1}` });
+          }
+        });
+      }
+      if (slides.length === 0 && leftBg) {
+        slides.push({ type: "image", src: leftBg, alt: activeProduct });
+      }
+      if (slides.length === 0) {
+        slides.push({ type: "image", src: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: activeProduct });
+      }
+    }
+
+    // Available Faces
+    let availableFaces: string[] = [];
+    const rawDbAvailableFaces = Array.isArray(dbProduct?.availableFaces) ? dbProduct.availableFaces : [];
+    if (rawDbAvailableFaces.length > 0) {
+      availableFaces = [...rawDbAvailableFaces];
+    } else if (staticConfig?.availableFaces && staticConfig.availableFaces.length > 0) {
+      availableFaces = [...staticConfig.availableFaces];
+    } else if (leftBg || slides.length > 0) {
+      availableFaces = [leftBg || slides[0].src];
+    }
+
+    if (!leftBg && slides.length > 0) {
+      leftBg = slides[0].src;
+    }
+
+    return {
+      leftBg,
+      dimensions,
+      faces,
+      finishes,
+      slides,
+      availableFaces,
+      bookmatchImg,
+      isHorizontalFace,
+    };
   }, [dbProducts, activeProduct]);
 
   // Reset states on product change
@@ -544,14 +647,14 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
   };
 
   const nextSlide = () => {
-    if (!config) return;
+    if (!config || !config.slides || config.slides.length <= 1) return;
     setSlideDirection("next");
     setPrevSlideIndex(currentSlide);
     setCurrentSlide((prev) => (prev + 1) % config.slides.length);
   };
 
   const prevSlide = () => {
-    if (!config) return;
+    if (!config || !config.slides || config.slides.length <= 1) return;
     setSlideDirection("prev");
     setPrevSlideIndex(currentSlide);
     setCurrentSlide((prev) => (prev - 1 + config.slides.length) % config.slides.length);
@@ -559,7 +662,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
   // Slider GSAP Transitions
   useEffect(() => {
-    if (prevSlideIndex === null || !slidesContainerRef.current || !config) return;
+    if (prevSlideIndex === null || !slidesContainerRef.current || !config || !config.slides || config.slides.length <= 1) return;
 
     const children = slidesContainerRef.current.children;
     const activeChild = children[currentSlide] as HTMLElement;
