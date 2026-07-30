@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage() {
           initial={{ scale: 1.05, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-          src="/images/privacy page image.jpg.jpeg"
+          src="/images/basaltina pool.png"
           alt="Privacy Policy Background"
           className="w-full h-auto object-contain block"
         />

@@ -93,17 +93,17 @@ export default function OurStoryPage() {
         { scale: 1.18, duration: 2, ease: "power3.out" }
       );
 
-      // 3. Section 3 — luxury curtain reveal + shine sweep + label
+      // 3. Section 3 — luxury curtain reveal + tag tagline reveal + label
       gsap.set(".sec3-label-text", { opacity: 0, y: 14, letterSpacing: "0.5em" });
-      gsap.set(".sec3-tag-grey", { opacity: 0, y: 14 });
+      gsap.set(".sec3-tag-grey", { opacity: 0, y: 24, scale: 0.94, filter: "blur(6px)" });
 
       const sec3Tl = gsap.timeline({
         scrollTrigger: { trigger: ".sec3-container", start: "top 75%", once: true }
       });
       sec3Tl
-        .to(".sec3-curtain-left", { xPercent: -100, duration: 1.5, ease: "power4.inOut" })
-        .to(".sec3-curtain-right", { xPercent: 100, duration: 1.5, ease: "power4.inOut" }, "<")
-        .to(".sec3-tag-grey", { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, "-=0.3")
+        .to(".sec3-curtain-left", { xPercent: -100, duration: 1.4, ease: "power4.inOut" })
+        .to(".sec3-curtain-right", { xPercent: 100, duration: 1.4, ease: "power4.inOut" }, "<")
+        .to(".sec3-tag-grey", { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.2, ease: "power3.out" }, "+=0.1")
         .to(".sec3-label-text", { opacity: 1, y: 0, letterSpacing: "0.20em", duration: 0.9, ease: "power2.out" }, "-=0.6");
 
       gsap.from(".sec3-text p", {
@@ -350,7 +350,7 @@ export default function OurStoryPage() {
             <img
               src="/images/Links/tag.png"
               alt="Il Gres Imperiale d'Italia"
-              className="sec3-tag-grey w-full h-auto object-contain"
+              className="sec3-tag-grey w-full h-auto object-contain transform-gpu"
               loading="lazy"
             />
           </div>
