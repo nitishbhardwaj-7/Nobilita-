@@ -180,6 +180,7 @@ function ExploreCollectionContent() {
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedFinish, setSelectedFinish] = useState<string | null>(initialFinish);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setSelectedFinish(initialFinish);
@@ -279,6 +280,7 @@ function ExploreCollectionContent() {
   const handleReset = () => {
     setSelectedColor(null);
     setSelectedFinish(null);
+    setSearchTerm("");
     setColorDropdownOpen(false);
     setFinishDropdownOpen(false);
   };
@@ -288,9 +290,10 @@ function ExploreCollectionContent() {
     return slabsToRender.filter((slab) => {
       const matchColor = !selectedColor || slab.color === selectedColor;
       const matchFinish = !selectedFinish || slab.finish === selectedFinish;
-      return matchColor && matchFinish;
+      const matchSearch = !searchTerm || slab.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchColor && matchFinish && matchSearch;
     });
-  }, [selectedColor, selectedFinish, slabsToRender]);
+  }, [selectedColor, selectedFinish, searchTerm, slabsToRender]);
 
   // Tailwind Grid Columns classes map
   const gridColsClass = {
@@ -483,7 +486,7 @@ function ExploreCollectionContent() {
           </div>
 
           {/* Reset Filter Button */}
-          {(selectedColor || selectedFinish) && (
+          {(selectedColor || selectedFinish || searchTerm) && (
             <button
               onClick={handleReset}
               className="font-michroma text-[11px] md:text-lg tracking-[0.15em] text-red-600 hover:text-red-700 transition-colors uppercase select-none"
@@ -493,22 +496,57 @@ function ExploreCollectionContent() {
           )}
         </div>
 
-        {/* Right Side: Grid Columns Stack Selector */}
-        <div className="flex flex-col rounded bg-white">
-          <button
-            onClick={handleZoomIn}
-            className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
-            aria-label="Decrease columns (Zoom in)"
-          >
-            +
-          </button>
-          <button
-            onClick={handleZoomOut}
-            className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
-            aria-label="Increase columns (Zoom out)"
-          >
-            -
-          </button>
+        {/* Right Side: Search and Grid Controls */}
+        <div className="flex items-center gap-4">
+          {/* Search Input field in same square format */}
+          <div className="relative flex items-center">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Find your stone here"
+              className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-colors duration-300 w-36 md:w-64 h-8 md:h-11 ${
+                searchTerm 
+                  ? "border-[#007190] placeholder-[#007190] text-[#007190]" 
+                  : "border-[#545759]/20 placeholder-[#545759] text-[#545759]"
+              }`}
+            />
+            <div className={`absolute right-3 pointer-events-none transition-colors duration-300 ${
+              searchTerm ? "text-[#007190]" : "text-[#545759]"
+            }`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-3.5 h-3.5 md:w-4.5 md:h-4.5"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+          </div>
+
+          {/* Grid Columns Stack Selector */}
+          <div className="flex flex-col rounded bg-white">
+            <button
+              onClick={handleZoomIn}
+              className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
+              aria-label="Decrease columns (Zoom in)"
+            >
+              +
+            </button>
+            <button
+              onClick={handleZoomOut}
+              className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
+              aria-label="Increase columns (Zoom out)"
+            >
+              -
+            </button>
+          </div>
         </div>
       </div>
 

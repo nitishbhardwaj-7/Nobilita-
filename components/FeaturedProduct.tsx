@@ -817,88 +817,88 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             style={{ opacity: 0, transform: "translateY(35px)" }}
           >
             {/* Dimensions */}
-            <div className="flex flex-col">
-              <div className="flex items-center space-x-3 md:space-x-5">
-                {/* Custom Dimensions SVG Icon */}
-                <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759] opacity-40">
-                  <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 md:w-10 h-auto">
-                    <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
-                    <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
-                    <polyline points="26.1 19.35 23.12 22.54 20.15 19.35" />
-                  </svg>
-                </div>
-                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
+            <div className="grid grid-cols-[auto_1fr] gap-x-3 md:gap-x-5 items-start">
+              {/* Custom Dimensions SVG Icon */}
+              <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759] opacity-100">
+                <svg viewBox="2 5 25 18" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 md:w-10 h-auto">
+                  <polyline points="2.34 8.36 23.12 8.36 23.12 22.54" />
+                  <polyline points="5.54 11.33 2.34 8.36 5.54 5.39" />
+                  <polyline points="26.1 19.35 23.12 22.54 20.15 19.35" />
+                </svg>
+              </div>
+              <div className="flex flex-col">
+                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light h-6 md:h-8 flex items-center">
                   DIMENSIONS
                 </h3>
-              </div>
-              <div className="pl-11 md:pl-16 mt-1 md:mt-2">
-                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
-                  {config.dimensions.map((dim, i) => (
-                    <React.Fragment key={i}>
-                      {dim}
-                      {i < config.dimensions.length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
-                </p>
+                <div className="mt-1 md:mt-2">
+                  <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
+                    {config.dimensions.map((dim, i) => (
+                      <React.Fragment key={i}>
+                        {dim}
+                        {i < config.dimensions.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Faces */}
-            <div className="flex flex-col">
-              <div className="flex items-center space-x-3 md:space-x-5">
-                {/* Custom Faces SVG Icon */}
-                <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759]">
-                  <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 md:w-10 h-auto">
-                    <rect x="20.92" y="9.34" width="5.02" height="9.89" />
-                    <rect x="11.66" y="9.34" width="5.02" height="9.89" />
-                    <rect x="2.41" y="9.34" width="5.02" height="9.89" />
-                  </svg>
-                </div>
-                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
+            <div className="grid grid-cols-[auto_1fr] gap-x-3 md:gap-x-5 items-start">
+              {/* Custom Faces SVG Icon */}
+              <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759] opacity-100">
+                <svg viewBox="2 9 24.5 11" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 md:w-10 h-auto">
+                  <rect x="20.92" y="9.34" width="5.02" height="9.89" />
+                  <rect x="11.66" y="9.34" width="5.02" height="9.89" />
+                  <rect x="2.41" y="9.34" width="5.02" height="9.89" />
+                </svg>
+              </div>
+              <div className="flex flex-col">
+                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light h-6 md:h-8 flex items-center">
                   FACES
                 </h3>
-              </div>
-              <div className="pl-11 md:pl-16 mt-1 md:mt-2">
-                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
-                  {config.faces.map((face, i) => (
-                    <React.Fragment key={i}>
-                      {face}
-                      {i < config.faces.length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
-                </p>
+                <div className="mt-1 md:mt-2">
+                  <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
+                    {config.faces.map((face, i) => (
+                      <React.Fragment key={i}>
+                        {face}
+                        {i < config.faces.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Finishes */}
-            <div className="flex flex-col">
-              <div className="flex items-center space-x-3 md:space-x-5">
-                {/* Custom Finishes SVG Icon */}
-                <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759]">
-                  <svg viewBox="2 10.8 24.5 7" fill="none" className="w-6 md:w-10 h-auto">
-                    <defs>
-                      <clipPath id="clippath-icon">
-                        <rect x="2.16" y="10.82" width="24.03" height="6.7" />
-                      </clipPath>
-                    </defs>
-                    <g clipPath="url(#clippath-icon)">
-                      <path stroke="currentColor" strokeWidth="0.4" strokeLinejoin="round" d="M10,11.93L.92,2.86M10,13.45L-.59,2.86M10,14.96L-2.1,2.86M10,16.47L-3.61,2.86M10,17.98L-5.13,2.86M10,19.5L-6.64,2.86M10,21.01L-8.15,2.86M10,22.52L-9.66,2.86M10,24.03L-11.18,2.86M28.15,11.93L19.07,2.86M28.15,13.45L17.56,2.86M28.15,14.96L16.05,2.86M28.15,16.47L14.54,2.86M28.15,17.98L13.02,2.86M28.15,19.5L11.51,2.86M28.15,21.01L10,2.86M28.15,22.52L8.49,2.86M28.15,24.03L6.97,2.86M26.64,24.03L6.97,4.37M25.12,24.03L6.97,5.88M23.61,24.03L6.97,7.4M22.1,24.03L6.97,8.91M20.59,24.03L6.97,10.42M19.07,24.03L6.97,11.93M17.56,24.03L6.97,13.45M16.05,24.03L6.97,14.96M14.54,24.03l-7.56-7.56" />
-                    </g>
-                  </svg>
-                </div>
-                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light">
+            <div className="grid grid-cols-[auto_1fr] gap-x-3 md:gap-x-5 items-start">
+              {/* Custom Finishes SVG Icon */}
+              <div className="w-8 h-6 md:w-12 md:h-8 flex items-center justify-start text-[#545759] opacity-100">
+                <svg viewBox="2 10.8 24.5 7" fill="none" className="w-6 md:w-10 h-auto">
+                  <defs>
+                    <clipPath id="clippath-icon">
+                      <rect x="2.16" y="10.82" width="24.03" height="6.7" />
+                    </clipPath>
+                  </defs>
+                  <g clipPath="url(#clippath-icon)">
+                    <path stroke="currentColor" strokeWidth="0.4" strokeLinejoin="round" d="M10,11.93L.92,2.86M10,13.45L-.59,2.86M10,14.96L-2.1,2.86M10,16.47L-3.61,2.86M10,17.98L-5.13,2.86M10,19.5L-6.64,2.86M10,21.01L-8.15,2.86M10,22.52L-9.66,2.86M10,24.03L-11.18,2.86M28.15,11.93L19.07,2.86M28.15,13.45L17.56,2.86M28.15,14.96L16.05,2.86M28.15,16.47L14.54,2.86M28.15,17.98L13.02,2.86M28.15,19.5L11.51,2.86M28.15,21.01L10,2.86M28.15,22.52L8.49,2.86M28.15,24.03L6.97,2.86M26.64,24.03L6.97,4.37M25.12,24.03L6.97,5.88M23.61,24.03L6.97,7.4M22.1,24.03L6.97,8.91M20.59,24.03L6.97,10.42M19.07,24.03L6.97,11.93M17.56,24.03L6.97,13.45M16.05,24.03L6.97,14.96M14.54,24.03l-7.56-7.56" />
+                  </g>
+                </svg>
+              </div>
+              <div className="flex flex-col">
+                <h3 className="font-ivymode text-[14px] md:text-[20px] text-black tracking-[0.05em] uppercase font-light h-6 md:h-8 flex items-center">
                   FINISHES
                 </h3>
-              </div>
-              <div className="pl-11 md:pl-16 mt-1 md:mt-2">
-                <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
-                  {config.finishes.map((finish, i) => (
-                    <React.Fragment key={i}>
-                      {finish}
-                      {i < config.finishes.length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
-                </p>
+                <div className="mt-1 md:mt-2">
+                  <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
+                    {config.finishes.map((finish, i) => (
+                      <React.Fragment key={i}>
+                        {finish}
+                        {i < config.finishes.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -996,8 +996,21 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
         </div>
       </section>
 
+      {/* Enquire Button Section */}
+      <section className="w-full bg-white flex justify-center pt-8 pb-8 md:pt-12 md:pb-12">
+        <Link
+          href="/#contact-us"
+          className="relative overflow-hidden group border border-[#1a1a1a] px-10 py-3.5 font-michroma text-[clamp(12px,1.3vw,16px)] tracking-[0.25em] transition-colors duration-500 uppercase inline-flex items-center justify-center"
+        >
+          <span className="absolute -inset-[1px] bg-[#1a1a1a] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+          <span className="relative z-10 text-[#1a1a1a] transition-colors duration-500 group-hover:text-white">
+            ENQUIRE
+          </span>
+        </Link>
+      </section>
+
       {/* Face / Bookmatch Section */}
-      <section className="w-full bg-white flex flex-col justify-center items-center py-10 md:py-20 px-4 md:px-16">
+      <section className="w-full bg-white flex flex-col justify-center items-center pt-0 pb-10 md:pb-20 px-4 md:px-16">
         {(config.availableFaces || []).length > 1 ? (
           // Side-by-side layout for products with multiple faces
           showBookmatch && config.bookmatchImg ? (
