@@ -121,7 +121,7 @@ const slabs = [
     name: "Verde Profondo",
     img: "/images/Verde profondo/Verde profondo rotate.jpg",
     color: "Green",
-    finish: "Matte"
+    finish: "Polished"
   },
   {
     name: "Ferro Industriale",
@@ -497,7 +497,7 @@ function ExploreCollectionContent() {
         </div>
 
         {/* Right Side: Search and Grid Controls */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6 md:gap-10">
           {/* Search Input field in same square format */}
           <div className="relative flex items-center">
             <input
@@ -505,7 +505,7 @@ function ExploreCollectionContent() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Find your stone here"
-              className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-colors duration-300 w-36 md:w-64 h-8 md:h-11 ${
+              className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-all duration-300 w-44 md:w-80 h-8 md:h-11 ${
                 searchTerm 
                   ? "border-[#007190] placeholder-[#007190] text-[#007190]" 
                   : "border-[#545759]/20 placeholder-[#545759] text-[#545759]"

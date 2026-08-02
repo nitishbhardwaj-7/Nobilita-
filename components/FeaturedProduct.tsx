@@ -278,9 +278,9 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   },
   "Verde Profondo": {
     leftBg: "/images/Verde profondo/Verde profondo rotate.jpg",
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
-    faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
-    finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
+    dimensions: ["6.5MM x 1600 x 3200 (R)"],
+    faces: ["6.5MM — 1 2 3"],
+    finishes: ["6.5MM — POLISHED"],
     slides: [
       { type: "video", src: "/images/Verde profondo/Verde Profondo video.mp4", poster: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Video" },
       { type: "image", src: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Application" },
@@ -298,8 +298,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   "Ferro Industriale": {
     leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
-    faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
-    finishes: ["6.5MM – MATTE", "12MM – MATTE"],
+    faces: ["6.5MM — 1", "12MM — 1"],
+    finishes: ["6.5MM — MATTE", "12MM — MATTE"],
     slides: [
       { type: "video", src: "/images/Ferro Industriale/ferro industirale video.mp4", poster: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Video" },
       { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application 2" },

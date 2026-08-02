@@ -304,12 +304,12 @@ const slabs = [
     name: "Verde Profondo",
     img: "/images/Verde profondo/Verde profondo rotate.jpg",
     color: "Green",
-    finish: "Matte",
+    finish: "Polished",
     config: {
       leftBg: "/images/Verde profondo/Verde profondo rotate.jpg",
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
-      faces: ["6.5MM – 1  2  3", "12MM – 1  2  3"],
-      finishes: ["6.5MM – POLISHED & MATTE", "12MM – POLISHED & MATTE"],
+      dimensions: ["6.5MM x 1600 x 3200 (R)"],
+      faces: ["6.5MM — 1 2 3"],
+      finishes: ["6.5MM — POLISHED"],
       slides: [
         { type: "image", src: "/images/Verde profondo/Verde profondo application.jpg", alt: "Verde Profondo Application" },
         { type: "image", src: "/images/Verde profondo/BZ-060139-AMB-1-riv.jpg", alt: "Verde Profondo Interior 1" },
@@ -332,8 +332,8 @@ const slabs = [
     config: {
       leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
       dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
-      faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
-      finishes: ["6.5MM – MATTE", "12MM – MATTE"],
+      faces: ["6.5MM — 1", "12MM — 1"],
+      finishes: ["6.5MM — MATTE", "12MM — MATTE"],
       slides: [
         { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (2).jpg", alt: "Ferro Industriale Application 2" },
         { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (1).jpg", alt: "Ferro Industriale Application 1" },
