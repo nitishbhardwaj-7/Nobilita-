@@ -24,6 +24,8 @@ interface BlogPost {
   heroImage: string;
   heroImageAlt: string;
   content: ContentBlock[];
+  tag?: string;
+  excerpt?: string;
 }
 
 const blogPostsData: Record<string, BlogPost> = {
@@ -35,6 +37,8 @@ const blogPostsData: Record<string, BlogPost> = {
     readTime: "4 min read",
     heroImage: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*S7CYuAefiMtkZCYVV9fJ0A.jpeg",
     heroImageAlt: "Luxury villa interior featuring next generation large format porcelain surfaces",
+    tag: "INNOVATION",
+    excerpt: "Across Dubai’s high-end residential properties, a shifting trend toward ultra-engineered large format porcelain slabs is redefining modern interior design.",
     content: [
       {
         type: "paragraph",
@@ -173,6 +177,8 @@ const blogPostsData: Record<string, BlogPost> = {
     readTime: "3 min read",
     heroImage: "/images/blogs page images/white-camouflage-blog.webp",
     heroImageAlt: "Seamless white Camouflage porcelain floor application",
+    tag: "LIFESTYLE",
+    excerpt: "Porcelain flooring has long been recognized for its durability, but recent innovations have elevated it into the realm of high-end luxury design.",
     content: [
       {
         type: "paragraph",
@@ -208,19 +214,62 @@ const blogPostsData: Record<string, BlogPost> = {
 
 export default function BlogDetailPage({ params }: { params: { slug: string } }) {
   const post = blogPostsData[params.slug];
+  const [activeIndex, setActiveIndex] = React.useState(0);
 
   if (!post) {
     notFound();
   }
 
+  const otherPosts = Object.entries(blogPostsData)
+    .filter(([slug]) => slug !== params.slug)
+    .map(([slug, post]) => ({
+      slug,
+      ...post,
+    }));
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % otherPosts.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + otherPosts.length) % otherPosts.length);
+  };
+
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return dateStr;
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col justify-between overflow-x-hidden relative">
       {/* Sticky White Header matching Medium layout */}
       <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-100 px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-6">
+        <div />
+        <div className="text-right">
+          <Link
+            href="/#contact-us"
+            className="relative overflow-hidden group border border-neutral-900 px-4 py-1.5 inline-flex items-center justify-center transition-colors duration-500"
+          >
+            <span className="absolute -inset-[1px] bg-neutral-900 scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+            <span className="relative z-10 font-ivymode text-[12px] tracking-wider uppercase text-neutral-900 transition-colors duration-500 group-hover:text-white">
+              Enquire
+            </span>
+          </Link>
+        </div>
+      </header>
+
+      {/* Main Column */}
+      <main className="w-full max-w-[720px] mx-auto px-6 pt-12 pb-12">
+        {/* Title with Back Arrow in Left Margin */}
+        <div className="relative mb-8">
           <Link
             href="/blogs"
-            className="group flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors font-ivymode text-[13px] tracking-widest uppercase"
+            className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-neutral-900 bg-neutral-50 hover:bg-neutral-100 transition-all duration-300 mb-4 sm:mb-0 sm:absolute sm:-left-14 md:-left-16 lg:-left-20 sm:top-1"
+            aria-label="Back to blogs"
           >
             <svg
               viewBox="0 0 24 24"
@@ -229,33 +278,16 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 transition-transform duration-300 transform group-hover:-translate-x-0.5"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-700 group-hover:text-neutral-900 transition-transform duration-300 transform group-hover:-translate-x-0.5"
             >
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
-            Back to Blogs
           </Link>
+          <h1 className="font-ivymode font-bold text-neutral-900 text-[32px] sm:text-[40px] md:text-[46px] leading-[1.12] tracking-[0.05em] uppercase text-center">
+            {post.title}
+          </h1>
         </div>
-        <div className="text-right">
-          <Link
-            href="/#contact-us"
-            className="relative overflow-hidden group border border-neutral-900 px-4 py-1.5 inline-flex items-center justify-center transition-colors duration-500"
-          >
-            <span className="absolute -inset-[1px] bg-neutral-900 scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-            <span className="relative z-10 font-ivymode text-[12px] tracking-wider uppercase text-neutral-900 transition-colors duration-500 group-hover:text-white">
-              Inquire
-            </span>
-          </Link>
-        </div>
-      </header>
-
-      {/* Main Column */}
-      <main className="w-full max-w-[720px] mx-auto px-6 pt-12 pb-24">
-        {/* Title */}
-        <h1 className="font-ivymode font-bold text-neutral-900 text-[32px] sm:text-[40px] md:text-[46px] leading-[1.12] tracking-[0.05em] uppercase mb-8">
-          {post.title}
-        </h1>
 
         {/* Hero image */}
         <motion.div
@@ -326,6 +358,132 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
           })}
         </article>
       </main>
+
+      {/* Recent Blogs (What's New) Section */}
+      {otherPosts.length > 0 && (
+        <section className="w-full bg-white border-t border-neutral-100 pt-12 pb-12 px-6 md:px-12">
+          <div className="w-full max-w-[1200px] mx-auto relative">
+            <h2 className="font-ivymode text-center text-neutral-900 text-[28px] sm:text-[36px] md:text-[40px] leading-[1.2] tracking-[0.08em] uppercase mb-12">
+              Recent Blogs
+            </h2>
+
+            {/* Carousel Row Container */}
+            <div className="relative w-full flex items-center justify-center">
+              {/* Left Arrow Button */}
+              {otherPosts.length > 1 && (
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-[-20px] sm:left-[-30px] md:left-[-50px] z-20 group flex items-center justify-center w-10 h-10 rounded-full bg-neutral-600 hover:bg-neutral-800 text-white transition-all duration-300 focus:outline-none shadow-md"
+                  aria-label="Previous slide"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform duration-300"
+                  >
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+              )}
+
+              {/* Card Container */}
+              <div className="w-full bg-[#f9f9f9] border border-neutral-100 rounded-sm p-6 sm:p-8 md:p-12 min-h-[360px] flex items-center relative overflow-hidden">
+                <div className="w-full">
+                  {/* Slide Content with fade/slide animation */}
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, x: 15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full"
+                  >
+                    {/* Left Column: Image */}
+                    <div className="w-full md:w-[48%] aspect-[16/10] overflow-hidden rounded-sm shadow-sm relative bg-neutral-100">
+                      <img
+                        src={otherPosts[activeIndex].heroImage}
+                        alt={otherPosts[activeIndex].heroImageAlt}
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                      />
+                    </div>
+
+                    {/* Right Column: Info */}
+                    <div className="w-full md:w-[52%] flex flex-col items-start justify-center text-left">
+                      <div className="flex items-center gap-4 mb-4 select-none">
+                        <span className="border border-neutral-300 rounded-full px-3 py-0.5 text-[10px] font-ivymode tracking-widest text-neutral-600 uppercase font-light">
+                          {otherPosts[activeIndex].tag || "ARTICLE"}
+                        </span>
+                        <span className="font-ivymode text-[11px] text-neutral-500 tracking-wider">
+                          {formatDate(otherPosts[activeIndex].date)}
+                        </span>
+                      </div>
+
+                      <h3 className="font-ivymode font-bold text-neutral-900 text-[20px] sm:text-[24px] md:text-[26px] leading-[1.25] tracking-[0.03em] mb-4 uppercase">
+                        {otherPosts[activeIndex].title}
+                      </h3>
+
+                      <p className="font-ivymode font-light text-[14px] sm:text-[15px] text-neutral-600 leading-[1.6] mb-6 text-left line-clamp-3">
+                        {otherPosts[activeIndex].excerpt || (
+                          otherPosts[activeIndex].content.find((c) => c.type === "paragraph")?.text || ""
+                        )}
+                      </p>
+
+                      <Link
+                        href={`/blogs/${otherPosts[activeIndex].slug}`}
+                        className="bg-black hover:bg-neutral-800 text-white rounded-full px-6 py-2.5 font-ivymode text-[10px] sm:text-[11px] tracking-[0.15em] uppercase transition-colors duration-300 font-medium select-none"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Right Arrow Button */}
+              {otherPosts.length > 1 && (
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-[-20px] sm:right-[-30px] md:right-[-50px] z-20 group flex items-center justify-center w-10 h-10 rounded-full bg-neutral-600 hover:bg-neutral-800 text-white transition-all duration-300 focus:outline-none shadow-md"
+                  aria-label="Next slide"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform duration-300"
+                  >
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {/* Slide Indicators */}
+            {otherPosts.length > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-8">
+                {otherPosts.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`h-[2px] transition-all duration-300 focus:outline-none ${
+                      index === activeIndex
+                        ? "w-8 bg-neutral-800"
+                        : "w-6 bg-neutral-200 hover:bg-neutral-400"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>

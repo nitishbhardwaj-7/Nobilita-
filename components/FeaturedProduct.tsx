@@ -98,6 +98,7 @@ interface SlabConfig {
   bookmatchImg?: string;
   availableFaces?: string[];
   isHorizontalFace?: boolean;
+  isDark?: boolean;
 }
 
 const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
@@ -154,7 +155,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       { type: "image", src: "/images/Links/Basaltina face 1.jpg", alt: "Basaltina Slab" }
     ],
     availableFaces: ["/images/Links/Basaltina face 1.jpg"],
-    isHorizontalFace: true
+    isHorizontalFace: true,
+    isDark: true
   },
   "Calacatta Borghini": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
@@ -224,7 +226,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Onice Black & White Face 1_1.jpg", alt: "Onice Black & White Video" },
       { type: "image", src: "/images/Links/Onice Black & White Face 1_1.jpg", alt: "Onice Black & White Slab" }
     ],
-    availableFaces: ["/images/Links/Onice Black & White Face 1_1.jpg"]
+    availableFaces: ["/images/Links/Onice Black & White Face 1_1.jpg"],
+    isDark: true
   },
   "Paonazzetto Inizio": {
     dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
@@ -293,7 +296,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       "/images/Verde profondo/Verde profondo face 2.jpg",
       "/images/Verde profondo/Verde profondo face 3.jpg"
     ],
-    isHorizontalFace: true
+    isHorizontalFace: true,
+    isDark: true
   },
   "Ferro Industriale": {
     leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
@@ -307,7 +311,8 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
       { type: "image", src: "/images/Ferro Industriale/Ferro Industriale (3).jpg", alt: "Ferro Industriale Application 3" }
     ],
     availableFaces: ["/images/Ferro Industriale/Ferro Industriale.jpg"],
-    isHorizontalFace: true
+    isHorizontalFace: true,
+    isDark: true
   }
 };
 
@@ -467,6 +472,13 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
       leftBg = slides[0].src;
     }
 
+    const darkProductNames = ["basaltina", "onice black & white", "verde profondo", "ferro industriale"];
+    const isDark =
+      dbProduct?.isDark ??
+      staticConfig?.isDark ??
+      ((dbProduct?.name ? darkProductNames.includes(dbProduct.name.trim().toLowerCase()) : false) ||
+       (activeProduct ? darkProductNames.includes(activeProduct.trim().toLowerCase()) : false));
+
     return {
       leftBg,
       dimensions,
@@ -476,6 +488,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
       availableFaces,
       bookmatchImg,
       isHorizontalFace,
+      isDark,
     };
   }, [dbProducts, activeProduct]);
 
@@ -1018,7 +1031,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               {/* Bookmatch Image Container */}
               <div className="relative w-full max-w-[1100px] aspect-[1920/1872] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
                 {/* Label inside top-center */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                <div className={`absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] ${config.isDark ? "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" : "text-[#1a1a1a]"} uppercase z-20 text-center whitespace-nowrap`}>
                   BOOKMATCH
                 </div>
 
@@ -1032,7 +1045,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(false)}
-                    className="border border-brand-dark/40 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                    className={`border ${config.isDark ? "border-white/50 bg-black/20 hover:bg-white hover:text-neutral-900 text-white" : "border-brand-dark/40 hover:bg-brand-dark hover:text-white text-brand-dark"} transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap`}
                   >
                     VIEW FACES
                   </button>
@@ -1050,7 +1063,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                       {/* Face Image Container */}
                       <div className="relative w-full aspect-[1/2] max-w-[360px] overflow-hidden bg-brand-cream/5 shadow-sm border border-brand-dark/5 flex items-center justify-center">
                         {/* Label inside top-center */}
-                        <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+                        <div className={`absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] ${config.isDark ? "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" : "text-[#1a1a1a]"} uppercase z-20 text-center whitespace-nowrap`}>
                           FACE {faceNum}
                         </div>
 
@@ -1069,7 +1082,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 flex justify-center">
                             <button
                               onClick={() => setShowBookmatch(true)}
-                              className="border border-brand-dark/40 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                              className={`border ${config.isDark ? "border-white/50 bg-black/20 hover:bg-white hover:text-neutral-900 text-white" : "border-brand-dark/40 hover:bg-brand-dark hover:text-white text-brand-dark"} transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap`}
                             >
                               VIEW BOOKMATCH
                             </button>
@@ -1106,7 +1119,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
               )}
 
               {/* Label inside top-center */}
-              <div className="absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-[#1a1a1a] uppercase z-20 text-center whitespace-nowrap">
+              <div className={`absolute top-6 left-1/2 -translate-x-1/2 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] ${config.isDark ? "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" : "text-[#1a1a1a]"} uppercase z-20 text-center whitespace-nowrap`}>
                 {showBookmatch ? "BOOKMATCH" : `FACE ${activeFace}`}
               </div>
 
@@ -1139,7 +1152,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(!showBookmatch)}
-                    className="border border-brand-dark/40 hover:bg-brand-dark hover:text-white transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] text-brand-dark uppercase focus:outline-none whitespace-nowrap"
+                    className={`border ${config.isDark ? "border-white/50 bg-black/20 hover:bg-white hover:text-neutral-900 text-white" : "border-brand-dark/40 hover:bg-brand-dark hover:text-white text-brand-dark"} transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap`}
                   >
                     {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
                   </button>
