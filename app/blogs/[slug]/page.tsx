@@ -246,44 +246,30 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col justify-between overflow-x-hidden relative">
-      {/* Sticky White Header matching Medium layout */}
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-100 px-6 py-4 flex items-center justify-between">
-        <div />
-        <div className="text-right">
-          <Link
-            href="/#contact-us"
-            className="relative overflow-hidden group border border-neutral-900 px-4 py-1.5 inline-flex items-center justify-center transition-colors duration-500"
-          >
-            <span className="absolute -inset-[1px] bg-neutral-900 scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-            <span className="relative z-10 font-ivymode text-[12px] tracking-wider uppercase text-neutral-900 transition-colors duration-500 group-hover:text-white">
-              Enquire
-            </span>
-          </Link>
-        </div>
-      </header>
+      {/* Back Button Arrow */}
+      <Link
+        href="/blogs"
+        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-neutral-900 bg-neutral-50 hover:bg-neutral-100 transition-all duration-300 focus:outline-none absolute top-6 left-6 sm:top-[50px] sm:left-6 md:left-12 z-50"
+        aria-label="Back to blogs"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-700 group-hover:text-neutral-900 transition-transform duration-300 transform group-hover:-translate-x-0.5"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </Link>
 
       {/* Main Column */}
-      <main className="w-full max-w-[720px] mx-auto px-6 pt-12 pb-12">
-        {/* Title with Back Arrow in Left Margin */}
+      <main className="w-full max-w-[720px] mx-auto px-6 pt-20 sm:pt-12 pb-12">
+        {/* Title */}
         <div className="relative mb-8">
-          <Link
-            href="/blogs"
-            className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-neutral-900 bg-neutral-50 hover:bg-neutral-100 transition-all duration-300 mb-4 sm:mb-0 sm:absolute sm:-left-14 md:-left-16 lg:-left-20 sm:top-1"
-            aria-label="Back to blogs"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-700 group-hover:text-neutral-900 transition-transform duration-300 transform group-hover:-translate-x-0.5"
-            >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </Link>
           <h1 className="font-ivymode font-bold text-neutral-900 text-[32px] sm:text-[40px] md:text-[46px] leading-[1.12] tracking-[0.05em] uppercase text-center">
             {post.title}
           </h1>
@@ -413,9 +399,6 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                     {/* Right Column: Info */}
                     <div className="w-full md:w-[52%] flex flex-col items-start justify-center text-left">
                       <div className="flex items-center gap-4 mb-4 select-none">
-                        <span className="border border-neutral-300 rounded-full px-3 py-0.5 text-[10px] font-ivymode tracking-widest text-neutral-600 uppercase font-light">
-                          {otherPosts[activeIndex].tag || "ARTICLE"}
-                        </span>
                         <span className="font-ivymode text-[11px] text-neutral-500 tracking-wider">
                           {formatDate(otherPosts[activeIndex].date)}
                         </span>
@@ -433,9 +416,12 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
 
                       <Link
                         href={`/blogs/${otherPosts[activeIndex].slug}`}
-                        className="bg-black hover:bg-neutral-800 text-white rounded-full px-6 py-2.5 font-ivymode text-[10px] sm:text-[11px] tracking-[0.15em] uppercase transition-colors duration-300 font-medium select-none"
+                        className="relative overflow-hidden group border border-neutral-900 bg-white px-6 py-2.5 font-ivymode text-[10px] sm:text-[11px] tracking-[0.15em] uppercase transition-colors duration-500 font-medium select-none inline-flex items-center justify-center"
                       >
-                        Read More
+                        <span className="absolute -inset-[1px] bg-neutral-900 scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                        <span className="relative z-10 text-neutral-900 transition-colors duration-500 group-hover:text-white">
+                          Read More
+                        </span>
                       </Link>
                     </div>
                   </motion.div>

@@ -504,7 +504,7 @@ function ExploreCollectionContent() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Find your stone here"
+              placeholder="Search"
               className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-all duration-300 w-44 md:w-80 h-8 md:h-11 ${
                 searchTerm 
                   ? "border-[#007190] placeholder-[#007190] text-[#007190]" 
