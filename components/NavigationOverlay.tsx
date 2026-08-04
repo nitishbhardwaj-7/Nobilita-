@@ -17,6 +17,7 @@ const menuLinks = [
   { label: "MADE IN ITALY", href: "/made-in-italy" },
   { label: "BLOGS", href: "/blogs" },
   { label: "NEWSLETTER", href: "/newsletter" },
+  { label: "CATALOGUE", href: "/#download-catalog" },
   { label: "CONTACT US", href: "/#contact-us" }
 ];
 
@@ -26,6 +27,10 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
     if (href === "/#contact-us") {
       if (typeof window !== "undefined" && window.location.pathname === "/") {
         window.dispatchEvent(new CustomEvent("open-query-form"));
+      }
+    } else if (href === "/#download-catalog") {
+      if (typeof window !== "undefined" && window.location.pathname === "/") {
+        window.dispatchEvent(new CustomEvent("open-catalog-form"));
       }
     }
   };
@@ -109,13 +114,13 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
 
               {/* Bottom: Mobile-only Logo */}
               <div className="block md:hidden shrink-0 pt-6 pb-4">
-                <div className="w-[160px] sm:w-[180px] mx-auto">
+                <Link href="/" onClick={onClose} className="block w-[160px] sm:w-[180px] mx-auto cursor-pointer">
                   <img
                     src="/images/NOBILITA_white.png"
                     alt="Porcellana Nobilita"
                     className="w-full h-auto object-contain opacity-95"
                   />
-                </div>
+                </Link>
               </div>
             </div>
 
@@ -132,13 +137,13 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                 </div>
 
                 {/* Logo block */}
-                <div className="w-[209px] lg:w-[238px] 2xl:w-[304px] shrink-0 mt-6 md:mt-10 2xl:mt-14">
+                <Link href="/" onClick={onClose} className="block w-[209px] lg:w-[238px] 2xl:w-[304px] shrink-0 mt-6 md:mt-10 2xl:mt-14 cursor-pointer">
                   <img
                     src="/images/NOBILITA_white.png"
                     alt="Porcellana Nobilita"
                     className="w-full h-auto object-contain block"
                   />
-                </div>
+                </Link>
               </div>
             </div>
 

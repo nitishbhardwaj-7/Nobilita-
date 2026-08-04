@@ -11,11 +11,13 @@ import ApplicationsSection from "@/components/ApplicationsSection";
 import FinishesSection from "@/components/FinishesSection";
 import TechnicalDataSection from "@/components/TechnicalDataSection";
 import Footer from "@/components/Footer";
+import FeaturedProduct from "@/components/FeaturedProduct";
 // import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 let hasLoadedGlobal = false;
 
 export default function HomeClient({ cmsData }: { cmsData: any }) {
+  const [activeProduct, setActiveProduct] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       const seen = sessionStorage.getItem("has_seen_nobilita_loader");
@@ -72,7 +74,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
       />
       <CraftsmanshipSection />
       <LegacySection />
-      <ApplicationsSection />
+      <ApplicationsSection onTileClick={(prodName) => setActiveProduct(prodName)} />
       <DimensionsSection />
       <FinishesSection />
       <HeroSection 
@@ -83,6 +85,10 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
       />
       <TechnicalDataSection />
       <Footer />
+      <FeaturedProduct
+        activeProduct={activeProduct}
+        onClose={() => setActiveProduct(null)}
+      />
     </main>
   );
 }

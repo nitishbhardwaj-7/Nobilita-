@@ -224,7 +224,7 @@ export default function OurStoryPage() {
                 hidden: {},
                 visible: { transition: { staggerChildren: 0.3, delayChildren: 0.6 } }
               }}
-              className="hero-text font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,21px)] tracking-widest leading-[1.75] space-y-[clamp(1rem,1.75vw,1.6rem)] mt-[clamp(1.25rem,2.5vw,2.5rem)] text-center md:text-left"
+              className="hero-text font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.75] space-y-[clamp(1rem,1.75vw,1.6rem)] mt-[clamp(1.25rem,2.5vw,2.5rem)] text-center md:text-left"
             >
               <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } }}>
                 In the grand halls of Renaissance palaces and Baroque villas, architecture was never just about building. It was an expression of culture, craftsmanship, and an enduring pursuit of beauty.

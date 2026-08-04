@@ -10,11 +10,11 @@ const slabs = [
     finish: "Polished",
     config: {
       leftBg: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – BOOKMATCH OF 1", "12MM – BOOKMATCH OF 1"],
       finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
       slides: [
-        { type: "video", src: "/images/Links/arbescato vagli bathroom video.mp4", poster: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
+        { type: "video", src: "/images/Arbescato Vagli/arbescato vagli.mp4", poster: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
         { type: "image", src: "/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
         { type: "image", src: "/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
         { type: "image", src: "/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" }
@@ -31,7 +31,7 @@ const slabs = [
     finish: "3D-5D Matte",
     config: {
       leftBg: "/images/Links/Calacatta Oyster Face 1.jpg",
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1  2  3", "12MM – BOOKMATCH OF 2"],
       finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
       slides: [
@@ -55,7 +55,7 @@ const slabs = [
     finish: "Matte",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – MATTE", "12MM – MATTE"],
       slides: [
@@ -73,7 +73,7 @@ const slabs = [
     finish: "Honed",
     config: {
       leftBg: "/images/Links/Basaltina matte.jpg",
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – HONED", "12MM – HONED"],
       slides: [
@@ -91,7 +91,7 @@ const slabs = [
     finish: "Polished",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – BOOKMATCH OF 1"],
       finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
       slides: [
@@ -109,7 +109,7 @@ const slabs = [
     finish: "Polished",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
       slides: [
@@ -127,7 +127,7 @@ const slabs = [
     finish: "Polished",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
       slides: [
@@ -145,7 +145,7 @@ const slabs = [
     finish: "Honed",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – HONED", "12MM – HONED"],
       slides: [
@@ -163,7 +163,7 @@ const slabs = [
     finish: "Matte",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – MATTE", "12MM – MATTE"],
       slides: [
@@ -181,7 +181,7 @@ const slabs = [
     finish: "Polished",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
       slides: [
@@ -199,7 +199,7 @@ const slabs = [
     finish: "3D-5D Matte",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – BOOKMATCH OF 1"],
       finishes: ["6.5MM – 3D-5D MATTE", "12MM – 3D-5D MATTE"],
       slides: [
@@ -217,7 +217,7 @@ const slabs = [
     finish: "Matte",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – MATTE", "12MM – MATTE"],
       slides: [
@@ -229,13 +229,30 @@ const slabs = [
     }
   },
   {
+    name: "Macchia Vecchia Max",
+    img: "/images/Macchia Vecchia Max.jpeg",
+    color: "White",
+    finish: "Polished",
+    config: {
+      leftBg: "/images/Macchia Vecchia Max.jpeg",
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
+      faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+      finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
+      slides: [
+        { type: "image", src: "/images/Macchia Vecchia Max App.jpg", alt: "Macchia Vecchia Max Application" }
+      ],
+      availableFaces: ["/images/Macchia Vecchia Max.jpeg"],
+      isHorizontalFace: false
+    }
+  },
+  {
     name: "Statuario Ultimo",
     img: "/images/Links/Statuario Ultimo 1.jpg",
     color: "White",
     finish: "Honed",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – HONED", "12MM – HONED"],
       slides: [
@@ -253,7 +270,7 @@ const slabs = [
     finish: "Structured Matte",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
       slides: [
@@ -265,13 +282,30 @@ const slabs = [
     }
   },
   {
+    name: "Travertino Vein Cut",
+    img: "/images/Travertino vein cut.jpeg",
+    color: "Beige",
+    finish: "Structured Matte",
+    config: {
+      leftBg: "/images/Travertino vein cut.jpeg",
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
+      faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+      finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
+      slides: [
+        { type: "image", src: "/images/Travertino vein cut.jpeg", alt: "Travertino Vein Cut" }
+      ],
+      availableFaces: ["/images/Travertino vein cut.jpeg"],
+      isHorizontalFace: false
+    }
+  },
+  {
     name: "Venatino Betogli",
     img: "/images/Links/Venatino betogli 1.jpg",
     color: "White",
     finish: "Polished",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
       slides: [
@@ -289,7 +323,7 @@ const slabs = [
     finish: "Structured Matte",
     config: {
       leftBg: undefined,
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
       slides: [
@@ -307,7 +341,7 @@ const slabs = [
     finish: "Polished",
     config: {
       leftBg: "/images/Verde profondo/Verde profondo rotate.jpg",
-      dimensions: ["6.5MM x 1600 x 3200 (R)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)"],
       faces: ["6.5MM — 1 2 3"],
       finishes: ["6.5MM — POLISHED"],
       slides: [
@@ -331,7 +365,7 @@ const slabs = [
     finish: "Matte",
     config: {
       leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
-      dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+      dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
       faces: ["6.5MM — 1", "12MM — 1"],
       finishes: ["6.5MM — MATTE", "12MM — MATTE"],
       slides: [

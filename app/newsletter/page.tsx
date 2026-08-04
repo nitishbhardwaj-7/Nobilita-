@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NewsletterPromoSection from "@/components/NewsletterPromoSection";
 
 export default function NewsletterPage() {
   const containerVariants = {
@@ -144,6 +145,8 @@ export default function NewsletterPage() {
           </div>
         </motion.div>
       </main>
+
+      <NewsletterPromoSection />
 
       <Footer />
     </div>

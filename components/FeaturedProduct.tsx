@@ -104,11 +104,11 @@ interface SlabConfig {
 const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   "Arabescato Vagli": {
     leftBg: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg",
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – BOOKMATCH OF 1", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
     slides: [
-      { type: "video", src: "/images/Links/arbescato vagli bathroom video.mp4", poster: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
+      { type: "video", src: "/images/Arbescato Vagli/arbescato vagli.mp4", poster: "/images/Links/Arabescato Vagli Face 1_1 - Copy.jpg", alt: "Arabescato Vagli Video" },
       { type: "image", src: "/images/Arbescato Vagli/Arbescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 1" },
       { type: "image", src: "/images/Arbescato Vagli/Arabescato Vagli (2).jpg", alt: "Arabescato Vagli Slab 2" },
       { type: "image", src: "/images/Arbescato Vagli/Arabescato Vagli (4).jpg", alt: "Arabescato Vagli Slab 3" }
@@ -119,7 +119,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   },
   "Calacatta Oyster": {
     leftBg: "/images/Links/Calacatta Oyster Face 1.jpg",
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1  2  3", "12MM – BOOKMATCH OF 2"],
     finishes: ["6.5MM – POLISHED & HONED", "12MM – POLISHED & HONED"],
     slides: [
@@ -135,7 +135,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     ]
   },
   "Arabescato Fjord": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
@@ -147,7 +147,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   },
   "Basaltina": {
     leftBg: "/images/Links/Basaltina matte.jpg",
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
@@ -159,7 +159,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     isDark: true
   },
   "Calacatta Borghini": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
@@ -169,7 +169,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Calacatta Borghini 1.jpg"]
   },
   "Calacatta Sponda": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
@@ -179,7 +179,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Calacatta Sponda 1.jpg"]
   },
   "Calacatta Vagli Rosa": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
@@ -189,7 +189,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Calacatta Vagli Rosa 1.jpg"]
   },
   "Crystallo Bianco": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
@@ -199,7 +199,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/crystallo bianco 1.jpg"]
   },
   "Fior Di Melo": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
@@ -209,7 +209,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Fior Di Melo Face 1.jpg"]
   },
   "Onice Bianco": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
@@ -219,7 +219,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Onice Bianco 1.jpg"]
   },
   "Onice Black & White": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – BOOKMATCH OF 1"],
     finishes: ["6.5MM – 3D-5D MATTE", "12MM – 3D-5D MATTE"],
     slides: [
@@ -230,7 +230,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     isDark: true
   },
   "Paonazzetto Inizio": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
@@ -239,8 +239,18 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     ],
     availableFaces: ["/images/Links/Paonazzetto Inizio 1.jpg"]
   },
+  "Macchia Vecchia Max": {
+    leftBg: "/images/Macchia Vecchia Max.jpeg",
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
+    faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+    finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
+    slides: [
+      { type: "image", src: "/images/Macchia Vecchia Max App.jpg", alt: "Macchia Vecchia Max Application" }
+    ],
+    availableFaces: ["/images/Macchia Vecchia Max.jpeg"]
+  },
   "Statuario Ultimo": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – HONED", "12MM – HONED"],
     slides: [
@@ -250,7 +260,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Statuario Ultimo 1.jpg"]
   },
   "Travertino Romano Classico Cross Cut": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
     slides: [
@@ -259,8 +269,18 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     ],
     availableFaces: ["/images/Links/Travertino CC 1.jpg"]
   },
+  "Travertino Vein Cut": {
+    leftBg: "/images/Travertino vein cut.jpeg",
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
+    faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
+    finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
+    slides: [
+      { type: "image", src: "/images/Travertino vein cut.jpeg", alt: "Travertino Vein Cut" }
+    ],
+    availableFaces: ["/images/Travertino vein cut.jpeg"]
+  },
   "Venatino Betogli": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – POLISHED", "12MM – POLISHED"],
     slides: [
@@ -270,7 +290,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     availableFaces: ["/images/Links/Venatino betogli 1.jpg"]
   },
   "White Camouflage": {
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
     slides: [
@@ -281,7 +301,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   },
   "Verde Profondo": {
     leftBg: "/images/Verde profondo/Verde profondo rotate.jpg",
-    dimensions: ["6.5MM x 1600 x 3200 (R)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)"],
     faces: ["6.5MM — 1 2 3"],
     finishes: ["6.5MM — POLISHED"],
     slides: [
@@ -301,7 +321,7 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
   },
   "Ferro Industriale": {
     leftBg: "/images/Ferro Industriale/Ferro Industriale.jpg",
-    dimensions: ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"],
+    dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM — 1", "12MM — 1"],
     finishes: ["6.5MM — MATTE", "12MM — MATTE"],
     slides: [
@@ -381,13 +401,18 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
     } else if (Array.isArray(dbProduct?.thicknessMm) && dbProduct.thicknessMm.length > 0) {
       dimensions = dbProduct.thicknessMm.map((t: string, idx: number) => {
         const thicknessStr = t.toUpperCase().includes("MM") ? t.toUpperCase() : `${t}MM`;
-        return `${thicknessStr} x 1600 x 3200${idx === 0 ? " (R)" : " (G)"}`;
+        return `${thicknessStr} x 1600 x 3200${idx === 0 ? " (RECTIFIED)" : " (GROSS)"}`;
       });
     } else if (staticConfig?.dimensions && staticConfig.dimensions.length > 0) {
       dimensions = [...staticConfig.dimensions];
     } else {
-      dimensions = ["6.5MM x 1600 x 3200 (R)", "12MM x 1620 x 3240 (G)"];
+      dimensions = ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"];
     }
+
+    dimensions = dimensions.map(d =>
+      d.replace(/\s*\(R\)/gi, " (RECTIFIED)")
+       .replace(/\s*\(G\)/gi, " (GROSS)")
+    );
 
     // Faces: Prioritize DB product faces if non-empty, then staticConfig
     let faces: string[] = [];
@@ -548,7 +573,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
         // Entry timeline
         const tl = gsap.timeline({
-          onComplete: () => setIsOpenDone(true)
+          onComplete: () => {
+            setIsOpenDone(true);
+            if (leftCol) {
+              gsap.set(leftCol, { clipPath: "none" });
+            }
+          }
         });
         tl.to(overlayRef.current, {
           opacity: 1,
@@ -635,6 +665,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
     }
 
     if (leftCol) {
+      gsap.set(leftCol, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" });
       tl.to(leftCol, {
         clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
         x: -30,
@@ -749,7 +780,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
         {/* Left Column: Spec Sheet with Slab Background */}
         <div
           ref={leftColRef}
-          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-20 pb-8 px-4 md:p-16 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10 border-b lg:border-b-0 lg:border-r border-brand-dark/10"
+          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-20 pb-8 px-4 md:p-16 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10"
           style={{
             clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
             transform: "translateX(-50px)",
@@ -774,7 +805,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             {onClose ? (
               <button
                 onClick={handleClose}
-                className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/50 backdrop-blur-sm shadow-sm"
+                className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/[0.03] backdrop-blur-[1px] shadow-sm"
                 aria-label="Go back"
               >
                 <svg
@@ -793,7 +824,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
             ) : (
               <Link
                 href="/"
-                className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark/40 hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/50 backdrop-blur-sm shadow-sm"
+                className="group flex items-center justify-center w-11 h-11 rounded-full border border-brand-dark hover:border-brand-dark hover:bg-brand-dark text-brand-dark hover:text-white transition-all duration-300 focus:outline-none bg-white/[0.03] backdrop-blur-[1px] shadow-sm"
                 aria-label="Go back"
               >
                 <svg

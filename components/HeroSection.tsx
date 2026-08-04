@@ -307,8 +307,8 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
         className="absolute left-4 md:left-8 2xl:left-14 top-1/2 -translate-y-1/2 z-30 text-white/30 hover:text-white transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none focus:ring-0 p-2 hover:scale-110 flex items-center justify-center"
         aria-label="Previous Slide"
       >
-        <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 2xl:w-16 h-auto">
-          <path d="M40 6H2M2 6L7 1M2 6L7 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 md:w-7 2xl:w-10 h-auto">
+          <path d="M20 6H2M2 6L7 1M2 6L7 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
@@ -318,8 +318,8 @@ export default function HeroSection({ title, subtitle, buttonText, bgImage }: Pr
         className="absolute right-4 md:right-8 2xl:right-14 top-1/2 -translate-y-1/2 z-30 text-white/30 hover:text-white transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none focus:ring-0 p-2 hover:scale-110 flex items-center justify-center"
         aria-label="Next Slide"
       >
-        <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 md:w-12 2xl:w-16 h-auto">
-          <path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 md:w-7 2xl:w-10 h-auto">
+          <path d="M0 6H18M18 6L13 1M18 6L13 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
     </section>

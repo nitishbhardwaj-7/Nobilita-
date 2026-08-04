@@ -94,6 +94,12 @@ const slabs = [
     finish: "Matte"
   },
   {
+    name: "Macchia Vecchia Max",
+    img: "/images/Macchia Vecchia Max.jpeg",
+    color: "White",
+    finish: "Polished"
+  },
+  {
     name: "Statuario Ultimo",
     img: "/images/Links/Statuario Ultimo 1.jpg",
     color: "White",
@@ -102,6 +108,12 @@ const slabs = [
   {
     name: "Travertino Romano Classico Cross Cut",
     img: "/images/Links/Travertino CC 1.jpg",
+    color: "Beige",
+    finish: "Structured Matte"
+  },
+  {
+    name: "Travertino Vein Cut",
+    img: "/images/Travertino vein cut.jpeg",
     color: "Beige",
     finish: "Structured Matte"
   },

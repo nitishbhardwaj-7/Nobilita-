@@ -17,7 +17,20 @@ const applications = [
 
 const DARK_LABEL = ["EXTERIOR WALLS", "EXTERIOR FLOORS", "FURNITURE"];
 
-export default function ApplicationsSection() {
+const appProductMapping: Record<string, string> = {
+  "INTERIOR WALLS": "Calacatta Oyster",
+  "INTERIOR FLOORS": "Verde Profondo",
+  "COUNTERTOPS": "Travertino Vein Cut",
+  "EXTERIOR WALLS": "Arabescato Fjord",
+  "EXTERIOR FLOORS": "Macchia Vecchia Max",
+  "FURNITURE": "Arabescato Fjord",
+};
+
+interface ApplicationsSectionProps {
+  onTileClick?: (productName: string) => void;
+}
+
+export default function ApplicationsSection({ onTileClick }: ApplicationsSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const row1Ref = useRef<HTMLDivElement>(null);
@@ -142,12 +155,19 @@ export default function ApplicationsSection() {
   const row1Apps = applications.filter(a => a.row === 1);
   const row2Apps = applications.filter(a => a.row === 2);
 
-  const renderTile = (app: typeof applications[0], globalIdx: number) => (
-    <div
-      key={app.name}
-      ref={el => { tileRefs.current[globalIdx] = el; }}
-      className="app-tile group relative overflow-hidden cursor-pointer h-[250px] md:h-[300px] lg:h-[360px]"
-    >
+  const renderTile = (app: typeof applications[0], globalIdx: number) => {
+    const productName = appProductMapping[app.name];
+    return (
+      <div
+        key={app.name}
+        ref={el => { tileRefs.current[globalIdx] = el; }}
+        onClick={() => {
+          if (productName && onTileClick) {
+            onTileClick(productName);
+          }
+        }}
+        className="app-tile group relative overflow-hidden cursor-pointer h-[250px] md:h-[300px] lg:h-[360px]"
+      >
       <img
         src={app.image}
         alt={app.name}
@@ -169,6 +189,7 @@ export default function ApplicationsSection() {
       </div>
     </div>
   );
+};
 
   return (
     <section

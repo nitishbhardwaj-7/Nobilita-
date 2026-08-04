@@ -25,6 +25,7 @@ interface BlogPost {
   heroImageAlt: string;
   content: ContentBlock[];
   tag?: string;
+  tags?: string[];
   excerpt?: string;
 }
 
@@ -38,6 +39,7 @@ const blogPostsData: Record<string, BlogPost> = {
     heroImage: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*S7CYuAefiMtkZCYVV9fJ0A.jpeg",
     heroImageAlt: "Luxury villa interior featuring next generation large format porcelain surfaces",
     tag: "INNOVATION",
+    tags: ["Interior Design", "Porcelain", "UAE", "Architecture", "Interiors", "Exteriors"],
     excerpt: "Across Dubai’s high-end residential properties, a shifting trend toward ultra-engineered large format porcelain slabs is redefining modern interior design.",
     content: [
       {
@@ -178,6 +180,7 @@ const blogPostsData: Record<string, BlogPost> = {
     heroImage: "/images/blogs page images/white-camouflage-blog.webp",
     heroImageAlt: "Seamless white Camouflage porcelain floor application",
     tag: "LIFESTYLE",
+    tags: ["Interior Design", "Porcelain", "UAE", "Architecture", "Interiors", "Exteriors"],
     excerpt: "Porcelain flooring has long been recognized for its durability, but recent innovations have elevated it into the realm of high-end luxury design.",
     content: [
       {
@@ -246,10 +249,12 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col justify-between overflow-x-hidden relative">
+      <Navbar />
+
       {/* Back Button Arrow */}
       <Link
         href="/blogs"
-        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-neutral-900 bg-neutral-50 hover:bg-neutral-100 transition-all duration-300 focus:outline-none absolute top-6 left-6 sm:top-[50px] sm:left-6 md:left-12 z-50"
+        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-neutral-900 bg-neutral-50 hover:bg-neutral-100 transition-all duration-300 focus:outline-none absolute top-24 left-6 sm:top-[110px] sm:left-6 md:left-12 z-50"
         aria-label="Back to blogs"
       >
         <svg
@@ -267,7 +272,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
       </Link>
 
       {/* Main Column */}
-      <main className="w-full max-w-[720px] mx-auto px-6 pt-20 sm:pt-12 pb-12">
+      <main className="w-full max-w-[720px] mx-auto px-6 pt-20 sm:pt-12 pb-12 mt-[64px] md:mt-[80px]">
         {/* Title */}
         <div className="relative mb-8">
           <h1 className="font-ivymode font-bold text-neutral-900 text-[32px] sm:text-[40px] md:text-[46px] leading-[1.12] tracking-[0.05em] uppercase text-center">
@@ -344,6 +349,24 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
           })}
         </article>
       </main>
+
+      {/* Tags Section */}
+      {post.tags && post.tags.length > 0 && (
+        <section className="w-full bg-white px-6 md:px-12 pb-8">
+          <div className="w-full max-w-[1200px] mx-auto border-t border-neutral-100 pt-8">
+            <div className="flex flex-wrap gap-2.5">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-4 py-2 bg-[#f4f4f5] hover:bg-neutral-200 text-neutral-800 text-[12px] md:text-[13px] font-normal tracking-wide border border-neutral-200/60 transition-colors duration-300 cursor-pointer select-none rounded-none"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Recent Blogs (What's New) Section */}
       {otherPosts.length > 0 && (
@@ -457,11 +480,10 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`h-[2px] transition-all duration-300 focus:outline-none ${
-                      index === activeIndex
+                    className={`h-[2px] transition-all duration-300 focus:outline-none ${index === activeIndex
                         ? "w-8 bg-neutral-800"
                         : "w-6 bg-neutral-200 hover:bg-neutral-400"
-                    }`}
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
