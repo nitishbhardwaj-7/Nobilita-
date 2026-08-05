@@ -40,7 +40,7 @@ const slideshowImages = [
   },
   {
     src: "/images/NewImages/Travetino%20Vein%20Cut%20Application%203.jpg",
-    name: "TRAVERTINO VEIN CUT",
+    name: "TRAVERTINO ROMANO CLASSICO VEIN CUT",
     textColor: "white"
   },
   {

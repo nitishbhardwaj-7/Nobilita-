@@ -144,7 +144,7 @@ export default function SitemapPage() {
                 <li className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full border border-[#545759] shrink-0"></span>
                   <Link href="/explore-collection" className="hover:text-[#007190] transition-colors">
-                    Travertino Vein Cut
+                    Travertino Romano Classico Vein Cut
                   </Link>
                 </li>
                 <li className="flex items-center gap-3">

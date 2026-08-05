@@ -20,9 +20,9 @@ const DARK_LABEL = ["EXTERIOR WALLS", "EXTERIOR FLOORS", "FURNITURE"];
 const appProductMapping: Record<string, string> = {
   "INTERIOR WALLS": "Calacatta Oyster",
   "INTERIOR FLOORS": "Verde Profondo",
-  "COUNTERTOPS": "Travertino Vein Cut",
+  "COUNTERTOPS": "Macchia Vecchia Max",
   "EXTERIOR WALLS": "Arabescato Fjord",
-  "EXTERIOR FLOORS": "Macchia Vecchia Max",
+  "EXTERIOR FLOORS": "Travertino Romano Classico Vein Cut",
   "FURNITURE": "Arabescato Fjord",
 };
 

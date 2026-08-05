@@ -112,7 +112,7 @@ const slabs = [
     finish: "Structured Matte"
   },
   {
-    name: "Travertino Vein Cut",
+    name: "Travertino Romano Classico Vein Cut",
     img: "/images/Travertino vein cut.jpeg",
     color: "Beige",
     finish: "Structured Matte"

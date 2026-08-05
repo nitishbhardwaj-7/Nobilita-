@@ -59,7 +59,6 @@ const slabs = [
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – MATTE", "12MM – MATTE"],
       slides: [
-        { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Video" },
         { type: "image", src: "/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Slab" }
       ],
       availableFaces: ["/images/Links/Arbescato Fjord Face 1.jpg"],
@@ -282,7 +281,7 @@ const slabs = [
     }
   },
   {
-    name: "Travertino Vein Cut",
+    name: "Travertino Romano Classico Vein Cut",
     img: "/images/Travertino vein cut.jpeg",
     color: "Beige",
     finish: "Structured Matte",
@@ -292,7 +291,7 @@ const slabs = [
       faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
       finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
       slides: [
-        { type: "image", src: "/images/Travertino vein cut.jpeg", alt: "Travertino Vein Cut" }
+        { type: "image", src: "/images/Travertino vein cut.jpeg", alt: "Travertino Romano Classico Vein Cut" }
       ],
       availableFaces: ["/images/Travertino vein cut.jpeg"],
       isHorizontalFace: false

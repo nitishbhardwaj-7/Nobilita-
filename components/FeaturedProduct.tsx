@@ -139,7 +139,6 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – MATTE", "12MM – MATTE"],
     slides: [
-      { type: "video", src: "/images/Links/materials.mp4", poster: "/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Video" },
       { type: "image", src: "/images/Links/Arbescato Fjord Face 1.jpg", alt: "Arabescato Fjord Slab" }
     ],
     availableFaces: ["/images/Links/Arbescato Fjord Face 1.jpg"],
@@ -269,13 +268,13 @@ const PRODUCT_CONFIGS: Record<string, SlabConfig> = {
     ],
     availableFaces: ["/images/Links/Travertino CC 1.jpg"]
   },
-  "Travertino Vein Cut": {
+  "Travertino Romano Classico Vein Cut": {
     leftBg: "/images/Travertino vein cut.jpeg",
     dimensions: ["6.5MM x 1600 x 3200 (RECTIFIED)", "12MM x 1620 x 3240 (GROSS)"],
     faces: ["6.5MM – 1 FACE", "12MM – 1 FACE"],
     finishes: ["6.5MM – STRUCTURED MATTE", "12MM – STRUCTURED MATTE"],
     slides: [
-      { type: "image", src: "/images/Travertino vein cut.jpeg", alt: "Travertino Vein Cut" }
+      { type: "image", src: "/images/Travertino vein cut.jpeg", alt: "Travertino Romano Classico Vein Cut" }
     ],
     availableFaces: ["/images/Travertino vein cut.jpeg"]
   },
@@ -857,7 +856,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           {/* Specs Box Card - Solid White, exact sizes & alignments */}
           <div
             ref={cardRef}
-            className="relative z-10 bg-white/70 p-4 md:p-8 w-full max-w-[500px] shadow-sm flex flex-col space-y-4 md:space-y-10"
+            className="relative z-10 bg-white/70 p-4 md:p-8 w-full max-w-[550px] shadow-sm flex flex-col space-y-4 md:space-y-10"
             style={{ opacity: 0, transform: "translateY(35px)" }}
           >
             {/* Dimensions */}
@@ -877,10 +876,9 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="mt-1 md:mt-2">
                   <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
                     {config.dimensions.map((dim, i) => (
-                      <React.Fragment key={i}>
+                      <span key={i} className="block whitespace-nowrap">
                         {dim}
-                        {i < config.dimensions.length - 1 && <br />}
-                      </React.Fragment>
+                      </span>
                     ))}
                   </p>
                 </div>
@@ -904,10 +902,9 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="mt-1 md:mt-2">
                   <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
                     {config.faces.map((face, i) => (
-                      <React.Fragment key={i}>
+                      <span key={i} className="block whitespace-nowrap">
                         {face}
-                        {i < config.faces.length - 1 && <br />}
-                      </React.Fragment>
+                      </span>
                     ))}
                   </p>
                 </div>
@@ -936,10 +933,9 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="mt-1 md:mt-2">
                   <p className="font-michroma text-black uppercase tracking-[0.1em] leading-[1.8] text-[10px] sm:text-[12px] md:text-[14px]">
                     {config.finishes.map((finish, i) => (
-                      <React.Fragment key={i}>
+                      <span key={i} className="block whitespace-nowrap">
                         {finish}
-                        {i < config.finishes.length - 1 && <br />}
-                      </React.Fragment>
+                      </span>
                     ))}
                   </p>
                 </div>
