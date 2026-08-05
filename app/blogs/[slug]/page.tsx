@@ -352,8 +352,8 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
 
       {/* Tags Section */}
       {post.tags && post.tags.length > 0 && (
-        <section className="w-full bg-white px-6 md:px-12 pb-8">
-          <div className="w-full max-w-[1200px] mx-auto border-t border-neutral-100 pt-8">
+        <section className="w-full bg-white px-6 md:px-12 pb-12">
+          <div className="w-full max-w-[1200px] mx-auto">
             <div className="flex flex-wrap justify-between gap-x-2 gap-y-2.5">
               {post.tags.map((tag) => (
                 <span
