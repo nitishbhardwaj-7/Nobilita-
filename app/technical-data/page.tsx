@@ -239,7 +239,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-01.svg"
                     alt="Water Proof"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -258,7 +258,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-06.svg"
                     alt="UV Resistant"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -277,7 +277,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-03.svg"
                     alt="Scratch Resistant"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -296,7 +296,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-04.svg"
                     alt="Eco Friendly"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -315,7 +315,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-05.svg"
                     alt="Heat & Frost Resistant"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -334,7 +334,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-07.svg"
                     alt="Recyclable"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -353,7 +353,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-08.svg"
                     alt="Easy to Maintain"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -372,7 +372,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-09.svg"
                     alt="High Flexural Strength"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">
@@ -391,7 +391,7 @@ export default function TechnicalDataPage() {
                   <img
                     src="/images/technical data/SVGs/SVGs/icons-10.svg"
                     alt="Hygienic & Food Safe"
-                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-80 group-hover:opacity-100 group-hover:scale-[2.35]"
+                    className="w-full h-full object-contain scale-[2.2] transition-all duration-500 opacity-100 group-hover:opacity-100 group-hover:scale-[2.35]"
                   />
                 </div>
                 <div className="flex-1 space-y-2 md:space-y-4">

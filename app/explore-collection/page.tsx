@@ -567,7 +567,17 @@ function ExploreCollectionContent() {
         <div className={`grid ${gridColsClass} gap-3 md:gap-4`}>
           <AnimatePresence>
             {filteredSlabs.map((slab, index) => {
-              const isWhiteTextSlab = slab.color === "Dark" || slab.name.toLowerCase() === "verde profondo" || slab.name.toLowerCase() === "ferro industriale";
+               const isWhiteTextSlab = slab.color === "Dark" || slab.name.toLowerCase() === "verde profondo" || slab.name.toLowerCase() === "ferro industriale";
+              const shouldRotate = 
+                slab.name.toLowerCase() === "calacatta borghini" || 
+                slab.name.toLowerCase() === "calacatta sponda" ||
+                slab.name.toLowerCase() === "calacatta vagli rosa" ||
+                slab.name.toLowerCase() === "onice black & white" ||
+                slab.name.toLowerCase() === "paonazzetto inizio" ||
+                slab.name.toLowerCase() === "travertino romano classico cross cut" ||
+                slab.name.toLowerCase() === "travertino romano classico vein cut" ||
+                slab.name.toLowerCase() === "macchia vecchia max" ||
+                slab.name.toLowerCase() === "venatino betogli";
               return (
                 <motion.div
                   key={slab.name}
@@ -585,9 +595,15 @@ function ExploreCollectionContent() {
                       src={slab.img}
                       alt={slab.name}
                       loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.08]"
+                      className={
+                        shouldRotate
+                          ? "absolute h-[200%] aspect-[1/2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 object-cover transform-gpu transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.08]"
+                          : "absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.08]"
+                      }
                       style={{
-                        transform: "translate3d(0,0,0)",
+                        transform: shouldRotate
+                          ? "translate3d(-50%, -50%, 0) rotate(90deg)"
+                          : "translate3d(0,0,0)",
                         backfaceVisibility: "hidden",
                         willChange: "transform"
                       }}
