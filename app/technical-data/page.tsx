@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,6 +15,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function TechnicalDataPage() {
   useSpillAnimations();
+  const [svgContent, setSvgContent] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/images/technical%20data/SVGs/Artboard_13_cropped.svg?v=1.0")
+      .then((res) => res.text())
+      .then((text) => {
+        const cleaned = text.replace(/<\?xml.*\?>/i, "");
+        setSvgContent(cleaned);
+      })
+      .catch((err) => console.error("Error loading slab dimensions SVG:", err));
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -104,6 +115,41 @@ export default function TechnicalDataPage() {
           scrollTrigger: {
             trigger: ".ug-title",
             start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 3b. Dimensions Title Reveal (Character Stagger)
+      gsap.fromTo(".dim-title-char",
+        { y: "120%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.04,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: ".dim-title-trigger",
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 3c. Dimensions Description Paragraphs (Silky Blur-Fade Reveal)
+      gsap.fromTo(".dim-desc",
+        { y: 25, opacity: 0, filter: "blur(10px)" },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 1.4,
+          stagger: 0.25,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".dim-desc-trigger",
+            start: "top 85%",
             toggleActions: "play none none reverse"
           }
         }
@@ -507,7 +553,7 @@ export default function TechnicalDataPage() {
             </div>
 
             {/* B3. Wine Spills Subsection */}
-            <div className="spill-sec pt-12 mb-16">
+            <div className="spill-sec pt-12">
               <h3 className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(22px,3vw,36px)] leading-tight mb-8 md:mb-12">
                 WINE SPILLS
               </h3>
@@ -570,6 +616,54 @@ export default function TechnicalDataPage() {
 
           </div>
 
+        </div>
+      </section>
+
+      {/* Slab Dimensions Section */}
+      <section className="w-full bg-[#007190] pt-12 md:pt-16 pb-16 md:pb-24 px-6 md:px-12 lg:px-20 xl:px-24 flex flex-col items-center justify-center">
+        <div className="max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto w-full flex flex-col items-start">
+          <div className="dim-title dim-title-trigger mb-12 md:mb-16 w-full text-left">
+            <h2 className="font-ivymode font-light text-white uppercase tracking-[0.06em] md:tracking-[0.15em] text-[clamp(26px,5.5vw,52px)] md:text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.3em] md:gap-x-[0.4em]">
+              {"DIMENSIONS".split(" ").map((word, wIdx) => (
+                <span key={wIdx} className="inline-block whitespace-nowrap">
+                  {word.split("").map((char, cIdx) => (
+                    <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
+                      <span className="dim-title-char inline-block">{char}</span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </h2>
+          </div>
+
+          <div className="max-w-[850px] w-full mx-auto flex flex-col items-center">
+            {/* SVG Diagram */}
+            <div className="w-full flex justify-center">
+              {svgContent ? (
+                <div
+                  dangerouslySetInnerHTML={{ __html: svgContent }}
+                  className="w-full h-auto select-none svg-inlined-container [&_svg]:w-full [&_svg]:h-auto"
+                />
+              ) : (
+                <div className="w-full h-[300px] flex items-center justify-center text-white/50 font-michroma text-xs">
+                  LOADING DIMENSIONS...
+                </div>
+              )}
+            </div>
+
+            {/* Slab Dimensions Description Text */}
+            <div className="dim-desc-trigger w-full mt-12 md:mt-16 text-left font-ivymode text-white space-y-6 md:space-y-8 text-base md:text-lg lg:text-xl font-light leading-relaxed tracking-wide">
+              <p className="dim-desc">
+                NOBILITA offers large-format porcelain slabs in rectified and non-rectified formats to suit different applications.
+              </p>
+              <p className="dim-desc">
+                RECTIFIED SLABS are precisely trimmed for seamless installation, making them the preferred choice for tiling applications such as flooring, walls, and facades.
+              </p>
+              <p className="dim-desc">
+                NON-RECTIFIED SLABS (Gross) are ideal when custom cutting is required, making them perfect for counter tops, mill work, and furniture.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -10,6 +10,7 @@ import DimensionsSection from "@/components/DimensionsSection";
 import ApplicationsSection from "@/components/ApplicationsSection";
 import FinishesSection from "@/components/FinishesSection";
 import TechnicalDataSection from "@/components/TechnicalDataSection";
+import LocationsSection from "@/components/LocationsSection";
 import Footer from "@/components/Footer";
 import FeaturedProduct from "@/components/FeaturedProduct";
 // import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -84,6 +85,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
         bgImage={d.heroImg}
       />
       <TechnicalDataSection />
+      <LocationsSection />
       <Footer />
       <FeaturedProduct
         activeProduct={activeProduct}
