@@ -15,16 +15,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function TechnicalDataPage() {
   useSpillAnimations();
-  const [svgContent, setSvgContent] = useState<string>("");
+  const [leftSvg, setLeftSvg] = useState<string>("");
+  const [rightSvg, setRightSvg] = useState<string>("");
+  const [humanSvg, setHumanSvg] = useState<string>("");
 
   useEffect(() => {
-    fetch("/images/technical%20data/SVGs/Artboard_13_cropped.svg?v=1.0")
-      .then((res) => res.text())
-      .then((text) => {
-        const cleaned = text.replace(/<\?xml.*\?>/i, "");
-        setSvgContent(cleaned);
-      })
-      .catch((err) => console.error("Error loading slab dimensions SVG:", err));
+    Promise.all([
+      fetch("/images/technical%20data/SVGs/Left%20side.svg?v=1.5").then(r => r.text()),
+      fetch("/images/technical%20data/SVGs/Right%20side.svg?v=1.5").then(r => r.text()),
+      fetch("/images/technical%20data/SVGs/Human.svg?v=1.5").then(r => r.text())
+    ]).then(([left, right, human]) => {
+      setLeftSvg(left.replace(/<\?xml.*\?>/i, ""));
+      setRightSvg(right.replace(/<\?xml.*\?>/i, ""));
+      setHumanSvg(human.replace(/<\?xml.*\?>/i, ""));
+    }).catch(err => console.error("Error loading slab dimension SVGs:", err));
   }, []);
 
   useEffect(() => {
@@ -120,23 +124,6 @@ export default function TechnicalDataPage() {
         }
       );
 
-      // 3b. Dimensions Title Reveal (Character Stagger)
-      gsap.fromTo(".dim-title-char",
-        { y: "120%", opacity: 0 },
-        {
-          y: "0%",
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.04,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: ".dim-title-trigger",
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-
       // 3c. Dimensions Description Paragraphs (Silky Blur-Fade Reveal)
       gsap.fromTo(".dim-desc",
         { y: 25, opacity: 0, filter: "blur(10px)" },
@@ -154,8 +141,6 @@ export default function TechnicalDataPage() {
           }
         }
       );
-
-
 
       // 4. Technical Specs Reveal
       gsap.fromTo(".specs-title",
@@ -192,6 +177,36 @@ export default function TechnicalDataPage() {
 
     return () => ctx.revert();
   }, []);
+
+  // Sync Dimension SVGs animation to trigger in sequence AFTER the title animates
+  useEffect(() => {
+    if (!leftSvg || !rightSvg || !humanSvg) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".dim-title-trigger",
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // 1. Dimensions Title Reveal
+      tl.fromTo(".dim-title-char",
+        { y: "120%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 1.0, stagger: 0.03, ease: "expo.out" }
+      );
+
+      // 2. SVGs reveal (fade-in, slide-up, stagger, silky blur-fade)
+      tl.fromTo(".dim-svg-col",
+        { y: 55, opacity: 0, filter: "blur(5px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.2, stagger: 0.2, ease: "power4.out" },
+        "-=0.5" // Starts slightly before the title stagger completely ends
+      );
+    });
+
+    return () => ctx.revert();
+  }, [leftSvg, rightSvg, humanSvg]);
 
   return (
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
@@ -636,33 +651,32 @@ export default function TechnicalDataPage() {
             </h2>
           </div>
 
-          <div className="max-w-[850px] w-full mx-auto flex flex-col items-center">
-            {/* SVG Diagram */}
-            <div className="w-full flex justify-center">
-              {svgContent ? (
-                <div
-                  dangerouslySetInnerHTML={{ __html: svgContent }}
-                  className="w-full h-auto select-none svg-inlined-container [&_svg]:w-full [&_svg]:h-auto"
-                />
-              ) : (
-                <div className="w-full h-[300px] flex items-center justify-center text-white/50 font-michroma text-xs">
-                  LOADING DIMENSIONS...
-                </div>
-              )}
-            </div>
+          {/* SVG Diagram Container (Centered) */}
+          <div className="w-full flex justify-center mb-12 md:mb-16">
+            {leftSvg && rightSvg && humanSvg ? (
+              <div className="flex flex-row items-end justify-center gap-4 sm:gap-20 md:gap-36 w-full max-w-[1250px] mx-auto dim-svg-trigger">
+                <div className="h-[150px] sm:h-[280px] md:h-[450px] w-auto [&_svg]:h-full [&_svg]:w-auto select-none svg-inlined-container dim-svg-col" dangerouslySetInnerHTML={{ __html: leftSvg }} />
+                <div className="h-[150px] sm:h-[280px] md:h-[450px] w-auto [&_svg]:h-full [&_svg]:w-auto select-none svg-inlined-container dim-svg-col" dangerouslySetInnerHTML={{ __html: rightSvg }} />
+                <div className="h-[150px] sm:h-[280px] md:h-[450px] w-auto [&_svg]:h-full [&_svg]:w-auto select-none svg-inlined-container dim-svg-col" dangerouslySetInnerHTML={{ __html: humanSvg }} />
+              </div>
+            ) : (
+              <div className="w-full h-[300px] flex items-center justify-center text-white/50 font-michroma text-xs">
+                LOADING DIMENSIONS...
+              </div>
+            )}
+          </div>
 
-            {/* Slab Dimensions Description Text */}
-            <div className="dim-desc-trigger w-full mt-12 md:mt-16 text-left font-ivymode text-white space-y-6 md:space-y-8 text-base md:text-lg lg:text-xl font-light leading-relaxed tracking-wide">
-              <p className="dim-desc">
-                NOBILITA offers large-format porcelain slabs in rectified and non-rectified formats to suit different applications.
-              </p>
-              <p className="dim-desc">
-                RECTIFIED SLABS are precisely trimmed for seamless installation, making them the preferred choice for tiling applications such as flooring, walls, and facades.
-              </p>
-              <p className="dim-desc">
-                NON-RECTIFIED SLABS (Gross) are ideal when custom cutting is required, making them perfect for counter tops, mill work, and furniture.
-              </p>
-            </div>
+          {/* Slab Dimensions Description Text (Left Aligned with Title) */}
+          <div className="dim-desc-trigger w-full text-left font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[20px] tracking-widest space-y-8 md:space-y-12">
+            <p className="dim-desc">
+              NOBILITA offers large-format porcelain slabs in rectified and non-rectified formats to suit different applications.
+            </p>
+            <p className="dim-desc">
+              RECTIFIED SLABS are precisely trimmed for seamless installation, making them the preferred choice for tiling applications such as flooring, walls, and facades.
+            </p>
+            <p className="dim-desc">
+              NON-RECTIFIED SLABS (Gross) are ideal when custom cutting is required, making them perfect for counter tops, mill work, and furniture.
+            </p>
           </div>
         </div>
       </section>
