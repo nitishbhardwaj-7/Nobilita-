@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import NobilitaHouseSVG from "./NobilitaHouseSVG";
 import AnimatedNeighborhood from "./AnimatedNeighborhood";
 
-const links = ["about", "products", "technical data", "made in italy", "blogs", "newsletter", "contact us"];
+const links = ["our story", "products", "technical data", "made in italy", "catalogue", "blogs", "newsletter", "contact us"];
 
 const navContainerVariants = {
   hidden: {},
@@ -139,6 +139,18 @@ export default function Footer() {
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setActiveForm("query");
+    setSubmitStatus("idle");
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact-form-section");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 100);
+  };
+
+  const handleCatalogClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveForm("catalog");
     setSubmitStatus("idle");
     setTimeout(() => {
       const contactSection = document.getElementById("contact-form-section");
@@ -386,17 +398,25 @@ export default function Footer() {
                       ? "/technical-data"
                       : link === "products"
                         ? "/explore-collection"
-                        : link === "about"
+                        : link === "our story"
                           ? "/our-story"
                           : link === "made in italy"
                             ? "/made-in-italy"
-                            : link === "blogs"
-                              ? "/blogs"
-                              : link === "newsletter"
-                                ? "/newsletter"
-                                : `#${link.replace(/ /g, "-")}`
+                            : link === "catalogue"
+                              ? "#download-catalog"
+                              : link === "blogs"
+                                ? "/blogs"
+                                : link === "newsletter"
+                                  ? "/newsletter"
+                                  : `#${link.replace(/ /g, "-")}`
                   }
-                  onClick={isContact ? handleContactClick : undefined}
+                  onClick={
+                    link === "contact us"
+                      ? handleContactClick
+                      : link === "catalogue"
+                        ? handleCatalogClick
+                        : undefined
+                  }
                   className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
                 >
                   {link}
@@ -419,7 +439,7 @@ export default function Footer() {
               href="/our-story"
               className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
             >
-              about
+              our story
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
 
@@ -447,6 +467,16 @@ export default function Footer() {
               className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
             >
               made in italy
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
+
+            <motion.a
+              variants={navItemVariants}
+              href="#download-catalog"
+              onClick={handleCatalogClick}
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              catalogue
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
 
