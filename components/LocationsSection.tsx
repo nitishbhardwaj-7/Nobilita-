@@ -3,6 +3,16 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import dynamic from "next/dynamic";
+
+const LeafletMap = dynamic(() => import("./LeafletMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full bg-[#fcfbfa] animate-pulse flex items-center justify-center text-xs text-[#8b8b8b]">
+      Loading Map...
+    </div>
+  ),
+});
 
 interface LocationDetail {
   name: string;
@@ -11,6 +21,9 @@ interface LocationDetail {
   phone: string;
   email: string;
   googleMapsUrl: string;
+  coordinates: [number, number];
+  line1: string;
+  line2: string;
 }
 
 const locationsData: LocationDetail[] = [
@@ -21,6 +34,9 @@ const locationsData: LocationDetail[] = [
     phone: "+971 6 5353 123",
     email: "info@nobilita.com",
     googleMapsUrl: "https://www.google.com/maps/place/Glaze+Granite+%26+Marble,+EIC+Sharjah,+UAE/@25.3549731,55.6197734,17z/data=!4m6!3m5!1s0x3ef5f3cb5a570e99:0x88048b89ebc5d2d0!8m2!3d25.3549731!4d55.6219621!16s%2Fg%2F11b63vwp8y?coh=164777&entry=tt&shorturl=1",
+    coordinates: [25.3549731, 55.6197734],
+    line1: "Glaze Granite & Marble,",
+    line2: "EIC Sharjah, UAE",
   },
   {
     name: "Abu Dhabi",
@@ -29,6 +45,9 @@ const locationsData: LocationDetail[] = [
     phone: "+971 2 5502 390",
     email: "info@nobilita.com",
     googleMapsUrl: "https://www.google.com/maps/place/Glaze+Granite+%26+Marble+Tr.+Est.,+ICAD3,+Abu+Dhabi+-+Plot+%2331-WR43,+ICAD3+-+Abu+Dhabi+Industrial+City+-+%D9%85%D8%B5%D9%81%D8%AD+%D8%AC%D9%86%D9%88%D8%A8+-+Abu+Dhabi%E2%80%AD/data=!4m2!3m1!1s0x3e5e3f6e29874ead:0x6e7b0f4d7d28f863?entry=gps&lucs=karto&g_ep=CAESCTExLjYwLjcwMxgAIIgnKgVrYXJ0b0ICQUU%3D",
+    coordinates: [24.2773877, 54.461715],
+    line1: "Glaze Granite & Marble,",
+    line2: "ICAD3 Abu Dhabi, UAE",
   },
   {
     name: "Dubai",
@@ -37,6 +56,9 @@ const locationsData: LocationDetail[] = [
     phone: "+971 4 2651 313",
     email: "info@nobilita.com",
     googleMapsUrl: "https://www.google.com/maps/place/Glaze+Buildmat+LLC,+Dubai,+UAE/@25.1310877,55.2085239,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f6b8f94c9d15b:0x52832ec673ef03f1!8m2!3d25.1310829!4d55.2110988!16s%2Fg%2F11kh_snxlh?entry=tts",
+    coordinates: [25.1310829, 55.2110988],
+    line1: "Glaze Buildmat",
+    line2: "LLC, Dubai, UAE",
   },
 ];
 
@@ -174,22 +196,18 @@ export default function LocationsSection() {
 
                 {/* Map Section */}
                 <div className="w-full h-[220px] relative overflow-hidden group/map border border-[#007190]/25 rounded-sm">
-                  <iframe
+                  <LeafletMap
+                    coordinates={loc.coordinates}
                     title={`${loc.name} Map`}
-                    src={loc.mapEmbedUrl}
-                    width="100%"
-                    height="100%"
-                    style={{
-                      border: 0,
-                    }}
-                    allowFullScreen={false}
-                    loading="lazy"
-                    className="w-full h-full transition-all duration-700 ease-in-out"
+                    line1={loc.line1}
+                    line2={loc.line2}
+                    googleMapsUrl={loc.googleMapsUrl}
+                    mapEmbedUrl={loc.mapEmbedUrl}
                   />
                 </div>
 
                 {/* Location Details and QR Code */}
-                <div className="flex flex-col sm:flex-row justify-between items-start gap-6 pt-4 border-t border-[#007190]/25 mt-auto">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-6 pt-4 mt-auto">
                   {/* Left Column: Address, Phone, Fax, Email */}
                   <div className="flex-1 space-y-4">
                     {/* Address */}

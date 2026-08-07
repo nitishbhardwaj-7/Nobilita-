@@ -209,3 +209,138 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+/* Custom Leaflet Map Marker Styling */
+.custom-marker-wrapper {
+  position: relative;
+  width: 0;
+  height: 0;
+  cursor: pointer !important;
+}
+
+/* Semi-transparent soft blue circular glow */
+.custom-marker-glow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 113, 144, 0.18);
+  border-radius: 50%;
+  left: -25px;
+  top: -25px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bright blue center dot */
+.custom-marker-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #007190;
+  border-radius: 50%;
+  left: -5px;
+  top: -5px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+/* Pulsing blip animation (the blip) */
+.custom-marker-dot::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(0, 113, 144, 0.6);
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  animation: blip-animation 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes blip-animation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+
+/* Info badge containing the icon and text next to the dot */
+.custom-marker-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  left: 10px; /* Offset to the right of the center dot */
+  top: -15px; /* Offset upwards slightly */
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Muted grayish-brown circular shop icon background */
+.custom-marker-icon-circle {
+  width: 16px;
+  height: 16px;
+  background-color: #8c7b6d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Text label container */
+.custom-marker-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-family: var(--font-montserrat), sans-serif;
+  color: #4a4a4a;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.custom-marker-label .line-1 {
+  font-size: 10px;
+  font-weight: 700;
+  color: #3a3a3a;
+}
+
+.custom-marker-label .line-2 {
+  font-size: 8px;
+  font-weight: 500;
+  color: #6a6a6a;
+}
+
+/* Custom Minimalist Styling for Leaflet controls & attribution */
+.leaflet-container {
+  font-family: inherit !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.75) !important;
+  font-size: 8px !important;
+  color: #8b8b8b !important;
+  border-top-left-radius: 2px;
+}
+
+.leaflet-control-attribution a {
+  color: #1a7a96 !important;
+  text-decoration: none;
+}
+
+.leaflet-control-attribution a:hover {
+  text-decoration: underline;
+}
+
+/* Grayscale Map Graphics (Black and White map) */
+.grayscale-map {
+  filter: grayscale(100%) contrast(1.1) brightness(0.95);
+}
+
+
