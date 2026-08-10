@@ -197,7 +197,7 @@ export default function MadeInItalyPage() {
           {/* Grid Layout: Text vs Image */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-stretch mt-0">
             {/* Left Column: Narrative */}
-            <div className="sec2-text flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[15px] sm:text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left order-2 md:order-1 h-full py-0 md:py-2">
+            <div className="sec2-text flex flex-col justify-center space-y-6 md:space-y-8 font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left order-2 md:order-1 h-full py-0 md:py-2">
               <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   In the heart of Italy, where rolling hills meet centuries of craftsmanship, lies Modena, a region shaped by the relentless pursuit of excellence. Home to Ferrari, Acetaia Giusti, and Brioni, Modena has long been a place where mastery is refined through patience, precision, and dedication to craft.
@@ -244,7 +244,7 @@ export default function MadeInItalyPage() {
       <section className="sec3-container relative w-full px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden">
         <div className="relative z-10 w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col space-y-12">
           {/* Top Text */}
-          <div className="sec3-text-container w-full font-ivymode font-light text-[#545759] text-[15px] sm:text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left space-y-6 md:space-y-8">
+          <div className="sec3-text-container w-full font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left space-y-6 md:space-y-8">
             <div className="overflow-hidden py-0.5">
               <p className="sec3-line">
                 Every NOBILITA slab is born from this tradition, crafted with Italian expertise, engineered for performance, and designed to stand the test of time.
@@ -298,7 +298,7 @@ export default function MadeInItalyPage() {
           </div>
 
           {/* Bottom Text */}
-          <div className="sec3-bottom-text w-full font-ivymode font-light text-[#545759] text-[15px] sm:text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
+          <div className="sec3-bottom-text w-full font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
             <div className="overflow-hidden py-0.5">
               <p className="sec3-bottom-line mb-12">
                 NOBILITA works at the forefront of large-format surface innovation, with state-of-the-art production systems capable of creating ultra-large slabs in exceptional formats and multiple thicknesses. These advancements have redefined what is possible in contemporary architecture, enabling seamless surfaces, reduced visual fragmentation, and a more monolithic architectural language.

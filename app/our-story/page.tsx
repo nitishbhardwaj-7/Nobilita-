@@ -270,7 +270,7 @@ export default function OurStoryPage() {
         <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 z-10 mt-8 md:mt-[60px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center w-full">
             {/* Left Column: Narrative (7 cols) */}
-            <div className="sec2-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
+            <div className="sec2-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
               <div className="overflow-hidden py-0.5">
                 <p className="sec2-line">
                   NOBILITA takes its name from this tradition.
@@ -372,7 +372,7 @@ export default function OurStoryPage() {
         {/* Bottom Narrative Text */}
         <div className="sec3-text w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto bg-white px-6 md:px-12 lg:px-20 xl:px-24 pt-[40px] pb-[40px] md:pt-[60px] md:pb-[60px] text-center md:text-left">
           <div className="w-full">
-            <p className="font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95]">
+            <p className="font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.8] 2xl:leading-[1.95]">
               At NOBILITA, we work closely with architects, designers, and discerning clients to create architectural experiences. Through careful selection, expert craftsmanship, and a deep understanding of design, we help create spaces that feel timeless rather than trend-driven.
             </p>
           </div>
@@ -438,7 +438,7 @@ export default function OurStoryPage() {
             </div>
 
             {/* Right Column: Narrative (7 cols) */}
-            <div className="sec4-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[16px] md:text-[20px] 2xl:text-[26px] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
+            <div className="sec4-text md:col-span-7 flex flex-col space-y-4 md:space-y-5 font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.8] 2xl:leading-[1.95] text-center md:text-left">
               <div className="overflow-hidden py-0.5">
                 <p className="sec4-line">
                   Our inspiration comes from the great interiors of the past, but
