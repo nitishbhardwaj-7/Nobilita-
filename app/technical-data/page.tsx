@@ -684,7 +684,7 @@ export default function TechnicalDataPage() {
           {/* Subsection 1: Dimensions */}
           <div className="dim-title dim-title-trigger mb-12 md:mb-16 w-full text-left">
             <h2 className="font-ivymode font-light text-white uppercase tracking-[0.06em] md:tracking-[0.15em] text-[clamp(26px,5.5vw,52px)] md:text-[clamp(28px,4.5vw,52px)] leading-tight flex flex-wrap gap-x-[0.3em] md:gap-x-[0.4em]">
-              {"DIMENSIONS".split(" ").map((word, wIdx) => (
+              {"FORMAT & DIMENSIONS".split(" ").map((word, wIdx) => (
                 <span key={wIdx} className="inline-block whitespace-nowrap">
                   {word.split("").map((char, cIdx) => (
                     <span key={cIdx} className="inline-block overflow-hidden align-bottom py-2 md:py-0 px-[1px]">
