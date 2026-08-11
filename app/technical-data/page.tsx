@@ -773,10 +773,10 @@ export default function TechnicalDataPage() {
                 />
               </svg>
               <p className="absolute left-[49.18%] top-[37.89%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
-                6.5 mm - THICK
+                6.5 mm THICK
               </p>
               <p className="absolute left-[49.18%] top-[72.79%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
-                12 mm - THICK
+                12 mm THICK
               </p>
             </div>
           </div>
