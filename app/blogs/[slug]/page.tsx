@@ -113,7 +113,7 @@ const blogPostsData: Record<string, BlogPost> = {
       },
       {
         type: "heading",
-        text: "1. Seamless Monolithic Design (Grout-Free Visuals)"
+        text: "1. Seamless Monolithic Design\n(Grout-Free Visuals)"
       },
       {
         type: "paragraph",
@@ -397,7 +397,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
       <main className="w-full max-w-[720px] mx-auto px-6 pt-20 sm:pt-12 pb-12 mt-[64px] md:mt-[80px]">
         {/* Title */}
         <div className="relative mb-8">
-          <h1 className="font-ivymode font-bold text-neutral-900 text-[32px] sm:text-[40px] md:text-[46px] leading-[1.12] tracking-[0.05em] uppercase text-center">
+          <h1 className="font-ivymode font-normal text-neutral-900 text-[32px] sm:text-[40px] md:text-[46px] leading-[1.12] tracking-[0.05em] uppercase text-center">
             {post.title}
           </h1>
         </div>
@@ -419,28 +419,41 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
         </motion.div>
 
         {/* Blog Post Body Content with high-end editorial styling */}
-        <article className="font-ivymode text-[18px] sm:text-[20px] md:text-[21px] leading-[1.65] text-neutral-800 tracking-wide space-y-8">
+        <article className="font-ivymode font-light text-[#545759] text-[clamp(14px,1.35vw,20px)] tracking-widest leading-[1.75] space-y-6 md:space-y-8">
           {post.content.map((block, idx) => {
             switch (block.type) {
               case "paragraph":
                 return (
-                  <p key={idx} className="font-light text-justify">
+                  <p key={idx} className="font-light text-left">
                     {block.text}
                   </p>
                 );
-              case "heading":
+              case "heading": {
+                const headingLines = block.text ? block.text.split("\n") : [];
                 return (
                   <h2
                     key={idx}
-                    className="font-ivymode font-bold text-[#007190] text-[22px] sm:text-[26px] md:text-[28px] tracking-[0.05em] uppercase leading-tight pt-6 pb-2"
+                    className="font-ivymode font-medium text-[22px] sm:text-[26px] md:text-[28px] tracking-[0.05em] uppercase leading-tight pt-6 pb-2"
                   >
-                    {block.text}
+                    {headingLines.map((lineText, lineIdx) => (
+                      <span
+                        key={lineIdx}
+                        className={
+                          lineIdx === 0
+                            ? "text-[#007190] block"
+                            : "text-black block mt-1"
+                        }
+                      >
+                        {lineText}
+                      </span>
+                    ))}
                   </h2>
                 );
+              }
               case "point":
                 return (
-                  <p key={idx} className="font-light text-justify">
-                    <strong className="font-ivymode font-bold italic text-[#007190] text-[18px] sm:text-[20px] md:text-[21px] mr-2">
+                  <p key={idx} className="font-light text-left">
+                    <strong className="font-ivymode font-medium text-[#007190] text-[clamp(14px,1.35vw,20px)] mr-2 tracking-widest">
                       {block.title}:
                     </strong>
                     {block.text}
@@ -472,8 +485,8 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
         </article>
       </main>
 
-      {/* Tags Section */}
-      {post.tags && post.tags.length > 0 && (
+      {/* Tags Section (Hidden as of now) */}
+      {/* {post.tags && post.tags.length > 0 && (
         <section className="w-full bg-white px-6 md:px-12 pb-12">
           <div className="w-full max-w-[1200px] mx-auto">
             <div className="flex flex-wrap justify-start gap-x-2 gap-y-2.5">
@@ -488,7 +501,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Recent Blogs (What's New) Section */}
       {otherPosts.length > 0 && (
@@ -549,7 +562,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                         </span>
                       </div>
 
-                      <h3 className="font-ivymode font-bold text-neutral-900 text-[20px] sm:text-[24px] md:text-[26px] leading-[1.25] tracking-[0.03em] mb-4 uppercase">
+                      <h3 className="font-ivymode font-medium text-neutral-900 text-[20px] sm:text-[24px] md:text-[26px] leading-[1.25] tracking-[0.03em] mb-4 uppercase">
                         {otherPosts[activeIndex].title}
                       </h3>
 

@@ -697,21 +697,21 @@ export default function TechnicalDataPage() {
           </div>
 
           {/* Main Content Area: SVG on left, Text on right (on desktop) */}
-          <div className="w-full flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-stretch justify-between">
+          <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 items-stretch justify-between">
             {/* SVG Diagram Container */}
             {dimSvg ? (
               <div
-                className="w-full lg:w-[60%] xl:w-[62%] flex items-center justify-center select-none svg-inlined-container [&_svg]:w-full [&_svg]:h-auto dim-svg-trigger"
+                className="w-full lg:w-[52%] xl:w-[50%] flex items-center justify-center select-none svg-inlined-container [&_svg]:w-full [&_svg]:h-auto dim-svg-trigger"
                 dangerouslySetInnerHTML={{ __html: dimSvg }}
               />
             ) : (
-              <div className="w-full lg:w-[60%] xl:w-[62%] h-[300px] flex items-center justify-center text-white/50 font-michroma text-xs">
+              <div className="w-full lg:w-[52%] xl:w-[50%] h-[300px] flex items-center justify-center text-white/50 font-michroma text-xs">
                 LOADING DIMENSIONS...
               </div>
             )}
 
             {/* Slab Dimensions Description Text (Right Column) */}
-            <div className="dim-desc-trigger w-full lg:w-[40%] xl:w-[38%] flex flex-col justify-between text-left font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] tracking-widest gap-8 lg:gap-0 py-2">
+            <div className="dim-desc-trigger w-full lg:w-[48%] xl:w-[50%] flex flex-col justify-between text-left font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] tracking-widest gap-8 lg:gap-0 py-2">
               <p className="dim-desc">
                 NOBILITA offers large-format porcelain slabs in rectified and non-rectified formats to suit different applications.
               </p>
@@ -759,23 +759,23 @@ export default function TechnicalDataPage() {
             {/* Image Wrapper */}
             <div className="relative w-full max-w-[350px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[550px] select-none">
               <svg
-                viewBox="161 0 1649 1536"
+                viewBox="161 205 1649 1289"
                 className="w-full h-auto object-contain block"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <image
-                  href="/images/technical%20data/11_drawing.png?v=1.5"
-                  xlinkHref="/images/technical%20data/11_drawing.png?v=1.5"
-                  x="0"
-                  y="0"
-                  width="1900"
-                  height="1536"
+                  href="/images/technical%20data/11_drawing.png?v=2.0"
+                  xlinkHref="/images/technical%20data/11_drawing.png?v=2.0"
+                  x="161"
+                  y="205"
+                  width="764"
+                  height="1289"
                 />
               </svg>
-              <p className="absolute left-[49.18%] top-[37.89%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
+              <p className="absolute left-[49.18%] top-[29.25%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
                 6.5 mm THICK
               </p>
-              <p className="absolute left-[49.18%] top-[72.79%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
+              <p className="absolute left-[49.18%] top-[70.83%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
                 12 mm THICK
               </p>
             </div>
