@@ -755,14 +755,29 @@ export default function TechnicalDataPage() {
           </div>
 
           {/* Right Column: Image with Baked-in Labels */}
-          <div className="thick-img-trigger w-full lg:w-[40%] xl:w-[38%] flex items-center justify-start lg:justify-end select-none relative py-4">
+          <div className="thick-img-trigger w-full lg:w-[40%] xl:w-[38%] flex items-center justify-end select-none relative py-4">
             {/* Image Wrapper */}
-            <div className="relative w-full max-w-[350px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[550px]">
-              <img
-                src="/images/technical data/11.png?v=1.3"
-                alt="NOBILITA Slab Thicknesses"
+            <div className="relative w-full max-w-[350px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[550px] select-none">
+              <svg
+                viewBox="161 0 1649 1536"
                 className="w-full h-auto object-contain block"
-              />
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <image
+                  href="/images/technical%20data/11_drawing.png?v=1.5"
+                  xlinkHref="/images/technical%20data/11_drawing.png?v=1.5"
+                  x="0"
+                  y="0"
+                  width="1900"
+                  height="1536"
+                />
+              </svg>
+              <p className="absolute left-[49.18%] top-[37.89%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
+                6.5 mm - THICK
+              </p>
+              <p className="absolute left-[49.18%] top-[72.79%] -translate-y-1/2 font-ivymode font-light text-white/90 tracking-widest uppercase text-[15px] sm:text-[16px] md:text-[18px] xl:text-[20px] pointer-events-none whitespace-nowrap">
+                12 mm - THICK
+              </p>
             </div>
           </div>
 
