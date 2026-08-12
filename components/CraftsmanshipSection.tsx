@@ -137,16 +137,22 @@ export default function CraftsmanshipSection() {
     <section
       ref={sectionRef}
       id="made-in-italy"
-      className="craftsmanship-section relative w-full min-h-screen flex flex-col justify-between py-6 md:py-16 px-6 md:px-16 overflow-hidden"
+      className="craftsmanship-section relative w-full min-h-screen flex flex-col justify-between pt-16 pb-8 md:py-16 px-6 md:px-16 overflow-hidden"
     >
-      {/* ── BACKGROUND IMAGE — static full-cover */}
+      {/* ── BACKGROUND IMAGE — responsive full-cover */}
       <div className="absolute inset-0">
-        <img
-          src="/images/Links/MEDICI VILLA copy (7).png"
-          alt="Italian craftsmanship"
-          loading="lazy"
-          className="w-full h-full object-cover object-center"
-        />
+        <picture className="w-full h-full block">
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/Links/medici-villa-mobile.png"
+          />
+          <img
+            src="/images/Links/MEDICI VILLA copy (7).png"
+            alt="Italian craftsmanship"
+            loading="lazy"
+            className="w-full h-full object-cover object-center block"
+          />
+        </picture>
       </div>
       {/* Subtle black overlay to make the text pop */}
       <div className="absolute inset-0 bg-black/25 pointer-events-none" />
@@ -163,7 +169,7 @@ export default function CraftsmanshipSection() {
           </h2>
           <p
             ref={paraRef}
-            className="craftsmanship-para font-ivymode font-extralight text-white text-justify [text-align-last:center] text-[14px] sm:text-[15px] md:text-[18px] tracking-widest leading-[28px] md:leading-[32px] w-full mt-3"
+            className="craftsmanship-para font-ivymode font-extralight text-white text-center md:text-justify md:[text-align-last:center] text-[14px] sm:text-[15px] md:text-[18px] tracking-widest leading-[28px] md:leading-[32px] w-full mt-3"
           >
             In the heart of Modena, where centuries of Italian expertise meet innovation, NOBILITA creates porcelain surfaces that embody the art of timeless craftsmanship.
           </p>
@@ -215,7 +221,7 @@ export default function CraftsmanshipSection() {
       </div>
 
       {/* ── BOTTOM: CASA NOBILE */}
-      <div className="absolute bottom-2 right-3 md:bottom-2 md:right-3 z-10">
+      <div className="absolute bottom-4 right-4 md:bottom-2 md:right-3 z-10">
         <span
           ref={casaRef}
           className="casa-nobile-label font-ivymode text-white/90 text-[16px] tracking-[0.2em] uppercase"
