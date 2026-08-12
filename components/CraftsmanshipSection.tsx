@@ -63,9 +63,9 @@ export default function CraftsmanshipSection() {
     gsap.to(".craftsmanship-word", {
       opacity: 1,
       duration: 0.8,
-      stagger: 0.14,
+      stagger: 0.08,
       ease: "power2.out",
-      delay: 2.1,
+      delay: 1.4,
       scrollTrigger: {
         trigger: section,
         start: "top 75%",

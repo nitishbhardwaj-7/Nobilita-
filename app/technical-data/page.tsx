@@ -43,10 +43,10 @@ export default function TechnicalDataPage() {
 
         gsap.to(".hero-desc-word", {
           opacity: 1,
-          duration: 1.2,
-          stagger: 0.15,
+          duration: 0.9,
+          stagger: 0.08,
           ease: "power2.out",
-          delay: 0.8,
+          delay: 0.7,
         });
       }
 
