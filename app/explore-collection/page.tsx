@@ -386,9 +386,9 @@ function ExploreCollectionContent() {
       </div>
 
       {/* Filters & Grid Adjustment Row */}
-      <div className="w-full px-6 md:px-12 py-5 border-b border-brand-dark/10 bg-white flex items-center justify-between sticky top-[64px] md:top-[76px] z-30 shadow-sm">
+      <div className="w-full px-3 sm:px-6 md:px-12 py-4 md:py-5 border-b border-brand-dark/10 bg-white flex items-center justify-between sticky top-[64px] md:top-[76px] z-30 shadow-sm">
         {/* Left Side: Filter Options */}
-        <div className="flex items-center gap-6 md:gap-10">
+        <div className="flex items-center gap-3 sm:gap-6 md:gap-10">
           {/* Color Filter */}
           <div className="relative">
             <button
@@ -509,7 +509,7 @@ function ExploreCollectionContent() {
         </div>
 
         {/* Right Side: Search and Grid Controls */}
-        <div className="flex items-center gap-6 md:gap-10">
+        <div className="flex items-center gap-2 sm:gap-6 md:gap-10">
           {/* Search Input field in same square format */}
           <div className="relative flex items-center">
             <input
@@ -517,7 +517,7 @@ function ExploreCollectionContent() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search"
-              className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-all duration-300 w-44 md:w-80 h-8 md:h-11 ${
+              className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-all duration-300 w-32 sm:w-40 md:w-80 h-8 md:h-11 ${
                 searchTerm 
                   ? "border-[#007190] placeholder-[#007190] text-[#007190]" 
                   : "border-[#545759]/20 placeholder-[#545759] text-[#545759]"
@@ -543,17 +543,17 @@ function ExploreCollectionContent() {
           </div>
 
           {/* Grid Columns Stack Selector */}
-          <div className="flex flex-col rounded bg-white">
+          <div className="flex flex-col items-center select-none bg-white md:rounded">
             <button
               onClick={handleZoomIn}
-              className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
+              className="px-2 md:px-3 text-[18px] md:text-[25px] lg:text-[25px] font-semibold md:hover:bg-brand-dark/5 transition-colors focus:outline-none leading-none py-0.5 md:py-0"
               aria-label="Decrease columns (Zoom in)"
             >
               +
             </button>
             <button
               onClick={handleZoomOut}
-              className="px-3 text-[15px] md:text-[25px] lg:text-[25px] font-semibold hover:bg-brand-dark/5 transition-colors focus:outline-none"
+              className="px-2 md:px-3 text-[18px] md:text-[25px] lg:text-[25px] font-semibold md:hover:bg-brand-dark/5 transition-colors focus:outline-none leading-none py-0.5 md:py-0"
               aria-label="Increase columns (Zoom out)"
             >
               -

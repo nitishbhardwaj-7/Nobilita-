@@ -317,7 +317,8 @@ export default function TechnicalDataPage() {
       </section>
 
       {/* 2. Characteristics, User Guide & Technical Specifications Section */}
-      <section className="relative w-full pt-20 pb-0 md:pt-16 md:pb-0 px-6 md:px-12 lg:px-20 xl:px-24 bg-[#007190] text-white">
+      <div className="bg-[#007190]">
+        <section className="relative w-full pt-20 pb-0 md:pt-16 md:pb-0 px-6 md:px-12 lg:px-20 xl:px-24 bg-[#007190] text-white">
         <div className="max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto flex flex-col">
 
           {/* A. Characteristics Grid */}
@@ -549,7 +550,7 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
-                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[20px] tracking-widest">
+                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[20px] tracking-widest">
                   <div className="flex items-start gap-5">
                     <span className="font-normal text-[#cce3eb]">1.</span>
                     <p>Apply the cleaning product and leave for 5 minutes.</p>
@@ -585,7 +586,7 @@ export default function TechnicalDataPage() {
                 </div>
 
                 {/* Right Side: Step-by-Step Instructions */}
-                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[20px] tracking-widest">
+                <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[20px] tracking-widest">
                   <div className="flex items-start gap-5">
                     <span className="font-normal text-[#cce3eb]">1.</span>
                     <p>Remove any excess liquid immediately.</p>
@@ -627,7 +628,7 @@ export default function TechnicalDataPage() {
                   </div>
 
                   {/* Right Side: Step-by-Step Instructions (Points 1-4) */}
-                  <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[20px] tracking-widest">
+                  <div className="spill-text flex-1 space-y-2 font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[20px] tracking-widest">
                     <div className="flex items-start gap-5">
                       <span className="font-normal text-[#cce3eb]">1.</span>
                       <p>Rinse the affected area with warm water.</p>
@@ -653,7 +654,7 @@ export default function TechnicalDataPage() {
                   <div className="hidden md:block flex-shrink-0 w-40 md:w-56" />
 
                   {/* Subnote Content */}
-                  <div className="flex-1 space-y-2 font-ivymode font-light text-white/90 text-[20px] tracking-widest">
+                  <div className="flex-1 space-y-2 font-ivymode font-light text-white/90 text-[15px] sm:text-[16px] md:text-[20px] tracking-widest">
                     <h4 className="font-semibold text-white tracking-[0.05em] text-[20px] md:text-[22px]">
                       For dried or stubborn stains:
                     </h4>
@@ -783,6 +784,7 @@ export default function TechnicalDataPage() {
 
         </div>
       </section>
+      </div>
 
       {/* C. Technical Specifications Section */}
       <section className="relative w-full pt-16 mb-20 px-6 md:px-12 lg:px-20 xl:px-24 bg-white text-brand-dark">
