@@ -62,11 +62,34 @@ model Product {
   availableFaces   String[] @default([])
   bookmatchImg     String?
   isHorizontalFace Boolean  @default(false)
+  isDark           Boolean  @default(false)
 
   order            Int      @default(0)
   status           Status   @default(DRAFT)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+}
+
+model Blog {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  excerpt        String?  @db.Text
+  author         String   @default("NOBILITA Editorial Team")
+  authorImage    String?
+  heroImage      String?
+  heroImageAlt   String?
+  tag            String?
+  tags           String[] @default([])
+  content        Json     @default("[]")
+  readTime       String?
+  seoTitle       String?
+  seoDescription String?
+  order          Int      @default(0)
+  status         Status   @default(DRAFT)
+  publishedAt    DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Media {
