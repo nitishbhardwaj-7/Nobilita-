@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
 import NavigationOverlay from "@/components/NavigationOverlay";
-import { useSearchParams } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), {
   ssr: false,
@@ -178,6 +178,9 @@ const finishes = ["Polished", "Matte", "Honed", "Structured Matte", "3D-5D Matte
 
 function ExploreCollectionContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const isOpenedFromSessionRef = useRef(false);
 
   const initialFinish = useMemo(() => {
     const finish = searchParams.get("finish");
@@ -230,8 +233,10 @@ function ExploreCollectionContent() {
     }
   };
 
-  // Dynamic products list from DB, initialized with static slabs for instant smooth rendering
-  const [dbProducts, setDbProducts] = useState<any[]>(slabs);
+  // Dynamic products list — the database is the source of truth. `slabs` above only
+  // serves as an offline/error fallback and as legacy image/behavior lookup by name.
+  const [dbProducts, setDbProducts] = useState<any[] | null>(null);
+  const [productsLoading, setProductsLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -239,25 +244,43 @@ function ExploreCollectionContent() {
       try {
         const res = await fetch("/api/products");
         const json = await res.json();
-        if (isMounted && json.success && Array.isArray(json.data) && json.data.length > 0) {
+        if (!isMounted) return;
+
+        if (json.success && Array.isArray(json.data)) {
           const published = json.data
             .filter((p: any) => p.status === "PUBLISHED")
+            .sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
             .map((p: any) => {
               const staticMatch = slabs.find(s => s.name.toLowerCase() === p.name.toLowerCase());
-              const img = staticMatch?.img || ((p.coverImage && !p.coverImage.includes("Our story")) ? p.coverImage : (p.leftBg || ""));
+              // Prefer whatever the admin has set on the product itself — that's what
+              // makes edits (e.g. swapping a cover image) actually show up here.
+              const firstSlideSrc = Array.isArray(p.slides) && p.slides.length > 0
+                ? (typeof p.slides[0] === "string" ? p.slides[0] : p.slides[0]?.src)
+                : "";
+              const img =
+                (p.coverImage && !p.coverImage.includes("Our story") ? p.coverImage : "") ||
+                p.leftBg ||
+                (Array.isArray(p.gallery) && p.gallery[0]) ||
+                firstSlideSrc ||
+                staticMatch?.img ||
+                "";
               return {
                 name: p.name,
                 img,
                 color: p.color,
-                finish: p.finish || ""
+                finish: p.finish || "",
+                isDark: !!p.isDark
               };
             });
-          if (published.length > 0) {
-            setDbProducts(published);
-          }
+          setDbProducts(published);
+        } else {
+          setDbProducts(slabs);
         }
       } catch (err) {
         console.error("Failed to load dynamic products on explore-collection page:", err);
+        if (isMounted) setDbProducts(slabs);
+      } finally {
+        if (isMounted) setProductsLoading(false);
       }
     }
     load();
@@ -267,7 +290,7 @@ function ExploreCollectionContent() {
   }, []);
 
   const slabsToRender = useMemo(() => {
-    return dbProducts;
+    return dbProducts ?? [];
   }, [dbProducts]);
 
   // Selected slab for fullscreen detail modal
@@ -285,8 +308,28 @@ function ExploreCollectionContent() {
       if (foundSlab) {
         setActiveSlab(foundSlab);
       }
+    } else {
+      setActiveSlab(null);
     }
   }, [searchParams, slabsToRender]);
+
+  const handleProductSelect = (slab: typeof slabsToRender[0]) => {
+    isOpenedFromSessionRef.current = true;
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("product", slab.name);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleProductClose = () => {
+    if (isOpenedFromSessionRef.current) {
+      router.back();
+    } else {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("product");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    isOpenedFromSessionRef.current = false;
+  };
 
   // Reset all active filters
   const handleReset = () => {
@@ -564,10 +607,17 @@ function ExploreCollectionContent() {
 
       {/* Slabs Grid Section */}
       <div className="flex-1 w-full p-3 md:p-6 bg-white">
+        {productsLoading ? (
+          <div className={`grid ${gridColsClass} gap-3 md:gap-4`}>
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="aspect-[4/3] bg-brand-cream/30 animate-pulse" />
+            ))}
+          </div>
+        ) : (
         <div className={`grid ${gridColsClass} gap-3 md:gap-4`}>
           <AnimatePresence>
             {filteredSlabs.map((slab, index) => {
-               const isWhiteTextSlab = slab.color === "Dark" || slab.name.toLowerCase() === "verde profondo" || slab.name.toLowerCase() === "ferro industriale";
+               const isWhiteTextSlab = (slab as any).isDark || slab.color === "Dark" || slab.name.toLowerCase() === "verde profondo" || slab.name.toLowerCase() === "ferro industriale";
               const shouldRotate = 
                 slab.name.toLowerCase() === "calacatta borghini" || 
                 slab.name.toLowerCase() === "calacatta sponda" ||
@@ -586,7 +636,7 @@ function ExploreCollectionContent() {
                   viewport={{ once: true, margin: "20px" }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.6, ease: "easeOut", delay: (index % 4) * 0.03 }}
-                  onClick={() => setActiveSlab(slab)}
+                  onClick={() => handleProductSelect(slab)}
                   className="relative aspect-[4/3] group overflow-hidden border border-brand-dark/5 cursor-pointer bg-brand-cream/10"
                 >
                   {/* Slab Image Wrapper with overflow-hidden */}
@@ -655,28 +705,33 @@ function ExploreCollectionContent() {
             })}
           </AnimatePresence>
         </div>
+        )}
 
-        {filteredSlabs.length === 0 && (
+        {!productsLoading && filteredSlabs.length === 0 && (
           <div className="w-full py-24 text-center">
             <p className="font-ivymode text-brand-dark/50 text-xl tracking-wider uppercase">
-              No Slabs Match the Selected Filters.
+              {slabsToRender.length === 0
+                ? "No Products Published Yet."
+                : "No Slabs Match the Selected Filters."}
             </p>
-            <button
-              onClick={handleReset}
-              className="mt-4 relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
-            >
-              <span className="absolute inset-0 bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
-              <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                Clear Filters
-              </span>
-            </button>
+            {(selectedColor || selectedFinish || searchTerm) && (
+              <button
+                onClick={handleReset}
+                className="mt-4 relative overflow-hidden border border-[#545759] text-[#545759] bg-transparent px-8 py-2.5 font-michroma text-[clamp(12px,1.5vw,20px)] tracking-[0.25em] transition-colors duration-500 uppercase group focus:outline-none"
+              >
+                <span className="absolute inset-0 bg-[#545759] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                  Clear Filters
+                </span>
+              </button>
+            )}
           </div>
         )}
       </div>
 
       <FeaturedProduct
         activeProduct={activeSlab?.name || null}
-        onClose={() => setActiveSlab(null)}
+        onClose={handleProductClose}
       />
       <Footer />
     </div>

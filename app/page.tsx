@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import prisma from "@/lib/prisma";
 import HomeClient from "@/components/HomeClient";
 
@@ -20,6 +20,8 @@ export default async function Home() {
   }
 
   return (
-    <HomeClient cmsData={cmsData} />
+    <Suspense fallback={null}>
+      <HomeClient cmsData={cmsData} />
+    </Suspense>
   );
 }

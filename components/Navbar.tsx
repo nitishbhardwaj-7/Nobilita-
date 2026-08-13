@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import NavigationOverlay from "./NavigationOverlay";
 
-export default function Navbar() {
+export default function Navbar({ forceVisible = false }: { forceVisible?: boolean }) {
   const pathname = usePathname();
   const isHomeScreen = pathname === "/";
   const isExplorePage = pathname === "/explore-collection";
@@ -84,6 +84,7 @@ export default function Navbar() {
 
   // Mutation observer to hide navbar instantly when body overflow is hidden (modal open)
   useEffect(() => {
+    if (forceVisible) return;
     const checkBodyScroll = () => {
       if (document.body.style.overflow === "hidden") {
         setIsVisible(false);
@@ -96,10 +97,11 @@ export default function Navbar() {
     observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
 
     return () => observer.disconnect();
-  }, []);
+  }, [forceVisible]);
 
   // Scroll event handling for normal nav visibility
   useEffect(() => {
+    if (forceVisible) return;
     if (isInsideBrandIntro) {
       setIsVisible(false);
       return;
@@ -135,10 +137,11 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [lastScrollY, isInsideBrandIntro]);
+  }, [lastScrollY, isInsideBrandIntro, forceVisible]);
 
   // Mouse move event handling
   useEffect(() => {
+    if (forceVisible) return;
     if (isInsideBrandIntro) return;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -161,14 +164,14 @@ export default function Navbar() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isInsideBrandIntro]);
+  }, [isInsideBrandIntro, forceVisible]);
 
   return (
     <>
       {/* Scrollable / Hoverable Header */}
       <nav
         className={`fixed top-0 left-0 right-0 z-[10000] flex items-center justify-between px-6 md:px-12 py-3 md:py-4 bg-[#007190] shadow-md transition-transform duration-500 ease-in-out transform ${
-          (isVisible || isNavOpen) && !isInsideBrandIntro ? "translate-y-0" : "-translate-y-full"
+          forceVisible || ((isVisible || isNavOpen) && !isInsideBrandIntro) ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         {/* Animated Hamburger / Close Icon */}

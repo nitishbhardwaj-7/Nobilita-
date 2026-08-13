@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useEffect, useMemo, Suspense } from "react";
 import Link from "next/link";
 import gsap from "gsap";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // Lazy-loaded video component using IntersectionObserver to prevent loading/playing lag
 function LazyVideo({ src, poster, className, controls = false, isParentReady = true }: { src: string; poster?: string; className?: string; controls?: boolean; isParentReady?: boolean }) {
@@ -340,7 +342,7 @@ interface FeaturedProductProps {
   onClose?: () => void;
 }
 
-export default function FeaturedProduct({ activeProduct = null, onClose }: FeaturedProductProps) {
+function FeaturedProductContent({ activeProduct = null, onClose }: FeaturedProductProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
@@ -775,11 +777,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
 
   const content = (
     <div className="w-full flex flex-col bg-white">
+      <Navbar forceVisible={true} />
       <section className="w-full min-h-screen flex flex-col lg:flex-row bg-white text-brand-dark relative font-ivymode">
         {/* Left Column: Spec Sheet with Slab Background */}
         <div
           ref={leftColRef}
-          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-20 pb-8 px-4 md:p-16 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10"
+          className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen pt-24 pb-8 px-4 md:pt-32 md:pb-16 md:px-16 flex flex-col justify-center lg:items-start items-center bg-brand-cream/10"
           style={{
             clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
             transform: "translateX(-50px)",
@@ -798,7 +801,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           {/* BACK button */}
           <div
             ref={backBtnRef}
-            className="fixed top-6 left-6 md:top-12 md:left-12 z-50 pointer-events-auto"
+            className="absolute top-24 left-6 md:top-28 md:left-12 z-50 pointer-events-auto"
             style={{ opacity: 0, transform: "scale(0.8)" }}
           >
             {onClose ? (
@@ -1072,9 +1075,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(false)}
-                    className={`border ${config.isDark ? "border-white/50 bg-black/20 hover:bg-white hover:text-neutral-900 text-white" : "border-brand-dark/40 hover:bg-brand-dark hover:text-white text-brand-dark"} transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap`}
+                    className={`border relative overflow-hidden group px-6 py-2 md:py-2.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap ${config.isDark ? "border-white/40" : "border-brand-dark/40"}`}
                   >
-                    VIEW FACES
+                    <span className={`absolute -inset-[1px] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100 ${config.isDark ? "bg-white" : "bg-brand-dark"}`} />
+                    <span className={`relative z-10 transition-colors duration-500 ${config.isDark ? "text-white group-hover:text-neutral-900" : "text-brand-dark group-hover:text-white"}`}>
+                      VIEW FACES
+                    </span>
                   </button>
                 </div>
               </div>
@@ -1109,9 +1115,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 flex justify-center">
                             <button
                               onClick={() => setShowBookmatch(true)}
-                              className={`border ${config.isDark ? "border-white/50 bg-black/20 hover:bg-white hover:text-neutral-900 text-white" : "border-brand-dark/40 hover:bg-brand-dark hover:text-white text-brand-dark"} transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap`}
+                              className={`border relative overflow-hidden group px-6 py-2 md:py-2.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap ${config.isDark ? "border-white/40" : "border-brand-dark/40"}`}
                             >
-                              VIEW BOOKMATCH
+                              <span className={`absolute -inset-[1px] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100 ${config.isDark ? "bg-white" : "bg-brand-dark"}`} />
+                              <span className={`relative z-10 transition-colors duration-500 ${config.isDark ? "text-white group-hover:text-neutral-900" : "text-brand-dark group-hover:text-white"}`}>
+                                VIEW BOOKMATCH
+                              </span>
                             </button>
                           </div>
                         )}
@@ -1179,9 +1188,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <button
                     onClick={() => setShowBookmatch(!showBookmatch)}
-                    className={`border ${config.isDark ? "border-white/50 bg-black/20 hover:bg-white hover:text-neutral-900 text-white" : "border-brand-dark/40 hover:bg-brand-dark hover:text-white text-brand-dark"} transition-all px-4 py-1.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap`}
+                    className={`border relative overflow-hidden group px-6 py-2 md:py-2.5 font-michroma font-medium text-[10px] md:text-[16px] tracking-[0.025em] uppercase focus:outline-none whitespace-nowrap ${config.isDark ? "border-white/40" : "border-brand-dark/40"}`}
                   >
-                    {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
+                    <span className={`absolute -inset-[1px] scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100 ${config.isDark ? "bg-white" : "bg-brand-dark"}`} />
+                    <span className={`relative z-10 transition-colors duration-500 ${config.isDark ? "text-white group-hover:text-neutral-900" : "text-brand-dark group-hover:text-white"}`}>
+                      {showBookmatch ? `VIEW FACE ${activeFace}` : "VIEW BOOKMATCH"}
+                    </span>
                   </button>
                 </div>
               )}
@@ -1189,17 +1201,7 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
           </>
         )}
       </section>
-
-      {/* Bottom Copyright & Legal Strip */}
-      <div className="w-full bg-[#007190] py-6 px-6 md:px-16 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 md:gap-12 text-white/80 font-light text-xs md:text-sm tracking-wide text-center">
-        <Link href="/privacy-policy" className="hover:text-white transition-colors">
-          Privacy Policy
-        </Link>
-        <span>© Copyright 2026 PORCELLANA NOBILITA</span>
-        <Link href="/sitemap" className="hover:text-white transition-colors">
-          Sitemap
-        </Link>
-      </div>
+      <Footer />
     </div>
   );
 
@@ -1218,4 +1220,12 @@ export default function FeaturedProduct({ activeProduct = null, onClose }: Featu
   }
 
   return content;
+}
+
+export default function FeaturedProduct(props: FeaturedProductProps) {
+  return (
+    <Suspense fallback={null}>
+      <FeaturedProductContent {...props} />
+    </Suspense>
+  );
 }

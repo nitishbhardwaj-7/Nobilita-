@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NobilitaHouseSVG from "@/components/NobilitaHouseSVG";
 import dynamic from "next/dynamic";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const FeaturedProduct = dynamic(() => import("@/components/FeaturedProduct"), { ssr: false });
 
@@ -42,8 +43,39 @@ const paragraphWordVariants = {
   })
 };
 
-export default function OurStoryPage() {
+function OurStoryContent() {
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isOpenedFromSessionRef = useRef(false);
+
+  useEffect(() => {
+    const productName = searchParams?.get("product");
+    if (productName) {
+      setActiveProduct(productName);
+    } else {
+      setActiveProduct(null);
+    }
+  }, [searchParams]);
+
+  const handleProductSelect = (productName: string) => {
+    isOpenedFromSessionRef.current = true;
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("product", productName);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleProductClose = () => {
+    if (isOpenedFromSessionRef.current) {
+      router.back();
+    } else {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("product");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    isOpenedFromSessionRef.current = false;
+  };
 
   const handleImageEnter = (selector: string) => {
     gsap.to(selector, { scale: 1.08, duration: 0.8, ease: "power2.out", overwrite: "auto" });
@@ -313,7 +345,7 @@ export default function OurStoryPage() {
                 {/* Bottom Right Text Button */}
                 <div className="absolute bottom-2 right-2 md:bottom-2 md:right-2 z-20">
                   <button
-                    onClick={() => setActiveProduct("Verde Profondo")}
+                    onClick={() => handleProductSelect("Verde Profondo")}
                     className="relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block"
                   >
                     <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
@@ -358,7 +390,7 @@ export default function OurStoryPage() {
           {/* Bottom Right Text Button */}
           <div className="absolute bottom-2 right-2 md:bottom-2 md:right-3 z-30">
             <button
-              onClick={() => setActiveProduct("Basaltina")}
+              onClick={() => handleProductSelect("Basaltina")}
               className="sec3-label-text relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block cursor-pointer"
             >
               <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
@@ -425,7 +457,7 @@ export default function OurStoryPage() {
                 {/* Bottom Left Text Button */}
                 <div className="absolute bottom-2 left-2 md:bottom-2 md:left-2 z-20">
                   <button
-                    onClick={() => setActiveProduct("Ferro Industriale")}
+                    onClick={() => handleProductSelect("Ferro Industriale")}
                     className="relative overflow-hidden border border-white/0 text-white bg-transparent px-3.5 py-1.5 font-ivymode font-light text-[clamp(10px,1vw,13px)] uppercase tracking-[0.20em] transition-all duration-500 ease-out group-hover:border-white block"
                   >
                     <span className="absolute -inset-[1px] bg-white scale-x-0 origin-left transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:scale-x-100" />
@@ -471,8 +503,16 @@ export default function OurStoryPage() {
 
       <FeaturedProduct
         activeProduct={activeProduct}
-        onClose={() => setActiveProduct(null)}
+        onClose={handleProductClose}
       />
     </div>
+  );
+}
+
+export default function OurStoryPage() {
+  return (
+    <Suspense fallback={null}>
+      <OurStoryContent />
+    </Suspense>
   );
 }

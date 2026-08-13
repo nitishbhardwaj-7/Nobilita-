@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Loader from "@/components/Loader";
 import HeroSection from "@/components/HeroSection";
 import BrandIntro from "@/components/BrandIntro";
@@ -19,6 +20,37 @@ let hasLoadedGlobal = false;
 
 export default function HomeClient({ cmsData }: { cmsData: any }) {
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isOpenedFromSessionRef = useRef(false);
+
+  useEffect(() => {
+    const productName = searchParams?.get("product");
+    if (productName) {
+      setActiveProduct(productName);
+    } else {
+      setActiveProduct(null);
+    }
+  }, [searchParams]);
+
+  const handleProductSelect = (productName: string) => {
+    isOpenedFromSessionRef.current = true;
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("product", productName);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleProductClose = () => {
+    if (isOpenedFromSessionRef.current) {
+      router.back();
+    } else {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("product");
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+    isOpenedFromSessionRef.current = false;
+  };
   const [isLoading, setIsLoading] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       const seen = sessionStorage.getItem("has_seen_nobilita_loader");
@@ -75,7 +107,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
       />
       <CraftsmanshipSection />
       <LegacySection />
-      <ApplicationsSection onTileClick={(prodName) => setActiveProduct(prodName)} />
+      <ApplicationsSection onTileClick={(prodName) => handleProductSelect(prodName)} />
       <DimensionsSection />
       <FinishesSection />
       <HeroSection 
@@ -89,7 +121,7 @@ export default function HomeClient({ cmsData }: { cmsData: any }) {
       <Footer />
       <FeaturedProduct
         activeProduct={activeProduct}
-        onClose={() => setActiveProduct(null)}
+        onClose={handleProductClose}
       />
     </main>
   );
