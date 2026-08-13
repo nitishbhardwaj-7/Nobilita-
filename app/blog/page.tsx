@@ -8,6 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+import { HARDCODED_BLOGS } from "@/lib/hardcodedBlogs";
+
 gsap.registerPlugin(ScrollTrigger);
 
 interface BlogListItem {
@@ -25,11 +27,19 @@ export default function BlogPage() {
 
   useEffect(() => {
     let active = true;
+    const hcPosts: BlogListItem[] = HARDCODED_BLOGS.map((b) => ({
+      id: b.slug,
+      title: b.title,
+      image: b.heroImage || "/images/blogs page images/ferro-industriale-blog-hero.webp",
+      date: b.publishedAt.slice(0, 10),
+      href: `/blog/${b.slug}`,
+    }));
+
     fetch("/api/blogs")
       .then((res) => res.json())
       .then((data) => {
         if (!active) return;
-        const posts: BlogListItem[] = (data.data || [])
+        const dbPosts: BlogListItem[] = (data.data || [])
           .filter((b: any) => b.status === "PUBLISHED")
           .map((b: any) => ({
             id: b.slug,
@@ -38,9 +48,20 @@ export default function BlogPage() {
             date: (b.publishedAt || b.createdAt || "").slice(0, 10),
             href: `/blog/${b.slug}`,
           }));
-        setBlogPosts(posts);
+
+        const merged = [...dbPosts];
+        for (const hc of hcPosts) {
+          if (!merged.some((m) => m.id === hc.id)) {
+            merged.push(hc);
+          }
+        }
+        setBlogPosts(merged);
       })
-      .catch(() => setBlogPosts([]))
+      .catch(() => {
+        if (active) {
+          setBlogPosts(hcPosts);
+        }
+      })
       .finally(() => {
         if (active) setLoading(false);
       });
