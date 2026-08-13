@@ -419,7 +419,7 @@ export default function Footer() {
                         ? handleCatalogClick
                         : undefined
                   }
-                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.5vw,22px)] mx-auto text-center w-fit whitespace-nowrap"
+                  className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,2.2vw,20px)] mx-auto text-center w-fit whitespace-nowrap"
                 >
                   {link}
                   <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -439,7 +439,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               home
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -448,7 +448,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/our-story"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               our story
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -457,7 +457,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/explore-collection"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               products
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -466,7 +466,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/technical-data"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               technical data
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -475,7 +475,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/made-in-italy"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               made in italy
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -485,7 +485,7 @@ export default function Footer() {
               variants={navItemVariants}
               href="#download-catalog"
               onClick={handleCatalogClick}
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               catalogue
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -494,7 +494,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/blog"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               blog
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -503,7 +503,7 @@ export default function Footer() {
             <motion.a
               variants={navItemVariants}
               href="/newsletter"
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               newsletter
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -513,7 +513,7 @@ export default function Footer() {
               variants={navItemVariants}
               href="#contact-us"
               onClick={handleContactClick}
-              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(16px,1.9vw,20px)] text-center w-fit whitespace-nowrap"
             >
               contact us
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
