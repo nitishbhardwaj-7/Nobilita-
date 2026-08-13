@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -10,27 +10,48 @@ import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function BlogsPage() {
-  const blogTileRefs = useRef<(HTMLDivElement | null)[]>([]);
+interface BlogListItem {
+  id: string;
+  title: string;
+  image: string;
+  date: string;
+  href: string;
+}
 
-  const blogPosts = [
-    {
-      id: "the-next-generation-porcelain",
-      title: "The Next Generation\nPorcelain",
-      image: "/images/blogs page images/calacatta-vagli-rosa-blog.webp",
-      date: "2026-07-28",
-      href: "/blogs/the-next-generation-porcelain",
-    },
-    {
-      id: "porcelain-as-flooring",
-      title: "Porcelain as Flooring",
-      image: "/images/blogs page images/white-camouflage-blog.webp",
-      date: "2026-07-28",
-      href: "/blogs/porcelain-as-flooring",
-    },
-  ];
+export default function BlogPage() {
+  const blogTileRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogListItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let active = true;
+    fetch("/api/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!active) return;
+        const posts: BlogListItem[] = (data.data || [])
+          .filter((b: any) => b.status === "PUBLISHED")
+          .map((b: any) => ({
+            id: b.slug,
+            title: b.title,
+            image: b.heroImage || "/images/blogs page images/ferro-industriale-blog-hero.webp",
+            date: (b.publishedAt || b.createdAt || "").slice(0, 10),
+            href: `/blog/${b.slug}`,
+          }));
+        setBlogPosts(posts);
+      })
+      .catch(() => setBlogPosts([]))
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+
     const cleanupFns: (() => void)[] = [];
 
     const ctx = gsap.context(() => {
@@ -113,7 +134,7 @@ export default function BlogsPage() {
       ctx.revert();
       cleanupFns.forEach((fn) => fn());
     };
-  }, []);
+  }, [loading, blogPosts.length]);
 
   return (
     <div className="min-h-screen bg-white text-brand-dark flex flex-col justify-between overflow-x-hidden relative">
@@ -153,7 +174,7 @@ export default function BlogsPage() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
           src="/images/blogs page images/ferro-industriale-blog-hero.webp"
-          alt="Blogs Background"
+          alt="Blog Background"
           className="w-full h-full object-cover object-center block"
         />
 
@@ -166,7 +187,7 @@ export default function BlogsPage() {
               transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
               className="font-ivymode font-light text-white uppercase tracking-[0.10em] text-[clamp(36px,6.5vw,80px)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
             >
-              BLOGS
+              BLOG
             </motion.h1>
           </div>
         </div>
@@ -175,37 +196,45 @@ export default function BlogsPage() {
       {/* Main Blogs Grid Section */}
       <main className="w-full flex-1 bg-white py-12 md:py-20">
         <div className="w-full max-w-[1600px] xl:max-w-[1800px] 2xl:max-w-[2200px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
-            {blogPosts.map((post, idx) => (
-              <Link key={post.id} href={post.href} className="block">
-                <div
-                  ref={(el) => { blogTileRefs.current[idx] = el; }}
-                  className="blog-tile group relative w-full aspect-[16/10] overflow-hidden cursor-pointer shadow-md"
-                >
-                  {/* Blog Image */}
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="blog-card-img w-full h-full object-cover object-center transform"
-                  />
+          {!loading && blogPosts.length === 0 ? (
+            <div className="w-full py-24 text-center">
+              <p className="font-ivymode text-neutral-400 text-lg tracking-wide">
+                No blog posts published yet. Check back soon.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+              {blogPosts.map((post, idx) => (
+                <Link key={post.id} href={post.href} className="block">
+                  <div
+                    ref={(el) => { blogTileRefs.current[idx] = el; }}
+                    className="blog-tile group relative w-full aspect-[16/10] overflow-hidden cursor-pointer shadow-md"
+                  >
+                    {/* Blog Image */}
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="blog-card-img w-full h-full object-cover object-center transform"
+                    />
 
-                  {/* Centered Blog Title */}
-                  <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 text-center z-10 pointer-events-none">
-                    <h2 className="blog-card-title font-ivymode font-light text-white text-[clamp(22px,2.6vw,44px)] tracking-wide leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] whitespace-pre-line uppercase">
-                      {post.title}
-                    </h2>
-                  </div>
+                    {/* Centered Blog Title */}
+                    <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8 text-center z-10 pointer-events-none">
+                      <h2 className="blog-card-title font-ivymode font-light text-white text-[clamp(22px,2.6vw,44px)] tracking-wide leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] whitespace-pre-line uppercase">
+                        {post.title}
+                      </h2>
+                    </div>
 
-                  {/* Bottom Right Date */}
-                  <div className="absolute bottom-2 right-3 md:bottom-3 md:right-4 z-10 pointer-events-none select-none text-right">
-                    <span className="blog-card-date font-ivymode font-light text-[#007190] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] tracking-[0.20em] drop-shadow-md block">
-                      {post.date}
-                    </span>
+                    {/* Bottom Right Date */}
+                    <div className="absolute bottom-2 right-3 md:bottom-3 md:right-4 z-10 pointer-events-none select-none text-right">
+                      <span className="blog-card-date font-ivymode font-light text-[#007190] text-[clamp(11px,1.1vw,15px)] lg:text-[clamp(13px,1.2vw,18px)] tracking-[0.20em] drop-shadow-md block">
+                        {post.date}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </main>
 

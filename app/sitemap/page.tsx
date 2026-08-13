@@ -200,12 +200,12 @@ export default function SitemapPage() {
               </div>
             </motion.li>
 
-            {/* Blogs */}
+            {/* Blog */}
             <motion.li variants={listItemVariants} className="flex flex-col gap-2">
               <div className="flex items-center gap-3.5 font-normal text-black text-lg md:text-xl lg:text-2xl">
                 <span className="w-2 h-2 rounded-full bg-[#545759] shrink-0"></span>
-                <Link href="/blogs" className="hover:text-[#007190] transition-colors">
-                  Blogs
+                <Link href="/blog" className="hover:text-[#007190] transition-colors">
+                  Blog
                 </Link>
               </div>
             </motion.li>

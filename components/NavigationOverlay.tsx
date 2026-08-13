@@ -11,12 +11,13 @@ interface NavigationOverlayProps {
 }
 
 const menuLinks = [
+  { label: "HOME", href: "/" },
   { label: "OUR STORY", href: "/our-story" },
   { label: "PRODUCTS", href: "/explore-collection" },
   { label: "TECHNICAL RESOURCES", href: "/technical-data" },
   { label: "MADE IN ITALY", href: "/made-in-italy" },
   { label: "CATALOGUE", href: "/#download-catalog" },
-  { label: "BLOGS", href: "/blogs" },
+  { label: "BLOG", href: "/blog" },
   { label: "NEWSLETTER", href: "/newsletter" },
   { label: "CONTACT US", href: "/#contact-us" }
 ];

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import NobilitaHouseSVG from "./NobilitaHouseSVG";
 import AnimatedNeighborhood from "./AnimatedNeighborhood";
 
-const links = ["our story", "products", "technical data", "made in italy", "catalogue", "blogs", "newsletter", "contact us"];
+const links = ["home", "our story", "products", "technical data", "made in italy", "catalogue", "blog", "newsletter", "contact us"];
 
 const navContainerVariants = {
   hidden: {},
@@ -394,21 +394,23 @@ export default function Footer() {
                   key={link}
                   variants={navItemVariants}
                   href={
-                    link === "technical data"
-                      ? "/technical-data"
-                      : link === "products"
-                        ? "/explore-collection"
-                        : link === "our story"
-                          ? "/our-story"
-                          : link === "made in italy"
-                            ? "/made-in-italy"
-                            : link === "catalogue"
-                              ? "#download-catalog"
-                              : link === "blogs"
-                                ? "/blogs"
-                                : link === "newsletter"
-                                  ? "/newsletter"
-                                  : `#${link.replace(/ /g, "-")}`
+                    link === "home"
+                      ? "/"
+                      : link === "technical data"
+                        ? "/technical-data"
+                        : link === "products"
+                          ? "/explore-collection"
+                          : link === "our story"
+                            ? "/our-story"
+                            : link === "made in italy"
+                              ? "/made-in-italy"
+                              : link === "catalogue"
+                                ? "#download-catalog"
+                                : link === "blog"
+                                  ? "/blog"
+                                  : link === "newsletter"
+                                    ? "/newsletter"
+                                    : `#${link.replace(/ /g, "-")}`
                   }
                   onClick={
                     link === "contact us"
@@ -434,6 +436,15 @@ export default function Footer() {
             viewport={{ once: true }}
             className="hidden md:flex w-full items-center justify-between text-center"
           >
+            <motion.a
+              variants={navItemVariants}
+              href="/"
+              className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
+            >
+              home
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
+
             <motion.a
               variants={navItemVariants}
               href="/our-story"
@@ -482,10 +493,10 @@ export default function Footer() {
 
             <motion.a
               variants={navItemVariants}
-              href="/blogs"
+              href="/blog"
               className="font-ivymode font-light text-white tracking-[0.05em] relative group text-[clamp(18px,2.2vw,22px)] text-center w-fit whitespace-nowrap"
             >
-              blogs
+              blog
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
 
