@@ -105,7 +105,7 @@ export default function NavigationOverlay({ isOpen, onClose }: NavigationOverlay
                     <Link
                       href={link.href}
                       onClick={() => handleLinkClick(link.href)}
-                      className="font-ivymode font-light text-white uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[17px] sm:text-[20px] md:text-[clamp(16px,2.5vw,26px)] 2xl:text-[36px] leading-tight inline-block whitespace-nowrap"
+                      className="font-ivymode font-light text-white uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:text-white/70 transition-all duration-300 text-[15px] sm:text-[18px] md:text-[clamp(15px,2.1vw,22px)] 2xl:text-[30px] leading-tight inline-block whitespace-nowrap"
                     >
                       {link.label}
                     </Link>
