@@ -173,24 +173,6 @@ export default function BlogDetailView({
         </article>
       </main>
 
-      {/* Tags Section */}
-      {post.tags && post.tags.length > 0 && (
-        <section className="w-full bg-white px-6 md:px-12 pb-12">
-          <div className="w-full max-w-[1200px] mx-auto">
-            <div className="flex flex-wrap justify-start gap-x-2 gap-y-2.5">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-2 bg-[#f4f4f5] hover:bg-neutral-200 text-neutral-800 text-[12px] md:text-[13px] font-normal tracking-wide border border-neutral-200/60 transition-colors duration-300 cursor-pointer select-none rounded-none"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Recent Blogs (What's New) Section */}
       {otherPosts.length > 0 && (
         <section className="w-full bg-white border-t border-neutral-100 pt-12 pb-12 px-6 md:px-12">
