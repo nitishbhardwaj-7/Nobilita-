@@ -429,180 +429,194 @@ function ExploreCollectionContent() {
       </div>
 
       {/* Filters & Grid Adjustment Row */}
-      <div className="w-full px-3 sm:px-6 md:px-12 py-4 md:py-5 border-b border-brand-dark/10 bg-white flex items-center justify-between sticky top-[64px] md:top-[76px] z-30 shadow-sm">
-        {/* Left Side: Filter Options */}
-        <div className="flex items-center gap-3 sm:gap-6 md:gap-10">
-          {/* Color Filter */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                setColorDropdownOpen(!colorDropdownOpen);
-                setFinishDropdownOpen(false);
-              }}
-              className={`group font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
-                }`}
-            >
-              <span>COLOR {selectedColor ? `(${selectedColor})` : ""}</span>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${colorDropdownOpen ? "rotate-180 text-[#007190]" : "rotate-0 group-hover:translate-y-0.5"}`}
+      <div className="w-full px-3 sm:px-6 md:px-12 py-4 md:py-5 border-b border-brand-dark/10 bg-white flex flex-col sticky top-[64px] md:top-[76px] z-30 shadow-sm">
+        <div className="w-full flex items-center justify-between">
+          {/* Left Side: Filter Options */}
+          <div className="flex items-center gap-3 sm:gap-6 md:gap-10">
+            {/* Color Filter */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setColorDropdownOpen(!colorDropdownOpen);
+                  setFinishDropdownOpen(false);
+                }}
+                className={`group font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedColor ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
+                  }`}
               >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-
-            <AnimatePresence>
-              {colorDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-0 mt-3 w-48 bg-white border border-brand-dark/10 shadow-xl z-40 py-2"
+                <span>COLOR{selectedColor && <span className="hidden md:inline"> ({selectedColor})</span>}</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${colorDropdownOpen ? "rotate-180 text-[#007190]" : "rotate-0 group-hover:translate-y-0.5"}`}
                 >
-                  {colors.map((color, idx) => (
-                    <motion.button
-                      key={color}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: idx * 0.04 }}
-                      onClick={() => {
-                        setSelectedColor(color);
-                        setColorDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-black/5 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-[#545759]"
-                        }`}
-                    >
-                      {color}
-                    </motion.button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {colorDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-3 w-48 bg-white border border-brand-dark/10 shadow-xl z-40 py-2"
+                  >
+                    {colors.map((color, idx) => (
+                      <motion.button
+                        key={color}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: idx * 0.04 }}
+                        onClick={() => {
+                          setSelectedColor(color);
+                          setColorDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-black/5 transition-colors uppercase ${selectedColor === color ? "text-[#007190] font-semibold" : "text-[#545759]"
+                          }`}
+                      >
+                        {color}
+                      </motion.button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Finish Filter */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setFinishDropdownOpen(!finishDropdownOpen);
+                  setColorDropdownOpen(false);
+                }}
+                className={`group font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
+                  }`}
+              >
+                <span>FINISH{selectedFinish && <span className="hidden md:inline"> ({selectedFinish})</span>}</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${finishDropdownOpen ? "rotate-180 text-[#007190]" : "rotate-0 group-hover:translate-y-0.5"}`}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {finishDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-3 w-56 bg-white border border-brand-dark/10 shadow-xl z-40 py-2"
+                  >
+                    {finishes.map((finish, idx) => (
+                      <motion.button
+                        key={finish}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: idx * 0.04 }}
+                        onClick={() => {
+                          setSelectedFinish(finish);
+                          setFinishDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-black/5 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-[#545759]"
+                          }`}
+                      >
+                        {finish}
+                      </motion.button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Reset Filter Button (Desktop only) */}
+            {(selectedColor || selectedFinish || searchTerm) && (
+              <button
+                onClick={handleReset}
+                className="hidden md:block font-michroma text-[11px] md:text-lg tracking-[0.15em] text-red-600 hover:text-red-700 transition-colors uppercase select-none"
+              >
+                RESET
+              </button>
+            )}
           </div>
 
-          {/* Finish Filter */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                setFinishDropdownOpen(!finishDropdownOpen);
-                setColorDropdownOpen(false);
-              }}
-              className={`group font-michroma text-[11px] md:text-lg tracking-[0.15em] hover:text-brand-dark transition-colors uppercase flex items-center gap-2 select-none relative pb-1 ${selectedFinish ? "text-[#007190] border-b border-[#007190]" : "text-[#545759]"
+          {/* Right Side: Search and Grid Controls */}
+          <div className="flex items-center gap-2 sm:gap-6 md:gap-10">
+            {/* Search Input field in same square format */}
+            <div className="relative flex items-center">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search"
+                className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-all duration-300 w-32 sm:w-40 md:w-80 h-8 md:h-11 ${
+                  searchTerm 
+                    ? "border-[#007190] placeholder-[#007190] text-[#007190]" 
+                    : "border-[#545759]/20 placeholder-[#545759] text-[#545759]"
                 }`}
-            >
-              <span>FINISH {selectedFinish ? `(${selectedFinish})` : ""}</span>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${finishDropdownOpen ? "rotate-180 text-[#007190]" : "rotate-0 group-hover:translate-y-0.5"}`}
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-
-            <AnimatePresence>
-              {finishDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-0 mt-3 w-56 bg-white border border-brand-dark/10 shadow-xl z-40 py-2"
+              />
+              <div className={`absolute right-3 pointer-events-none transition-colors duration-300 ${
+                searchTerm ? "text-[#007190]" : "text-[#545759]"
+              }`}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-3.5 h-3.5 md:w-4.5 md:h-4.5"
                 >
-                  {finishes.map((finish, idx) => (
-                    <motion.button
-                      key={finish}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: idx * 0.04 }}
-                      onClick={() => {
-                        setSelectedFinish(finish);
-                        setFinishDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-2 text-xs font-michroma tracking-wider hover:bg-black/5 transition-colors uppercase ${selectedFinish === finish ? "text-[#007190] font-semibold" : "text-[#545759]"
-                        }`}
-                    >
-                      {finish}
-                    </motion.button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+            </div>
 
-          {/* Reset Filter Button */}
-          {(selectedColor || selectedFinish || searchTerm) && (
+            {/* Grid Columns Stack Selector */}
+            <div className="flex flex-col items-center select-none bg-white md:rounded">
+              <button
+                onClick={handleZoomIn}
+                className="px-2 md:px-3 text-[18px] md:text-[25px] lg:text-[25px] font-semibold md:hover:bg-brand-dark/5 transition-colors focus:outline-none leading-none py-0.5 md:py-0"
+                aria-label="Decrease columns (Zoom in)"
+              >
+                +
+              </button>
+              <button
+                onClick={handleZoomOut}
+                className="px-2 md:px-3 text-[18px] md:text-[25px] lg:text-[25px] font-semibold md:hover:bg-brand-dark/5 transition-colors focus:outline-none leading-none py-0.5 md:py-0"
+                aria-label="Increase columns (Zoom out)"
+              >
+                -
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile-only Reset Button Row */}
+        {(selectedColor || selectedFinish || searchTerm) && (
+          <div className="w-full flex justify-center mt-3 md:hidden border-t border-brand-dark/5 pt-2">
             <button
               onClick={handleReset}
-              className="font-michroma text-[11px] md:text-lg tracking-[0.15em] text-red-600 hover:text-red-700 transition-colors uppercase select-none"
+              className="font-michroma text-[11px] tracking-[0.15em] text-red-600 hover:text-red-700 transition-colors uppercase select-none"
             >
               RESET
             </button>
-          )}
-        </div>
-
-        {/* Right Side: Search and Grid Controls */}
-        <div className="flex items-center gap-2 sm:gap-6 md:gap-10">
-          {/* Search Input field in same square format */}
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search"
-              className={`border focus:border-[#007190] pl-3 pr-9 py-1.5 md:pl-4 md:pr-10 md:py-2 font-ivymode text-[11px] md:text-sm tracking-wide bg-transparent outline-none transition-all duration-300 w-32 sm:w-40 md:w-80 h-8 md:h-11 ${
-                searchTerm 
-                  ? "border-[#007190] placeholder-[#007190] text-[#007190]" 
-                  : "border-[#545759]/20 placeholder-[#545759] text-[#545759]"
-              }`}
-            />
-            <div className={`absolute right-3 pointer-events-none transition-colors duration-300 ${
-              searchTerm ? "text-[#007190]" : "text-[#545759]"
-            }`}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-3.5 h-3.5 md:w-4.5 md:h-4.5"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </div>
           </div>
-
-          {/* Grid Columns Stack Selector */}
-          <div className="flex flex-col items-center select-none bg-white md:rounded">
-            <button
-              onClick={handleZoomIn}
-              className="px-2 md:px-3 text-[18px] md:text-[25px] lg:text-[25px] font-semibold md:hover:bg-brand-dark/5 transition-colors focus:outline-none leading-none py-0.5 md:py-0"
-              aria-label="Decrease columns (Zoom in)"
-            >
-              +
-            </button>
-            <button
-              onClick={handleZoomOut}
-              className="px-2 md:px-3 text-[18px] md:text-[25px] lg:text-[25px] font-semibold md:hover:bg-brand-dark/5 transition-colors focus:outline-none leading-none py-0.5 md:py-0"
-              aria-label="Increase columns (Zoom out)"
-            >
-              -
-            </button>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* Slabs Grid Section */}
